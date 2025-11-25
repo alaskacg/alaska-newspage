@@ -47,6 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Alaska-inspired custom colors
+        alaska: {
+          midnight: "hsl(var(--alaska-midnight))",
+          aurora: "hsl(var(--aurora-green))",
+          glacier: "hsl(var(--glacier-blue))",
+          snow: "hsl(var(--snow-white))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
