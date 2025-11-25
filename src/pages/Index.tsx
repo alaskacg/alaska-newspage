@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Newspaper, MapPin, Users, Search } from "lucide-react";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import InstallPrompt from "@/components/InstallPrompt";
 
 interface Region {
   id: string;
@@ -69,8 +71,20 @@ const Index = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="container py-20">
+          <LoadingSpinner size="lg" text="Loading Alaska news..." />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      <InstallPrompt />
       <Header />
       
       {/* Hero Section */}
@@ -136,7 +150,13 @@ const Index = () => {
               Click on any region to discover local news, events, and information relevant to that area
             </p>
           </div>
-          {!loading && regions.length > 0 && <AlaskaMap regions={regions} />}
+          {regions.length > 0 ? (
+            <AlaskaMap regions={regions} />
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No regions available</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -149,20 +169,26 @@ const Index = () => {
               View All
             </Button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestNews.map((news) => (
-              <NewsCard
-                key={news.id}
-                title={news.title}
-                description={news.description}
-                url={news.url}
-                source={news.source}
-                category={news.category}
-                publishedAt={news.published_at}
-                imageUrl={news.image_url}
-              />
-            ))}
-          </div>
+          {latestNews.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {latestNews.map((news) => (
+                <NewsCard
+                  key={news.id}
+                  title={news.title}
+                  description={news.description}
+                  url={news.url}
+                  source={news.source}
+                  category={news.category}
+                  publishedAt={news.published_at}
+                  imageUrl={news.image_url}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No news items available yet</p>
+            </div>
+          )}
         </div>
       </section>
 
