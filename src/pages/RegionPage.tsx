@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import NewsCard from "@/components/NewsCard";
+import BusinessCard from "@/components/BusinessCard";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft, MapPin, Newspaper, Building2 } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface Region {
@@ -26,10 +28,27 @@ interface NewsItem {
   image_url?: string;
 }
 
+interface Business {
+  id: string;
+  name: string;
+  description: string | null;
+  category: string;
+  tags: string[] | null;
+  contact_phone: string | null;
+  contact_email: string | null;
+  address: string | null;
+  website_url: string | null;
+  facebook_url: string | null;
+  instagram_url: string | null;
+  logo_url: string | null;
+  is_featured: boolean;
+}
+
 const RegionPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [region, setRegion] = useState<Region | null>(null);
   const [news, setNews] = useState<NewsItem[]>([]);
+  const [businesses, setBusinesses] = useState<Business[]>([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -66,10 +85,15 @@ const RegionPage = () => {
         .from("regions")
         .select("*")
         .eq("slug", slug)
-        .single();
+        .maybeSingle();
 
       if (regionError) throw regionError;
       setRegion(regionData);
+
+      if (!regionData) {
+        setLoading(false);
+        return;
+      }
 
       // Fetch news for this region
       const { data: newsData, error: newsError } = await supabase
@@ -80,6 +104,17 @@ const RegionPage = () => {
 
       if (newsError) throw newsError;
       setNews(newsData || []);
+
+      // Fetch businesses for this region
+      const { data: businessData, error: businessError } = await supabase
+        .from("local_businesses")
+        .select("*")
+        .eq("region_id", regionData.id)
+        .order("is_featured", { ascending: false })
+        .order("name", { ascending: true });
+
+      if (businessError) throw businessError;
+      setBusinesses(businessData || []);
     } catch (error: any) {
       toast({
         title: "Error loading region data",
@@ -177,33 +212,64 @@ const RegionPage = () => {
         </div>
       </section>
 
-      {/* News Grid */}
+      {/* Content Tabs */}
       <section className="py-16">
         <div className="container">
-          {news.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {news.map((item) => (
-                <NewsCard
-                  key={item.id}
-                  title={item.title}
-                  description={item.description}
-                  url={item.url}
-                  source={item.source}
-                  category={item.category}
-                  publishedAt={item.published_at}
-                  imageUrl={item.image_url}
-                  isFavorite={favorites.has(item.id)}
-                  onToggleFavorite={() => toggleFavorite(item.id)}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No news items available for this region yet.
-              </p>
-            </div>
-          )}
+          <Tabs defaultValue="news" className="w-full">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+              <TabsTrigger value="news" className="flex items-center gap-2">
+                <Newspaper className="h-4 w-4" />
+                Local News
+              </TabsTrigger>
+              <TabsTrigger value="businesses" className="flex items-center gap-2">
+                <Building2 className="h-4 w-4" />
+                Services & Advertising
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="news">
+              {news.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {news.map((item) => (
+                    <NewsCard
+                      key={item.id}
+                      title={item.title}
+                      description={item.description}
+                      url={item.url}
+                      source={item.source}
+                      category={item.category}
+                      publishedAt={item.published_at}
+                      imageUrl={item.image_url}
+                      isFavorite={favorites.has(item.id)}
+                      onToggleFavorite={() => toggleFavorite(item.id)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">
+                    No news items available for this region yet.
+                  </p>
+                </div>
+              )}
+            </TabsContent>
+
+            <TabsContent value="businesses">
+              {businesses.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {businesses.map((business) => (
+                    <BusinessCard key={business.id} business={business} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">
+                    No businesses listed for this region yet.
+                  </p>
+                </div>
+              )}
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
     </div>

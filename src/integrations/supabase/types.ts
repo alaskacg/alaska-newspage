@@ -14,6 +14,71 @@ export type Database = {
   }
   public: {
     Tables: {
+      local_businesses: {
+        Row: {
+          address: string | null
+          category: string
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          description: string | null
+          facebook_url: string | null
+          id: string
+          instagram_url: string | null
+          is_featured: boolean | null
+          logo_url: string | null
+          name: string
+          region_id: string | null
+          tags: string[] | null
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          address?: string | null
+          category: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          facebook_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          is_featured?: boolean | null
+          logo_url?: string | null
+          name: string
+          region_id?: string | null
+          tags?: string[] | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          facebook_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          is_featured?: boolean | null
+          logo_url?: string | null
+          name?: string
+          region_id?: string | null
+          tags?: string[] | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "local_businesses_region_id_fkey"
+            columns: ["region_id"]
+            isOneToOne: false
+            referencedRelation: "regions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       news_items: {
         Row: {
           category: string | null
