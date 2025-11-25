@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 import L from "leaflet";
@@ -45,6 +45,19 @@ const MapController = () => {
 
 const AlaskaMap = ({ regions }: AlaskaMapProps) => {
   const navigate = useNavigate();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return (
+      <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg flex items-center justify-center bg-muted">
+        <p className="text-muted-foreground">Loading map...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg">
