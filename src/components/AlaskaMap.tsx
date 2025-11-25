@@ -1,57 +1,50 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-
-// Fix for default marker icons in React-Leaflet
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 interface Region {
   id: string;
   name: string;
   slug: string;
   description: string;
-  coordinates: any; // JSONB from database
+  coordinates: any;
 }
 
 interface AlaskaMapProps {
   regions: Region[];
 }
 
-const MapController = () => {
-  const map = useMap();
-  
-  useEffect(() => {
-    // Fit bounds to Alaska
-    map.fitBounds([
-      [71.5, -179.0], // Northwest corner
-      [54.0, -130.0], // Southeast corner
-    ]);
-  }, [map]);
-
-  return null;
-};
-
 const AlaskaMap = ({ regions }: AlaskaMapProps) => {
   const navigate = useNavigate();
-  const [isClient, setIsClient] = useState(false);
+  const [MapComponents, setMapComponents] = useState<any>(null);
 
   useEffect(() => {
-    setIsClient(true);
+    // Dynamically import react-leaflet and leaflet only on client side
+    Promise.all([
+      import("react-leaflet"),
+      import("leaflet"),
+      import("leaflet/dist/leaflet.css"),
+      import("leaflet/dist/images/marker-icon.png"),
+      import("leaflet/dist/images/marker-shadow.png"),
+    ]).then(([reactLeaflet, L, , markerIcon, markerShadow]) => {
+      // Fix default marker icons
+      const DefaultIcon = L.default.icon({
+        iconUrl: markerIcon.default,
+        shadowUrl: markerShadow.default,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+      });
+      L.default.Marker.prototype.options.icon = DefaultIcon;
+
+      setMapComponents({
+        MapContainer: reactLeaflet.MapContainer,
+        TileLayer: reactLeaflet.TileLayer,
+        Marker: reactLeaflet.Marker,
+        Popup: reactLeaflet.Popup,
+      });
+    });
   }, []);
 
-  if (!isClient) {
+  if (!MapComponents) {
     return (
       <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg flex items-center justify-center bg-muted">
         <p className="text-muted-foreground">Loading map...</p>
@@ -59,24 +52,27 @@ const AlaskaMap = ({ regions }: AlaskaMapProps) => {
     );
   }
 
+  const { MapContainer, TileLayer, Marker, Popup } = MapComponents;
+
   return (
     <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg">
       <MapContainer
-        center={[64.0, -152.0] as [number, number]}
+        center={[64.0, -152.0]}
         zoom={4}
+        bounds={[
+          [71.5, -179.0],
+          [54.0, -130.0],
+        ]}
         className="h-full w-full"
         scrollWheelZoom={false}
       >
-        <MapController />
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {regions.map((region) => {
           const coords = region.coordinates as { lat: number; lng: number };
           return (
             <Marker
               key={region.id}
-              position={[coords.lat, coords.lng] as [number, number]}
+              position={[coords.lat, coords.lng]}
               eventHandlers={{
                 click: () => navigate(`/region/${region.slug}`),
               }}
