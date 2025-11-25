@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { MapPin } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface Region {
   id: string;
@@ -15,102 +16,44 @@ interface AlaskaMapProps {
 
 const AlaskaMap = ({ regions }: AlaskaMapProps) => {
   const navigate = useNavigate();
-  const [isClient, setIsClient] = useState(false);
-  const [MapComponent, setMapComponent] = useState<any>(null);
-
-  useEffect(() => {
-    // Only run on client side
-    if (typeof window !== 'undefined') {
-      setIsClient(true);
-      
-      // Dynamically import everything to avoid SSR issues
-      const loadMap = async () => {
-        try {
-          const [
-            { MapContainer, TileLayer, Marker, Popup },
-            L,
-            _,
-            markerIconModule,
-            markerShadowModule
-          ] = await Promise.all([
-            import("react-leaflet"),
-            import("leaflet"),
-            import("leaflet/dist/leaflet.css"),
-            import("leaflet/dist/images/marker-icon.png"),
-            import("leaflet/dist/images/marker-shadow.png")
-          ]);
-
-          // Fix default marker icons
-          const DefaultIcon = L.icon({
-            iconUrl: markerIconModule.default,
-            shadowUrl: markerShadowModule.default,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-          });
-          L.Marker.prototype.options.icon = DefaultIcon;
-
-          // Create the map component
-          const Map = () => (
-            <MapContainer
-              center={[64.0, -152.0]}
-              zoom={4}
-              bounds={[
-                [71.5, -179.0],
-                [54.0, -130.0],
-              ]}
-              className="h-full w-full"
-              scrollWheelZoom={false}
-            >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              {regions.map((region) => {
-                const coords = region.coordinates as { lat: number; lng: number };
-                return (
-                  <Marker
-                    key={region.id}
-                    position={[coords.lat, coords.lng]}
-                    eventHandlers={{
-                      click: () => navigate(`/region/${region.slug}`),
-                    }}
-                  >
-                    <Popup>
-                      <div className="text-center">
-                        <h3 className="font-bold text-primary">{region.name}</h3>
-                        <p className="text-sm text-muted-foreground">{region.description}</p>
-                        <button
-                          onClick={() => navigate(`/region/${region.slug}`)}
-                          className="mt-2 text-accent hover:underline font-medium"
-                        >
-                          View News →
-                        </button>
-                      </div>
-                    </Popup>
-                  </Marker>
-                );
-              })}
-            </MapContainer>
-          );
-
-          setMapComponent(() => Map);
-        } catch (error) {
-          console.error("Error loading map:", error);
-        }
-      };
-
-      loadMap();
-    }
-  }, [regions, navigate]);
-
-  if (!isClient || !MapComponent) {
-    return (
-      <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg flex items-center justify-center bg-muted">
-        <p className="text-muted-foreground">Loading map...</p>
-      </div>
-    );
-  }
 
   return (
-    <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg">
-      <MapComponent />
+    <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-slate-900">
+      {/* Alaska outline backdrop */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <div className="text-9xl font-bold text-primary">ALASKA</div>
+      </div>
+      
+      {/* Region cards grid */}
+      <div className="relative h-full overflow-y-auto p-6">
+        <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+          Explore Alaska Regions
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {regions.map((region) => (
+            <button
+              key={region.id}
+              onClick={() => navigate(`/region/${region.slug}`)}
+              className="group relative bg-background/90 backdrop-blur-sm p-4 rounded-lg border border-border hover:border-primary transition-all hover:shadow-lg hover:scale-105"
+            >
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <div className="text-left">
+                  <h4 className="font-bold text-foreground group-hover:text-primary transition-colors">
+                    {region.name}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {region.description}
+                  </p>
+                  <span className="text-xs text-accent mt-2 inline-block group-hover:underline">
+                    View News →
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
