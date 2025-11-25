@@ -1,73 +1,130 @@
-# Welcome to your Lovable project
+# Alaska News Portal
 
-## Project info
+A modern, Progressive Web App (PWA) for discovering Alaska news organized by region. Built with React, TypeScript, and Lovable Cloud.
 
-**URL**: https://lovable.dev/projects/097ee2f7-b418-454a-8c7a-fafb643dcfd7
+## Features
 
-## How can I edit this code?
+- 🗺️ **Interactive Regional Map** - Explore Alaska news by clicking on regions (Southeast, Southcentral, Interior, Southwest, Northern, Statewide)
+- 📱 **PWA Support** - Install on mobile or desktop for app-like experience
+- 🔐 **User Authentication** - Save favorites and personalize your news feed
+- 🎨 **Beautiful Design** - Alaska-inspired color palette with smooth animations
+- ⚡ **Real-time Updates** - Powered by Lovable Cloud for instant news updates
+- 📍 **Leaflet Maps** - Interactive mapping with region markers
+- 💾 **Offline Support** - Service worker caching for offline access
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS with custom Alaska theme
+- **UI Components**: Shadcn/ui
+- **Maps**: Leaflet & React-Leaflet
+- **Backend**: Lovable Cloud (Supabase)
+- **Database**: PostgreSQL with Row Level Security
+- **Authentication**: Supabase Auth
+- **PWA**: Service Worker, Web Manifest
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/097ee2f7-b418-454a-8c7a-fafb643dcfd7) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm
+- Git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Visit `http://localhost:8080` to view the app.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Database Schema
 
-**Use GitHub Codespaces**
+### Regions Table
+Stores Alaska regional information with coordinates for map markers.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### News Items Table
+Contains news articles linked to regions with metadata (title, description, URL, source, category).
 
-## What technologies are used for this project?
+### User Favorites Table
+Tracks user-saved news items with RLS policies for privacy.
 
-This project is built with:
+## Authentication
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Email/password authentication is enabled with auto-confirm for development. Users can:
+- Sign up for new accounts
+- Sign in to existing accounts
+- Save favorite news articles
+- Access personalized feeds
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/097ee2f7-b418-454a-8c7a-fafb643dcfd7) and click on Share -> Publish.
+Deploy easily through Lovable:
+1. Click "Publish" in the Lovable editor
+2. Your app is live with automatic backend deployment
 
-## Can I connect a custom domain to my Lovable project?
+### Custom Domain
+Connect a custom domain in Project > Settings > Domains.
 
-Yes, you can!
+## PWA Installation
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Users can install the app on:
+- **iOS**: Safari > Share > Add to Home Screen
+- **Android**: Chrome > Menu > Install App
+- **Desktop**: Chrome/Edge > Install icon in address bar
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Future Enhancements
+
+Ready for integration:
+- xAI API for natural language search
+- AI-powered news summarization
+- Personalized recommendations
+- RSS feed auto-import
+- Admin dashboard
+- Real-time notifications
+
+## Project Structure
+
+```
+src/
+├── components/        # Reusable UI components
+│   ├── ui/           # Shadcn components
+│   ├── Header.tsx    # Navigation header
+│   ├── AlaskaMap.tsx # Interactive map
+│   └── NewsCard.tsx  # News item card
+├── pages/            # Route pages
+│   ├── Index.tsx     # Home page
+│   ├── RegionPage.tsx # Regional news
+│   └── AuthPage.tsx  # Authentication
+├── lib/              # Utilities
+│   └── pwa.ts        # PWA registration
+└── integrations/     # Backend integration
+    └── supabase/     # Lovable Cloud client
+```
+
+## Contributing
+
+This is a Lovable-managed project. Edit through:
+1. Lovable editor (recommended)
+2. Local IDE with Git sync
+3. GitHub Codespaces
+
+## License
+
+Built with ❤️ using Lovable
+
+## Support
+
+- [Lovable Documentation](https://docs.lovable.dev/)
+- [Lovable Discord](https://discord.lovable.dev/)
+- Project URL: https://lovable.dev/projects/097ee2f7-b418-454a-8c7a-fafb643dcfd7

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin } from "lucide-react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 interface Region {
   id: string;
@@ -126,8 +127,8 @@ const RegionPage = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <div className="container py-16 text-center">
-          <p>Loading...</p>
+        <div className="container py-20">
+          <LoadingSpinner size="lg" text="Loading region news..." />
         </div>
       </div>
     );
