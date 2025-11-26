@@ -7,6 +7,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
 import RegionPage from "./pages/RegionPage";
 import AuthPage from "./pages/AuthPage";
+import SetupPage from "./pages/SetupPage";
 import NotFound from "./pages/NotFound";
 import WeeklyReportAdmin from "./components/WeeklyReportAdmin";
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/region/:slug" element={<RegionPage />} />
             <Route path="/auth" element={<AuthPage />} />
+            <Route path="/setup" element={<SetupPage />} />
             <Route path="/admin/weekly-reports" element={<WeeklyReportAdmin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
