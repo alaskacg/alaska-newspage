@@ -22,12 +22,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-in">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center space-x-2">
-            <MapPin className="h-6 w-6 text-accent" />
-            <span className="text-xl font-bold text-primary">Alaska News Page</span>
+          <Link to="/" className="flex items-center space-x-2 group">
+            <MapPin className="h-6 w-6 text-accent transition-transform duration-300 group-hover:scale-110" />
+            <span className="text-xl font-bold text-primary transition-colors duration-300 group-hover:text-accent">Alaska News Page</span>
           </Link>
           
           <nav className="hidden md:flex gap-6">
@@ -35,7 +35,7 @@ const Header = () => {
               <Link
                 key={region.slug}
                 to={`/region/${region.slug}`}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
               >
                 {region.name}
               </Link>

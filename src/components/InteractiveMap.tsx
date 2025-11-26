@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useImperativeHandle, forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 
@@ -14,10 +14,41 @@ interface InteractiveMapProps {
   regions: Region[];
 }
 
-const InteractiveMap = ({ regions }: InteractiveMapProps) => {
+export interface InteractiveMapRef {
+  zoomToRegion: (region: Region) => void;
+}
+
+const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions }, ref) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
+  const polygonsRef = useRef<{ [key: string]: any }>({});
   const navigate = useNavigate();
+
+  useImperativeHandle(ref, () => ({
+    zoomToRegion: (region: Region) => {
+      if (!mapInstanceRef.current) return;
+
+      const coords = region.coordinates;
+      
+      if (coords && coords.type === "Polygon" && coords.coordinates) {
+        // Zoom to polygon bounds
+        const polygon = polygonsRef.current[region.slug];
+        if (polygon) {
+          mapInstanceRef.current.fitBounds(polygon.getBounds(), {
+            padding: [50, 50],
+            animate: true,
+            duration: 1.5
+          });
+        }
+      } else if (coords && coords.type === "Point" && coords.coordinates) {
+        // Zoom to point
+        mapInstanceRef.current.flyTo([coords.coordinates[1], coords.coordinates[0]], 5, {
+          animate: true,
+          duration: 1.5
+        });
+      }
+    }
+  }));
 
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
@@ -74,6 +105,9 @@ const InteractiveMap = ({ regions }: InteractiveMapProps) => {
           weight: 2,
           opacity: 0.6
         }).addTo(map);
+
+        // Store polygon reference for zoom functionality
+        polygonsRef.current[region.slug] = polygon;
 
         // Add region label at center of polygon
         const bounds = polygon.getBounds();
@@ -161,6 +195,8 @@ const InteractiveMap = ({ regions }: InteractiveMapProps) => {
   }, [regions, navigate]);
 
   return <div ref={mapRef} className="h-full w-full" />;
-};
+});
+
+InteractiveMap.displayName = "InteractiveMap";
 
 export default InteractiveMap;

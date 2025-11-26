@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import AlaskaMap from "@/components/AlaskaMap";
+import RegionNavigator from "@/components/RegionNavigator";
 import NewsCard from "@/components/NewsCard";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Newspaper, MapPin, Users, Search } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
+import type { InteractiveMapRef } from "@/components/InteractiveMap";
 
 interface Region {
   id: string;
@@ -35,6 +37,13 @@ const Index = () => {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const mapRef = useRef<InteractiveMapRef>(null);
+
+  const handleRegionClick = (region: Region) => {
+    mapRef.current?.zoomToRegion(region);
+    // Smooth scroll to map
+    document.getElementById("map-section")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     fetchData();
@@ -88,21 +97,22 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/90 to-accent py-20">
+      <section className="relative bg-gradient-to-br from-primary via-primary/90 to-accent py-20 overflow-hidden">
         <div className="container">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Your Gateway to Alaska News
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8">
+            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Discover regional news and information organized by Alaska's unique geography.
               Stay connected to what matters in your community.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 animate-slide-in-up" style={{ animationDelay: "0.4s" }}>
               <Button 
                 size="lg" 
                 variant="secondary"
                 onClick={() => document.getElementById('map-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="transition-all duration-300 hover:scale-105"
               >
                 <MapPin className="mr-2 h-5 w-5" />
                 Explore Regions
@@ -110,7 +120,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
+                className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 hover:scale-105"
               >
                 <Search className="mr-2 h-5 w-5" />
                 Search News
@@ -163,17 +173,26 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Region Navigator Section */}
+      <section className="py-16 bg-card/50">
+        <div className="container">
+          {regions.length > 0 && (
+            <RegionNavigator regions={regions} onRegionClick={handleRegionClick} />
+          )}
+        </div>
+      </section>
+
       {/* Interactive Map Section */}
       <section id="map-section" className="py-16">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl font-bold mb-4">Explore Alaska by Region</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Click on any region to discover local news, events, and information relevant to that area
             </p>
           </div>
           {regions.length > 0 ? (
-            <AlaskaMap regions={regions} />
+            <AlaskaMap ref={mapRef} regions={regions} />
           ) : (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No regions available</p>
@@ -193,17 +212,22 @@ const Index = () => {
           </div>
           {latestNews.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {latestNews.map((news) => (
-                <NewsCard
+              {latestNews.map((news, index) => (
+                <div 
                   key={news.id}
-                  title={news.title}
-                  description={news.description}
-                  url={news.url}
-                  source={news.source}
-                  category={news.category}
-                  publishedAt={news.published_at}
-                  imageUrl={news.image_url}
-                />
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <NewsCard
+                    title={news.title}
+                    description={news.description}
+                    url={news.url}
+                    source={news.source}
+                    category={news.category}
+                    publishedAt={news.published_at}
+                    imageUrl={news.image_url}
+                  />
+                </div>
               ))}
             </div>
           ) : (

@@ -28,13 +28,13 @@ const NewsCard = ({
   onToggleFavorite,
 }: NewsCardProps) => {
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+    <Card className="group h-full flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-accent/50">
       {imageUrl && (
         <div className="relative h-48 overflow-hidden">
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
         </div>
       )}

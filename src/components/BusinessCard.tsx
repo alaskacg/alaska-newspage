@@ -24,7 +24,7 @@ interface BusinessCardProps {
 
 const BusinessCard = ({ business }: BusinessCardProps) => {
   return (
-    <Card className="h-full hover:shadow-lg transition-shadow">
+    <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-accent/50">
       <CardHeader>
         <div className="flex items-start gap-4">
           {business.logo_url ? (
