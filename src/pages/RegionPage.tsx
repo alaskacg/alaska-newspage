@@ -48,6 +48,7 @@ interface Business {
   instagram_url: string | null;
   logo_url: string | null;
   is_featured: boolean;
+  city: string | null;
 }
 
 interface PublicResource {
@@ -61,6 +62,7 @@ interface PublicResource {
   address: string | null;
   hours: string | null;
   is_featured: boolean;
+  city: string | null;
 }
 
 const RegionPage = () => {
@@ -69,6 +71,7 @@ const RegionPage = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [publicResources, setPublicResources] = useState<PublicResource[]>([]);
+  const [resourcesByCity, setResourcesByCity] = useState<Map<string, PublicResource[]>>(new Map());
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -146,6 +149,17 @@ const RegionPage = () => {
 
       if (resourcesError) throw resourcesError;
       setPublicResources(resourcesData || []);
+      
+      // Group resources by city
+      const cityMap = new Map<string, PublicResource[]>();
+      (resourcesData || []).forEach((resource) => {
+        const city = resource.city || 'Other';
+        if (!cityMap.has(city)) {
+          cityMap.set(city, []);
+        }
+        cityMap.get(city)?.push(resource);
+      });
+      setResourcesByCity(cityMap);
     } catch (error: any) {
       toast({
         title: "Error loading region data",
@@ -286,16 +300,38 @@ const RegionPage = () => {
 
             <TabsContent value="resources" className="animate-fade-in">
               {publicResources.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {publicResources.map((resource, index) => (
-                    <div 
-                      key={resource.id}
-                      className="animate-slide-in-up"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <PublicResourceCard resource={resource} />
-                    </div>
-                  ))}
+                <div className="space-y-12">
+                  {Array.from(resourcesByCity.entries())
+                    .sort(([cityA], [cityB]) => {
+                      // Sort 'Other' to the end
+                      if (cityA === 'Other') return 1;
+                      if (cityB === 'Other') return -1;
+                      return cityA.localeCompare(cityB);
+                    })
+                    .map(([city, resources]) => (
+                      <div key={city} className="space-y-6">
+                        <div className="flex items-center gap-3 pb-4 border-b-2 border-primary/20">
+                          <MapPin className="h-6 w-6 text-primary" />
+                          <h3 className="text-2xl font-display font-semibold text-foreground">
+                            {city}
+                          </h3>
+                          <span className="text-sm text-muted-foreground ml-2">
+                            ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {resources.map((resource, index) => (
+                            <div 
+                              key={resource.id}
+                              className="animate-slide-in-up"
+                              style={{ animationDelay: `${index * 0.05}s` }}
+                            >
+                              <PublicResourceCard resource={resource} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                 </div>
               ) : (
                 <div className="text-center py-16 animate-fade-in">
