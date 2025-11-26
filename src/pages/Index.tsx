@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import AlaskaMap from "@/components/AlaskaMap";
 import RegionNavigator from "@/components/RegionNavigator";
 import NewsCard from "@/components/NewsCard";
+import PartnerSites from "@/components/PartnerSites";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -291,6 +292,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Partner Sites */}
+      <PartnerSites />
 
       {/* Footer */}
       <footer className="border-t border-border py-12 bg-card/50 backdrop-blur-sm">

@@ -6,6 +6,7 @@ import BusinessCard from "@/components/BusinessCard";
 import PublicResourceCard from "@/components/PublicResourceCard";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PartnerSites from "@/components/PartnerSites";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -349,6 +350,9 @@ const RegionPage = () => {
           </Tabs>
         </div>
       </section>
+
+      {/* Partner Sites */}
+      <PartnerSites title="Explore Our Partner Platforms" compact />
     </div>
   );
 };
