@@ -15,7 +15,7 @@ const partnerSites: PartnerSite[] = [
   {
     name: "Martin Mines",
     url: "https://martinminesgold.com",
-    description: "Alaska's Premier Mining Resources & Operations",
+    description: "Alaska's Standard in Mining Operations and Resource Development",
     image: martinMinesBanner,
   },
   {
