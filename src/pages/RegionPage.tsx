@@ -7,6 +7,7 @@ import PublicResourceCard from "@/components/PublicResourceCard";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PartnerSites from "@/components/PartnerSites";
+import MartinMinesAd from "@/components/MartinMinesAd";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -242,6 +243,13 @@ const RegionPage = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Martin Mines Christmas Sale Ad */}
+      <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">
+        <div className="container">
+          <MartinMinesAd />
         </div>
       </section>
 

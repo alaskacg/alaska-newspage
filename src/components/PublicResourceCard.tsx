@@ -1,6 +1,7 @@
-import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus } from "lucide-react";
+import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus, Info } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 interface PublicResource {
   id: string;
@@ -73,43 +74,67 @@ const PublicResourceCard = ({ resource }: PublicResourceCardProps) => {
       
       <CardContent className="space-y-4 relative">
         {resource.description && (
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {resource.description}
-          </p>
+          <div className="bg-muted/50 rounded-lg p-3 border border-border/50">
+            <div className="flex items-start gap-2">
+              <Info className="h-4 w-4 mt-0.5 text-accent flex-shrink-0" />
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {resource.description}
+              </p>
+            </div>
+          </div>
         )}
 
-        <div className="space-y-3 pt-2 border-t border-border/50">
+        <Separator className="my-4" />
+
+        <div className="space-y-3">
+          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Phone className="h-4 w-4 text-accent" />
+            Contact Information
+          </h4>
+          
           {resource.address && (
-            <div className="flex items-start gap-3 text-sm group/item">
+            <div className="flex items-start gap-3 text-sm group/item bg-muted/30 p-3 rounded-lg hover:bg-muted/50 transition-colors">
               <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground group-hover/item:text-accent transition-colors flex-shrink-0" />
-              <span className="text-foreground/80">{resource.address}</span>
+              <div>
+                <div className="text-xs text-muted-foreground mb-1">Address</div>
+                <span className="text-foreground font-medium">{resource.address}</span>
+              </div>
             </div>
           )}
           
           {resource.hours && (
-            <div className="flex items-center gap-3 text-sm group/item">
-              <Clock className="h-4 w-4 text-muted-foreground group-hover/item:text-accent transition-colors flex-shrink-0" />
-              <span className="text-foreground/80">{resource.hours}</span>
+            <div className="flex items-start gap-3 text-sm group/item bg-muted/30 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+              <Clock className="h-4 w-4 mt-0.5 text-muted-foreground group-hover/item:text-accent transition-colors flex-shrink-0" />
+              <div>
+                <div className="text-xs text-muted-foreground mb-1">Hours</div>
+                <span className="text-foreground font-medium">{resource.hours}</span>
+              </div>
             </div>
           )}
 
           {resource.contact_phone && (
             <a
               href={`tel:${resource.contact_phone}`}
-              className="flex items-center gap-3 text-sm text-foreground hover:text-accent transition-all duration-300 hover:translate-x-1 group/link"
+              className="flex items-start gap-3 text-sm bg-muted/30 p-3 rounded-lg hover:bg-accent/10 hover:border-accent/30 border border-transparent transition-all duration-300 group/link"
             >
-              <Phone className="h-4 w-4 group-hover/link:scale-110 transition-transform" />
-              <span className="font-medium">{resource.contact_phone}</span>
+              <Phone className="h-4 w-4 mt-0.5 text-accent group-hover/link:scale-110 transition-transform flex-shrink-0" />
+              <div>
+                <div className="text-xs text-muted-foreground mb-1">Phone</div>
+                <span className="font-semibold text-foreground group-hover/link:text-accent">{resource.contact_phone}</span>
+              </div>
             </a>
           )}
 
           {resource.contact_email && (
             <a
               href={`mailto:${resource.contact_email}`}
-              className="flex items-center gap-3 text-sm text-foreground hover:text-accent transition-all duration-300 hover:translate-x-1 group/link"
+              className="flex items-start gap-3 text-sm bg-muted/30 p-3 rounded-lg hover:bg-accent/10 hover:border-accent/30 border border-transparent transition-all duration-300 group/link"
             >
-              <Mail className="h-4 w-4 group-hover/link:scale-110 transition-transform" />
-              <span className="font-medium break-all">{resource.contact_email}</span>
+              <Mail className="h-4 w-4 mt-0.5 text-accent group-hover/link:scale-110 transition-transform flex-shrink-0" />
+              <div>
+                <div className="text-xs text-muted-foreground mb-1">Email</div>
+                <span className="font-semibold text-foreground group-hover/link:text-accent break-all">{resource.contact_email}</span>
+              </div>
             </a>
           )}
 
@@ -118,10 +143,13 @@ const PublicResourceCard = ({ resource }: PublicResourceCardProps) => {
               href={resource.website_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm text-accent hover:text-accent/80 transition-all duration-300 hover:translate-x-1 group/link font-medium"
+              className="flex items-start gap-3 text-sm bg-accent/10 p-3 rounded-lg hover:bg-accent/20 border border-accent/30 hover:border-accent/50 transition-all duration-300 group/link"
             >
-              <Globe className="h-4 w-4 group-hover/link:scale-110 transition-transform" />
-              <span className="underline decoration-dotted underline-offset-4">Visit Website</span>
+              <Globe className="h-4 w-4 mt-0.5 text-accent group-hover/link:scale-110 transition-transform flex-shrink-0" />
+              <div>
+                <div className="text-xs text-muted-foreground mb-1">Website</div>
+                <span className="font-semibold text-accent underline decoration-dotted underline-offset-4">Visit Website →</span>
+              </div>
             </a>
           )}
         </div>
