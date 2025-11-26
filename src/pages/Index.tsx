@@ -5,6 +5,7 @@ import AlaskaMap from "@/components/AlaskaMap";
 import RegionNavigator from "@/components/RegionNavigator";
 import NewsCard from "@/components/NewsCard";
 import PartnerSites from "@/components/PartnerSites";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -103,6 +104,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <InstallPrompt />
+      <PWAInstallPrompt />
       <Header />
       
       {/* Date, Time & Weather */}
