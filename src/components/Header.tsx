@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Search, User, MapPin, ExternalLink } from "lucide-react";
+import { Menu, Search, User, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -32,9 +32,8 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-in">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center space-x-2 group">
-            <MapPin className="h-6 w-6 text-accent transition-transform duration-300 group-hover:scale-110" />
-            <span className="text-xl font-bold text-primary transition-colors duration-300 group-hover:text-accent">Alaska News Page</span>
+          <Link to="/" className="group">
+            <span className="text-lg font-display font-semibold text-primary transition-colors duration-300 group-hover:text-accent">Alaska News Page</span>
           </Link>
           
           <nav className="hidden lg:flex gap-6">
