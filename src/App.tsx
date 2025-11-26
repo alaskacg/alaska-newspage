@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import RegionPage from "./pages/RegionPage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
+import WeeklyReportAdmin from "./components/WeeklyReportAdmin";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/region/:slug" element={<RegionPage />} />
             <Route path="/auth" element={<AuthPage />} />
+            <Route path="/admin/weekly-reports" element={<WeeklyReportAdmin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
