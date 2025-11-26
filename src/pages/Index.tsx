@@ -301,9 +301,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Weekly Report from Kitchens */}
-      <WeeklyReport />
-
       {/* Partner Sites */}
       <PartnerSites />
 
