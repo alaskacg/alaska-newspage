@@ -134,7 +134,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-display font-semibold mb-3">Welcome to Alaska News Page</h2>
             <p className="text-muted-foreground mb-8">
-              Learn how to navigate regional news and stay informed about Alaska
+              Your resource to navigate regional news and stay informed about Alaska
             </p>
             <div className="aspect-video rounded-lg overflow-hidden border border-border shadow-xl bg-card">
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
@@ -211,7 +211,7 @@ const Index = () => {
             </Button>
           </div>
           {latestNews.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {latestNews.map((news, index) => (
                 <div 
                   key={news.id}

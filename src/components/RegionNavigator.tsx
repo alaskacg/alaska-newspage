@@ -35,7 +35,7 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
         <p className="text-muted-foreground font-light">Click to zoom to any region on the map</p>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {displayRegions.map((region, index) => {
           const color = regionColors[region.slug] || "#666666";
           return (

@@ -41,7 +41,7 @@ const Header = () => {
             />
           </Link>
           
-          <nav className="hidden lg:flex gap-6">
+          <nav className="hidden lg:flex gap-6 items-center">
             {regions.map((region) => (
               <Link
                 key={region.slug}
@@ -51,6 +51,12 @@ const Header = () => {
                 {region.name}
               </Link>
             ))}
+            <Link
+              to="/anpweeklyreport"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Weekly Report w/ J.R Kitchens
+            </Link>
           </nav>
           
           <div className="hidden md:flex lg:hidden gap-4">
