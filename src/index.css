@@ -8,7 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Warm gray and nature-inspired color palette */
+    /* Dark warm theme as default */
+    --background: 20 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 20 12% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 20 12% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Deep blue */
+    --primary: 210 55% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm gray */
+    --secondary: 25 10% 22%;
+    --secondary-foreground: 0 0% 95%;
+
+    /* Muted warm grays */
+    --muted: 25 8% 24%;
+    --muted-foreground: 30 5% 65%;
+
+    /* Forest green accent */
+    --accent: 150 35% 50%;
+    --accent-foreground: 20 15% 8%;
+
+    /* Red for destructive */
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 25 8% 24%;
+    --input: 25 8% 24%;
+    --ring: 150 35% 50%;
+
+    --radius: 0.5rem;
+    
+    /* Custom tokens */
+    --warm-gray-dark: 20 12% 12%;
+    --forest-green: 150 35% 50%;
+    --deep-blue: 210 55% 45%;
+    --gold: 45 85% 60%;
+    --warm-red: 0 60% 50%;
+
+    --sidebar-background: 20 15% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 210 55% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 25 8% 24%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 25 8% 24%;
+    --sidebar-ring: 150 35% 50%;
+  }
+
+  .dark {
+    /* Light theme for dark mode toggle */
     --background: 30 15% 96%;
     --foreground: 20 10% 15%;
 
@@ -18,11 +72,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 20 10% 15%;
 
-    /* Deep blue */
+    /* Deep blue for primary */
     --primary: 210 60% 35%;
     --primary-foreground: 0 0% 100%;
 
-    /* Warm gray */
+    /* Warm gray secondary */
     --secondary: 25 15% 88%;
     --secondary-foreground: 20 10% 15%;
 
@@ -40,11 +94,8 @@ All colors MUST be HSL.
 
     --border: 30 12% 85%;
     --input: 30 12% 85%;
-    --ring: 210 60% 35%;
-
-    --radius: 0.5rem;
+    --ring: 150 40% 45%;
     
-    /* Custom tokens */
     --warm-gray-dark: 25 12% 25%;
     --forest-green: 150 40% 45%;
     --deep-blue: 210 60% 35%;
@@ -59,57 +110,6 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 20 10% 15%;
     --sidebar-border: 30 12% 85%;
     --sidebar-ring: 210 60% 35%;
-  }
-
-  .dark {
-    /* Dark warm theme with nature colors */
-    --background: 20 15% 8%;
-    --foreground: 0 0% 95%;
-
-    --card: 20 12% 12%;
-    --card-foreground: 0 0% 95%;
-
-    --popover: 20 12% 12%;
-    --popover-foreground: 0 0% 95%;
-
-    /* Deep blue for primary */
-    --primary: 210 55% 45%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Warm gray secondary */
-    --secondary: 25 10% 22%;
-    --secondary-foreground: 0 0% 95%;
-
-    /* Muted warm grays */
-    --muted: 25 8% 24%;
-    --muted-foreground: 30 5% 65%;
-
-    /* Forest green accent */
-    --accent: 150 35% 50%;
-    --accent-foreground: 20 15% 12%;
-
-    /* Red for destructive */
-    --destructive: 0 60% 50%;
-    --destructive-foreground: 0 0% 95%;
-
-    --border: 25 8% 24%;
-    --input: 25 8% 24%;
-    --ring: 150 35% 50%;
-    
-    --warm-gray-dark: 20 12% 16%;
-    --forest-green: 150 35% 50%;
-    --deep-blue: 210 55% 45%;
-    --gold: 45 85% 60%;
-    --warm-red: 0 60% 50%;
-
-    --sidebar-background: 20 15% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 55% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 25 8% 24%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 25 8% 24%;
-    --sidebar-ring: 150 35% 50%;
   }
 }
 
