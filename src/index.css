@@ -169,3 +169,16 @@ All colors MUST be HSL.
     @apply bg-accent/70;
   }
 }
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
