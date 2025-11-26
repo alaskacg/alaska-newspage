@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Search, User, MapPin } from "lucide-react";
+import { Menu, Search, User, MapPin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -21,6 +21,13 @@ const Header = () => {
     { name: "Statewide", slug: "statewide" },
   ];
 
+  const partnerSites = [
+    { name: "Martin Mines", url: "https://martinmines.com" },
+    { name: "State of Alaska", url: "https://stateofalaska.com" },
+    { name: "Bid Calendar", url: "https://bidcalendar.com" },
+    { name: "Great Northern", url: "https://greatnorthernconstruction.com" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-in">
       <div className="container flex h-16 items-center justify-between">
@@ -30,7 +37,7 @@ const Header = () => {
             <span className="text-xl font-bold text-primary transition-colors duration-300 group-hover:text-accent">Alaska News Page</span>
           </Link>
           
-          <nav className="hidden md:flex gap-6">
+          <nav className="hidden lg:flex gap-6">
             {regions.map((region) => (
               <Link
                 key={region.slug}
@@ -41,6 +48,20 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+          
+          <div className="hidden md:flex lg:hidden gap-4">
+            {partnerSites.slice(0, 2).map((site) => (
+              <a
+                key={site.name}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-muted-foreground hover:text-accent transition-colors"
+              >
+                {site.name}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -78,22 +99,45 @@ const Header = () => {
           </Link>
 
           <Sheet>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
               <nav className="flex flex-col gap-4 mt-8">
-                {regions.map((region) => (
-                  <Link
-                    key={region.slug}
-                    to={`/region/${region.slug}`}
-                    className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {region.name}
-                  </Link>
-                ))}
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Regions
+                  </p>
+                  {regions.map((region) => (
+                    <Link
+                      key={region.slug}
+                      to={`/region/${region.slug}`}
+                      className="block py-2 text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {region.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="border-t border-border/40 pt-4">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Partner Sites
+                  </p>
+                  {partnerSites.map((site) => (
+                    <a
+                      key={site.name}
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors group"
+                    >
+                      {site.name}
+                      <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  ))}
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
