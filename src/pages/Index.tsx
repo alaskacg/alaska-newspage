@@ -101,40 +101,6 @@ const Index = () => {
       <InstallPrompt />
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/90 to-accent py-20 overflow-hidden">
-        <div className="container">
-          <div className="max-w-3xl animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-              Your Gateway to Alaska News
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Discover regional news and information organized by Alaska's unique geography.
-              Stay connected to what matters in your community.
-            </p>
-            <div className="flex flex-wrap gap-4 animate-slide-in-up" style={{ animationDelay: "0.4s" }}>
-              <Button 
-                size="lg" 
-                variant="secondary"
-                onClick={() => document.getElementById('map-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="transition-all duration-300 hover:scale-105"
-              >
-                <MapPin className="mr-2 h-5 w-5" />
-                Explore Regions
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300 hover:scale-105"
-              >
-                <Search className="mr-2 h-5 w-5" />
-                Search News
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Video Section - Moved above Weekly Report */}
       <section className="py-16 relative overflow-hidden">
         <div 

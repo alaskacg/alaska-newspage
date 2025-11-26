@@ -67,8 +67,8 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       const map = L.map(mapRef.current!).setView([64.0, -152.0], 4);
       mapInstanceRef.current = map;
 
-      // Add slightly lighter dark mode tile layer
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
+      // Add light tile layer with blue water
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         maxZoom: 10,
         minZoom: 4,
@@ -129,6 +129,9 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               box-shadow: 0 4px 6px rgba(0,0,0,0.4);
               cursor: pointer;
               transition: all 0.3s ease;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">${region.name}</div>`,
             iconSize: [labelWidth, 40],
             iconAnchor: [labelWidth / 2, 20]
@@ -193,6 +196,9 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               border: 3px solid #888;
               box-shadow: 0 4px 6px rgba(0,0,0,0.4);
               cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             ">${statewideRegion.name}</div>`,
             iconSize: [statewideWidth, 40],
             iconAnchor: [statewideWidth / 2, 20]
