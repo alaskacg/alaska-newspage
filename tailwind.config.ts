@@ -47,12 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Alaska-inspired custom colors
-        alaska: {
-          midnight: "hsl(var(--alaska-midnight))",
-          aurora: "hsl(var(--aurora-green))",
-          glacier: "hsl(var(--glacier-blue))",
-          snow: "hsl(var(--snow-white))",
+        // Custom nature-inspired colors
+        nature: {
+          "warm-gray": "hsl(var(--warm-gray-dark))",
+          green: "hsl(var(--forest-green))",
+          blue: "hsl(var(--deep-blue))",
+          gold: "hsl(var(--gold))",
+          red: "hsl(var(--warm-red))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
