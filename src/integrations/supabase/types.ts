@@ -18,6 +18,7 @@ export type Database = {
         Row: {
           address: string | null
           category: string
+          city: string | null
           contact_email: string | null
           contact_phone: string | null
           created_at: string
@@ -36,6 +37,7 @@ export type Database = {
         Insert: {
           address?: string | null
           category: string
+          city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           created_at?: string
@@ -54,6 +56,7 @@ export type Database = {
         Update: {
           address?: string | null
           category?: string
+          city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           created_at?: string
@@ -130,6 +133,7 @@ export type Database = {
         Row: {
           address: string | null
           category: string
+          city: string | null
           contact_email: string | null
           contact_phone: string | null
           created_at: string
@@ -145,6 +149,7 @@ export type Database = {
         Insert: {
           address?: string | null
           category: string
+          city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           created_at?: string
@@ -160,6 +165,7 @@ export type Database = {
         Update: {
           address?: string | null
           category?: string
+          city?: string | null
           contact_email?: string | null
           contact_phone?: string | null
           created_at?: string
