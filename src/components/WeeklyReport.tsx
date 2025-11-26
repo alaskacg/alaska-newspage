@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Video, Calendar } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Video } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 
 interface WeeklyReportData {
   id: string;
@@ -43,49 +43,44 @@ const WeeklyReport = () => {
     }
   };
 
-  const reportDate = latestReport 
-    ? new Date(latestReport.published_at).toLocaleDateString('en-US', { 
-        month: 'long', 
-        day: 'numeric', 
-        year: 'numeric' 
-      })
-    : new Date().toLocaleDateString('en-US', { 
-        month: 'long', 
-        day: 'numeric', 
-        year: 'numeric' 
-      });
-
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
-      <div className="container">
-        <Card className="border-2 border-primary/20 shadow-xl">
-          <CardHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30">
-                <Video className="w-8 h-8 text-primary" />
-              </div>
+    <section className="py-16 relative overflow-hidden bg-muted/30">
+      {/* Animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{ backgroundImage: `url(${weeklyReportBg})` }}
+      />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
+      
+      <div className="container relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8 animate-fade-in">
+            <div className="inline-block px-6 py-2 bg-gradient-to-r from-nature-gold/20 to-yellow-500/20 border-2 border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
+              <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
             </div>
-            <CardTitle className="text-3xl font-display">Weekly Report from Kitchens</CardTitle>
-            <CardDescription className="text-base mt-2">
-              <div className="flex items-center justify-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{latestReport?.title || `Week of ${reportDate}`}</span>
-              </div>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3 text-muted-foreground">
+              The Alaska News Page Weekly Report w/ J.R. Kitchens
+            </h2>
+          </div>
+          <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
             {loading ? (
               <div className="text-center py-8 text-muted-foreground">
-                Loading latest report...
+                <p>Loading latest report...</p>
               </div>
             ) : latestReport ? (
-              <>
-                {latestReport.description && (
-                  <p className="text-muted-foreground text-center">
-                    {latestReport.description}
-                  </p>
-                )}
-                <div className="aspect-video rounded-lg overflow-hidden bg-black">
+              <div className="space-y-6">
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-display font-semibold text-foreground">
+                    {latestReport.title}
+                  </h3>
+                  {latestReport.description && (
+                    <p className="text-muted-foreground">
+                      {latestReport.description}
+                    </p>
+                  )}
+                </div>
+                <div className="aspect-video rounded-lg overflow-hidden bg-black shadow-xl">
                   <video
                     controls
                     className="w-full h-full"
@@ -94,20 +89,16 @@ const WeeklyReport = () => {
                     Your browser does not support the video tag.
                   </video>
                 </div>
-              </>
+              </div>
             ) : (
-              <div className="text-center py-8 text-muted-foreground">
-                <p>No weekly report available yet.</p>
-                <p className="text-sm mt-2">Check back soon for the latest update from J.R. Kitchens</p>
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-muted-foreground text-center text-lg leading-relaxed">
+                  The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
+                </p>
               </div>
             )}
-            
-            <div className="text-center text-sm text-muted-foreground border-t border-border pt-4">
-              <p>Analysis by J.R. Kitchens | Alaska Mining & Development News</p>
-              <p className="mt-1">New reports posted every Wednesday</p>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );
