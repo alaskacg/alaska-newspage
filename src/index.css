@@ -8,106 +8,108 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Alaska-inspired color palette */
-    --background: 210 20% 98%;
-    --foreground: 210 25% 12%;
+    /* Warm gray and nature-inspired color palette */
+    --background: 30 15% 96%;
+    --foreground: 20 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 25% 12%;
+    --card-foreground: 20 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 25% 12%;
+    --popover-foreground: 20 10% 15%;
 
-    /* Deep Alaska blue */
-    --primary: 210 70% 25%;
+    /* Deep blue */
+    --primary: 210 60% 35%;
     --primary-foreground: 0 0% 100%;
 
-    /* Ice blue */
-    --secondary: 195 30% 92%;
-    --secondary-foreground: 210 70% 25%;
+    /* Warm gray */
+    --secondary: 25 15% 88%;
+    --secondary-foreground: 20 10% 15%;
 
-    /* Muted grays */
-    --muted: 210 15% 90%;
-    --muted-foreground: 210 20% 45%;
+    /* Muted warm grays */
+    --muted: 30 10% 88%;
+    --muted-foreground: 25 8% 45%;
 
-    /* Aurora accent - teal/green */
-    --accent: 175 60% 45%;
+    /* Forest green accent */
+    --accent: 150 40% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 70% 50%;
+    /* Red for destructive */
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 85%;
-    --input: 210 20% 85%;
-    --ring: 210 70% 25%;
+    --border: 30 12% 85%;
+    --input: 30 12% 85%;
+    --ring: 210 60% 35%;
 
     --radius: 0.5rem;
     
-    /* Custom Alaska tokens */
-    --alaska-midnight: 215 80% 15%;
-    --aurora-green: 160 70% 50%;
-    --glacier-blue: 195 55% 88%;
-    --snow-white: 0 0% 98%;
+    /* Custom tokens */
+    --warm-gray-dark: 25 12% 25%;
+    --forest-green: 150 40% 45%;
+    --deep-blue: 210 60% 35%;
+    --gold: 45 90% 55%;
+    --warm-red: 0 65% 50%;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 30 15% 96%;
+    --sidebar-foreground: 20 10% 15%;
+    --sidebar-primary: 20 10% 15%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 10% 88%;
+    --sidebar-accent-foreground: 20 10% 15%;
+    --sidebar-border: 30 12% 85%;
+    --sidebar-ring: 210 60% 35%;
   }
 
   .dark {
-    /* Dark Alaska theme - midnight blue */
-    --background: 215 75% 8%;
-    --foreground: 210 20% 95%;
+    /* Dark warm theme with nature colors */
+    --background: 20 15% 12%;
+    --foreground: 0 0% 95%;
 
-    --card: 215 70% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 20 12% 16%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 215 70% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 20 12% 16%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 175 60% 45%;
-    --primary-foreground: 215 75% 8%;
+    /* Deep blue for primary */
+    --primary: 210 55% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 60% 18%;
-    --secondary-foreground: 210 20% 95%;
+    /* Warm gray secondary */
+    --secondary: 25 10% 22%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 215 50% 20%;
-    --muted-foreground: 210 15% 65%;
+    /* Muted warm grays */
+    --muted: 25 8% 24%;
+    --muted-foreground: 30 5% 65%;
 
-    --accent: 160 70% 50%;
-    --accent-foreground: 215 75% 8%;
+    /* Forest green accent */
+    --accent: 150 35% 50%;
+    --accent-foreground: 20 15% 12%;
 
-    --destructive: 0 70% 45%;
-    --destructive-foreground: 210 20% 95%;
+    /* Red for destructive */
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 215 50% 20%;
-    --input: 215 50% 20%;
-    --ring: 175 60% 45%;
+    --border: 25 8% 24%;
+    --input: 25 8% 24%;
+    --ring: 150 35% 50%;
     
-    --alaska-midnight: 215 80% 10%;
-    --aurora-green: 160 70% 50%;
-    --glacier-blue: 195 45% 30%;
-    --snow-white: 210 20% 95%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --warm-gray-dark: 20 12% 16%;
+    --forest-green: 150 35% 50%;
+    --deep-blue: 210 55% 45%;
+    --gold: 45 85% 60%;
+    --warm-red: 0 60% 50%;
+
+    --sidebar-background: 20 15% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 210 55% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 25 8% 24%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 25 8% 24%;
+    --sidebar-ring: 150 35% 50%;
   }
 }
 
