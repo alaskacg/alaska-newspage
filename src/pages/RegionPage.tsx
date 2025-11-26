@@ -10,6 +10,7 @@ import PartnerSites from "@/components/PartnerSites";
 import MartinMinesAd from "@/components/MartinMinesAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
+import WeeklyReport from "@/components/WeeklyReport";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -218,7 +219,7 @@ const RegionPage = () => {
       <Header />
       
       {/* Date, Time & Weather */}
-      <DateTimeWeather />
+      <DateTimeWeather region={region?.slug} />
       
       {/* News Tickers */}
       <NewsTicker category="gold" color="yellow" />
@@ -370,6 +371,9 @@ const RegionPage = () => {
           </Tabs>
         </div>
       </section>
+
+      {/* Weekly Report from Kitchens */}
+      <WeeklyReport />
 
       {/* Partner Sites */}
       <PartnerSites title="Explore Our Partner Platforms" compact />
