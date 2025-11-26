@@ -15,6 +15,7 @@ import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
 import regionNavigatorBg from "@/assets/region-navigator-bg.jpg";
+import latestNewsBg from "@/assets/latest-news-bg.jpg";
 
 interface Region {
   id: string;
@@ -225,8 +226,13 @@ const Index = () => {
       </section>
 
       {/* Latest News Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container">
+      <section className="py-16 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${latestNewsBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-transparent to-accent/5" />
+        <div className="container relative z-10">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-display font-semibold">Latest News</h2>
             <Button variant="outline" onClick={() => navigate('/region/statewide')}>
