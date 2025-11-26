@@ -9,6 +9,7 @@ import RegionPage from "./pages/RegionPage";
 import AuthPage from "./pages/AuthPage";
 import SetupPage from "./pages/SetupPage";
 import DownloadAppPage from "./pages/DownloadAppPage";
+import WeeklyReportPage from "./pages/WeeklyReportPage";
 import NotFound from "./pages/NotFound";
 import WeeklyReportAdmin from "./components/WeeklyReportAdmin";
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/setup" element={<SetupPage />} />
             <Route path="/download" element={<DownloadAppPage />} />
+            <Route path="/anpweeklyreport" element={<WeeklyReportPage />} />
             <Route path="/admin/weekly-reports" element={<WeeklyReportAdmin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
