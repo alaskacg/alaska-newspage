@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Newspaper, MapPin, Users, Search } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
+import MartinMinesAd from "@/components/MartinMinesAd";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
@@ -101,6 +102,13 @@ const Index = () => {
       <InstallPrompt />
       <Header />
       
+      {/* Martin Mines Christmas Sale Ad */}
+      <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">
+        <div className="container">
+          <MartinMinesAd />
+        </div>
+      </section>
+
       {/* Video Section - Moved above Weekly Report */}
       <section className="py-16 relative overflow-hidden">
         <div 
