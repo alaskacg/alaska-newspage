@@ -27,7 +27,7 @@ const Header = () => {
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center space-x-2">
             <MapPin className="h-6 w-6 text-accent" />
-            <span className="text-xl font-bold text-primary">Alaska News</span>
+            <span className="text-xl font-bold text-primary">Alaska News Page</span>
           </Link>
           
           <nav className="hidden md:flex gap-6">
