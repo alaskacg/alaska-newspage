@@ -13,6 +13,8 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
+import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
+import regionNavigatorBg from "@/assets/region-navigator-bg.jpg";
 
 interface Region {
   id: string;
@@ -132,42 +134,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Weekly Report Section */}
+      {/* Video Section - Moved above Weekly Report */}
       <section className="py-16 relative overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: `url(${weeklyReportBg})` }}
+          style={{ backgroundImage: `url(${welcomeSectionBg})` }}
         />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
         <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8 animate-fade-in">
-              <div className="inline-block px-6 py-2 bg-gradient-to-r from-nature-gold/20 to-yellow-500/20 border-2 border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
-                <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-3 bg-gradient-to-r from-nature-gold via-yellow-400 to-nature-gold bg-clip-text text-transparent">
-                The Alaska News Page Weekly Report w/ J.R. Kitchens
-              </h2>
-            </div>
-            <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-muted-foreground text-center text-lg leading-relaxed">
-                  The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Welcome to Alaska News Page</h2>
+            <h2 className="text-2xl font-display font-semibold mb-3">Welcome to Alaska News Page</h2>
             <p className="text-muted-foreground mb-8">
               Learn how to navigate regional news and stay informed about Alaska
             </p>
@@ -184,9 +160,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Weekly Report Section */}
+      <section className="py-16 relative overflow-hidden bg-muted/30">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${weeklyReportBg})` }}
+        />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8 animate-fade-in">
+              <div className="inline-block px-6 py-2 bg-gradient-to-r from-nature-gold/20 to-yellow-500/20 border-2 border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
+                <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3 text-muted-foreground">
+                The Alaska News Page Weekly Report w/ J.R. Kitchens
+              </h2>
+            </div>
+            <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-muted-foreground text-center text-lg leading-relaxed">
+                  The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Region Navigator Section */}
-      <section className="py-16 bg-card/50">
-        <div className="container">
+      <section className="py-16 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${regionNavigatorBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5" />
+        <div className="container relative z-10">
           {regions.length > 0 && (
             <RegionNavigator regions={regions} onRegionClick={handleRegionClick} />
           )}
@@ -197,7 +209,7 @@ const Index = () => {
       <section id="map-section" className="py-16">
         <div className="container">
           <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-3xl font-bold mb-4">Explore Alaska by Region</h2>
+            <h2 className="text-2xl font-display font-semibold mb-3">Explore Alaska by Region</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Click on any region to discover local news, events, and information relevant to that area
             </p>
@@ -216,7 +228,7 @@ const Index = () => {
       <section className="py-16 bg-muted/30">
         <div className="container">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">Latest News</h2>
+            <h2 className="text-2xl font-display font-semibold">Latest News</h2>
             <Button variant="outline" onClick={() => navigate('/region/statewide')}>
               View All
             </Button>

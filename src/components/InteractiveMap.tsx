@@ -112,7 +112,8 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           return;
         }
 
-        // Add region label
+        // Add region label with dynamic sizing
+        const labelWidth = region.name.length * 12 + 32; // Estimate width based on text length
         const label = L.marker([centerLat, centerLng], {
           icon: L.divIcon({
             className: 'region-label',
@@ -129,8 +130,8 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               cursor: pointer;
               transition: all 0.3s ease;
             " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">${region.name}</div>`,
-            iconSize: [120, 40],
-            iconAnchor: [60, 20]
+            iconSize: [labelWidth, 40],
+            iconAnchor: [labelWidth / 2, 20]
           })
         }).addTo(map);
 
@@ -173,10 +174,11 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         [54.0, -130.0],
       ]);
 
-      // Add Statewide marker separately
+      // Add Statewide marker separately with dynamic sizing
       const statewideRegion = regions.find(r => r.slug === "statewide");
       if (statewideRegion && statewideRegion.coordinates && statewideRegion.coordinates.type === "Point") {
         const coords = statewideRegion.coordinates.coordinates;
+        const statewideWidth = statewideRegion.name.length * 12 + 32;
         const marker = L.marker([coords[1], coords[0]], {
           icon: L.divIcon({
             className: 'region-label',
@@ -192,8 +194,8 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               box-shadow: 0 4px 6px rgba(0,0,0,0.4);
               cursor: pointer;
             ">${statewideRegion.name}</div>`,
-            iconSize: [120, 40],
-            iconAnchor: [60, 20]
+            iconSize: [statewideWidth, 40],
+            iconAnchor: [statewideWidth / 2, 20]
           })
         }).addTo(map);
 
