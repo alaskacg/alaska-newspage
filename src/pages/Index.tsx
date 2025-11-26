@@ -131,19 +131,25 @@ const Index = () => {
       </section>
 
       {/* Weekly Report Section */}
-      <section className="py-16 bg-card border-y border-border">
-        <div className="container">
+      <section className="py-16 relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
+        
+        <div className="container relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <div className="inline-block px-4 py-1 bg-nature-gold/10 border border-nature-gold/30 rounded-full mb-4">
-                <span className="text-sm font-semibold text-nature-gold">Published Every Wednesday</span>
+            <div className="text-center mb-8 animate-fade-in">
+              <div className="inline-block px-6 py-2 bg-gradient-to-r from-nature-gold/20 to-yellow-500/20 border-2 border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
+                <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
               </div>
-              <h2 className="text-3xl font-bold mb-2">Weekly Report</h2>
-              <p className="text-lg text-muted-foreground">by J.R. Kitchens</p>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-3 bg-gradient-to-r from-nature-gold via-yellow-400 to-nature-gold bg-clip-text text-transparent">
+                Weekly Report
+              </h2>
+              <p className="text-xl text-muted-foreground font-light">by J.R. Kitchens</p>
             </div>
-            <div className="bg-muted/30 rounded-lg border border-border p-8">
+            <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
               <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-muted-foreground text-center">
+                <p className="text-muted-foreground text-center text-lg leading-relaxed">
                   The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
                 </p>
               </div>
@@ -239,44 +245,57 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
-        <div className="container">
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4">
-                <MapPin className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Regional Focus</h3>
-              <p className="text-muted-foreground">
-                News organized by Alaska's unique geographic regions
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4">
-                <Users className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Community Driven</h3>
-              <p className="text-muted-foreground">
-                Stay connected to what matters in your local area
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4">
-                <Newspaper className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Comprehensive Coverage</h3>
-              <p className="text-muted-foreground">
-                From Ketchikan to Utqiaġvik, all Alaska in one place
-              </p>
-            </div>
+            {[
+              {
+                icon: MapPin,
+                title: "Regional Focus",
+                description: "News organized by Alaska's unique geographic regions",
+                color: "from-blue-500 to-cyan-500"
+              },
+              {
+                icon: Users,
+                title: "Community Driven",
+                description: "Stay connected to what matters in your local area",
+                color: "from-purple-500 to-pink-500"
+              },
+              {
+                icon: Newspaper,
+                title: "Comprehensive Coverage",
+                description: "From Ketchikan to Utqiaġvik, all Alaska in one place",
+                color: "from-orange-500 to-red-500"
+              }
+            ].map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div 
+                  key={index}
+                  className="text-center group animate-slide-in-up"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} text-white mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-accent transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8 bg-card">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>© 2025 Alaska News Page. Connecting communities across the Last Frontier.</p>
+      <footer className="border-t border-border py-12 bg-card/50 backdrop-blur-sm">
+        <div className="container text-center">
+          <p className="text-muted-foreground font-light">© 2025 Alaska News Page. Connecting communities across the Last Frontier.</p>
         </div>
       </footer>
     </div>

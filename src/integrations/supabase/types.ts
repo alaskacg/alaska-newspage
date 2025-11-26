@@ -126,6 +126,62 @@ export type Database = {
           },
         ]
       }
+      public_resources: {
+        Row: {
+          address: string | null
+          category: string
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          description: string | null
+          hours: string | null
+          id: string
+          is_featured: boolean | null
+          name: string
+          region_id: string | null
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          address?: string | null
+          category: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          hours?: string | null
+          id?: string
+          is_featured?: boolean | null
+          name: string
+          region_id?: string | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          description?: string | null
+          hours?: string | null
+          id?: string
+          is_featured?: boolean | null
+          name?: string
+          region_id?: string | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "public_resources_region_id_fkey"
+            columns: ["region_id"]
+            isOneToOne: false
+            referencedRelation: "regions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       regions: {
         Row: {
           coordinates: Json | null
