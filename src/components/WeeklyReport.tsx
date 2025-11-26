@@ -1,13 +1,59 @@
-import { FileText, Calendar } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Video, Calendar } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+
+interface WeeklyReportData {
+  id: string;
+  title: string;
+  description: string | null;
+  video_url: string;
+  published_at: string;
+}
 
 const WeeklyReport = () => {
-  const currentDate = new Date().toLocaleDateString('en-US', { 
-    month: 'long', 
-    day: 'numeric', 
-    year: 'numeric' 
-  });
+  const [latestReport, setLatestReport] = useState<WeeklyReportData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchLatestReport();
+  }, []);
+
+  const fetchLatestReport = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("weekly_reports")
+        .select("*")
+        .order("published_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error) throw error;
+      setLatestReport(data);
+    } catch (error: any) {
+      toast({
+        title: "Error loading report",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const reportDate = latestReport 
+    ? new Date(latestReport.published_at).toLocaleDateString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric' 
+      })
+    : new Date().toLocaleDateString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric' 
+      });
 
   return (
     <section className="py-16 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
@@ -16,64 +62,49 @@ const WeeklyReport = () => {
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30">
-                <FileText className="w-8 h-8 text-primary" />
+                <Video className="w-8 h-8 text-primary" />
               </div>
             </div>
             <CardTitle className="text-3xl font-display">Weekly Report from Kitchens</CardTitle>
             <CardDescription className="text-base mt-2">
               <div className="flex items-center justify-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <span>Week of {currentDate}</span>
+                <span>{latestReport?.title || `Week of ${reportDate}`}</span>
               </div>
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="prose prose-invert max-w-none">
-              <h3 className="text-xl font-semibold text-foreground mb-3">This Week's Alaska Mining & Development Highlights</h3>
-              
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  <strong className="text-foreground">Permitting Updates:</strong> The Alaska Department of Natural Resources 
-                  announced progress on several key mining permits across the state. Projects in the Interior and Southwest 
-                  regions are moving forward with environmental assessments.
-                </p>
-                
-                <p>
-                  <strong className="text-foreground">Market Analysis:</strong> Gold prices remain strong at $2,050 per ounce, 
-                  supporting continued exploration and development activities throughout Alaska. Silver and copper markets 
-                  show positive trends for Q1 projections.
-                </p>
-                
-                <p>
-                  <strong className="text-foreground">Infrastructure Development:</strong> State officials met with industry 
-                  leaders to discuss road access improvements to remote mining districts. The Dalton Highway maintenance 
-                  schedule has been updated for winter operations.
-                </p>
-                
-                <p>
-                  <strong className="text-foreground">Employment Outlook:</strong> Mining sector employment continues to grow, 
-                  with over 200 new positions expected to open across various operations in the coming months. Training 
-                  programs are expanding to meet workforce demands.
-                </p>
-                
-                <p>
-                  <strong className="text-foreground">Legislative Watch:</strong> The Alaska State Legislature is considering 
-                  new measures to streamline permitting processes while maintaining environmental protections. Hearings are 
-                  scheduled for next week.
-                </p>
+            {loading ? (
+              <div className="text-center py-8 text-muted-foreground">
+                Loading latest report...
               </div>
-            </div>
-            
-            <div className="flex justify-center pt-4">
-              <Button size="lg" className="gap-2">
-                <FileText className="w-4 h-4" />
-                Read Full Report
-              </Button>
-            </div>
+            ) : latestReport ? (
+              <>
+                {latestReport.description && (
+                  <p className="text-muted-foreground text-center">
+                    {latestReport.description}
+                  </p>
+                )}
+                <div className="aspect-video rounded-lg overflow-hidden bg-black">
+                  <video
+                    controls
+                    className="w-full h-full"
+                    src={latestReport.video_url}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-8 text-muted-foreground">
+                <p>No weekly report available yet.</p>
+                <p className="text-sm mt-2">Check back soon for the latest update from J.R. Kitchens</p>
+              </div>
+            )}
             
             <div className="text-center text-sm text-muted-foreground border-t border-border pt-4">
-              <p>Analysis by Kitchens | Alaska Mining & Development News</p>
-              <p className="mt-1">Subscribe for weekly updates delivered to your inbox</p>
+              <p>Analysis by J.R. Kitchens | Alaska Mining & Development News</p>
+              <p className="mt-1">New reports posted every Wednesday</p>
             </div>
           </CardContent>
         </Card>

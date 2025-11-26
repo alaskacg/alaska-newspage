@@ -75,7 +75,6 @@ const AuthPage = () => {
       <DateTimeWeather />
       
       {/* News Tickers */}
-      <NewsTicker category="gold" color="yellow" />
       <NewsTicker category="state" color="blue" />
       <NewsTicker category="mining" color="amber" />
       <NewsTicker category="energy" color="green" />
