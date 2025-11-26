@@ -120,11 +120,33 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Weekly Report Section */}
+      <section className="py-16 bg-card border-y border-border">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-block px-4 py-1 bg-nature-gold/10 border border-nature-gold/30 rounded-full mb-4">
+                <span className="text-sm font-semibold text-nature-gold">Published Every Wednesday</span>
+              </div>
+              <h2 className="text-3xl font-bold mb-2">Weekly Report</h2>
+              <p className="text-lg text-muted-foreground">by J.R. Kitchens</p>
+            </div>
+            <div className="bg-muted/30 rounded-lg border border-border p-8">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-muted-foreground text-center">
+                  The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Video Section */}
       <section className="py-16 bg-muted/30">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Welcome to Alaska News Portal</h2>
+            <h2 className="text-3xl font-bold mb-4">Welcome to Alaska News Page</h2>
             <p className="text-muted-foreground mb-8">
               Learn how to navigate regional news and stay informed about Alaska
             </p>
@@ -230,7 +252,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border py-8 bg-card">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>© 2025 Alaska News Portal. Connecting communities across the Last Frontier.</p>
+          <p>© 2025 Alaska News Page. Connecting communities across the Last Frontier.</p>
         </div>
       </footer>
     </div>
