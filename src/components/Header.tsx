@@ -8,6 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import anpLogo from "@/assets/anp-logo.png";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -33,7 +34,11 @@ const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="group">
-            <span className="text-lg font-display font-semibold text-primary transition-colors duration-300 group-hover:text-accent">Alaska News Page</span>
+            <img 
+              src={anpLogo} 
+              alt="Alaska News Page" 
+              className="h-10 w-auto transition-opacity duration-300 group-hover:opacity-80"
+            />
           </Link>
           
           <nav className="hidden lg:flex gap-6">
