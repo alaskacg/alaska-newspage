@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import MartinMinesAd from "@/components/MartinMinesAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
-import { MapPin } from "lucide-react";
+import { MapPin, Shield, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
@@ -23,6 +23,7 @@ const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -34,7 +35,15 @@ const AuthPage = () => {
   const checkUser = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      navigate("/");
+      // Check if user is admin
+      const { data: roleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      
+      setIsAdmin(!!roleData);
     }
   };
 
@@ -73,12 +82,28 @@ const AuthPage = () => {
         });
         setIsSignUp(false);
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { error, data } = await supabase.auth.signInWithPassword({
           email: validation.data.email,
           password: validation.data.password,
         });
         if (error) throw error;
-        navigate("/");
+        
+        // Check if logged-in user is admin
+        if (data.user) {
+          const { data: roleData } = await supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", data.user.id)
+            .eq("role", "admin")
+            .maybeSingle();
+          
+          setIsAdmin(!!roleData);
+          
+          toast({
+            title: "Welcome back!",
+            description: roleData ? "Admin access granted" : "Successfully signed in",
+          });
+        }
       }
     } catch (error: any) {
       toast({
@@ -165,6 +190,34 @@ const AuthPage = () => {
                     : "Don't have an account? Sign up"}
                 </button>
               </div>
+
+              {isAdmin && !loading && (
+                <div className="mt-6 pt-6 border-t space-y-3">
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-green-600 dark:text-green-400 mb-3">
+                      ✓ Admin Access Granted
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button
+                      variant="outline"
+                      onClick={() => navigate("/")}
+                      className="w-full"
+                    >
+                      <Home className="mr-2 h-4 w-4" />
+                      Home
+                    </Button>
+                    <Button
+                      variant="default"
+                      onClick={() => navigate("/admin/weekly-reports")}
+                      className="w-full"
+                    >
+                      <Shield className="mr-2 h-4 w-4" />
+                      Admin Panel
+                    </Button>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
