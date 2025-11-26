@@ -1,4 +1,6 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense, forwardRef } from "react";
+import LoadingSpinner from "./LoadingSpinner";
+import type { InteractiveMapRef } from "./InteractiveMap";
 
 const InteractiveMap = lazy(() => import("./InteractiveMap"));
 
@@ -14,34 +16,16 @@ interface AlaskaMapProps {
   regions: Region[];
 }
 
-const AlaskaMap = ({ regions }: AlaskaMapProps) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return (
-      <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg flex items-center justify-center bg-muted">
-        <p className="text-muted-foreground">Loading interactive map...</p>
-      </div>
-    );
-  }
-
+const AlaskaMap = forwardRef<InteractiveMapRef, AlaskaMapProps>(({ regions }, ref) => {
   return (
-    <div className="relative w-full h-[500px] rounded-lg overflow-hidden border border-border shadow-lg">
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center h-full bg-muted">
-            <p className="text-muted-foreground">Loading interactive map...</p>
-          </div>
-        }
-      >
-        <InteractiveMap regions={regions} />
+    <div className="w-full h-[600px] rounded-lg overflow-hidden border border-border shadow-xl animate-scale-in">
+      <Suspense fallback={<LoadingSpinner size="lg" text="Loading map..." />}>
+        <InteractiveMap ref={ref} regions={regions} />
       </Suspense>
     </div>
   );
-};
+});
+
+AlaskaMap.displayName = "AlaskaMap";
 
 export default AlaskaMap;
