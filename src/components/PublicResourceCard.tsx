@@ -1,4 +1,4 @@
-import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus, Info } from "lucide-react";
+import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus, Info, Church, HandHeart } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -27,6 +27,10 @@ const categoryIcons: { [key: string]: any } = {
   healthcare: Heart,
   education: GraduationCap,
   transportation: Bus,
+  church: Church,
+  "aid organization": HandHeart,
+  religious: Church,
+  charity: HandHeart,
 };
 
 const categoryColors: { [key: string]: string } = {
@@ -36,6 +40,10 @@ const categoryColors: { [key: string]: string } = {
   healthcare: "text-pink-500 bg-pink-500/10 border-pink-500/30",
   education: "text-purple-500 bg-purple-500/10 border-purple-500/30",
   transportation: "text-green-500 bg-green-500/10 border-green-500/30",
+  church: "text-indigo-500 bg-indigo-500/10 border-indigo-500/30",
+  "aid organization": "text-teal-500 bg-teal-500/10 border-teal-500/30",
+  religious: "text-indigo-500 bg-indigo-500/10 border-indigo-500/30",
+  charity: "text-teal-500 bg-teal-500/10 border-teal-500/30",
 };
 
 const PublicResourceCard = ({ resource }: PublicResourceCardProps) => {
