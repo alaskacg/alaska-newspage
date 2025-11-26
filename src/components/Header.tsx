@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Search, User, ExternalLink, Shield } from "lucide-react";
+import { Menu, Search, User, ExternalLink, Shield, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -95,6 +95,13 @@ const Header = () => {
             <Button variant="ghost" size="sm" className="hidden md:inline-flex gap-2">
               <Shield className="h-4 w-4" />
               <span className="text-xs">Admin Setup</span>
+            </Button>
+          </Link>
+
+          <Link to="/download">
+            <Button variant="default" size="sm" className="hidden md:inline-flex gap-2">
+              <Download className="h-4 w-4" />
+              <span className="text-xs">Get App</span>
             </Button>
           </Link>
 

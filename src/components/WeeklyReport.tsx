@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Video } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import EnhancedVideoPlayer from "@/components/EnhancedVideoPlayer";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 
 interface WeeklyReportData {
@@ -80,14 +81,11 @@ const WeeklyReport = () => {
                     </p>
                   )}
                 </div>
-                <div className="aspect-video rounded-lg overflow-hidden bg-black shadow-xl">
-                  <video
-                    controls
-                    className="w-full h-full"
-                    src={latestReport.video_url}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                <div className="rounded-lg overflow-hidden shadow-xl">
+                  <EnhancedVideoPlayer 
+                    videoUrl={latestReport.video_url}
+                    title={latestReport.title}
+                  />
                 </div>
               </div>
             ) : (

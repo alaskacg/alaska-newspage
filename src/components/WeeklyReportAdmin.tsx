@@ -124,19 +124,36 @@ const WeeklyReportAdmin = () => {
         .getPublicUrl(fileName);
 
       // Insert record into database
-      const { error: insertError } = await supabase
+      const { data: insertData, error: insertError } = await supabase
         .from("weekly_reports")
         .insert({
           title,
           description: description || null,
           video_url: publicUrl,
-        });
+        })
+        .select()
+        .single();
 
       if (insertError) throw insertError;
 
+      // Send push notification about new report
+      if (insertData) {
+        try {
+          await supabase.functions.invoke('send-push-notification', {
+            body: {
+              reportId: insertData.id,
+              reportTitle: insertData.title,
+            },
+          });
+        } catch (notifError) {
+          console.error('Failed to send push notification:', notifError);
+          // Don't fail the upload if notification fails
+        }
+      }
+
       toast({
         title: "Success",
-        description: "Weekly report uploaded successfully",
+        description: "Weekly report uploaded successfully and notifications sent!",
       });
 
       // Reset form
