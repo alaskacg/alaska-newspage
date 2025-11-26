@@ -34,7 +34,7 @@ const MartinMinesAd = () => {
       <div className="relative z-10 p-3 md:p-4">
         <div className="flex items-center gap-3 md:gap-4">
           {/* Left images */}
-          <div className="flex-shrink-0 flex flex-col gap-2">
+          <div className="flex-shrink-0 flex gap-2">
             {products.slice(0, 2).map((product, index) => (
               <div 
                 key={index}
@@ -74,7 +74,7 @@ const MartinMinesAd = () => {
           </div>
 
           {/* Right images */}
-          <div className="flex-shrink-0 flex flex-col gap-2">
+          <div className="flex-shrink-0 flex gap-2">
             {products.slice(2, 4).map((product, index) => (
               <div 
                 key={index}
