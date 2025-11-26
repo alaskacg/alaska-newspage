@@ -84,66 +84,82 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         southeast: "#E74C3C"      // Red
       };
 
-      // Add region overlays using actual boundary data from database
+      // Add region labels and center markers (no polygons)
       regions.forEach((region) => {
         const coords = region.coordinates;
         
-        // Skip statewide or regions without polygon data
-        if (!coords || coords.type !== "Polygon" || !coords.coordinates) {
+        // Skip statewide 
+        if (region.slug === "statewide") {
           return;
         }
 
         const color = regionColors[region.slug] || "#666666";
         
-        // Convert GeoJSON coordinates to Leaflet format (swap lng/lat to lat/lng)
-        const leafletCoords = coords.coordinates[0].map((coord: number[]) => [coord[1], coord[0]] as [number, number]);
-        
-        const polygon = L.polygon(leafletCoords, {
-          color: color,
-          fillColor: color,
-          fillOpacity: 0.2,
-          weight: 2,
-          opacity: 0.6
-        }).addTo(map);
+        let centerLat: number, centerLng: number;
 
-        // Store polygon reference for zoom functionality
-        polygonsRef.current[region.slug] = polygon;
+        // Get center coordinates
+        if (coords && coords.type === "Polygon" && coords.coordinates) {
+          // Calculate centroid of polygon
+          const leafletCoords = coords.coordinates[0].map((coord: number[]) => [coord[1], coord[0]] as [number, number]);
+          const lats = leafletCoords.map(c => c[0]);
+          const lngs = leafletCoords.map(c => c[1]);
+          centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
+          centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
+        } else if (coords && coords.type === "Point" && coords.coordinates) {
+          centerLat = coords.coordinates[1];
+          centerLng = coords.coordinates[0];
+        } else {
+          return;
+        }
 
-        // Add region label at center of polygon
-        const bounds = polygon.getBounds();
-        const center = bounds.getCenter();
-        
-        const label = L.marker(center, {
+        // Add region label
+        const label = L.marker([centerLat, centerLng], {
           icon: L.divIcon({
             className: 'region-label',
             html: `<div style="
-              background: rgba(0, 0, 0, 0.7);
+              background: rgba(0, 0, 0, 0.8);
               color: white;
-              padding: 4px 12px;
-              border-radius: 4px;
+              padding: 8px 16px;
+              border-radius: 6px;
               font-weight: bold;
-              font-size: 14px;
+              font-size: 16px;
               white-space: nowrap;
-              border: 2px solid ${color};
-              box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            ">${region.name}</div>`,
-            iconSize: [100, 30],
-            iconAnchor: [50, 15]
+              border: 3px solid ${color};
+              box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+              cursor: pointer;
+              transition: all 0.3s ease;
+            " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">${region.name}</div>`,
+            iconSize: [120, 40],
+            iconAnchor: [60, 20]
           })
         }).addTo(map);
 
-        // Make polygon clickable
-        polygon.on('click', () => {
+        // Store label reference for zoom functionality
+        polygonsRef.current[region.slug] = { getBounds: () => L.latLngBounds([[centerLat - 1, centerLng - 1], [centerLat + 1, centerLng + 1]]) };
+
+        // Make label clickable
+        label.on('click', () => {
           navigate(`/region/${region.slug}`);
         });
 
-        polygon.bindPopup(`
-          <div style="text-align: center; padding: 8px;">
-            <h3 style="font-weight: bold; color: ${color}; margin-bottom: 8px;">${region.name}</h3>
+        label.bindPopup(`
+          <div style="text-align: center; padding: 12px;">
+            <h3 style="font-weight: bold; color: ${color}; margin-bottom: 8px; font-size: 18px;">${region.name}</h3>
             <p style="font-size: 14px; color: #666; margin-bottom: 12px;">${region.description || 'Explore news and services'}</p>
             <button 
               onclick="window.location.href='/region/${region.slug}'" 
-              style="color: ${color}; font-weight: 500; cursor: pointer; background: none; border: none; text-decoration: underline;"
+              style="
+                color: white;
+                background: ${color};
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-weight: 500;
+                cursor: pointer;
+                border: none;
+                transition: all 0.3s ease;
+              "
+              onmouseover="this.style.opacity='0.8'"
+              onmouseout="this.style.opacity='1'"
             >
               View News & Services →
             </button>
@@ -157,32 +173,47 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         [54.0, -130.0],
       ]);
 
-      // Add point markers for regions with center point data (like Statewide)
-      regions.forEach((region) => {
-        const coords = region.coordinates;
-        
-        // Only add markers for point-type coordinates
-        if (coords && coords.type === "Point" && coords.coordinates) {
-          const marker = L.marker([coords.coordinates[1], coords.coordinates[0]]).addTo(map);
-          
-          marker.bindPopup(`
-            <div style="text-align: center; padding: 8px;">
-              <h3 style="font-weight: bold; color: hsl(var(--primary)); margin-bottom: 8px;">${region.name}</h3>
-              <p style="font-size: 14px; color: hsl(var(--muted-foreground)); margin-bottom: 12px;">${region.description || 'Explore news and services'}</p>
-              <button 
-                onclick="window.location.href='/region/${region.slug}'" 
-                style="color: hsl(var(--accent)); font-weight: 500; cursor: pointer; background: none; border: none; text-decoration: underline;"
-              >
-                View News & Services →
-              </button>
-            </div>
-          `);
+      // Add Statewide marker separately
+      const statewideRegion = regions.find(r => r.slug === "statewide");
+      if (statewideRegion && statewideRegion.coordinates && statewideRegion.coordinates.type === "Point") {
+        const coords = statewideRegion.coordinates.coordinates;
+        const marker = L.marker([coords[1], coords[0]], {
+          icon: L.divIcon({
+            className: 'region-label',
+            html: `<div style="
+              background: rgba(100, 100, 100, 0.8);
+              color: white;
+              padding: 8px 16px;
+              border-radius: 6px;
+              font-weight: bold;
+              font-size: 16px;
+              white-space: nowrap;
+              border: 3px solid #888;
+              box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+              cursor: pointer;
+            ">${statewideRegion.name}</div>`,
+            iconSize: [120, 40],
+            iconAnchor: [60, 20]
+          })
+        }).addTo(map);
 
-          marker.on("click", () => {
-            navigate(`/region/${region.slug}`);
-          });
-        }
-      });
+        marker.on('click', () => {
+          navigate(`/region/${statewideRegion.slug}`);
+        });
+
+        marker.bindPopup(`
+          <div style="text-align: center; padding: 12px;">
+            <h3 style="font-weight: bold; color: #888; margin-bottom: 8px;">${statewideRegion.name}</h3>
+            <p style="font-size: 14px; color: #666; margin-bottom: 12px;">${statewideRegion.description || 'All Alaska news and services'}</p>
+            <button 
+              onclick="window.location.href='/region/${statewideRegion.slug}'" 
+              style="color: white; background: #888; padding: 8px 16px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none;"
+            >
+              View Statewide →
+            </button>
+          </div>
+        `);
+      }
     });
 
     // Cleanup
