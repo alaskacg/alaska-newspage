@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import MartinMinesAd from "@/components/MartinMinesAd";
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -71,12 +72,14 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary/90 to-accent p-4">
-      <div className="w-full max-w-md">
-        <Link to="/" className="flex items-center justify-center gap-2 mb-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-primary via-primary/90 to-accent p-4">
+      <div className="w-full max-w-md space-y-6">
+        <Link to="/" className="flex items-center justify-center gap-2">
           <MapPin className="h-8 w-8 text-primary-foreground" />
           <span className="text-2xl font-bold text-primary-foreground">Alaska News</span>
         </Link>
+        
+        <MartinMinesAd />
         
         <Card>
           <CardHeader>
