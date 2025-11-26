@@ -14,6 +14,7 @@ import InstallPrompt from "@/components/InstallPrompt";
 import MartinMinesAd from "@/components/MartinMinesAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
+import WeeklyReport from "@/components/WeeklyReport";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
@@ -300,6 +301,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Weekly Report from Kitchens */}
+      <WeeklyReport />
 
       {/* Partner Sites */}
       <PartnerSites />

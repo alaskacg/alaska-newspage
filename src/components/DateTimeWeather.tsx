@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { Cloud, CloudRain, Sun, Wind } from "lucide-react";
 
-const DateTimeWeather = () => {
+interface DateTimeWeatherProps {
+  region?: string;
+}
+
+const regionWeather: Record<string, { temp: number; condition: string; windSpeed: number }> = {
+  "interior": { temp: -15, condition: "Clear", windSpeed: 5 },
+  "northern": { temp: -25, condition: "Partly Cloudy", windSpeed: 18 },
+  "southcentral": { temp: 28, condition: "Partly Cloudy", windSpeed: 12 },
+  "southeast": { temp: 38, condition: "Light Rain", windSpeed: 15 },
+  "southwest": { temp: 32, condition: "Cloudy", windSpeed: 25 },
+  "statewide": { temp: 20, condition: "Mixed Conditions", windSpeed: 14 }
+};
+
+const DateTimeWeather = ({ region = "statewide" }: DateTimeWeatherProps) => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [weather, setWeather] = useState({
-    temp: 28,
-    condition: "Partly Cloudy",
-    windSpeed: 12
-  });
+  const [weather, setWeather] = useState(regionWeather[region] || regionWeather.statewide);
 
   useEffect(() => {
     const timer = setInterval(() => {
