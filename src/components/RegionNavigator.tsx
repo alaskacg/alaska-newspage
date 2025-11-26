@@ -29,8 +29,10 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
   return (
     <div className="space-y-6">
       <div className="text-center animate-fade-in">
-        <h3 className="text-2xl font-bold mb-2">Quick Region Access</h3>
-        <p className="text-muted-foreground">Click to zoom to any region on the map</p>
+        <h3 className="text-3xl font-display font-bold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          Quick Region Access
+        </h3>
+        <p className="text-muted-foreground font-light text-lg">Click to zoom to any region on the map</p>
       </div>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -39,25 +41,33 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
           return (
             <Card
               key={region.id}
-              className="group cursor-pointer overflow-hidden border-2 hover:border-opacity-100 transition-all duration-300 hover:shadow-lg hover:scale-105 animate-slide-in-up"
+              className="group cursor-pointer overflow-hidden border-2 hover:border-opacity-100 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/20 hover:scale-105 animate-slide-in-up backdrop-blur-sm bg-card/95 hover:-translate-y-1"
               style={{
                 borderColor: `${color}40`,
                 animationDelay: `${index * 0.1}s`
               }}
               onClick={() => onRegionClick(region)}
             >
-              <div className="p-4 flex items-center gap-4">
+              <div className="p-5 flex items-center gap-4 relative overflow-hidden">
+                {/* Animated gradient overlay */}
                 <div 
-                  className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ 
+                    background: `linear-gradient(135deg, ${color}08 0%, transparent 100%)`
+                  }}
+                />
+                
+                <div 
+                  className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 border-2 relative z-10"
                   style={{ backgroundColor: `${color}20`, border: `2px solid ${color}` }}
                 >
-                  <MapPin className="h-6 w-6" style={{ color }} />
+                  <MapPin className="h-7 w-7" style={{ color }} />
                 </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                <div className="flex-1 relative z-10">
+                  <h4 className="font-display font-semibold text-xl group-hover:text-accent transition-colors duration-300">
                     {region.name}
                   </h4>
-                  <p className="text-sm text-muted-foreground">Click to explore</p>
+                  <p className="text-sm text-muted-foreground font-light">Click to explore</p>
                 </div>
               </div>
             </Card>
@@ -65,16 +75,16 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
         })}
       </div>
 
-      <div className="text-center mt-6 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+      <div className="text-center mt-8 animate-fade-in" style={{ animationDelay: "0.6s" }}>
         <Button 
           variant="outline" 
-          className="hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+          className="hover:bg-accent hover:text-accent-foreground transition-all duration-500 hover:scale-105 hover:shadow-lg border-2 backdrop-blur-sm font-display group"
           onClick={() => {
             const statewideRegion = regions.find(r => r.slug === "statewide");
             if (statewideRegion) onRegionClick(statewideRegion);
           }}
         >
-          <MapPin className="mr-2 h-4 w-4" />
+          <MapPin className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
           View All Alaska (Statewide)
         </Button>
       </div>
