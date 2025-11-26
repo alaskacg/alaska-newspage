@@ -12,6 +12,7 @@ import { Newspaper, MapPin, Users, Search } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
+import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 
 interface Region {
   id: string;
@@ -135,6 +136,10 @@ const Index = () => {
       <section className="py-16 relative overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url(${weeklyReportBg})` }}
+        />
         <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
         
         <div className="container relative z-10">
@@ -144,9 +149,8 @@ const Index = () => {
                 <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-3 bg-gradient-to-r from-nature-gold via-yellow-400 to-nature-gold bg-clip-text text-transparent">
-                Weekly Report
+                The Alaska News Page Weekly Report w/ J.R. Kitchens
               </h2>
-              <p className="text-xl text-muted-foreground font-light">by J.R. Kitchens</p>
             </div>
             <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
               <div className="prose prose-lg dark:prose-invert max-w-none">
