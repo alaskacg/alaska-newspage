@@ -12,6 +12,8 @@ import { Newspaper, MapPin, Users, Search } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
 import MartinMinesAd from "@/components/MartinMinesAd";
+import DateTimeWeather from "@/components/DateTimeWeather";
+import NewsTicker from "@/components/NewsTicker";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
@@ -101,6 +103,16 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <InstallPrompt />
       <Header />
+      
+      {/* Date, Time & Weather */}
+      <DateTimeWeather />
+      
+      {/* News Tickers */}
+      <NewsTicker category="gold" color="yellow" />
+      <NewsTicker category="state" color="blue" />
+      <NewsTicker category="mining" color="amber" />
+      <NewsTicker category="energy" color="green" />
+      <NewsTicker category="crime" color="red" />
       
       {/* Martin Mines Christmas Sale Ad */}
       <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">

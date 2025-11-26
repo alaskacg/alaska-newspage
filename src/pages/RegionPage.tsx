@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PartnerSites from "@/components/PartnerSites";
 import MartinMinesAd from "@/components/MartinMinesAd";
+import DateTimeWeather from "@/components/DateTimeWeather";
+import NewsTicker from "@/components/NewsTicker";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -214,6 +216,16 @@ const RegionPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      
+      {/* Date, Time & Weather */}
+      <DateTimeWeather />
+      
+      {/* News Tickers */}
+      <NewsTicker category="gold" color="yellow" />
+      <NewsTicker category="state" color="blue" />
+      <NewsTicker category="mining" color="amber" />
+      <NewsTicker category="energy" color="green" />
+      <NewsTicker category="crime" color="red" />
       
       {/* Region Header */}
       <section className="relative bg-gradient-to-br from-primary via-accent/20 to-accent py-16 overflow-hidden">
