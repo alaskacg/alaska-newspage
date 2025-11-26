@@ -63,13 +63,13 @@ All colors MUST be HSL.
 
   .dark {
     /* Dark warm theme with nature colors */
-    --background: 20 15% 12%;
+    --background: 20 15% 8%;
     --foreground: 0 0% 95%;
 
-    --card: 20 12% 16%;
+    --card: 20 12% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 20 12% 16%;
+    --popover: 20 12% 12%;
     --popover-foreground: 0 0% 95%;
 
     /* Deep blue for primary */
