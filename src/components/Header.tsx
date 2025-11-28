@@ -30,7 +30,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-gradient-to-r from-warm-gray-dark via-background to-warm-gray-dark backdrop-blur supports-[backdrop-filter]:bg-background/60 animate-fade-in shadow-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-[hsl(0,0%,8%)] backdrop-blur supports-[backdrop-filter]:bg-[hsl(0,0%,8%)]/95 animate-fade-in shadow-lg">
       <div className="container flex h-24 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="group">
