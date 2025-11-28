@@ -11,7 +11,7 @@ import SetupPage from "./pages/SetupPage";
 import DownloadAppPage from "./pages/DownloadAppPage";
 import WeeklyReportPage from "./pages/WeeklyReportPage";
 import NotFound from "./pages/NotFound";
-import WeeklyReportAdmin from "./components/WeeklyReportAdmin";
+import AdminPanel from "./components/AdminPanel";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,8 @@ const App = () => (
             <Route path="/setup" element={<SetupPage />} />
             <Route path="/download" element={<DownloadAppPage />} />
             <Route path="/anpweeklyreport" element={<WeeklyReportPage />} />
-            <Route path="/admin/weekly-reports" element={<WeeklyReportAdmin />} />
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/admin/weekly-reports" element={<AdminPanel />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

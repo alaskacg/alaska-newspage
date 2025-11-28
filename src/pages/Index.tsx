@@ -13,6 +13,8 @@ import { Newspaper, MapPin, Users, Search } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
 import MartinMinesAd from "@/components/MartinMinesAd";
+import GreatNorthernAd from "@/components/GreatNorthernAd";
+import BidCalendarAd from "@/components/BidCalendarAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
@@ -116,10 +118,12 @@ const Index = () => {
       <NewsTicker category="energy" color="green" />
       <NewsTicker category="crime" color="red" />
       
-      {/* Martin Mines Christmas Sale Ad */}
-      <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">
-        <div className="container">
+      {/* Sponsor/Partner Advertisements */}
+      <section className="py-12 bg-gradient-to-br from-background via-muted/20 to-background">
+        <div className="container space-y-8">
           <MartinMinesAd />
+          <GreatNorthernAd />
+          <BidCalendarAd />
         </div>
       </section>
 
