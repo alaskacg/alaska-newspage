@@ -1,16 +1,62 @@
-import { Gift, Sparkles } from "lucide-react";
+import { Gift, Sparkles, ExternalLink } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import necklaceImg from "@/assets/martin-mines-necklace.png";
 import braceletImg from "@/assets/martin-mines-bracelet.png";
 import earringsImg from "@/assets/martin-mines-earrings.png";
 import goldNuggetsImg from "@/assets/martin-mines-gold-nuggets.jpg";
+import martinMinesBanner from "@/assets/martin-mines-banner.jpg";
 
-const MartinMinesAd = () => {
+const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
   const products = [
     { img: necklaceImg, alt: "Gold Nugget Necklace" },
     { img: braceletImg, alt: "Gold Nugget Bracelet" },
     { img: earringsImg, alt: "Gold Nugget Earrings" },
     { img: goldNuggetsImg, alt: "Natural Gold Nuggets" },
   ];
+
+  if (compact) {
+    return (
+      <Card className="overflow-hidden border border-nature-gold/20 hover:border-nature-gold/40 transition-all duration-300 group">
+        <div className="relative h-32 bg-gradient-to-br from-nature-gold/20 via-background to-primary/10 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-80 group-hover:scale-105 transition-transform duration-700"
+            style={{ backgroundImage: `url(${martinMinesBanner})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+          
+          <div className="relative h-full flex items-center justify-between p-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <Gift className="h-5 w-5 text-nature-gold" />
+                <h3 className="text-lg font-display font-bold text-primary-foreground drop-shadow-lg">
+                  Martin Mines - 20% OFF
+                </h3>
+              </div>
+              <p className="text-primary-foreground/80 text-xs leading-snug drop-shadow">
+                Genuine Alaska Gold Jewelry & Nuggets
+              </p>
+            </div>
+            <Button
+              asChild
+              size="sm"
+              className="bg-nature-gold hover:bg-nature-gold/90 text-background shadow-lg ml-3"
+            >
+              <a
+                href="https://martinminesgold.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <span className="text-xs">Shop Sale</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <a 

@@ -118,12 +118,10 @@ const Index = () => {
       <NewsTicker category="energy" color="green" />
       <NewsTicker category="crime" color="red" />
       
-      {/* Sponsor/Partner Advertisements */}
-      <section className="py-12 bg-gradient-to-br from-background via-muted/20 to-background">
-        <div className="container space-y-8">
-          <MartinMinesAd />
-          <GreatNorthernAd />
-          <BidCalendarAd />
+      {/* First Ad - Compact */}
+      <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
+        <div className="container">
+          <MartinMinesAd compact />
         </div>
       </section>
 
@@ -167,6 +165,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Second Ad - Compact */}
+      <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
+        <div className="container">
+          <GreatNorthernAd compact />
+        </div>
+      </section>
+
       {/* Region Navigator Section */}
       <section className="py-16 relative overflow-hidden">
         <div 
@@ -197,6 +202,13 @@ const Index = () => {
               <p className="text-muted-foreground">No regions available</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Third Ad - Compact */}
+      <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
+        <div className="container">
+          <BidCalendarAd compact />
         </div>
       </section>
 
