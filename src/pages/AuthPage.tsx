@@ -209,7 +209,7 @@ const AuthPage = () => {
                     </Button>
                     <Button
                       variant="default"
-                      onClick={() => navigate("/admin/weekly-reports")}
+                      onClick={() => navigate("/admin")}
                       className="w-full"
                     >
                       <Shield className="mr-2 h-4 w-4" />
