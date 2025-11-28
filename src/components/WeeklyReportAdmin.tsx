@@ -48,14 +48,14 @@ const WeeklyReportAdmin = () => {
       }
 
       // Check if user has admin role
-      const { data: roles, error: roleError } = await supabase
+      const { data: roleData } = await supabase
         .from("user_roles")
         .select("role")
         .eq("user_id", user.id)
         .eq("role", "admin")
-        .single();
+        .maybeSingle();
 
-      if (roleError || !roles) {
+      if (!roleData) {
         toast({
           title: "Access denied",
           description: "You do not have permission to access this page",
