@@ -5,7 +5,7 @@ import necklaceImg from "@/assets/martin-mines-necklace.png";
 import braceletImg from "@/assets/martin-mines-bracelet.png";
 import earringsImg from "@/assets/martin-mines-earrings.png";
 import goldNuggetsImg from "@/assets/martin-mines-gold-nuggets.jpg";
-import martinMinesBanner from "@/assets/martin-mines-banner.jpg";
+import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
 
 const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
   const products = [
