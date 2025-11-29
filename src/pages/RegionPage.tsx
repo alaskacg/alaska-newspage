@@ -11,10 +11,19 @@ import MartinMinesAd from "@/components/MartinMinesAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
+import RegionContentManagement from "@/components/admin/RegionContentManagement";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
+
+// Import regional banner images
+import interiorBanner from "@/assets/interior-banner.jpg";
+import northernBanner from "@/assets/northern-banner.jpg";
+import southcentralBanner from "@/assets/southcentral-banner.jpg";
+import southeastBanner from "@/assets/southeast-banner.jpg";
+import southwestBanner from "@/assets/southwest-banner.jpg";
+import statewideBanner from "@/assets/statewide-banner.jpg";
 
 interface Region {
   id: string;
@@ -75,7 +84,18 @@ const RegionPage = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [isAdmin, setIsAdmin] = useState(false);
   const { toast } = useToast();
+
+  // Map region slugs to banner images
+  const regionBanners: Record<string, string> = {
+    interior: interiorBanner,
+    northern: northernBanner,
+    southcentral: southcentralBanner,
+    southeast: southeastBanner,
+    southwest: southwestBanner,
+    statewide: statewideBanner,
+  };
 
   useEffect(() => {
     fetchData();
@@ -87,6 +107,17 @@ const RegionPage = () => {
     setUser(user);
     if (user) {
       fetchFavorites(user.id);
+      // Check if user is admin
+      const { data: roleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      
+      if (roleData) {
+        setIsAdmin(true);
+      }
     }
   };
 
@@ -241,30 +272,35 @@ const RegionPage = () => {
       <NewsTicker category="energy" color="green" />
       <NewsTicker category="crime" color="red" />
       
-      {/* Region Header */}
-      <section className="relative bg-gradient-to-br from-primary via-accent/20 to-accent py-16 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+      {/* Region Header with Banner */}
+      <section className="relative h-96 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${regionBanners[region.slug] || statewideBanner})`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         </div>
         
-        <div className="container relative z-10">
+        <div className="container relative z-10 h-full flex flex-col justify-between py-8">
           <Link to="/">
-            <Button variant="ghost" className="mb-6 text-primary-foreground hover:bg-primary-foreground/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 group">
+            <Button variant="ghost" className="text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 group border border-white/20">
               <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Back to Map
             </Button>
           </Link>
-          <div className="flex items-start gap-6 animate-fade-in">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-foreground/20 text-primary-foreground backdrop-blur-sm border border-primary-foreground/30 shadow-2xl animate-scale-in">
-              <MapPin className="h-8 w-8" />
+          
+          <div className="flex items-end gap-6 animate-fade-in">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/20 text-white backdrop-blur-sm border border-white/30 shadow-2xl animate-scale-in">
+              <MapPin className="h-10 w-10" />
             </div>
-            <div className="flex-1">
-              <h1 className="text-5xl font-display font-bold text-primary-foreground mb-3 tracking-tight">
+            <div className="flex-1 pb-2">
+              <h1 className="text-6xl font-display font-bold text-white mb-3 tracking-tight drop-shadow-2xl">
                 {region.name}
               </h1>
-              <p className="text-xl text-primary-foreground/90 font-light">
+              <p className="text-2xl text-white/95 font-light drop-shadow-lg">
                 {region.description}
               </p>
             </div>
@@ -412,6 +448,11 @@ const RegionPage = () => {
 
       {/* Partner Sites */}
       <PartnerSites title="Explore Our Partner Platforms" compact />
+
+      {/* Admin Controls - Only visible to admins */}
+      {isAdmin && region && (
+        <RegionContentManagement regionId={region.id} regionName={region.name} />
+      )}
     </div>
   );
 };
