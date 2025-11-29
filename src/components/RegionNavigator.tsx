@@ -35,7 +35,7 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
         <p className="text-muted-foreground font-light">Click to zoom to any region on the map</p>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {displayRegions.map((region, index) => {
           const color = regionColors[region.slug] || "#666666";
           return (
@@ -48,7 +48,7 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
               }}
               onClick={() => onRegionClick(region)}
             >
-              <div className="p-5 flex items-center gap-4 relative overflow-hidden">
+              <div className="p-3 flex flex-col items-center gap-2 relative overflow-hidden">
                 {/* Animated gradient overlay */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -58,16 +58,15 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
                 />
                 
                 <div 
-                  className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 border-2 relative z-10"
-                  style={{ backgroundColor: `${color}20`, border: `2px solid ${color}` }}
+                  className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 border relative z-10"
+                  style={{ backgroundColor: `${color}20`, border: `1.5px solid ${color}` }}
                 >
-                  <MapPin className="h-7 w-7" style={{ color }} />
+                  <MapPin className="h-5 w-5" style={{ color }} />
                 </div>
-                <div className="flex-1 relative z-10">
-                  <h4 className="font-display font-semibold text-xl group-hover:text-accent transition-colors duration-300">
+                <div className="flex-1 text-center relative z-10">
+                  <h4 className="font-display font-semibold text-sm group-hover:text-accent transition-colors duration-300">
                     {region.name}
                   </h4>
-                  <p className="text-sm text-muted-foreground font-light">Click to explore</p>
                 </div>
               </div>
             </Card>

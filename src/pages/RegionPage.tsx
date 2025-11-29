@@ -319,7 +319,7 @@ const RegionPage = () => {
                             ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
                           </span>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           {resources.map((resource, index) => (
                             <div 
                               key={resource.id}
