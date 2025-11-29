@@ -37,7 +37,7 @@ const Header = () => {
             <img 
               src={anpLogo} 
               alt="Alaska News Page" 
-              className="h-25 w-auto max-h-full object-contain transition-opacity duration-300 group-hover:opacity-80"
+              className="h-12 w-auto max-h-full object-contain transition-opacity duration-300 group-hover:opacity-80"
             />
           </Link>
           
