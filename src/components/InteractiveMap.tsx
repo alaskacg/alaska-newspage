@@ -10,15 +10,33 @@ interface Region {
   coordinates: any;
 }
 
+interface Business {
+  id: string;
+  name: string;
+  city: string;
+  address: string | null;
+  region_id: string;
+}
+
+interface PublicResource {
+  id: string;
+  name: string;
+  city: string;
+  address: string | null;
+  region_id: string;
+}
+
 interface InteractiveMapProps {
   regions: Region[];
+  businesses?: Business[];
+  publicResources?: PublicResource[];
 }
 
 export interface InteractiveMapRef {
   zoomToRegion: (region: Region) => void;
 }
 
-const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions }, ref) => {
+const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions, businesses = [], publicResources = [] }, ref) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
   const polygonsRef = useRef<{ [key: string]: any }>({});
@@ -222,6 +240,128 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           </div>
         `);
       }
+
+      // Add markers for businesses and public resources
+      const allLocations: Array<{ lat: number; lng: number; name: string; type: 'business' | 'resource'; slug: string; city: string }> = [];
+
+      // Parse addresses to get approximate coordinates (simplified geocoding)
+      const cityCoordinates: { [key: string]: { lat: number; lng: number } } = {
+        'Fairbanks': { lat: 64.8378, lng: -147.7164 },
+        'Delta Junction': { lat: 64.0400, lng: -145.7306 },
+        'North Pole': { lat: 64.7511, lng: -147.3494 },
+        'Tok': { lat: 63.3367, lng: -142.9856 },
+        'Utqiaġvik': { lat: 71.2906, lng: -156.7886 },
+        'Anchorage': { lat: 61.2181, lng: -149.9003 },
+        'Palmer': { lat: 61.5994, lng: -149.1128 },
+        'Wasilla': { lat: 61.5814, lng: -149.4394 },
+        'Juneau': { lat: 58.3019, lng: -134.4197 },
+        'Ketchikan': { lat: 55.3422, lng: -131.6461 },
+        'Sitka': { lat: 57.0531, lng: -135.3300 },
+        'Dillingham': { lat: 59.0397, lng: -158.4575 },
+        'Kodiak': { lat: 57.7900, lng: -152.4072 },
+        'Bethel': { lat: 60.7922, lng: -161.7558 }
+      };
+
+      // Add businesses
+      businesses.forEach((business) => {
+        const city = business.city || 'Unknown';
+        const coords = cityCoordinates[city];
+        if (coords) {
+          const region = regions.find(r => r.id === business.region_id);
+          if (region && region.slug !== 'statewide') {
+            // Add small random offset so markers don't overlap
+            const offset = 0.02;
+            allLocations.push({
+              lat: coords.lat + (Math.random() - 0.5) * offset,
+              lng: coords.lng + (Math.random() - 0.5) * offset,
+              name: business.name,
+              type: 'business',
+              slug: region.slug,
+              city: city
+            });
+          }
+        }
+      });
+
+      // Add public resources
+      publicResources.forEach((resource) => {
+        const city = resource.city || 'Unknown';
+        const coords = cityCoordinates[city];
+        if (coords) {
+          const region = regions.find(r => r.id === resource.region_id);
+          if (region && region.slug !== 'statewide') {
+            // Add small random offset so markers don't overlap
+            const offset = 0.02;
+            allLocations.push({
+              lat: coords.lat + (Math.random() - 0.5) * offset,
+              lng: coords.lng + (Math.random() - 0.5) * offset,
+              name: resource.name,
+              type: 'resource',
+              slug: region.slug,
+              city: city
+            });
+          }
+        }
+      });
+
+      // Create markers for all locations
+      allLocations.forEach((location) => {
+        const markerIcon = L.divIcon({
+          className: 'location-marker',
+          html: `<div style="
+            width: 10px;
+            height: 10px;
+            background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+          " onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'"></div>`,
+          iconSize: [10, 10],
+          iconAnchor: [5, 5]
+        });
+
+        const marker = L.marker([location.lat, location.lng], { icon: markerIcon }).addTo(map);
+
+        marker.bindPopup(`
+          <div style="text-align: center; padding: 8px;">
+            <div style="
+              display: inline-block;
+              padding: 4px 8px;
+              border-radius: 4px;
+              background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
+              color: white;
+              font-size: 10px;
+              font-weight: 600;
+              margin-bottom: 8px;
+            ">
+              ${location.type === 'business' ? '🏢 Business' : '🏛️ Public Resource'}
+            </div>
+            <h4 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${location.name}</h4>
+            <p style="font-size: 12px; color: #666; margin-bottom: 8px;">${location.city}</p>
+            <button 
+              onclick="window.location.href='/region/${location.slug}'" 
+              style="
+                color: white;
+                background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
+                padding: 6px 12px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 500;
+                cursor: pointer;
+                border: none;
+              "
+            >
+              View Region →
+            </button>
+          </div>
+        `);
+
+        marker.on('click', () => {
+          marker.openPopup();
+        });
+      });
     });
 
     // Cleanup
@@ -231,7 +371,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         mapInstanceRef.current = null;
       }
     };
-  }, [regions, navigate]);
+  }, [regions, businesses, publicResources, navigate]);
 
   return <div ref={mapRef} className="h-full w-full" />;
 });

@@ -179,11 +179,24 @@ const RegionPage = () => {
         .order("category", { ascending: true });
 
       if (resourcesError) throw resourcesError;
-      setPublicResources(resourcesData || []);
+      
+      // Remove duplicates by name within the same city/category
+      const uniqueResources = (resourcesData || []).reduce((acc: PublicResource[], current) => {
+        const key = `${current.city}-${current.name}-${current.category}`;
+        const isDuplicate = acc.some(item => 
+          `${item.city}-${item.name}-${item.category}` === key
+        );
+        if (!isDuplicate) {
+          acc.push(current);
+        }
+        return acc;
+      }, []);
+      
+      setPublicResources(uniqueResources);
       
       // Group resources by city
       const cityMap = new Map<string, PublicResource[]>();
-      (resourcesData || []).forEach((resource) => {
+      uniqueResources.forEach((resource) => {
         const city = resource.city || 'Other';
         if (!cityMap.has(city)) {
           cityMap.set(city, []);
@@ -355,7 +368,7 @@ const RegionPage = () => {
                             ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
                           </span>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                           {resources.map((resource, index) => (
                             <div 
                               key={resource.id}

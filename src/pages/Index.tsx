@@ -43,9 +43,27 @@ interface NewsItem {
   image_url?: string;
 }
 
+interface Business {
+  id: string;
+  name: string;
+  city: string;
+  address: string | null;
+  region_id: string;
+}
+
+interface PublicResource {
+  id: string;
+  name: string;
+  city: string;
+  address: string | null;
+  region_id: string;
+}
+
 const Index = () => {
   const [regions, setRegions] = useState<Region[]>([]);
   const [latestNews, setLatestNews] = useState<NewsItem[]>([]);
+  const [businesses, setBusinesses] = useState<Business[]>([]);
+  const [publicResources, setPublicResources] = useState<PublicResource[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -81,6 +99,22 @@ const Index = () => {
 
       if (newsError) throw newsError;
       setLatestNews(newsData || []);
+
+      // Fetch businesses
+      const { data: businessesData, error: businessesError } = await supabase
+        .from("local_businesses")
+        .select("id, name, city, address, region_id");
+
+      if (businessesError) throw businessesError;
+      setBusinesses(businessesData || []);
+
+      // Fetch public resources
+      const { data: resourcesData, error: resourcesError } = await supabase
+        .from("public_resources")
+        .select("id, name, city, address, region_id");
+
+      if (resourcesError) throw resourcesError;
+      setPublicResources(resourcesData || []);
     } catch (error: any) {
       toast({
         title: "Error loading data",
@@ -196,7 +230,7 @@ const Index = () => {
             </p>
           </div>
           {regions.length > 0 ? (
-            <AlaskaMap ref={mapRef} regions={regions} />
+            <AlaskaMap ref={mapRef} regions={regions} businesses={businesses} publicResources={publicResources} />
           ) : (
             <div className="text-center py-12">
               <p className="text-muted-foreground">No regions available</p>
