@@ -81,14 +81,20 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
       });
 
-      // Initialize map
-      const map = L.map(mapRef.current!).setView([64.0, -152.0], 4);
+      // Initialize map with enhanced zoom capabilities
+      const map = L.map(mapRef.current!, {
+        center: [64.0, -152.0],
+        zoom: 4,
+        minZoom: 4,
+        maxZoom: 15, // Increased from default 10 to 15 for better marker separation
+        zoomControl: true
+      });
       mapInstanceRef.current = map;
 
       // Add dark theme tile layer with gray land and dark water
       L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        maxZoom: 10,
+        maxZoom: 15, // Match map maxZoom for consistent zooming
         minZoom: 4,
       }).addTo(map);
 
@@ -304,25 +310,29 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         }
       });
 
-      // Create markers for all locations
+      // Create markers for all locations with improved clickability
       allLocations.forEach((location) => {
         const markerIcon = L.divIcon({
           className: 'location-marker',
           html: `<div style="
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
             border: 2px solid white;
             border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
             cursor: pointer;
-            transition: all 0.2s ease;
-          " onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'"></div>`,
-          iconSize: [10, 10],
-          iconAnchor: [5, 5]
+            transition: all 0.3s ease;
+            z-index: 100;
+          " onmouseover="this.style.transform='scale(1.8)'; this.style.zIndex='1000';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='100';"></div>`,
+          iconSize: [12, 12],
+          iconAnchor: [6, 6]
         });
 
-        const marker = L.marker([location.lat, location.lng], { icon: markerIcon }).addTo(map);
+        const marker = L.marker([location.lat, location.lng], { 
+          icon: markerIcon,
+          riseOnHover: true // Make marker rise above others on hover
+        }).addTo(map);
 
         marker.bindPopup(`
           <div style="text-align: center; padding: 8px;">
