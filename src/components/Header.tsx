@@ -8,7 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import anpLogo from "@/assets/anp-logo.png";
+import anpLogo from "@/assets/anp-logo.mp4";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -34,9 +34,12 @@ const Header = () => {
       <div className="container flex h-24 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="group">
-            <img 
+            <video 
               src={anpLogo} 
-              alt="Alaska News Page" 
+              autoPlay
+              loop
+              muted
+              playsInline
               className="h-12 w-auto max-h-full object-contain transition-opacity duration-300 group-hover:opacity-80"
             />
           </Link>
