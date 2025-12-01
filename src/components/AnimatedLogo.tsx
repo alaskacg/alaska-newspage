@@ -101,9 +101,9 @@ const AnimatedLogo = () => {
       <text
         x="130"
         y="25"
-        fontFamily="Arial, sans-serif"
+        fontFamily="system-ui, -apple-system, sans-serif"
         fontSize="18"
-        fontWeight="bold"
+        fontWeight="500"
         fill="url(#goldGradient)"
         filter="url(#glow)"
       >
@@ -120,9 +120,9 @@ const AnimatedLogo = () => {
       <text
         x="130"
         y="45"
-        fontFamily="Arial, sans-serif"
+        fontFamily="system-ui, -apple-system, sans-serif"
         fontSize="16"
-        fontWeight="600"
+        fontWeight="500"
         fill="#E2E8F0"
       >
         NEWS PAGE
@@ -138,8 +138,9 @@ const AnimatedLogo = () => {
       <text
         x="130"
         y="60"
-        fontFamily="Arial, sans-serif"
+        fontFamily="system-ui, -apple-system, sans-serif"
         fontSize="10"
+        fontWeight="500"
         fill="#94A3B8"
         opacity="0.8"
       >
