@@ -40,7 +40,7 @@ const Header = () => {
               loop
               muted
               playsInline
-              className="h-12 w-auto max-h-full object-contain transition-opacity duration-300 group-hover:opacity-80"
+              className="h-20 w-auto max-h-full object-contain transition-opacity duration-300 group-hover:opacity-80"
             />
           </Link>
           
