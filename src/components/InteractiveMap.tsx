@@ -1,5 +1,6 @@
 import { useEffect, useRef, useImperativeHandle, forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "next-themes";
 import "leaflet/dist/leaflet.css";
 
 interface Region {
@@ -39,8 +40,10 @@ export interface InteractiveMapRef {
 const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions, businesses = [], publicResources = [] }, ref) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
+  const tileLayerRef = useRef<any>(null);
   const polygonsRef = useRef<{ [key: string]: any }>({});
   const navigate = useNavigate();
+  const { resolvedTheme } = useTheme();
 
   useImperativeHandle(ref, () => ({
     zoomToRegion: (region: Region) => {
@@ -91,10 +94,15 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       });
       mapInstanceRef.current = map;
 
-      // Add dark theme tile layer with gray land and dark water
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      // Theme-aware tile layer
+      const isDark = document.documentElement.classList.contains('dark');
+      const tileUrl = isDark 
+        ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+      
+      tileLayerRef.current = L.tileLayer(tileUrl, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        maxZoom: 15, // Match map maxZoom for consistent zooming
+        maxZoom: 15,
         minZoom: 4,
       }).addTo(map);
 
@@ -382,6 +390,26 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       }
     };
   }, [regions, businesses, publicResources, navigate]);
+
+  // Update tile layer when theme changes
+  useEffect(() => {
+    if (!mapInstanceRef.current || !tileLayerRef.current) return;
+    
+    import("leaflet").then((L) => {
+      const isDark = resolvedTheme === 'dark';
+      const tileUrl = isDark 
+        ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+      
+      // Remove old layer and add new one
+      mapInstanceRef.current.removeLayer(tileLayerRef.current);
+      tileLayerRef.current = L.tileLayer(tileUrl, {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 15,
+        minZoom: 4,
+      }).addTo(mapInstanceRef.current);
+    });
+  }, [resolvedTheme]);
 
   return <div ref={mapRef} className="h-full w-full" />;
 });

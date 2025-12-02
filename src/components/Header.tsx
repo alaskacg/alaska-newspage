@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import AnimatedLogo from "@/components/AnimatedLogo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -30,7 +31,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-[hsl(0,0%,8%)] backdrop-blur supports-[backdrop-filter]:bg-[hsl(0,0%,8%)]/95 animate-fade-in shadow-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background backdrop-blur supports-[backdrop-filter]:bg-background/95 animate-fade-in shadow-lg">
       <div className="container flex h-24 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="group">
@@ -105,6 +106,8 @@ const Header = () => {
             </Button>
           </Link>
 
+          <ThemeToggle />
+
           <Link to="/auth">
             <Button variant="ghost" size="icon">
               <User className="h-5 w-5" />
@@ -150,6 +153,16 @@ const Header = () => {
                       <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   ))}
+                </div>
+
+                <div className="border-t border-border/40 pt-4">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Display
+                  </p>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-sm font-medium text-muted-foreground">Theme</span>
+                    <ThemeToggle />
+                  </div>
                 </div>
               </nav>
             </SheetContent>
