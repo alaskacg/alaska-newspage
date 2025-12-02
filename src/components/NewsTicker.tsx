@@ -38,67 +38,50 @@ const mockNewsData: Record<string, string[]> = {
   ],
 };
 
-const colorStyles: Record<string, { bg: string; border: string; label: string; text: string }> = {
+// Using Tailwind semantic classes for theme support
+const colorClasses: Record<string, { wrapper: string; label: string; text: string }> = {
   yellow: {
-    bg: "rgb(20, 16, 6)",
-    border: "rgb(55, 48, 18)",
-    label: "rgb(234, 179, 8)",
-    text: "rgb(253, 224, 71)"
+    wrapper: "bg-amber-950/50 dark:bg-amber-950/50 border-amber-800/50 dark:border-amber-800/50",
+    label: "bg-amber-900/80 dark:bg-amber-900/80 text-amber-300 dark:text-amber-300",
+    text: "text-amber-200 dark:text-amber-200"
   },
   blue: {
-    bg: "rgb(3, 7, 18)",
-    border: "rgb(30, 58, 138)",
-    label: "rgb(147, 197, 253)",
-    text: "rgb(191, 219, 254)"
+    wrapper: "bg-blue-950/50 dark:bg-blue-950/50 border-blue-800/50 dark:border-blue-800/50",
+    label: "bg-blue-900/80 dark:bg-blue-900/80 text-blue-300 dark:text-blue-300",
+    text: "text-blue-200 dark:text-blue-200"
   },
   amber: {
-    bg: "rgb(23, 15, 3)",
-    border: "rgb(78, 44, 0)",
-    label: "rgb(251, 191, 36)",
-    text: "rgb(252, 211, 77)"
+    wrapper: "bg-orange-950/50 dark:bg-orange-950/50 border-orange-800/50 dark:border-orange-800/50",
+    label: "bg-orange-900/80 dark:bg-orange-900/80 text-orange-300 dark:text-orange-300",
+    text: "text-orange-200 dark:text-orange-200"
   },
   green: {
-    bg: "rgb(2, 16, 8)",
-    border: "rgb(5, 46, 22)",
-    label: "rgb(74, 222, 128)",
-    text: "rgb(134, 239, 172)"
+    wrapper: "bg-emerald-950/50 dark:bg-emerald-950/50 border-emerald-800/50 dark:border-emerald-800/50",
+    label: "bg-emerald-900/80 dark:bg-emerald-900/80 text-emerald-300 dark:text-emerald-300",
+    text: "text-emerald-200 dark:text-emerald-200"
   },
   red: {
-    bg: "rgb(20, 3, 3)",
-    border: "rgb(127, 29, 29)",
-    label: "rgb(252, 165, 165)",
-    text: "rgb(254, 202, 202)"
+    wrapper: "bg-red-950/50 dark:bg-red-950/50 border-red-800/50 dark:border-red-800/50",
+    label: "bg-red-900/80 dark:bg-red-900/80 text-red-300 dark:text-red-300",
+    text: "text-red-200 dark:text-red-200"
   }
 };
 
 const NewsTicker = ({ category, color }: NewsTickerProps) => {
   const [news] = useState(mockNewsData[category] || []);
-  const colors = colorStyles[color] || colorStyles.blue;
+  const classes = colorClasses[color] || colorClasses.blue;
   
   const newsString = news.join(" • ") + " • " + news.join(" • ");
 
   return (
-    <div 
-      className="border-y overflow-hidden"
-      style={{ backgroundColor: colors.bg, borderColor: colors.border }}
-    >
+    <div className={`border-y overflow-hidden ${classes.wrapper}`}>
       <div className="flex items-center">
-        <div 
-          className="px-4 py-2 font-bold uppercase text-xs whitespace-nowrap border-r"
-          style={{ 
-            backgroundColor: colors.border, 
-            color: colors.label,
-            borderRightColor: colors.border 
-          }}
-        >
+        <div className={`px-4 py-2 font-bold uppercase text-xs whitespace-nowrap border-r border-inherit ${classes.label}`}>
           {category} News
         </div>
         <div className="flex-1 overflow-hidden">
           <div className="animate-scroll-left flex items-center py-2">
-            <span 
-              className="text-sm whitespace-nowrap px-4"
-              style={{ color: colors.text }}
-            >
+            <span className={`text-sm whitespace-nowrap px-4 ${classes.text}`}>
               {newsString}
             </span>
           </div>

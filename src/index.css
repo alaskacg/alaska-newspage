@@ -8,7 +8,64 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark warm theme as default */
+    /* Light newspaper theme - warm cream/sepia tones */
+    --background: 40 30% 92%;
+    --foreground: 30 20% 15%;
+
+    --card: 40 25% 96%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 25% 96%;
+    --popover-foreground: 30 20% 15%;
+
+    /* Deep blue for primary */
+    --primary: 210 60% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm tan secondary */
+    --secondary: 35 20% 85%;
+    --secondary-foreground: 30 20% 15%;
+
+    /* Muted warm tones */
+    --muted: 35 15% 88%;
+    --muted-foreground: 30 15% 40%;
+
+    /* Forest green accent */
+    --accent: 150 40% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Red for destructive */
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 80%;
+    --input: 35 20% 80%;
+    --ring: 150 40% 40%;
+
+    --radius: 0.5rem;
+    
+    /* Custom tokens */
+    --warm-gray-dark: 35 15% 25%;
+    --forest-green: 150 40% 40%;
+    --deep-blue: 210 60% 35%;
+    --gold: 45 80% 45%;
+    --warm-red: 0 65% 45%;
+
+    --sidebar-background: 40 25% 94%;
+    --sidebar-foreground: 30 20% 15%;
+    --sidebar-primary: 210 60% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 35 15% 88%;
+    --sidebar-accent-foreground: 30 20% 15%;
+    --sidebar-border: 35 20% 80%;
+    --sidebar-ring: 150 40% 40%;
+
+    /* Header background for light mode */
+    --header-bg: 35 25% 88%;
+  }
+
+  .dark {
+    /* Dark warm theme */
     --background: 20 15% 8%;
     --foreground: 0 0% 95%;
 
@@ -41,8 +98,6 @@ All colors MUST be HSL.
     --border: 25 8% 24%;
     --input: 25 8% 24%;
     --ring: 150 35% 50%;
-
-    --radius: 0.5rem;
     
     /* Custom tokens */
     --warm-gray-dark: 20 12% 12%;
@@ -59,57 +114,9 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 25 8% 24%;
     --sidebar-ring: 150 35% 50%;
-  }
 
-  .dark {
-    /* Light theme for dark mode toggle */
-    --background: 30 15% 96%;
-    --foreground: 20 10% 15%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 20 10% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 10% 15%;
-
-    /* Deep blue for primary */
-    --primary: 210 60% 35%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Warm gray secondary */
-    --secondary: 25 15% 88%;
-    --secondary-foreground: 20 10% 15%;
-
-    /* Muted warm grays */
-    --muted: 30 10% 88%;
-    --muted-foreground: 25 8% 45%;
-
-    /* Forest green accent */
-    --accent: 150 40% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    /* Red for destructive */
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 30 12% 85%;
-    --input: 30 12% 85%;
-    --ring: 150 40% 45%;
-    
-    --warm-gray-dark: 25 12% 25%;
-    --forest-green: 150 40% 45%;
-    --deep-blue: 210 60% 35%;
-    --gold: 45 90% 55%;
-    --warm-red: 0 65% 50%;
-
-    --sidebar-background: 30 15% 96%;
-    --sidebar-foreground: 20 10% 15%;
-    --sidebar-primary: 20 10% 15%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 10% 88%;
-    --sidebar-accent-foreground: 20 10% 15%;
-    --sidebar-border: 30 12% 85%;
-    --sidebar-ring: 210 60% 35%;
+    /* Header background for dark mode */
+    --header-bg: 0 0% 8%;
   }
 }
 
@@ -120,6 +127,30 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans;
+  }
+
+  /* Light mode newspaper texture */
+  :root body {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.02) 3px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.02) 3px
+      );
+    background-size: 3px 3px;
+  }
+
+  /* Dark mode subtle texture */
+  .dark body {
     background-image: 
       repeating-linear-gradient(
         0deg,
