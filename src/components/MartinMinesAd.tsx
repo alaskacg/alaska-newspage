@@ -9,10 +9,10 @@ import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
 
 const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
   const products = [
-    { img: necklaceImg, alt: "Gold Nugget Necklace" },
-    { img: braceletImg, alt: "Gold Nugget Bracelet" },
-    { img: earringsImg, alt: "Gold Nugget Earrings" },
+    { img: martinMinesBanner, alt: "Alaska Gold Mining Operation" },
+    { img: martinMinesBanner, alt: "Gold Mining in Alaska" },
     { img: goldNuggetsImg, alt: "Natural Gold Nuggets" },
+    { img: goldNuggetsImg, alt: "Alaska Gold Nuggets" },
   ];
 
   if (compact) {

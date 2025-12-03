@@ -173,6 +173,25 @@ All colors MUST be HSL.
     @apply font-display;
   }
 
+  /* Light mode image visibility improvements */
+  :root img,
+  :root [style*="background-image"] {
+    filter: contrast(1.05) brightness(1.02);
+  }
+
+  :root .bg-cover,
+  :root .bg-center {
+    filter: contrast(1.1) brightness(1.05) saturate(1.1);
+  }
+
+  /* Dark mode keeps default */
+  .dark img,
+  .dark [style*="background-image"],
+  .dark .bg-cover,
+  .dark .bg-center {
+    filter: none;
+  }
+
   /* Glassmorphism utility */
   .glass {
     @apply backdrop-blur-xl bg-background/80 border border-border/50;
