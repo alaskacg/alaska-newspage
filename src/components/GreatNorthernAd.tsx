@@ -20,7 +20,7 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
                 Great Northern Construction
               </h3>
               <p className="text-primary-foreground/80 text-xs leading-snug drop-shadow">
-                Alaska's Premier Construction Excellence
+                Alaska's Premier Construction Team
               </p>
             </div>
             <Button
