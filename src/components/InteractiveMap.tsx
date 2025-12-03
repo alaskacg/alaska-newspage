@@ -144,29 +144,29 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           return;
         }
 
-        // Add region label with dynamic sizing
-        const labelWidth = region.name.length * 12 + 32; // Estimate width based on text length
+        // Add region label with dynamic sizing - compact version
+        const labelWidth = region.name.length * 7 + 16; // Smaller width calculation
         const label = L.marker([centerLat, centerLng], {
           icon: L.divIcon({
             className: 'region-label',
             html: `<div style="
-              background: rgba(0, 0, 0, 0.8);
+              background: rgba(0, 0, 0, 0.85);
               color: white;
-              padding: 8px 16px;
-              border-radius: 6px;
-              font-weight: bold;
-              font-size: 16px;
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-weight: 600;
+              font-size: 11px;
               white-space: nowrap;
-              border: 3px solid ${color};
-              box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+              border: 2px solid ${color};
+              box-shadow: 0 2px 4px rgba(0,0,0,0.4);
               cursor: pointer;
               transition: all 0.3s ease;
               display: flex;
               align-items: center;
               justify-content: center;
             " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">${region.name}</div>`,
-            iconSize: [labelWidth, 40],
-            iconAnchor: [labelWidth / 2, 20]
+            iconSize: [labelWidth, 24],
+            iconAnchor: [labelWidth / 2, 12]
           })
         }).addTo(map);
 
@@ -209,31 +209,31 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         [54.0, -130.0],
       ]);
 
-      // Add Statewide marker separately with dynamic sizing
+      // Add Statewide marker separately with compact sizing
       const statewideRegion = regions.find(r => r.slug === "statewide");
       if (statewideRegion && statewideRegion.coordinates && statewideRegion.coordinates.type === "Point") {
         const coords = statewideRegion.coordinates.coordinates;
-        const statewideWidth = statewideRegion.name.length * 12 + 32;
+        const statewideWidth = statewideRegion.name.length * 7 + 16;
         const marker = L.marker([coords[1], coords[0]], {
           icon: L.divIcon({
             className: 'region-label',
             html: `<div style="
-              background: rgba(100, 100, 100, 0.8);
+              background: rgba(100, 100, 100, 0.85);
               color: white;
-              padding: 8px 16px;
-              border-radius: 6px;
-              font-weight: bold;
-              font-size: 16px;
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-weight: 600;
+              font-size: 11px;
               white-space: nowrap;
-              border: 3px solid #888;
-              box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+              border: 2px solid #888;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.4);
               cursor: pointer;
               display: flex;
               align-items: center;
               justify-content: center;
             ">${statewideRegion.name}</div>`,
-            iconSize: [statewideWidth, 40],
-            iconAnchor: [statewideWidth / 2, 20]
+            iconSize: [statewideWidth, 24],
+            iconAnchor: [statewideWidth / 2, 12]
           })
         }).addTo(map);
 
