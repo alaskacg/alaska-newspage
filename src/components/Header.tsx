@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Search, User, ExternalLink, Download } from "lucide-react";
+import { Menu, Search, User, ExternalLink, Download, Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -54,6 +54,15 @@ const Header = () => {
             >
               Weekly Report w/ J.R Kitchens
             </Link>
+            <a
+              href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+            >
+              <Waves className="h-3 w-3" />
+              Tides
+            </a>
           </nav>
           
           <div className="hidden md:flex lg:hidden gap-4">
@@ -135,6 +144,24 @@ const Header = () => {
                       {region.name}
                     </Link>
                   ))}
+                </div>
+
+                <div className="border-t border-border/40 pt-4">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Resources
+                  </p>
+                  <a
+                    href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between py-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors group"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Waves className="h-4 w-4" />
+                      Alaska Tide Charts
+                    </span>
+                    <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
                 </div>
 
                 <div className="border-t border-border/40 pt-4">
