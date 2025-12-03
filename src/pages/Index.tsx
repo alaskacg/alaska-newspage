@@ -18,6 +18,7 @@ import BidCalendarAd from "@/components/BidCalendarAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
+import AlaskaEventsCalendar from "@/components/AlaskaEventsCalendar";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
@@ -243,6 +244,20 @@ const Index = () => {
       <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
         <div className="container">
           <BidCalendarAd compact />
+        </div>
+      </section>
+
+      {/* Alaska Events Calendar Section */}
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+        <div className="container relative z-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-display font-semibold mb-3">Alaska Events & Important Dates</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Track hunting seasons, fishing openings, salmon runs, moon phases, and more
+            </p>
+          </div>
+          <AlaskaEventsCalendar />
         </div>
       </section>
 

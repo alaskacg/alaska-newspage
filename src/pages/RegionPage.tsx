@@ -12,6 +12,7 @@ import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
 import RegionContentManagement from "@/components/admin/RegionContentManagement";
+import AlaskaEventsCalendar from "@/components/AlaskaEventsCalendar";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -453,6 +454,13 @@ const RegionPage = () => {
               )}
             </TabsContent>
           </Tabs>
+        </div>
+      </section>
+
+      {/* Alaska Events Calendar */}
+      <section className="py-12 bg-muted/20">
+        <div className="container">
+          <AlaskaEventsCalendar region={region?.slug} />
         </div>
       </section>
 
