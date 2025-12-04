@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
 import RegionPage from "./pages/RegionPage";
 import AuthPage from "./pages/AuthPage";
@@ -22,18 +23,20 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/region/:slug" element={<RegionPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="/setup" element={<SetupPage />} />
-            <Route path="/download" element={<DownloadAppPage />} />
-            <Route path="/anpweeklyreport" element={<WeeklyReportPage />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/admin/weekly-reports" element={<AdminPanel />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/region/:slug" element={<RegionPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/setup" element={<SetupPage />} />
+              <Route path="/download" element={<DownloadAppPage />} />
+              <Route path="/anpweeklyreport" element={<WeeklyReportPage />} />
+              <Route path="/admin" element={<AdminPanel />} />
+              <Route path="/admin/weekly-reports" element={<AdminPanel />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </PageTransition>
         </TooltipProvider>
       </BrowserRouter>
     </QueryClientProvider>

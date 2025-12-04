@@ -221,14 +221,116 @@ All colors MUST be HSL.
 }
 
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll-left {
   animation: scroll-left 30s linear infinite;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+.animation-delay-700 { animation-delay: 700ms; }
+.animation-delay-1000 { animation-delay: 1000ms; }
+
+/* Stagger animation children */
+.stagger-children > * {
+  @apply opacity-0;
+}
+.stagger-children.animate > *:nth-child(1) { @apply animate-fade-in-up; animation-delay: 0ms; }
+.stagger-children.animate > *:nth-child(2) { @apply animate-fade-in-up; animation-delay: 100ms; }
+.stagger-children.animate > *:nth-child(3) { @apply animate-fade-in-up; animation-delay: 200ms; }
+.stagger-children.animate > *:nth-child(4) { @apply animate-fade-in-up; animation-delay: 300ms; }
+.stagger-children.animate > *:nth-child(5) { @apply animate-fade-in-up; animation-delay: 400ms; }
+.stagger-children.animate > *:nth-child(6) { @apply animate-fade-in-up; animation-delay: 500ms; }
+
+/* Hover effect utilities */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-xl;
+}
+
+.hover-glow {
+  @apply transition-all duration-300;
+}
+.hover-glow:hover {
+  box-shadow: 0 0 30px hsl(var(--accent) / 0.3);
+}
+
+.hover-scale {
+  @apply transition-transform duration-300;
+}
+.hover-scale:hover {
+  @apply scale-105;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+}
+
+/* Glass morphism variants */
+.glass-subtle {
+  @apply backdrop-blur-md bg-background/60 border border-border/30;
+}
+
+.glass-strong {
+  @apply backdrop-blur-2xl bg-background/90 border border-border/50 shadow-xl;
+}
+
+/* Shimmer effect for loading */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.1) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Underline animation */
+.underline-animate {
+  @apply relative;
+}
+.underline-animate::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 origin-right transition-transform duration-300;
+}
+.underline-animate:hover::after {
+  @apply scale-x-100 origin-left;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-500;
+}
+.card-hover:hover {
+  @apply shadow-2xl -translate-y-2;
+  box-shadow: 
+    0 25px 50px -12px hsl(var(--foreground) / 0.1),
+    0 0 0 1px hsl(var(--accent) / 0.1);
+}
+
+/* Section divider */
+.section-divider {
+  @apply relative;
+}
+.section-divider::before {
+  content: '';
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full;
+}
+
+/* Focus visible ring */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
 }
