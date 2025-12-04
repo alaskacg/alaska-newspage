@@ -13,6 +13,9 @@ import NewsTicker from "@/components/NewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
 import RegionContentManagement from "@/components/admin/RegionContentManagement";
 import AlaskaEventsCalendar from "@/components/AlaskaEventsCalendar";
+import AnimatedSection from "@/components/AnimatedSection";
+import ScrollToTop from "@/components/ScrollToTop";
+import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft, MapPin, Newspaper, Building2, Shield } from "lucide-react";
@@ -276,21 +279,24 @@ const RegionPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <ScrollToTop />
       
       {/* Date, Time & Weather */}
       <DateTimeWeather region={region?.slug} />
       
       {/* News Tickers */}
-      <NewsTicker category="state" color="blue" />
-      <NewsTicker category="mining" color="amber" />
-      <NewsTicker category="energy" color="green" />
-      <NewsTicker category="crime" color="red" />
+      <div className="animate-fade-in">
+        <NewsTicker category="state" color="blue" />
+        <NewsTicker category="mining" color="amber" />
+        <NewsTicker category="energy" color="green" />
+        <NewsTicker category="crime" color="red" />
+      </div>
       
       {/* Region Header with Banner */}
       <section className="relative h-96 overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
           style={{ 
             backgroundImage: `url(${regionBanners[region.slug] || statewideBanner})`,
           }}
@@ -306,15 +312,15 @@ const RegionPage = () => {
             </Button>
           </Link>
           
-          <div className="flex items-end gap-6 animate-fade-in">
+          <div className="flex items-end gap-6">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/20 text-white backdrop-blur-sm border border-white/30 shadow-2xl animate-scale-in">
               <MapPin className="h-10 w-10" />
             </div>
-            <div className="flex-1 pb-2">
-              <h1 className="text-6xl font-display font-bold text-white mb-3 tracking-tight drop-shadow-2xl">
+            <div className="flex-1 pb-2 animate-fade-in-up">
+              <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-3 tracking-tight drop-shadow-2xl">
                 {region.name}
               </h1>
-              <p className="text-2xl text-white/95 font-light drop-shadow-lg">
+              <p className="text-xl md:text-2xl text-white/95 font-light drop-shadow-lg">
                 {region.description}
               </p>
             </div>
@@ -322,158 +328,177 @@ const RegionPage = () => {
         </div>
       </section>
 
-      {/* Martin Mines Christmas Sale Ad */}
-      <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">
-        <div className="container">
-          <MartinMinesAd />
-        </div>
-      </section>
+      {/* Martin Mines Ad */}
+      <AnimatedSection animation="fade-up" delay={100}>
+        <section className="py-8 bg-gradient-to-br from-background via-muted/20 to-background">
+          <div className="container">
+            <MartinMinesAd />
+          </div>
+        </section>
+      </AnimatedSection>
 
       {/* Content Tabs */}
-      <section className="py-16">
-        <div className="container">
-          <Tabs defaultValue="resources" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12 h-14 bg-muted/50 backdrop-blur-sm p-1 rounded-xl border border-border/50">
-              <TabsTrigger value="resources" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
-                <Shield className="h-4 w-4" />
-                Public Resources
-              </TabsTrigger>
-              <TabsTrigger value="news" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
-                <Newspaper className="h-4 w-4" />
-                Local News
-              </TabsTrigger>
-              <TabsTrigger value="businesses" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
-                <Building2 className="h-4 w-4" />
-                Businesses
-              </TabsTrigger>
-            </TabsList>
+      <AnimatedSection animation="fade-up" delay={150}>
+        <section className="py-16">
+          <div className="container">
+            <Tabs defaultValue="resources" className="w-full">
+              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12 h-14 bg-muted/50 backdrop-blur-sm p-1 rounded-xl border border-border/50">
+                <TabsTrigger value="resources" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
+                  <Shield className="h-4 w-4" />
+                  <span className="hidden sm:inline">Public</span> Resources
+                </TabsTrigger>
+                <TabsTrigger value="news" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
+                  <Newspaper className="h-4 w-4" />
+                  <span className="hidden sm:inline">Local</span> News
+                </TabsTrigger>
+                <TabsTrigger value="businesses" className="flex items-center gap-2 data-[state=active]:bg-background data-[state=active]:shadow-lg transition-all duration-300 rounded-lg font-display">
+                  <Building2 className="h-4 w-4" />
+                  Businesses
+                </TabsTrigger>
+              </TabsList>
 
-            <TabsContent value="resources" className="animate-fade-in">
-              {publicResources.length > 0 ? (
-                <div className="space-y-12">
-                  {Array.from(resourcesByCity.entries())
-                    .sort(([cityA], [cityB]) => {
-                      // Sort 'Other' to the end
-                      if (cityA === 'Other') return 1;
-                      if (cityB === 'Other') return -1;
-                      return cityA.localeCompare(cityB);
-                    })
-                    .map(([city, resources]) => (
-                      <div key={city} className="space-y-6">
-                        <div className="flex items-center gap-3 pb-4 border-b-2 border-primary/20">
-                          <MapPin className="h-6 w-6 text-primary" />
-                          <h3 className="text-2xl font-display font-semibold text-foreground">
-                            {city}
-                          </h3>
-                          <span className="text-sm text-muted-foreground ml-2">
-                            ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
-                          </span>
+              <TabsContent value="resources" className="animate-fade-in">
+                {publicResources.length > 0 ? (
+                  <div className="space-y-12">
+                    {Array.from(resourcesByCity.entries())
+                      .sort(([cityA], [cityB]) => {
+                        if (cityA === 'Other') return 1;
+                        if (cityB === 'Other') return -1;
+                        return cityA.localeCompare(cityB);
+                      })
+                      .map(([city, resources]) => (
+                        <div key={city} className="space-y-6">
+                          <div className="flex items-center gap-3 pb-4 border-b-2 border-primary/20">
+                            <MapPin className="h-6 w-6 text-primary" />
+                            <h3 className="text-2xl font-display font-semibold text-foreground">
+                              {city}
+                            </h3>
+                            <span className="text-sm text-muted-foreground ml-2">
+                              ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                            {resources.map((resource, index) => (
+                              <AnimatedSection
+                                key={resource.id}
+                                animation="fade-up"
+                                delay={index * 50}
+                              >
+                                <div className="card-hover h-full">
+                                  <PublicResourceCard resource={resource} />
+                                </div>
+                              </AnimatedSection>
+                            ))}
+                          </div>
                         </div>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                          {resources.map((resource, index) => (
-                            <div 
-                              key={resource.id}
-                              className="animate-slide-in-up"
-                              style={{ animationDelay: `${index * 0.05}s` }}
-                            >
-                              <PublicResourceCard resource={resource} />
-                            </div>
-                          ))}
+                      ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-16 animate-fade-in">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
+                      <Shield className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                    <p className="text-muted-foreground text-lg">
+                      Public resources information coming soon for this region.
+                    </p>
+                  </div>
+                )}
+              </TabsContent>
+
+              <TabsContent value="news" className="animate-fade-in">
+                {news.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {news.map((item, index) => (
+                      <AnimatedSection
+                        key={item.id}
+                        animation="fade-up"
+                        delay={index * 50}
+                      >
+                        <div className="card-hover h-full">
+                          <NewsCard
+                            title={item.title}
+                            description={item.description}
+                            url={item.url}
+                            source={item.source}
+                            category={item.category}
+                            publishedAt={item.published_at}
+                            imageUrl={item.image_url}
+                            isFavorite={favorites.has(item.id)}
+                            onToggleFavorite={() => toggleFavorite(item.id)}
+                          />
                         </div>
-                      </div>
+                      </AnimatedSection>
                     ))}
-                </div>
-              ) : (
-                <div className="text-center py-16 animate-fade-in">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
-                    <Shield className="h-10 w-10 text-muted-foreground" />
                   </div>
-                  <p className="text-muted-foreground text-lg">
-                    Public resources information coming soon for this region.
-                  </p>
-                </div>
-              )}
-            </TabsContent>
-
-            <TabsContent value="news" className="animate-fade-in">{news.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {news.map((item, index) => (
-                    <div 
-                      key={item.id}
-                      className="animate-slide-in-up"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <NewsCard
-                        title={item.title}
-                        description={item.description}
-                        url={item.url}
-                        source={item.source}
-                        category={item.category}
-                        publishedAt={item.published_at}
-                        imageUrl={item.image_url}
-                        isFavorite={favorites.has(item.id)}
-                        onToggleFavorite={() => toggleFavorite(item.id)}
-                      />
+                ) : (
+                  <div className="text-center py-16 animate-fade-in">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
+                      <Newspaper className="h-10 w-10 text-muted-foreground" />
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-16 animate-fade-in">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
-                    <Newspaper className="h-10 w-10 text-muted-foreground" />
+                    <p className="text-muted-foreground text-lg">
+                      No news items available for this region yet.
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-lg">
-                    No news items available for this region yet.
-                  </p>
-                </div>
-              )}
-            </TabsContent>
+                )}
+              </TabsContent>
 
-            <TabsContent value="businesses" className="animate-fade-in">
-              {businesses.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {businesses.map((business, index) => (
-                    <div 
-                      key={business.id}
-                      className="animate-slide-in-up"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <BusinessCard business={business} />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-16 animate-fade-in">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
-                    <Building2 className="h-10 w-10 text-muted-foreground" />
+              <TabsContent value="businesses" className="animate-fade-in">
+                {businesses.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {businesses.map((business, index) => (
+                      <AnimatedSection
+                        key={business.id}
+                        animation="fade-up"
+                        delay={index * 50}
+                      >
+                        <div className="card-hover h-full">
+                          <BusinessCard business={business} />
+                        </div>
+                      </AnimatedSection>
+                    ))}
                   </div>
-                  <p className="text-muted-foreground text-lg">
-                    No businesses listed for this region yet.
-                  </p>
-                </div>
-              )}
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
+                ) : (
+                  <div className="text-center py-16 animate-fade-in">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-4">
+                      <Building2 className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                    <p className="text-muted-foreground text-lg">
+                      No businesses listed for this region yet.
+                    </p>
+                  </div>
+                )}
+              </TabsContent>
+            </Tabs>
+          </div>
+        </section>
+      </AnimatedSection>
 
       {/* Alaska Events Calendar */}
-      <section className="py-12 bg-muted/20">
-        <div className="container">
-          <AlaskaEventsCalendar region={region?.slug} />
-        </div>
-      </section>
+      <AnimatedSection animation="fade-up" delay={100}>
+        <section className="py-12 bg-muted/20">
+          <div className="container">
+            <AlaskaEventsCalendar region={region?.slug} />
+          </div>
+        </section>
+      </AnimatedSection>
 
       {/* Weekly Report from Kitchens */}
-      <WeeklyReport />
+      <AnimatedSection animation="scale" delay={100}>
+        <WeeklyReport />
+      </AnimatedSection>
 
       {/* Partner Sites */}
-      <PartnerSites title="Explore Our Partner Platforms" compact />
+      <AnimatedSection animation="fade-up" delay={100}>
+        <PartnerSites title="Explore Our Partner Platforms" compact />
+      </AnimatedSection>
 
       {/* Admin Controls - Only visible to admins */}
       {isAdmin && region && (
         <RegionContentManagement regionId={region.id} regionName={region.name} />
       )}
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
