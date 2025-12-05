@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import martinMinesBanner from "@/assets/martin-mines-banner.jpg";
+import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
 import stateOfAlaskaBanner from "@/assets/state-of-alaska-banner.jpg";
 import bidCalendarBanner from "@/assets/bid-calendar-banner.jpg";
 import greatNorthernBanner from "@/assets/great-northern-banner.jpg";
