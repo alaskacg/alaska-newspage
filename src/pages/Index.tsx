@@ -173,10 +173,10 @@ const Index = () => {
       <AnimatedSection animation="scale" delay={150}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-10"
             style={{ backgroundImage: `url(${welcomeSectionBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/40 via-background/20 to-background/40 dark:from-primary/5 dark:via-transparent dark:to-accent/5" />
           
           {/* Floating decorative elements */}
           <div className="absolute top-10 left-10 opacity-20">
