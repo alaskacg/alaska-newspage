@@ -2,241 +2,250 @@ import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
 const AnimatedLogo = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
   const [isHovered, setIsHovered] = useState(false);
-  const animationRef = useRef<number>();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    setMounted(true);
+  }, []);
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let frame = 0;
-    const dpr = window.devicePixelRatio || 1;
-    
-    // Set canvas size
-    canvas.width = 65 * dpr;
-    canvas.height = 65 * dpr;
-    ctx.scale(dpr, dpr);
-
-    const colors = {
-      sky: isDark ? "#0f172a" : "#cbd5e1",
-      aurora1: isDark ? "#22c55e" : "#16a34a",
-      aurora2: isDark ? "#3b82f6" : "#2563eb",
-      aurora3: isDark ? "#8b5cf6" : "#7c3aed",
-      mountain1: isDark ? "#334155" : "#475569",
-      mountain2: isDark ? "#1e293b" : "#334155",
-      mountain3: isDark ? "#0f172a" : "#1e293b",
-      snow: isDark ? "#e2e8f0" : "#f8fafc",
-      gold: isDark ? "#fbbf24" : "#d97706",
-      goldLight: isDark ? "#fcd34d" : "#f59e0b",
-    };
-
-    const drawAurora = (time: number) => {
-      const auroraColors = [colors.aurora1, colors.aurora2, colors.aurora3];
-      
-      for (let i = 0; i < 3; i++) {
-        ctx.beginPath();
-        ctx.moveTo(0, 15 + i * 3);
-        
-        for (let x = 0; x <= 65; x += 2) {
-          const wave1 = Math.sin((x * 0.08) + time * 0.02 + i) * 4;
-          const wave2 = Math.sin((x * 0.05) + time * 0.015 + i * 0.5) * 3;
-          const y = 15 + i * 3 + wave1 + wave2;
-          ctx.lineTo(x, y);
-        }
-        
-        ctx.strokeStyle = auroraColors[i];
-        ctx.lineWidth = 3 - i * 0.5;
-        ctx.lineCap = "round";
-        ctx.globalAlpha = 0.4 + Math.sin(time * 0.03 + i) * 0.2;
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-    };
-
-    const drawMountains = (time: number) => {
-      const bobOffset = Math.sin(time * 0.02) * 1;
-      
-      // Back mountain
-      ctx.beginPath();
-      ctx.moveTo(5, 55 + bobOffset);
-      ctx.lineTo(22, 28 + bobOffset);
-      ctx.lineTo(38, 55 + bobOffset);
-      ctx.closePath();
-      ctx.fillStyle = colors.mountain3;
-      ctx.fill();
-      
-      // Middle mountain
-      ctx.beginPath();
-      ctx.moveTo(18, 55 + bobOffset * 0.8);
-      ctx.lineTo(38, 22 + bobOffset * 0.8);
-      ctx.lineTo(55, 55 + bobOffset * 0.8);
-      ctx.closePath();
-      ctx.fillStyle = colors.mountain2;
-      ctx.fill();
-      
-      // Front mountain (tallest)
-      ctx.beginPath();
-      ctx.moveTo(30, 55 + bobOffset * 0.6);
-      ctx.lineTo(48, 18 + bobOffset * 0.6);
-      ctx.lineTo(65, 55 + bobOffset * 0.6);
-      ctx.closePath();
-      ctx.fillStyle = colors.mountain1;
-      ctx.fill();
-      
-      // Snow caps
-      ctx.beginPath();
-      ctx.moveTo(44, 24 + bobOffset * 0.6);
-      ctx.lineTo(48, 18 + bobOffset * 0.6);
-      ctx.lineTo(52, 24 + bobOffset * 0.6);
-      ctx.lineTo(48, 22 + bobOffset * 0.6);
-      ctx.closePath();
-      ctx.fillStyle = colors.snow;
-      ctx.globalAlpha = 0.9 + Math.sin(time * 0.05) * 0.1;
-      ctx.fill();
-      
-      ctx.beginPath();
-      ctx.moveTo(35, 26 + bobOffset * 0.8);
-      ctx.lineTo(38, 22 + bobOffset * 0.8);
-      ctx.lineTo(41, 26 + bobOffset * 0.8);
-      ctx.closePath();
-      ctx.fillStyle = colors.snow;
-      ctx.globalAlpha = 0.8 + Math.sin(time * 0.04) * 0.1;
-      ctx.fill();
-      
-      ctx.globalAlpha = 1;
-    };
-
-    const drawGoldRing = (time: number) => {
-      const pulseScale = 1 + Math.sin(time * 0.03) * 0.02;
-      const centerX = 32.5;
-      const centerY = 32.5;
-      const radius = 30 * pulseScale;
-      
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.strokeStyle = colors.gold;
-      ctx.lineWidth = 2;
-      ctx.globalAlpha = 0.5 + Math.sin(time * 0.02) * 0.2;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    };
-
-    const drawStars = (time: number) => {
-      const stars = [
-        { x: 8, y: 12 },
-        { x: 58, y: 8 },
-        { x: 12, y: 35 },
-        { x: 55, y: 30 },
-      ];
-      
-      stars.forEach((star, i) => {
-        const twinkle = Math.sin(time * 0.05 + i * 1.5) * 0.5 + 0.5;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, 1, 0, Math.PI * 2);
-        ctx.fillStyle = colors.goldLight;
-        ctx.globalAlpha = twinkle * 0.7;
-        ctx.fill();
-      });
-      ctx.globalAlpha = 1;
-    };
-
-    const animate = () => {
-      frame++;
-      ctx.clearRect(0, 0, 65, 65);
-      
-      // Draw elements
-      drawAurora(frame);
-      drawMountains(frame);
-      drawGoldRing(frame);
-      if (isDark) drawStars(frame);
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isDark]);
+  if (!mounted) return null;
 
   return (
     <div 
-      className="flex items-center gap-3 cursor-pointer group"
+      className="flex items-center gap-4 cursor-pointer group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Canvas Logo */}
-      <div className={`relative transition-transform duration-500 ${isHovered ? 'scale-110' : ''}`}>
-        <canvas
-          ref={canvasRef}
-          className="w-[65px] h-[65px]"
-          style={{ imageRendering: 'crisp-edges' }}
+      {/* SVG Logo - Modern geometric Alaska silhouette */}
+      <div className={`relative transition-all duration-700 ${isHovered ? 'scale-105' : ''}`}>
+        <svg
+          ref={svgRef}
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          className="drop-shadow-lg"
+        >
+          {/* Background circle */}
+          <circle
+            cx="28"
+            cy="28"
+            r="26"
+            className={`transition-all duration-500 ${
+              isDark 
+                ? 'fill-slate-800 stroke-amber-500/30' 
+                : 'fill-stone-200 stroke-stone-400/50'
+            }`}
+            strokeWidth="1.5"
+          />
+          
+          {/* Aurora waves - animated */}
+          <g className="aurora-group">
+            {[0, 1, 2].map((i) => (
+              <path
+                key={i}
+                d={`M 8 ${18 + i * 4} Q 20 ${14 + i * 3} 28 ${17 + i * 4} T 48 ${16 + i * 4}`}
+                fill="none"
+                className={`transition-all duration-500 ${
+                  isDark 
+                    ? i === 0 ? 'stroke-emerald-400' : i === 1 ? 'stroke-cyan-400' : 'stroke-violet-400'
+                    : i === 0 ? 'stroke-emerald-600' : i === 1 ? 'stroke-blue-600' : 'stroke-purple-600'
+                }`}
+                strokeWidth={2.5 - i * 0.4}
+                strokeLinecap="round"
+                opacity={0.7 - i * 0.15}
+                style={{
+                  animation: `aurora-wave ${3 + i * 0.5}s ease-in-out infinite`,
+                  animationDelay: `${i * 0.3}s`
+                }}
+              />
+            ))}
+          </g>
+
+          {/* Mountains - sharp geometric style */}
+          <g className="mountains">
+            {/* Back mountain */}
+            <path
+              d="M 10 44 L 20 26 L 30 44 Z"
+              className={`transition-colors duration-500 ${
+                isDark ? 'fill-slate-700' : 'fill-stone-500'
+              }`}
+            />
+            {/* Middle mountain */}
+            <path
+              d="M 18 44 L 30 22 L 42 44 Z"
+              className={`transition-colors duration-500 ${
+                isDark ? 'fill-slate-600' : 'fill-stone-400'
+              }`}
+            />
+            {/* Front mountain - tallest */}
+            <path
+              d="M 26 44 L 38 18 L 50 44 Z"
+              className={`transition-colors duration-500 ${
+                isDark ? 'fill-slate-500' : 'fill-stone-600'
+              }`}
+            />
+            {/* Snow caps */}
+            <path
+              d="M 35 23 L 38 18 L 41 23 L 38 21 Z"
+              className={`transition-colors duration-500 ${
+                isDark ? 'fill-slate-200' : 'fill-white'
+              }`}
+              style={{
+                animation: 'snow-glint 4s ease-in-out infinite'
+              }}
+            />
+            <path
+              d="M 28 26 L 30 22 L 32 26 L 30 24 Z"
+              className={`transition-colors duration-500 ${
+                isDark ? 'fill-slate-300' : 'fill-white'
+              }`}
+              opacity="0.9"
+            />
+          </g>
+
+          {/* Stars - only in dark mode */}
+          {isDark && (
+            <g className="stars">
+              {[
+                { x: 12, y: 14, delay: 0 },
+                { x: 46, y: 12, delay: 0.5 },
+                { x: 16, y: 32, delay: 1 },
+                { x: 44, y: 28, delay: 1.5 },
+              ].map((star, i) => (
+                <circle
+                  key={i}
+                  cx={star.x}
+                  cy={star.y}
+                  r="1.2"
+                  className="fill-amber-300"
+                  style={{
+                    animation: 'star-twinkle 2s ease-in-out infinite',
+                    animationDelay: `${star.delay}s`
+                  }}
+                />
+              ))}
+            </g>
+          )}
+
+          {/* Gold accent ring */}
+          <circle
+            cx="28"
+            cy="28"
+            r="24"
+            fill="none"
+            className={`transition-all duration-500 ${
+              isDark ? 'stroke-amber-500/40' : 'stroke-amber-600/30'
+            }`}
+            strokeWidth="1"
+            style={{
+              animation: 'ring-pulse 4s ease-in-out infinite'
+            }}
+          />
+        </svg>
+
+        {/* Hover glow */}
+        <div 
+          className={`absolute inset-0 rounded-full transition-opacity duration-500 ${
+            isHovered 
+              ? isDark ? 'opacity-100 bg-amber-400/15 blur-xl' : 'opacity-100 bg-amber-600/10 blur-xl'
+              : 'opacity-0'
+          }`} 
         />
-        {/* Glow effect on hover */}
-        <div className={`absolute inset-0 rounded-full bg-amber-400/20 blur-xl transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
-      {/* Text Logo */}
-      <div className="flex flex-col leading-tight">
-        {/* ALASKA */}
-        <div className="relative overflow-hidden">
+      {/* Text Logo - Completely new design */}
+      <div className="flex flex-col">
+        {/* ANP stacked abbreviation */}
+        <div className="flex items-baseline gap-0.5">
           <span 
             className={`
-              text-2xl sm:text-3xl font-black tracking-[0.2em] uppercase
-              bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 dark:from-amber-400 dark:via-yellow-300 dark:to-amber-400
-              bg-clip-text text-transparent
+              text-3xl sm:text-4xl font-black tracking-tight
               transition-all duration-500
-              ${isHovered ? 'tracking-[0.25em]' : ''}
+              ${isDark 
+                ? 'text-amber-400' 
+                : 'text-stone-800'
+              }
+              ${isHovered ? 'tracking-wide' : ''}
             `}
-            style={{ fontFamily: "'Sora', sans-serif" }}
+            style={{ 
+              fontFamily: "'Cinzel', serif",
+              textShadow: isDark ? '0 2px 8px rgba(251, 191, 36, 0.2)' : 'none'
+            }}
           >
-            ALASKA
+            ANP
           </span>
-          {/* Animated underline */}
-          <div 
-            className={`
-              h-0.5 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 
-              dark:from-amber-400 dark:via-yellow-300 dark:to-amber-400
-              transition-all duration-500 origin-left
-              ${isHovered ? 'scale-x-100' : 'scale-x-0'}
-            `}
-          />
         </div>
         
-        {/* NEWS PAGE */}
-        <span 
-          className={`
-            text-sm sm:text-base font-bold tracking-[0.3em] uppercase
-            text-slate-700 dark:text-slate-200
-            transition-all duration-300
-          `}
-          style={{ fontFamily: "'Sora', sans-serif" }}
-        >
-          NEWS PAGE
-        </span>
-        
-        {/* Tagline */}
-        <span 
-          className={`
-            text-[10px] sm:text-xs font-medium tracking-[0.15em] uppercase
-            text-slate-500 dark:text-slate-400
-            transition-all duration-300
-            ${isHovered ? 'text-slate-600 dark:text-slate-300' : ''}
-          `}
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          Regional News Source
-        </span>
+        {/* Full name */}
+        <div className="flex flex-col -mt-1">
+          <span 
+            className={`
+              text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase
+              transition-all duration-300
+              ${isDark ? 'text-slate-300' : 'text-stone-600'}
+            `}
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Alaska News Page
+          </span>
+          
+          {/* Tagline with animated underline */}
+          <div className="relative mt-0.5">
+            <span 
+              className={`
+                text-[9px] sm:text-[10px] font-medium tracking-[0.15em] uppercase
+                transition-all duration-300
+                ${isDark ? 'text-slate-500' : 'text-stone-500'}
+              `}
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              Regional News Source
+            </span>
+            {/* Animated underline on hover */}
+            <div 
+              className={`
+                absolute -bottom-0.5 left-0 h-px
+                transition-all duration-500 origin-left
+                ${isDark ? 'bg-amber-500/50' : 'bg-amber-600/40'}
+                ${isHovered ? 'w-full' : 'w-0'}
+              `}
+            />
+          </div>
+        </div>
       </div>
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes aurora-wave {
+          0%, 100% { 
+            d: path("M 8 18 Q 20 14 28 17 T 48 16");
+            opacity: 0.7;
+          }
+          50% { 
+            d: path("M 8 16 Q 20 20 28 15 T 48 18");
+            opacity: 0.9;
+          }
+        }
+        
+        @keyframes star-twinkle {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.3); }
+        }
+        
+        @keyframes snow-glint {
+          0%, 100% { opacity: 0.9; }
+          50% { opacity: 1; filter: brightness(1.2); }
+        }
+        
+        @keyframes ring-pulse {
+          0%, 100% { stroke-opacity: 0.3; transform: scale(1); }
+          50% { stroke-opacity: 0.5; transform: scale(1.02); }
+        }
+      `}</style>
     </div>
   );
 };

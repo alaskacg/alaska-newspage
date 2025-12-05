@@ -8,61 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light newspaper theme - warm gray tones with good contrast */
-    --background: 40 12% 88%;
-    --foreground: 220 15% 15%;
+    /* Light mode - muted stone/sepia tones, much darker */
+    --background: 35 15% 72%;
+    --foreground: 25 20% 12%;
 
-    --card: 40 10% 92%;
-    --card-foreground: 220 15% 15%;
+    --card: 35 12% 76%;
+    --card-foreground: 25 20% 12%;
 
-    --popover: 40 10% 92%;
-    --popover-foreground: 220 15% 15%;
+    --popover: 35 12% 76%;
+    --popover-foreground: 25 20% 12%;
 
     /* Deep blue for primary */
-    --primary: 210 55% 28%;
+    --primary: 210 55% 25%;
     --primary-foreground: 0 0% 100%;
 
-    /* Warm gray secondary */
-    --secondary: 40 8% 82%;
-    --secondary-foreground: 220 15% 15%;
+    /* Warm stone secondary */
+    --secondary: 35 10% 68%;
+    --secondary-foreground: 25 20% 12%;
 
-    /* Muted gray tones */
-    --muted: 40 6% 78%;
-    --muted-foreground: 220 10% 35%;
+    /* Muted stone tones */
+    --muted: 35 8% 64%;
+    --muted-foreground: 25 15% 30%;
 
     /* Forest green accent */
-    --accent: 150 40% 32%;
+    --accent: 150 35% 28%;
     --accent-foreground: 0 0% 100%;
 
     /* Red for destructive */
-    --destructive: 0 65% 40%;
+    --destructive: 0 60% 38%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 8% 72%;
-    --input: 40 8% 72%;
-    --ring: 150 40% 32%;
+    --border: 35 10% 58%;
+    --input: 35 10% 58%;
+    --ring: 150 35% 28%;
 
     --radius: 0.5rem;
     
     /* Custom tokens */
-    --warm-gray-dark: 220 10% 20%;
-    --forest-green: 150 40% 32%;
-    --deep-blue: 210 55% 28%;
-    --gold: 45 80% 40%;
-    --warm-red: 0 65% 40%;
-    --nature-gold: 45 90% 45%;
+    --warm-gray-dark: 25 15% 18%;
+    --forest-green: 150 35% 28%;
+    --deep-blue: 210 55% 25%;
+    --gold: 40 75% 38%;
+    --warm-red: 0 60% 38%;
+    --nature-gold: 40 85% 42%;
 
-    --sidebar-background: 40 10% 85%;
-    --sidebar-foreground: 220 15% 15%;
-    --sidebar-primary: 210 55% 28%;
+    --sidebar-background: 35 12% 70%;
+    --sidebar-foreground: 25 20% 12%;
+    --sidebar-primary: 210 55% 25%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 6% 78%;
-    --sidebar-accent-foreground: 220 15% 15%;
-    --sidebar-border: 40 8% 72%;
-    --sidebar-ring: 150 40% 32%;
+    --sidebar-accent: 35 8% 64%;
+    --sidebar-accent-foreground: 25 20% 12%;
+    --sidebar-border: 35 10% 58%;
+    --sidebar-ring: 150 35% 28%;
 
     /* Header background for light mode */
-    --header-bg: 40 10% 82%;
+    --header-bg: 35 12% 68%;
   }
 
   .dark {
@@ -175,15 +175,16 @@ All colors MUST be HSL.
     @apply font-display;
   }
 
-  /* Light mode image full fidelity - no transparency reduction */
-  :root img,
-  :root [style*="background-image"] {
-    filter: contrast(1.12) brightness(1.08) saturate(1.15);
+  /* Light mode - full image fidelity, no transparency or fading */
+  :root img {
+    filter: contrast(1.05) saturate(1.1);
+    opacity: 1 !important;
   }
 
+  :root [style*="background-image"],
   :root .bg-cover,
   :root .bg-center {
-    filter: contrast(1.15) brightness(1.1) saturate(1.2);
+    filter: contrast(1.08) saturate(1.05);
   }
 
   /* Dark mode keeps default */
