@@ -360,3 +360,8 @@ All colors MUST be HSL.
 .focus-ring {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
 }
+
+/* Muted map tiles for light mode */
+.map-tiles-muted {
+  filter: saturate(0.7) brightness(0.85) contrast(1.05) sepia(0.15);
+}

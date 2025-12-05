@@ -30,6 +30,7 @@ import regionNavigatorBg from "@/assets/region-navigator-bg.jpg";
 import latestNewsBg from "@/assets/latest-news-bg.jpg";
 import alaskaMapBg from "@/assets/alaska-map-bg.jpg";
 import alaskaEventsBg from "@/assets/alaska-events-bg.jpg";
+import builtForAlaskansBg from "@/assets/built-for-alaskans-bg.jpg";
 
 interface Region {
   id: string;
@@ -322,7 +323,11 @@ const Index = () => {
       {/* Features Section */}
       <AnimatedSection animation="blur" delay={100}>
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-20"
+            style={{ backgroundImage: `url(${builtForAlaskansBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
           <div className="container relative z-10">
             <div className="text-center mb-16">
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
@@ -358,7 +363,7 @@ const Index = () => {
                     animation="scale"
                     delay={index * 150}
                   >
-                    <div className="text-center group p-8 rounded-2xl bg-card/50 border border-border/50 card-hover">
+                    <div className="text-center group p-8 rounded-2xl bg-card/70 backdrop-blur-sm border border-border/50 card-hover">
                       <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${feature.color} text-white mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
                         <Icon className="h-10 w-10" />
                       </div>
