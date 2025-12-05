@@ -94,16 +94,17 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       });
       mapInstanceRef.current = map;
 
-      // Theme-aware tile layer - using warmer tones for light mode
+      // Theme-aware tile layer - using darker muted tones for both modes
       const isDark = document.documentElement.classList.contains('dark');
       const tileUrl = isDark 
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/{z}/{y}/{x}.png";
+        : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
       
       tileLayerRef.current = L.tileLayer(tileUrl, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         maxZoom: 15,
         minZoom: 4,
+        className: isDark ? '' : 'map-tiles-muted'
       }).addTo(map);
 
       // Define region colors
@@ -399,7 +400,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       const isDark = resolvedTheme === 'dark';
       const tileUrl = isDark 
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/{z}/{y}/{x}.png";
+        : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
       
       // Remove old layer and add new one
       mapInstanceRef.current.removeLayer(tileLayerRef.current);
@@ -407,6 +408,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         maxZoom: 15,
         minZoom: 4,
+        className: isDark ? '' : 'map-tiles-muted'
       }).addTo(mapInstanceRef.current);
     });
   }, [resolvedTheme]);
