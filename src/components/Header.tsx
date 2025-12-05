@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Search, User, ExternalLink, Download, Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,9 +10,19 @@ import {
 } from "@/components/ui/sheet";
 import AnimatedLogo from "@/components/AnimatedLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import headerBg from "@/assets/header-aurora-bg.jpg";
 
 const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const regions = [
     { name: "Southeast", slug: "southeast" },
@@ -31,26 +41,45 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background backdrop-blur supports-[backdrop-filter]:bg-background/95 animate-fade-in shadow-lg">
-      <div className="container flex h-24 items-center justify-between">
+    <header className={`sticky top-0 z-50 w-full border-b border-border/40 transition-all duration-500 ${scrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
+      {/* Aurora Background with Animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center animate-aurora-shift"
+          style={{ 
+            backgroundImage: `url(${headerBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 40%'
+          }}
+        />
+        {/* Animated Aurora Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-cyan-900/30 to-blue-900/40 animate-aurora-glow" />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80 backdrop-blur-[2px]" />
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
+      </div>
+      
+      <div className="container relative z-10 flex h-24 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/" className="group">
             <AnimatedLogo />
           </Link>
           
           <nav className="hidden lg:flex gap-6 items-center">
-            {regions.map((region) => (
+            {regions.map((region, idx) => (
               <Link
                 key={region.slug}
                 to={`/region/${region.slug}`}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+                className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full drop-shadow-sm"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
                 {region.name}
               </Link>
             ))}
             <Link
               to="/anpweeklyreport"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+              className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full drop-shadow-sm"
             >
               Weekly Report w/ J.R Kitchens
             </Link>
@@ -58,7 +87,7 @@ const Header = () => {
               href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+              className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1 drop-shadow-sm"
             >
               <Waves className="h-3 w-3" />
               Tides
@@ -72,7 +101,7 @@ const Header = () => {
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium text-muted-foreground hover:text-accent transition-colors"
+                className="text-xs font-medium text-foreground/80 hover:text-accent transition-colors drop-shadow-sm"
               >
                 {site.name}
               </a>
@@ -86,13 +115,14 @@ const Header = () => {
               <Input
                 type="search"
                 placeholder="Search news..."
-                className="w-64"
+                className="w-64 bg-background/80 backdrop-blur-sm"
                 autoFocus
               />
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsSearchOpen(false)}
+                className="text-foreground/90"
               >
                 Cancel
               </Button>
@@ -102,14 +132,14 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsSearchOpen(true)}
-              className="hidden md:inline-flex"
+              className="hidden md:inline-flex text-foreground/90 hover:text-accent"
             >
               <Search className="h-5 w-5" />
             </Button>
           )}
 
           <Link to="/download">
-            <Button variant="default" size="sm" className="hidden md:inline-flex gap-2">
+            <Button variant="default" size="sm" className="hidden md:inline-flex gap-2 shadow-lg">
               <Download className="h-4 w-4" />
               <span className="text-xs">Get App</span>
             </Button>
@@ -118,14 +148,14 @@ const Header = () => {
           <ThemeToggle />
 
           <Link to="/auth">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="text-foreground/90 hover:text-accent">
               <User className="h-5 w-5" />
             </Button>
           </Link>
 
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-foreground/90">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>

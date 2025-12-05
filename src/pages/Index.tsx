@@ -210,10 +210,12 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
           <div className="container relative z-10">
             <div className="text-center mb-12">
-              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30 animate-pulse">
                 Interactive Explorer
               </span>
-              <h2 className="text-3xl font-display font-bold mb-4 text-foreground">Explore Alaska by Region</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground title-gradient-animated">
+                Explore Alaska by Region
+              </h2>
               <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
                 Click on any region to discover local news, events, and information relevant to that area
               </p>
@@ -253,9 +255,11 @@ const Index = () => {
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
                 Stay Informed
               </span>
-              <h2 className="text-3xl font-display font-bold mb-4 text-foreground">Alaska Events & Important Dates</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground title-glow">
+                Alaska Events & Important Dates
+              </h2>
               <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
-                Track hunting seasons, fishing openings, salmon runs, moon phases, and more
+                Fur Rendezvous, Iditarod, World Ice Art Championships, hunting seasons, fishing openings, and more
               </p>
             </div>
             <AlaskaEventsCalendar />
@@ -274,10 +278,10 @@ const Index = () => {
           <div className="container relative z-10">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-3 border border-primary/30">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-3 border border-primary/30 animate-pulse">
                   Breaking Stories
                 </span>
-                <h2 className="text-3xl font-display font-bold text-foreground">Latest News</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground text-3d">Latest News</h2>
               </div>
               <Button 
                 variant="outline" 
@@ -333,7 +337,9 @@ const Index = () => {
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
                 Why Choose Us
               </span>
-              <h2 className="text-3xl font-display font-bold text-foreground">Built for Alaskans</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground title-gradient-animated">
+                Built for Alaskans
+              </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
