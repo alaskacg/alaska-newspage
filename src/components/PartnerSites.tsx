@@ -49,10 +49,10 @@ const PartnerSites = ({ title = "Our Partner Sites", compact = false }: PartnerS
     <section className={`${compact ? 'py-12' : 'py-20'} animate-fade-in relative overflow-hidden`}>
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-15"
+        className="absolute inset-0 bg-cover bg-center opacity-80 dark:opacity-55"
         style={{ backgroundImage: `url(${partnerSitesBg})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
+      <div className="absolute inset-0 bg-background/25 dark:bg-background/40" />
       
       <div className="container relative z-10">
         <div className="text-center mb-12">
