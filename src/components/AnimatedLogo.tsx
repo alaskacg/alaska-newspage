@@ -254,7 +254,7 @@ const AnimatedLogo = () => {
               `}
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Regional News Source
+              Alaska's Regional News Source
             </span>
             {/* Animated underline on hover */}
             <div 

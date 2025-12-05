@@ -20,10 +20,10 @@ const Footer = () => {
   ];
 
   const partners = [
-    { name: "Martin Mines", url: "https://martinmines.com" },
+    { name: "Martin Mines", url: "https://martinminesgold.com" },
     { name: "Great Northern Construction", url: "https://greatnorthernconstruction.com" },
     { name: "Bid Calendar", url: "https://bidcalendar.com" },
-    { name: "State of Alaska", url: "https://stateofalaska.com" },
+    { name: "State of Alaska", url: "https://alaska.gov" },
   ];
 
   return (
@@ -35,23 +35,29 @@ const Footer = () => {
           <div className="space-y-6">
             <AnimatedLogo />
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Your trusted source for regional news, events, and information across the Last Frontier.
+              Alaska's Regional News Source — your trusted source for regional news, events, and information across the Last Frontier.
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/AlaskaNewsPage"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
               >
                 <Facebook className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/AlaskaNewsPage"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
               >
                 <Twitter className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/alaskanewspage"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-muted hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-110"
               >
                 <Instagram className="h-4 w-4" />
