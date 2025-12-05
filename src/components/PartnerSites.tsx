@@ -48,10 +48,10 @@ const PartnerSites = ({ title = "Our Partner Sites", compact = false }: PartnerS
     <section className={`${compact ? 'py-12' : 'py-20'} animate-fade-in`}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="font-display text-2xl font-semibold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h2 className="font-display text-2xl font-semibold mb-3 text-foreground">
             {title}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
             Explore our family of Alaska-focused platforms delivering essential services and information
           </p>
         </div>

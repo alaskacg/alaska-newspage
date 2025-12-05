@@ -188,14 +188,14 @@ const Index = () => {
           
           <div className="container relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 animate-bounce-soft">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-sm font-medium mb-6 animate-bounce-soft border border-accent/30">
                 <Sparkles className="h-4 w-4" />
                 Your Gateway to Alaska
               </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 gradient-text">
-                Welcome to Alaska News Page
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground">
+                Welcome to <span className="gradient-text">Alaska News Page</span>
               </h2>
-              <p className="text-muted-foreground mb-8 text-lg">
+              <p className="text-foreground/80 dark:text-muted-foreground mb-8 text-lg">
                 Your trusted resource for regional news across the Last Frontier
               </p>
               <div className="aspect-video rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card hover-glow transition-all duration-500">
@@ -262,11 +262,11 @@ const Index = () => {
         <section id="map-section" className="py-16 section-divider">
           <div className="container">
             <div className="text-center mb-12">
-              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30">
                 Interactive Explorer
               </span>
-              <h2 className="text-3xl font-display font-bold mb-4">Explore Alaska by Region</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <h2 className="text-3xl font-display font-bold mb-4 text-foreground">Explore Alaska by Region</h2>
+              <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
                 Click on any region to discover local news, events, and information relevant to that area
               </p>
             </div>
@@ -298,11 +298,11 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
           <div className="container relative z-10">
             <div className="text-center mb-10">
-              <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium mb-4">
+              <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
                 Stay Informed
               </span>
-              <h2 className="text-3xl font-display font-bold mb-4">Alaska Events & Important Dates</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <h2 className="text-3xl font-display font-bold mb-4 text-foreground">Alaska Events & Important Dates</h2>
+              <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
                 Track hunting seasons, fishing openings, salmon runs, moon phases, and more
               </p>
             </div>
@@ -322,10 +322,10 @@ const Index = () => {
           <div className="container relative z-10">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-3 border border-primary/30">
                   Breaking Stories
                 </span>
-                <h2 className="text-3xl font-display font-bold">Latest News</h2>
+                <h2 className="text-3xl font-display font-bold text-foreground">Latest News</h2>
               </div>
               <Button 
                 variant="outline" 
@@ -374,10 +374,10 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
           <div className="container relative z-10">
             <div className="text-center mb-16">
-              <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium mb-4">
+              <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
                 Why Choose Us
               </span>
-              <h2 className="text-3xl font-display font-bold">Built for Alaskans</h2>
+              <h2 className="text-3xl font-display font-bold text-foreground">Built for Alaskans</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
