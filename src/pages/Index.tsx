@@ -160,74 +160,14 @@ const Index = () => {
         <NewsTicker category="crime" color="red" />
       </div>
       
+      {/* Weekly Report Section - Now at the top */}
+      <WeeklyReport />
+
       {/* First Ad - Compact */}
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
           <div className="container">
             <MartinMinesAd compact />
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Video Section */}
-      <AnimatedSection animation="scale" delay={150}>
-        <section className="py-16 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-10"
-            style={{ backgroundImage: `url(${welcomeSectionBg})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-background/40 via-background/20 to-background/40 dark:from-primary/5 dark:via-transparent dark:to-accent/5" />
-          
-          {/* Floating decorative elements */}
-          <div className="absolute top-10 left-10 opacity-20">
-            <Mountain className="h-24 w-24 text-accent animate-float" />
-          </div>
-          <div className="absolute bottom-10 right-10 opacity-20">
-            <TreePine className="h-20 w-20 text-primary animate-float animation-delay-500" />
-          </div>
-          
-          <div className="container relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-sm font-medium mb-6 animate-bounce-soft border border-accent/30">
-                <Sparkles className="h-4 w-4" />
-                Your Gateway to Alaska
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground">
-                Welcome to <span className="gradient-text">Alaska News Page</span>
-              </h2>
-              <p className="text-foreground/80 dark:text-muted-foreground mb-8 text-lg">
-                Your trusted resource for regional news across the Last Frontier
-              </p>
-              <div className="aspect-video rounded-2xl overflow-hidden border border-border/50 shadow-2xl bg-card hover-glow transition-all duration-500">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-accent/10">
-                  <div className="text-center space-y-4">
-                    <div className="relative">
-                      <Newspaper className="h-20 w-20 mx-auto text-primary animate-pulse-soft" />
-                      <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse" />
-                    </div>
-                    <p className="text-muted-foreground font-medium">Intro video placeholder</p>
-                    <p className="text-xs text-muted-foreground/70">Embed your Canva video here</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Weekly Report Section */}
-      <AnimatedSection animation="fade-up" delay={100}>
-        <section className="py-16 relative overflow-hidden bg-muted/30">
-          <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-10"
-            style={{ backgroundImage: `url(${weeklyReportBg})` }}
-          />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-15" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-          
-          <div className="container relative z-10">
-            <WeeklyReport />
           </div>
         </section>
       </AnimatedSection>

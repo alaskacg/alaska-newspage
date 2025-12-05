@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Video } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import EnhancedVideoPlayer from "@/components/EnhancedVideoPlayer";
@@ -45,52 +44,113 @@ const WeeklyReport = () => {
   };
 
   return (
-    <section className="py-16 relative overflow-hidden bg-muted/30">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Animated background effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-amber-900/20" />
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-10"
+        className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{ backgroundImage: `url(${weeklyReportBg})` }}
       />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
+      
+      {/* Animated particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-amber-400/30 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Glowing orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '6s', animationDelay: '2s' }} />
       
       <div className="container relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8 animate-fade-in">
-            <div className="inline-block px-6 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 dark:from-nature-gold/20 dark:to-yellow-500/20 border-2 border-amber-600/40 dark:border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
-              <span className="text-sm font-display font-semibold text-amber-700 dark:text-nature-gold">✦ Published Every Wednesday ✦</span>
+        <div className="max-w-5xl mx-auto">
+          {/* Dynamic Title Section */}
+          <div className="text-center mb-12 animate-fade-in">
+            {/* Published badge */}
+            <div className="inline-block px-6 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-2 border-amber-500/40 rounded-full mb-8 backdrop-blur-sm shadow-lg animate-bounce-soft">
+              <span className="text-sm font-display font-semibold text-amber-400 tracking-wider">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3 text-foreground">
-              The Alaska News Page Weekly Report w/ J.R. Kitchens
-            </h2>
+            
+            {/* Main Title with dynamic animation */}
+            <div className="relative mb-6">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
+                <span className="block text-white/90 animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
+                  The
+                </span>
+                <span 
+                  className="block bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent animate-slide-in-right bg-[length:200%_auto] animate-shimmer"
+                  style={{ animationDelay: '0.3s' }}
+                >
+                  ANP Weekly Report
+                </span>
+              </h1>
+              
+              {/* Decorative line */}
+              <div className="mt-4 mx-auto w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-scale-in" style={{ animationDelay: '0.5s' }} />
+            </div>
+            
+            {/* Host name with elegant styling */}
+            <div className="animate-fade-in" style={{ animationDelay: '0.7s' }}>
+              <p className="text-xl md:text-2xl font-display text-white/80 tracking-wide">
+                with{" "}
+                <span className="relative inline-block">
+                  <span className="text-amber-300 font-semibold">J.R. Kitchens</span>
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0" />
+                </span>
+              </p>
+            </div>
+            
+            {/* Subtitle */}
+            <p className="mt-4 text-white/60 text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.9s' }}>
+              Your weekly deep-dive into Alaska's most important stories
+            </p>
           </div>
-          <div className="glass rounded-2xl border-2 border-nature-gold/30 p-8 md:p-12 shadow-2xl hover:shadow-nature-gold/20 transition-all duration-500 hover:scale-[1.02] group">
+          
+          {/* Video Section */}
+          <div className="glass rounded-2xl border-2 border-amber-500/30 p-6 md:p-10 shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 animate-scale-in" style={{ animationDelay: '1s' }}>
             {loading ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-12 text-white/60">
+                <div className="inline-block w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mb-4" />
                 <p>Loading latest report...</p>
               </div>
             ) : latestReport ? (
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <h3 className="text-xl font-display font-semibold text-foreground">
+                  <h3 className="text-xl md:text-2xl font-display font-semibold text-white">
                     {latestReport.title}
                   </h3>
                   {latestReport.description && (
-                    <p className="text-muted-foreground">
+                    <p className="text-white/70">
                       {latestReport.description}
                     </p>
                   )}
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-xl">
+                <div className="rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                   <EnhancedVideoPlayer 
                     videoUrl={latestReport.video_url}
                     title={latestReport.title}
+                    autoPlay={true}
                   />
                 </div>
               </div>
             ) : (
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-muted-foreground text-center text-lg leading-relaxed">
+              <div className="text-center py-12">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-amber-500/20 flex items-center justify-center">
+                  <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <p className="text-white/70 text-lg leading-relaxed max-w-md mx-auto">
                   The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
                 </p>
               </div>

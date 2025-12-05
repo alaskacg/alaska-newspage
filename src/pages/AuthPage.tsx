@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import MartinMinesAd from "@/components/MartinMinesAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
 import NewsTicker from "@/components/NewsTicker";
-import { MapPin, Shield, Home } from "lucide-react";
+import { MapPin, Shield, Home, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 
@@ -23,27 +23,38 @@ const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const { toast } = useToast();
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkUser();
+    checkExistingSession();
   }, []);
 
-  const checkUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      // Check if user is admin
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .eq("role", "admin")
-        .maybeSingle();
-      
-      setIsAdmin(!!roleData);
+  const checkExistingSession = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        // Check if user is admin
+        const { data: roleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id)
+          .eq("role", "admin")
+          .maybeSingle();
+        
+        if (roleData) {
+          // Already logged in as admin, redirect to dashboard
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.error("Error checking session:", error);
+    } finally {
+      setCheckingAuth(false);
     }
   };
 
@@ -97,12 +108,20 @@ const AuthPage = () => {
             .eq("role", "admin")
             .maybeSingle();
           
-          setIsAdmin(!!roleData);
-          
-          toast({
-            title: "Welcome back!",
-            description: roleData ? "Admin access granted" : "Successfully signed in",
-          });
+          if (roleData) {
+            toast({
+              title: "Welcome back!",
+              description: "Redirecting to admin dashboard...",
+            });
+            // Redirect to admin dashboard
+            navigate("/admin");
+          } else {
+            toast({
+              title: "Welcome back!",
+              description: "Successfully signed in",
+            });
+            navigate("/");
+          }
         }
       }
     } catch (error: any) {
@@ -115,6 +134,14 @@ const AuthPage = () => {
       setLoading(false);
     }
   };
+
+  if (checkingAuth) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-primary/90 to-accent">
+        <Loader2 className="w-8 h-8 animate-spin text-white" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-primary via-primary/90 to-accent">
@@ -138,11 +165,11 @@ const AuthPage = () => {
           
           <Card>
             <CardHeader>
-              <CardTitle>{isSignUp ? "Create Account" : "Welcome Back"}</CardTitle>
+              <CardTitle>{isSignUp ? "Create Account" : "Admin Login"}</CardTitle>
               <CardDescription>
                 {isSignUp
                   ? "Sign up to save favorites and get personalized news"
-                  : "Sign in to your account to continue"}
+                  : "Sign in to access the admin dashboard"}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -176,7 +203,12 @@ const AuthPage = () => {
                   )}
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Loading...
+                    </>
+                  ) : isSignUp ? "Sign Up" : "Sign In"}
                 </Button>
               </form>
               
@@ -191,33 +223,16 @@ const AuthPage = () => {
                 </button>
               </div>
 
-              {isAdmin && !loading && (
-                <div className="mt-6 pt-6 border-t space-y-3">
-                  <div className="text-center">
-                    <p className="text-sm font-semibold text-green-600 dark:text-green-400 mb-3">
-                      ✓ Admin Access Granted
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <Button
-                      variant="outline"
-                      onClick={() => navigate("/")}
-                      className="w-full"
-                    >
-                      <Home className="mr-2 h-4 w-4" />
-                      Home
-                    </Button>
-                    <Button
-                      variant="default"
-                      onClick={() => navigate("/admin")}
-                      className="w-full"
-                    >
-                      <Shield className="mr-2 h-4 w-4" />
-                      Admin Panel
-                    </Button>
-                  </div>
-                </div>
-              )}
+              <div className="mt-6 pt-6 border-t">
+                <Button
+                  variant="outline"
+                  onClick={() => navigate("/")}
+                  className="w-full"
+                >
+                  <Home className="mr-2 h-4 w-4" />
+                  Back to Home
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
