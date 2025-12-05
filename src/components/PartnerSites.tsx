@@ -3,6 +3,7 @@ import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
 import stateOfAlaskaBanner from "@/assets/state-of-alaska-banner.jpg";
 import bidCalendarBanner from "@/assets/bid-calendar-banner.jpg";
 import greatNorthernBanner from "@/assets/great-northern-banner.jpg";
+import partnerSitesBg from "@/assets/partner-sites-bg.jpg";
 
 interface PartnerSite {
   name: string;
@@ -45,10 +46,20 @@ interface PartnerSitesProps {
 
 const PartnerSites = ({ title = "Our Partner Sites", compact = false }: PartnerSitesProps) => {
   return (
-    <section className={`${compact ? 'py-12' : 'py-20'} animate-fade-in`}>
-      <div className="container">
+    <section className={`${compact ? 'py-12' : 'py-20'} animate-fade-in relative overflow-hidden`}>
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-15"
+        style={{ backgroundImage: `url(${partnerSitesBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
+      
+      <div className="container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="font-display text-2xl font-semibold mb-3 text-foreground">
+          <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
+            Trusted Partners
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-3 text-foreground title-gradient-animated">
             {title}
           </h2>
           <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">

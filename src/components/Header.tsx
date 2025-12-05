@@ -44,20 +44,29 @@ const Header = () => {
     <header className={`sticky top-0 z-50 w-full border-b border-border/40 transition-all duration-500 ${scrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
       {/* Aurora Background with Animation */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Main aurora image with subtle animation */}
         <div 
-          className="absolute inset-0 bg-cover bg-center animate-aurora-shift"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[30000ms] ease-in-out"
           style={{ 
             backgroundImage: `url(${headerBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 40%'
+            backgroundSize: '120%',
+            backgroundPosition: 'center 30%',
+            animation: 'aurora-drift 45s ease-in-out infinite alternate'
           }}
         />
-        {/* Animated Aurora Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/40 via-cyan-900/30 to-blue-900/40 animate-aurora-glow" />
+        {/* Aurora color overlay with pulsing effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/15 to-purple-500/20 animate-aurora-pulse" />
+        {/* Secondary aurora glow */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-green-400/10 via-transparent to-blue-400/10 animate-aurora-wave" />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80 backdrop-blur-[2px]" />
-        {/* Shimmer effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/70 backdrop-blur-[1px]" />
+        {/* Shimmer effect moving across */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent animate-shimmer-slow" />
+        {/* Starfield effect */}
+        <div className="absolute inset-0 opacity-30" style={{ 
+          backgroundImage: 'radial-gradient(1px 1px at 20px 30px, white, transparent), radial-gradient(1px 1px at 40px 70px, white, transparent), radial-gradient(1px 1px at 50px 160px, white, transparent), radial-gradient(1px 1px at 90px 40px, white, transparent), radial-gradient(1px 1px at 130px 80px, white, transparent)',
+          backgroundSize: '200px 200px'
+        }} />
       </div>
       
       <div className="container relative z-10 flex h-24 items-center justify-between">

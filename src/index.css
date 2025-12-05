@@ -523,3 +523,57 @@ All colors MUST be HSL.
     4px 4px 0px hsl(var(--muted) / 0.4),
     5px 5px 10px hsl(var(--foreground) / 0.2);
 }
+
+/* Enhanced Aurora Animations */
+@keyframes aurora-drift {
+  0% {
+    background-position: center 25%;
+    transform: scale(1);
+  }
+  25% {
+    background-position: center 30%;
+  }
+  50% {
+    background-position: center 35%;
+    transform: scale(1.05);
+  }
+  75% {
+    background-position: center 30%;
+  }
+  100% {
+    background-position: center 25%;
+    transform: scale(1);
+  }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes aurora-wave {
+  0% {
+    opacity: 0.1;
+    transform: translateX(-10%);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translateX(10%);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateX(-10%);
+  }
+}
+
+.animate-aurora-pulse {
+  animation: aurora-pulse 6s ease-in-out infinite;
+}
+
+.animate-aurora-wave {
+  animation: aurora-wave 12s ease-in-out infinite;
+}
