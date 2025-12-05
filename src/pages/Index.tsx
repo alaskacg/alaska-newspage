@@ -173,7 +173,7 @@ const Index = () => {
       <AnimatedSection animation="scale" delay={150}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-10"
             style={{ backgroundImage: `url(${welcomeSectionBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
@@ -220,7 +220,7 @@ const Index = () => {
         <section className="py-16 relative overflow-hidden bg-muted/30">
           <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-10"
             style={{ backgroundImage: `url(${weeklyReportBg})` }}
           />
           <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
@@ -245,7 +245,7 @@ const Index = () => {
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-10"
             style={{ backgroundImage: `url(${regionNavigatorBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5" />
@@ -315,7 +315,7 @@ const Index = () => {
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-10"
             style={{ backgroundImage: `url(${latestNewsBg})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-transparent to-accent/5" />

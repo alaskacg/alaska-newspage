@@ -49,7 +49,7 @@ const WeeklyReport = () => {
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/5 via-transparent to-accent/5" />
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-10"
+        className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-10"
         style={{ backgroundImage: `url(${weeklyReportBg})` }}
       />
       <div className="absolute top-0 right-0 w-96 h-96 bg-nature-gold/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '8s' }} />
