@@ -2,6 +2,7 @@ import { ExternalLink, Calendar, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import bidCalendarBanner from "@/assets/bid-calendar-banner.jpg";
+import adTextureBg from "@/assets/ad-texture-bg.jpg";
 
 const BidCalendarAd = ({ compact = false }: { compact?: boolean }) => {
   if (compact) {
@@ -49,8 +50,16 @@ const BidCalendarAd = ({ compact = false }: { compact?: boolean }) => {
 
   return (
     <Card className="overflow-hidden border-2 border-accent/20 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/20 group">
-      <div className="relative h-64 bg-gradient-to-br from-accent via-forest-green to-primary overflow-hidden">
-...
+      <div className="relative h-64 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${adTextureBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/40 via-transparent to-primary/30" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-700"
+          style={{ backgroundImage: `url(${bidCalendarBanner})` }}
+        />
       </div>
     </Card>
   );

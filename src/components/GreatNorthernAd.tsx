@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import greatNorthernBanner from "@/assets/great-northern-banner.jpg";
+import adTextureBg from "@/assets/ad-texture-bg.jpg";
 
 const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
   if (compact) {
@@ -46,8 +47,16 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
 
   return (
     <Card className="overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 group">
-      <div className="relative h-64 bg-gradient-to-br from-deep-blue via-primary to-accent overflow-hidden">
-...
+      <div className="relative h-64 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${adTextureBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-accent/30" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-700"
+          style={{ backgroundImage: `url(${greatNorthernBanner})` }}
+        />
       </div>
     </Card>
   );
