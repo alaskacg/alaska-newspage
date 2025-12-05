@@ -13,38 +13,62 @@ interface CalendarEvent {
   description?: string;
 }
 
-// Alaska-specific events for 2025
+// Alaska-specific events for 2025-2026
 const alaskaEvents: CalendarEvent[] = [
+  // === MAJOR ALASKA FESTIVALS & EVENTS ===
+  // Fur Rendezvous 2026 - Feb 26 - Mar 8
+  { date: 26, month: 1, title: "Fur Rendezvous Opens", type: "holiday", description: "North America's premier winter festival - Anchorage" },
+  { date: 27, month: 1, title: "Rondy Running of the Reindeer", type: "holiday", description: "Downtown Anchorage 4th Avenue" },
+  { date: 28, month: 1, title: "Rondy Outhouse Races", type: "holiday", description: "Anchorage - Fur Rondy tradition" },
+  { date: 1, month: 2, title: "Rondy Miners & Trappers Ball", type: "holiday", description: "Annual costume ball - Anchorage" },
+  { date: 7, month: 2, title: "Iditarod Ceremonial Start", type: "holiday", description: "Downtown Anchorage - 4th Avenue" },
+  { date: 8, month: 2, title: "Iditarod Official Restart", type: "holiday", description: "Willow, Alaska - Race begins" },
+  { date: 8, month: 2, title: "Fur Rendezvous Closes", type: "holiday", description: "Final day of Rondy festivities" },
+  
+  // World Ice Art Championships - Feb 16 - Mar 31, 2026
+  { date: 16, month: 1, title: "World Ice Art Championships Opens", type: "holiday", description: "Fairbanks - Ice Alaska competition begins" },
+  { date: 17, month: 1, title: "WIAC Single Block Competition", type: "holiday", description: "Fairbanks - Artists begin carving" },
+  { date: 22, month: 1, title: "WIAC Multi-Block Sculpting", type: "holiday", description: "Massive ice sculptures - Fairbanks" },
+  { date: 4, month: 2, title: "WIAC Competition Ends", type: "holiday", description: "Judging complete - Fairbanks" },
+  
+  // Other Major Events
+  { date: 15, month: 0, title: "Polar Bear Jump", type: "holiday", description: "Seward - New Year plunge tradition" },
+  { date: 18, month: 0, title: "MLK Jr. Day Events", type: "holiday", description: "Statewide celebrations" },
+  { date: 14, month: 1, title: "Valentines in the Arctic", type: "holiday", description: "Northern lights viewing events" },
+  { date: 17, month: 2, title: "St. Patrick's Day Celebrations", type: "holiday", description: "Anchorage & Fairbanks" },
+  
   // Seasons
   { date: 20, month: 2, title: "Spring Equinox", type: "season", description: "First day of spring" },
-  { date: 21, month: 5, title: "Summer Solstice", type: "season", description: "Longest day - Midnight Sun" },
+  { date: 21, month: 5, title: "Summer Solstice", type: "season", description: "Longest day - Midnight Sun celebration" },
   { date: 22, month: 8, title: "Fall Equinox", type: "season", description: "First day of fall" },
-  { date: 21, month: 11, title: "Winter Solstice", type: "season", description: "Shortest day" },
+  { date: 21, month: 11, title: "Winter Solstice", type: "season", description: "Shortest day - Northern darkness" },
   
   // Salmon Runs (approximate peak times)
-  { date: 15, month: 4, title: "King Salmon Run Begins", type: "salmon", description: "Kenai Peninsula" },
-  { date: 1, month: 5, title: "Sockeye Salmon Run", type: "salmon", description: "Bristol Bay region" },
-  { date: 15, month: 6, title: "Pink Salmon Run Peak", type: "salmon", description: "Statewide" },
-  { date: 1, month: 7, title: "Silver Salmon Season", type: "salmon", description: "Southeast Alaska" },
-  { date: 15, month: 7, title: "Chum Salmon Run", type: "salmon", description: "Interior rivers" },
+  { date: 15, month: 4, title: "King Salmon Run Begins", type: "salmon", description: "Kenai Peninsula - World famous fishery" },
+  { date: 1, month: 5, title: "Sockeye Salmon Run", type: "salmon", description: "Bristol Bay region - Worlds largest" },
+  { date: 15, month: 5, title: "Combat Fishing Opens", type: "salmon", description: "Kenai & Russian Rivers" },
+  { date: 15, month: 6, title: "Pink Salmon Run Peak", type: "salmon", description: "Statewide - Humpy season" },
+  { date: 1, month: 7, title: "Silver Salmon Season", type: "salmon", description: "Southeast Alaska - Coho run" },
+  { date: 15, month: 7, title: "Chum Salmon Run", type: "salmon", description: "Interior rivers - Dog salmon" },
   
-  // Hunting Seasons (2025 dates - approximate)
+  // Hunting Seasons (2026 dates)
   { date: 1, month: 7, title: "Moose Season Opens", type: "hunting", description: "General season - varies by unit" },
-  { date: 10, month: 7, title: "Caribou Season Opens", type: "hunting", description: "Northern regions" },
-  { date: 1, month: 8, title: "Deer Season Opens", type: "hunting", description: "Southeast Alaska" },
-  { date: 15, month: 8, title: "Dall Sheep Season", type: "hunting", description: "Alpine regions" },
-  { date: 1, month: 9, title: "Brown Bear Fall Season", type: "hunting", description: "Select units" },
-  { date: 15, month: 3, title: "Ptarmigan Season Ends", type: "hunting", description: "Statewide" },
+  { date: 10, month: 7, title: "Caribou Season Opens", type: "hunting", description: "Northern regions - Porcupine herd" },
+  { date: 1, month: 8, title: "Deer Season Opens", type: "hunting", description: "Southeast Alaska - Sitka blacktail" },
+  { date: 15, month: 8, title: "Dall Sheep Season", type: "hunting", description: "Alpine regions - Trophy hunts" },
+  { date: 1, month: 9, title: "Brown Bear Fall Season", type: "hunting", description: "Select units - Kodiak & Peninsula" },
+  { date: 15, month: 3, title: "Ptarmigan Season Ends", type: "hunting", description: "Statewide - Final day" },
   
   // Fishing Seasons
-  { date: 1, month: 3, title: "Ice Fishing Peak", type: "fishing", description: "Interior lakes" },
-  { date: 15, month: 4, title: "Halibut Season Opens", type: "fishing", description: "Coastal waters" },
-  { date: 1, month: 5, title: "Trout Season Opens", type: "fishing", description: "Southcentral" },
+  { date: 1, month: 0, title: "Ice Fishing Season", type: "fishing", description: "Interior lakes - Burbot & pike" },
+  { date: 1, month: 3, title: "Ice Fishing Peak", type: "fishing", description: "Interior lakes - Best conditions" },
+  { date: 15, month: 4, title: "Halibut Season Opens", type: "fishing", description: "Coastal waters - Charter season" },
+  { date: 1, month: 5, title: "Trout Season Opens", type: "fishing", description: "Southcentral streams" },
   { date: 15, month: 5, title: "Lingcod Season Opens", type: "fishing", description: "Southeast waters" },
   
-  // Moon Phases 2025 (New & Full moons)
+  // Moon Phases 2026
   { date: 29, month: 0, title: "New Moon", type: "moon" },
-  { date: 12, month: 0, title: "Full Moon", type: "moon", description: "Wolf Moon" },
+  { date: 13, month: 0, title: "Full Moon", type: "moon", description: "Wolf Moon" },
   { date: 27, month: 1, title: "New Moon", type: "moon" },
   { date: 12, month: 1, title: "Full Moon", type: "moon", description: "Snow Moon" },
   { date: 29, month: 2, title: "New Moon", type: "moon" },
@@ -62,19 +86,25 @@ const alaskaEvents: CalendarEvent[] = [
   { date: 21, month: 8, title: "New Moon", type: "moon" },
   { date: 7, month: 8, title: "Full Moon", type: "moon", description: "Harvest Moon" },
   { date: 21, month: 9, title: "New Moon", type: "moon" },
-  { date: 7, month: 9, title: "Full Moon", type: "moon", description: "Hunter's Moon" },
+  { date: 7, month: 9, title: "Full Moon", type: "moon", description: "Hunters Moon" },
   { date: 20, month: 10, title: "New Moon", type: "moon" },
   { date: 5, month: 10, title: "Full Moon", type: "moon", description: "Beaver Moon" },
   { date: 19, month: 11, title: "New Moon", type: "moon" },
   { date: 4, month: 11, title: "Full Moon", type: "moon", description: "Cold Moon" },
   
   // Alaska Holidays & Events
-  { date: 1, month: 0, title: "New Year's Day", type: "holiday" },
-  { date: 27, month: 2, title: "Seward's Day", type: "holiday", description: "Alaska purchase anniversary" },
-  { date: 18, month: 9, title: "Alaska Day", type: "holiday", description: "Transfer of Alaska to US" },
-  { date: 4, month: 6, title: "Independence Day", type: "holiday" },
-  { date: 27, month: 10, title: "Thanksgiving", type: "holiday" },
+  { date: 1, month: 0, title: "New Years Day", type: "holiday" },
+  { date: 27, month: 2, title: "Sewards Day", type: "holiday", description: "Alaska purchase anniversary 1867" },
+  { date: 18, month: 9, title: "Alaska Day", type: "holiday", description: "Transfer of Alaska to US 1867" },
+  { date: 4, month: 6, title: "Independence Day", type: "holiday", description: "Fireworks at midnight sun" },
+  { date: 26, month: 10, title: "Thanksgiving", type: "holiday" },
   { date: 25, month: 11, title: "Christmas Day", type: "holiday" },
+  
+  // December 2025 Events
+  { date: 6, month: 11, title: "Design Alaska Holiday Concert", type: "holiday", description: "Fairbanks - Holiday music" },
+  { date: 13, month: 11, title: "Anchorage Holiday Market", type: "holiday", description: "Downtown Anchorage" },
+  { date: 21, month: 11, title: "Winter Solstice Celebration", type: "season", description: "Shortest day festivities" },
+  { date: 31, month: 11, title: "New Years Eve Celebrations", type: "holiday", description: "Statewide fireworks & events" },
 ];
 
 const eventTypeConfig = {
