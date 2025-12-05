@@ -179,10 +179,10 @@ const Index = () => {
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-80 dark:opacity-60"
             style={{ backgroundImage: `url(${regionNavigatorBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5" />
+          <div className="absolute inset-0 bg-background/30 dark:bg-background/40" />
           <div className="container relative z-10">
             {regions.length > 0 && (
               <RegionNavigator regions={regions} onRegionClick={handleRegionClick} />
@@ -204,10 +204,10 @@ const Index = () => {
       <AnimatedSection animation="scale" delay={150}>
         <section id="map-section" className="py-16 section-divider relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-15"
+            className="absolute inset-0 bg-cover bg-center opacity-75 dark:opacity-55"
             style={{ backgroundImage: `url(${alaskaMapBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
+          <div className="absolute inset-0 bg-background/25 dark:bg-background/35" />
           <div className="container relative z-10">
             <div className="text-center mb-12">
               <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30 animate-pulse">
@@ -246,10 +246,10 @@ const Index = () => {
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden section-divider">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20"
+            className="absolute inset-0 bg-cover bg-center opacity-80 dark:opacity-55"
             style={{ backgroundImage: `url(${alaskaEventsBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-background/70 to-background/85" />
+          <div className="absolute inset-0 bg-background/25 dark:bg-background/40" />
           <div className="container relative z-10">
             <div className="text-center mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
@@ -271,10 +271,10 @@ const Index = () => {
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-35 dark:opacity-10"
+            className="absolute inset-0 bg-cover bg-center opacity-75 dark:opacity-50"
             style={{ backgroundImage: `url(${latestNewsBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-transparent to-accent/5" />
+          <div className="absolute inset-0 bg-background/30 dark:bg-background/45" />
           <div className="container relative z-10">
             <div className="flex items-center justify-between mb-10">
               <div>
@@ -328,10 +328,10 @@ const Index = () => {
       <AnimatedSection animation="blur" delay={100}>
         <section className="py-20 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-20"
+            className="absolute inset-0 bg-cover bg-center opacity-80 dark:opacity-55"
             style={{ backgroundImage: `url(${builtForAlaskansBg})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+          <div className="absolute inset-0 bg-background/25 dark:bg-background/40" />
           <div className="container relative z-10">
             <div className="text-center mb-16">
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">

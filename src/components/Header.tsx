@@ -44,9 +44,9 @@ const Header = () => {
     <header className={`sticky top-0 z-50 w-full border-b border-border/40 transition-all duration-500 ${scrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
       {/* Aurora Background with Animation */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Main aurora image with subtle animation */}
+        {/* Main aurora image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-[30000ms] ease-in-out"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${headerBg})`,
             backgroundSize: '120%',
@@ -54,19 +54,10 @@ const Header = () => {
             animation: 'aurora-drift 45s ease-in-out infinite alternate'
           }}
         />
-        {/* Aurora color overlay with pulsing effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/15 to-purple-500/20 animate-aurora-pulse" />
-        {/* Secondary aurora glow */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-green-400/10 via-transparent to-blue-400/10 animate-aurora-wave" />
-        {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/70 backdrop-blur-[1px]" />
-        {/* Shimmer effect moving across */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent animate-shimmer-slow" />
-        {/* Starfield effect */}
-        <div className="absolute inset-0 opacity-30" style={{ 
-          backgroundImage: 'radial-gradient(1px 1px at 20px 30px, white, transparent), radial-gradient(1px 1px at 40px 70px, white, transparent), radial-gradient(1px 1px at 50px 160px, white, transparent), radial-gradient(1px 1px at 90px 40px, white, transparent), radial-gradient(1px 1px at 130px 80px, white, transparent)',
-          backgroundSize: '200px 200px'
-        }} />
+        {/* Light overlay for text readability only */}
+        <div className="absolute inset-0 bg-background/20 dark:bg-background/30" />
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
       </div>
       
       <div className="container relative z-10 flex h-24 items-center justify-between">
