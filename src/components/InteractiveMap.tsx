@@ -94,11 +94,11 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       });
       mapInstanceRef.current = map;
 
-      // Theme-aware tile layer
+      // Theme-aware tile layer - using warmer tones for light mode
       const isDark = document.documentElement.classList.contains('dark');
       const tileUrl = isDark 
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/{z}/{y}/{x}.png";
       
       tileLayerRef.current = L.tileLayer(tileUrl, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -399,7 +399,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       const isDark = resolvedTheme === 'dark';
       const tileUrl = isDark 
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/{z}/{y}/{x}.png";
       
       // Remove old layer and add new one
       mapInstanceRef.current.removeLayer(tileLayerRef.current);
