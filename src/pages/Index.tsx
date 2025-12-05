@@ -28,6 +28,8 @@ import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
 import regionNavigatorBg from "@/assets/region-navigator-bg.jpg";
 import latestNewsBg from "@/assets/latest-news-bg.jpg";
+import alaskaMapBg from "@/assets/alaska-map-bg.jpg";
+import alaskaEventsBg from "@/assets/alaska-events-bg.jpg";
 
 interface Region {
   id: string;
@@ -163,20 +165,11 @@ const Index = () => {
       {/* Weekly Report Section - Now at the top */}
       <WeeklyReport />
 
-      {/* First Ad - Compact */}
+      {/* First Ad - Martin Mines */}
       <AnimatedSection animation="fade-up" delay={100}>
-        <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
+        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
           <div className="container">
             <MartinMinesAd compact />
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Second Ad - Compact */}
-      <AnimatedSection animation="fade-left" delay={100}>
-        <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
-          <div className="container">
-            <GreatNorthernAd compact />
           </div>
         </section>
       </AnimatedSection>
@@ -197,10 +190,24 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
+      {/* Second Ad - Great Northern */}
+      <AnimatedSection animation="fade-left" delay={100}>
+        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
+          <div className="container">
+            <GreatNorthernAd compact />
+          </div>
+        </section>
+      </AnimatedSection>
+
       {/* Interactive Map Section */}
       <AnimatedSection animation="scale" delay={150}>
-        <section id="map-section" className="py-16 section-divider">
-          <div className="container">
+        <section id="map-section" className="py-16 section-divider relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-25 dark:opacity-15"
+            style={{ backgroundImage: `url(${alaskaMapBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
+          <div className="container relative z-10">
             <div className="text-center mb-12">
               <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30">
                 Interactive Explorer
@@ -223,9 +230,9 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* Third Ad - Compact */}
+      {/* Third Ad - Bid Calendar */}
       <AnimatedSection animation="fade-right" delay={100}>
-        <section className="py-6 bg-gradient-to-br from-background via-muted/10 to-background">
+        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
           <div className="container">
             <BidCalendarAd compact />
           </div>
@@ -235,7 +242,11 @@ const Index = () => {
       {/* Alaska Events Calendar Section */}
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden section-divider">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20"
+            style={{ backgroundImage: `url(${alaskaEventsBg})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/85 via-background/70 to-background/85" />
           <div className="container relative z-10">
             <div className="text-center mb-10">
               <span className="inline-block px-3 py-1 rounded-full bg-accent/20 dark:bg-accent/10 text-accent-foreground dark:text-accent text-xs font-medium mb-4 border border-accent/30">
