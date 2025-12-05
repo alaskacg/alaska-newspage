@@ -57,10 +57,10 @@ const WeeklyReport = () => {
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8 animate-fade-in">
-            <div className="inline-block px-6 py-2 bg-gradient-to-r from-nature-gold/20 to-yellow-500/20 border-2 border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
-              <span className="text-sm font-display font-semibold text-nature-gold">✦ Published Every Wednesday ✦</span>
+            <div className="inline-block px-6 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 dark:from-nature-gold/20 dark:to-yellow-500/20 border-2 border-amber-600/40 dark:border-nature-gold/40 rounded-full mb-6 backdrop-blur-sm shadow-lg">
+              <span className="text-sm font-display font-semibold text-amber-700 dark:text-nature-gold">✦ Published Every Wednesday ✦</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3 text-muted-foreground">
+            <h2 className="text-2xl md:text-3xl font-display font-semibold mb-3 text-foreground">
               The Alaska News Page Weekly Report w/ J.R. Kitchens
             </h2>
           </div>

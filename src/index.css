@@ -8,60 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Light newspaper theme - softer gray/newsprint tones */
-    --background: 30 8% 78%;
-    --foreground: 30 15% 18%;
+    /* Light newspaper theme - warm gray tones with good contrast */
+    --background: 40 12% 88%;
+    --foreground: 220 15% 15%;
 
-    --card: 30 6% 82%;
-    --card-foreground: 30 15% 18%;
+    --card: 40 10% 92%;
+    --card-foreground: 220 15% 15%;
 
-    --popover: 30 6% 82%;
-    --popover-foreground: 30 15% 18%;
+    --popover: 40 10% 92%;
+    --popover-foreground: 220 15% 15%;
 
     /* Deep blue for primary */
-    --primary: 210 55% 32%;
+    --primary: 210 55% 28%;
     --primary-foreground: 0 0% 100%;
 
     /* Warm gray secondary */
-    --secondary: 30 8% 75%;
-    --secondary-foreground: 30 15% 18%;
+    --secondary: 40 8% 82%;
+    --secondary-foreground: 220 15% 15%;
 
     /* Muted gray tones */
-    --muted: 30 6% 72%;
-    --muted-foreground: 30 10% 35%;
+    --muted: 40 6% 78%;
+    --muted-foreground: 220 10% 35%;
 
     /* Forest green accent */
-    --accent: 150 35% 35%;
+    --accent: 150 40% 32%;
     --accent-foreground: 0 0% 100%;
 
     /* Red for destructive */
-    --destructive: 0 60% 42%;
+    --destructive: 0 65% 40%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 8% 68%;
-    --input: 30 8% 68%;
-    --ring: 150 35% 35%;
+    --border: 40 8% 72%;
+    --input: 40 8% 72%;
+    --ring: 150 40% 32%;
 
     --radius: 0.5rem;
     
     /* Custom tokens */
-    --warm-gray-dark: 30 10% 22%;
-    --forest-green: 150 35% 35%;
-    --deep-blue: 210 55% 32%;
-    --gold: 45 75% 42%;
-    --warm-red: 0 60% 42%;
+    --warm-gray-dark: 220 10% 20%;
+    --forest-green: 150 40% 32%;
+    --deep-blue: 210 55% 28%;
+    --gold: 45 80% 40%;
+    --warm-red: 0 65% 40%;
+    --nature-gold: 45 90% 45%;
 
-    --sidebar-background: 30 6% 80%;
-    --sidebar-foreground: 30 15% 18%;
-    --sidebar-primary: 210 55% 32%;
+    --sidebar-background: 40 10% 85%;
+    --sidebar-foreground: 220 15% 15%;
+    --sidebar-primary: 210 55% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 6% 72%;
-    --sidebar-accent-foreground: 30 15% 18%;
-    --sidebar-border: 30 8% 68%;
-    --sidebar-ring: 150 35% 35%;
+    --sidebar-accent: 40 6% 78%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 40 8% 72%;
+    --sidebar-ring: 150 40% 32%;
 
     /* Header background for light mode */
-    --header-bg: 30 6% 75%;
+    --header-bg: 40 10% 82%;
   }
 
   .dark {
@@ -105,6 +106,7 @@ All colors MUST be HSL.
     --deep-blue: 210 55% 45%;
     --gold: 45 85% 60%;
     --warm-red: 0 60% 50%;
+    --nature-gold: 45 90% 55%;
 
     --sidebar-background: 20 15% 8%;
     --sidebar-foreground: 0 0% 95%;
@@ -271,9 +273,13 @@ All colors MUST be HSL.
   @apply scale-105;
 }
 
-/* Gradient text utility */
+/* Gradient text utility - high contrast for both modes */
 .gradient-text {
-  @apply bg-clip-text text-transparent;
+  @apply bg-clip-text text-transparent font-bold;
+  background-image: linear-gradient(135deg, hsl(210 55% 25%), hsl(150 40% 30%));
+}
+
+.dark .gradient-text {
   background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
 }
 

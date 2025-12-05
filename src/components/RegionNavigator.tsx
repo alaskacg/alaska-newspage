@@ -29,10 +29,10 @@ const RegionNavigator = ({ regions, onRegionClick }: RegionNavigatorProps) => {
   return (
     <div className="space-y-6">
       <div className="text-center animate-fade-in">
-        <h3 className="text-2xl font-display font-semibold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+        <h3 className="text-2xl font-display font-semibold mb-3 text-foreground">
           Quick Region Access
         </h3>
-        <p className="text-muted-foreground font-light">Click to zoom to any region on the map</p>
+        <p className="text-foreground/70 dark:text-muted-foreground font-light">Click to zoom to any region on the map</p>
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
