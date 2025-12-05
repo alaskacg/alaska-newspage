@@ -72,7 +72,7 @@ const PartnerSites = ({ title = "Our Partner Sites", compact = false }: PartnerS
                   alt={site.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent dark:via-background/80 opacity-70 dark:opacity-90" />
               </div>
               
               <div className="relative p-6">

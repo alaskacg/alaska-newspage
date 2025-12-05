@@ -9,10 +9,10 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
       <Card className="overflow-hidden border border-primary/20 hover:border-primary/40 transition-all duration-300 group">
         <div className="relative h-32 bg-gradient-to-br from-deep-blue via-primary to-accent overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-80 group-hover:scale-105 transition-transform duration-700"
+            className="absolute inset-0 bg-cover bg-center opacity-100 dark:opacity-80 group-hover:scale-105 transition-transform duration-700"
             style={{ backgroundImage: `url(${greatNorthernBanner})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent dark:from-background/95 dark:via-background/40" />
           
           <div className="relative h-full flex items-center justify-between p-4">
             <div className="flex-1">
