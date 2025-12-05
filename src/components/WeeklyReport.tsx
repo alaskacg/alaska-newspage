@@ -44,13 +44,14 @@ const WeeklyReport = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Animated background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-amber-900/20" />
+    <section className="py-20 relative overflow-hidden">
+      {/* Investigative team background - high visibility */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-20"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${weeklyReportBg})` }}
       />
+      {/* Subtle gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/70" />
       
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

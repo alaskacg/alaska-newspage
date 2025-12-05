@@ -293,6 +293,35 @@ All colors MUST be HSL.
   @apply scale-105;
 }
 
+/* Header navigation links - optimized for aurora background */
+.nav-link-header {
+  color: #1e293b; /* Dark slate for light mode - visible against aurora */
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.nav-link-header:hover {
+  color: #fbbf24; /* Amber on hover */
+  text-shadow: 
+    0 0 12px rgba(251, 191, 36, 0.6),
+    0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.dark .nav-link-header {
+  color: #f1f5f9; /* Light slate for dark mode */
+  text-shadow: 
+    0 0 10px rgba(34, 211, 238, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark .nav-link-header:hover {
+  color: #fbbf24; /* Amber on hover */
+  text-shadow: 
+    0 0 15px rgba(251, 191, 36, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 /* Gradient text utility - high contrast for both modes */
 .gradient-text {
   @apply bg-clip-text text-transparent font-bold;

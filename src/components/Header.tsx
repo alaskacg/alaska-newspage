@@ -44,18 +44,18 @@ const Header = () => {
     <header className={`sticky top-0 z-50 w-full border-b border-border/40 transition-all duration-500 ${scrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
       {/* Aurora Background with Animation */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Main aurora image */}
+        {/* Main aurora image - full visibility */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${headerBg})`,
-            backgroundSize: '120%',
-            backgroundPosition: 'center 30%',
+            backgroundSize: '130%',
+            backgroundPosition: 'center 40%',
             animation: 'aurora-drift 45s ease-in-out infinite alternate'
           }}
         />
-        {/* Light overlay for text readability only */}
-        <div className="absolute inset-0 bg-background/20 dark:bg-background/30" />
+        {/* Very subtle overlay for minimal text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 dark:from-black/20 dark:via-transparent dark:to-black/30" />
         {/* Shimmer effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
       </div>
@@ -71,7 +71,7 @@ const Header = () => {
               <Link
                 key={region.slug}
                 to={`/region/${region.slug}`}
-                className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full drop-shadow-sm"
+                className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 {region.name}
@@ -79,7 +79,7 @@ const Header = () => {
             ))}
             <Link
               to="/anpweeklyreport"
-              className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full drop-shadow-sm"
+              className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Weekly Report w/ J.R Kitchens
             </Link>
@@ -87,7 +87,7 @@ const Header = () => {
               href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-foreground/90 hover:text-accent transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1 drop-shadow-sm"
+              className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
             >
               <Waves className="h-3 w-3" />
               Tides

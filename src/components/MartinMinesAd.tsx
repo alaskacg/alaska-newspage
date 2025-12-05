@@ -6,6 +6,7 @@ import braceletImg from "@/assets/martin-mines-bracelet.png";
 import earringsImg from "@/assets/martin-mines-earrings.png";
 import goldNuggetsImg from "@/assets/martin-mines-gold-nuggets.jpg";
 import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
+import adTextureBg from "@/assets/ad-texture-bg.jpg";
 
 const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
   const products = [
@@ -65,8 +66,12 @@ const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
       rel="noopener noreferrer"
       className="block relative overflow-hidden rounded-lg border border-nature-gold/40 shadow-lg hover:shadow-nature-gold/40 transition-all duration-500 hover:scale-[1.02] group"
     >
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/20 via-yellow-600/20 to-nature-gold/20 animate-pulse" style={{ animationDuration: '3s' }} />
+      {/* Textured background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${adTextureBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/30 via-transparent to-nature-gold/20" />
       
       {/* Sparkle effects */}
       <div className="absolute top-2 right-2 animate-pulse" style={{ animationDuration: '2s' }}>
