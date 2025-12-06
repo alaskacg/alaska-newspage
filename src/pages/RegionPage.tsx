@@ -366,32 +366,48 @@ const RegionPage = () => {
                         if (cityB === 'Other') return -1;
                         return cityA.localeCompare(cityB);
                       })
-                      .map(([city, resources]) => (
-                        <div key={city} className="space-y-6">
-                          <div className="flex items-center gap-3 pb-4 border-b-2 border-primary/20">
-                            <MapPin className="h-6 w-6 text-primary" />
-                            <h3 className="text-2xl font-display font-semibold text-foreground">
-                              {city}
-                            </h3>
-                            <span className="text-sm text-muted-foreground ml-2">
-                              ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
-                            </span>
+                      .map(([city, resources]) => {
+                        // Generate slug for city page link
+                        const citySlug = city.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                        const hasCityPage = ['anchorage', 'fairbanks', 'juneau', 'sitka', 'kodiak', 'nome', 'barrow', 'valdez', 'ketchikan', 'wasilla', 'palmer', 'bethel', 'kenai', 'soldotna', 'homer', 'kotzebue', 'cordova', 'seward', 'petersburg', 'wrangell', 'dillingham', 'unalaska', 'chicken', 'boundary', 'north-pole', 'delta-junction', 'tok', 'glennallen', 'healy', 'nenana', 'big-lake', 'eagle-river', 'girdwood', 'talkeetna', 'willow', 'haines', 'skagway', 'craig', 'yakutat', 'hoonah'].includes(citySlug);
+                        
+                        return (
+                          <div key={city} className="space-y-6">
+                            <div className="flex items-center justify-between gap-3 pb-4 border-b-2 border-primary/20">
+                              <div className="flex items-center gap-3">
+                                <MapPin className="h-6 w-6 text-primary" />
+                                <h3 className="text-2xl font-display font-semibold text-foreground">
+                                  {city}
+                                </h3>
+                                <span className="text-sm text-muted-foreground ml-2">
+                                  ({resources.length} {resources.length === 1 ? 'resource' : 'resources'})
+                                </span>
+                              </div>
+                              {hasCityPage && city !== 'Other' && (
+                                <Link to={`/community/${citySlug}`}>
+                                  <Button variant="outline" size="sm" className="gap-2">
+                                    <MapPin className="h-4 w-4" />
+                                    View {city} Page
+                                  </Button>
+                                </Link>
+                              )}
+                            </div>
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                              {resources.map((resource, index) => (
+                                <AnimatedSection
+                                  key={resource.id}
+                                  animation="fade-up"
+                                  delay={index * 50}
+                                >
+                                  <div className="card-hover h-full">
+                                    <PublicResourceCard resource={resource} citySlug={hasCityPage ? citySlug : undefined} />
+                                  </div>
+                                </AnimatedSection>
+                              ))}
+                            </div>
                           </div>
-                          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                            {resources.map((resource, index) => (
-                              <AnimatedSection
-                                key={resource.id}
-                                animation="fade-up"
-                                delay={index * 50}
-                              >
-                                <div className="card-hover h-full">
-                                  <PublicResourceCard resource={resource} />
-                                </div>
-                              </AnimatedSection>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                   </div>
                 ) : (
                   <div className="text-center py-16 animate-fade-in">

@@ -1,6 +1,8 @@
-import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus, Info, Church, HandHeart } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, Globe, MapPin, Clock, Shield, Building2, Zap, Heart, GraduationCap, Bus, Info, Church, HandHeart, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 interface PublicResource {
@@ -14,10 +16,12 @@ interface PublicResource {
   address: string | null;
   hours: string | null;
   is_featured: boolean;
+  city?: string | null;
 }
 
 interface PublicResourceCardProps {
   resource: PublicResource;
+  citySlug?: string;
 }
 
 const categoryIcons: { [key: string]: any } = {
@@ -46,7 +50,7 @@ const categoryColors: { [key: string]: string } = {
   charity: "text-teal-500 bg-teal-500/10 border-teal-500/30",
 };
 
-const PublicResourceCard = ({ resource }: PublicResourceCardProps) => {
+const PublicResourceCard = ({ resource, citySlug }: PublicResourceCardProps) => {
   const Icon = categoryIcons[resource.category] || Building2;
   const colorClass = categoryColors[resource.category] || "text-gray-500 bg-gray-500/10 border-gray-500/30";
 
@@ -161,6 +165,19 @@ const PublicResourceCard = ({ resource }: PublicResourceCardProps) => {
             </a>
           )}
         </div>
+
+        {/* City Page Link */}
+        {citySlug && resource.city && (
+          <div className="pt-4 border-t border-border/50">
+            <Link to={`/community/${citySlug}`}>
+              <Button variant="outline" size="sm" className="w-full gap-2 group/btn">
+                <MapPin className="h-4 w-4" />
+                View {resource.city} Community Page
+                <ExternalLink className="h-3 w-3 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
