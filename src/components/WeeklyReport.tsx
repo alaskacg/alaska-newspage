@@ -95,31 +95,62 @@ const WeeklyReport = () => {
             {/* Published badge with shimmer effect */}
             <div className="inline-block px-6 py-2 bg-white/10 border-2 border-white/30 rounded-full mb-8 backdrop-blur-sm shadow-lg relative overflow-hidden group animate-fade-in">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="text-sm font-display font-semibold text-white tracking-wider relative z-10">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
+              <span className="text-sm font-cinzel font-semibold text-white tracking-wider relative z-10">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
             </div>
             
-            {/* Main Title with staggered reveal animation */}
+            {/* Main Title - "The Alaska News Page Weekly Report" with letter-by-letter animation */}
             <div className="relative mb-6 overflow-hidden">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
-                <span 
-                  className="block text-white opacity-0 animate-slide-in-up"
-                  style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
-                >
+              <h1 className="font-cinzel leading-tight perspective-1000">
+                {/* "The" - Small elegant text */}
+                <span className="block text-lg md:text-xl text-white/80 tracking-[0.3em] uppercase mb-2 opacity-0 animate-fade-in-down" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
                   The
                 </span>
+                
+                {/* "Alaska News Page" - Main title with letter animation */}
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-white tracking-[0.15em] uppercase mb-1">
+                  {"Alaska News Page".split('').map((letter, index) => (
+                    <span
+                      key={index}
+                      className="inline-block opacity-0 animate-letter-reveal"
+                      style={{ 
+                        animationDelay: `${0.4 + index * 0.05}s`, 
+                        animationFillMode: 'forwards',
+                        textShadow: '0 0 30px rgba(255,255,255,0.4), 0 2px 10px rgba(0,0,0,0.5)'
+                      }}
+                    >
+                      {letter === ' ' ? '\u00A0' : letter}
+                    </span>
+                  ))}
+                </span>
+                
+                {/* "Weekly Report" - Gradient animated text */}
                 <span 
-                  className="block text-white opacity-0 animate-slide-in-up"
-                  style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
+                  className="block text-xl md:text-2xl lg:text-3xl tracking-[0.2em] uppercase mt-2 opacity-0 animate-fade-in-up bg-gradient-to-r from-white via-amber-200 to-white bg-[length:200%_auto] animate-text-shimmer"
+                  style={{ 
+                    animationDelay: '1.2s', 
+                    animationFillMode: 'forwards',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
                 >
-                  ANP Weekly Report
+                  Weekly Report
                 </span>
               </h1>
               
-              {/* Animated decorative line */}
-              <div className="mt-4 mx-auto overflow-hidden">
+              {/* Animated decorative lines */}
+              <div className="mt-6 flex items-center justify-center gap-4">
                 <div 
-                  className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-white to-transparent opacity-0 animate-scale-in-center"
-                  style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}
+                  className="h-px w-0 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 animate-scale-in-center"
+                  style={{ animationDelay: '1.4s', animationFillMode: 'forwards', width: '80px' }}
+                />
+                <div 
+                  className="w-2 h-2 rotate-45 bg-amber-400 opacity-0 animate-scale-in-center"
+                  style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}
+                />
+                <div 
+                  className="h-px w-0 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-0 animate-scale-in-center"
+                  style={{ animationDelay: '1.4s', animationFillMode: 'forwards', width: '80px' }}
                 />
               </div>
             </div>
@@ -127,21 +158,21 @@ const WeeklyReport = () => {
             {/* Host name with elegant reveal */}
             <div 
               className="opacity-0 animate-fade-in-up"
-              style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+              style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}
             >
-              <p className="text-xl md:text-2xl font-display text-white tracking-wide">
+              <p className="text-lg md:text-xl font-cinzel text-white/90 tracking-wide">
                 with{" "}
                 <span className="relative inline-block group">
-                  <span className="text-white font-semibold">J.R. Kitchens</span>
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-white/0 via-white to-white/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                  <span className="text-amber-300 font-semibold animate-word-glow">J.R. Kitchens</span>
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </span>
               </p>
             </div>
             
             {/* Subtitle with fade in */}
             <p 
-              className="mt-4 text-white/80 text-lg max-w-2xl mx-auto opacity-0 animate-fade-in-up"
-              style={{ animationDelay: '1s', animationFillMode: 'forwards' }}
+              className="mt-4 text-white/70 text-base md:text-lg max-w-2xl mx-auto opacity-0 animate-fade-in-up font-light tracking-wide"
+              style={{ animationDelay: '1.8s', animationFillMode: 'forwards' }}
             >
               Your weekly deep-dive into Alaska's most important stories
             </p>
