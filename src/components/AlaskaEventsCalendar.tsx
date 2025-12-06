@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Moon, Fish, Target, Snowflake, Sun, Leaf, TreeDeciduous } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Moon, Fish, Target, Snowflake, Sun, Leaf, TreeDeciduous, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,37 +12,38 @@ interface CalendarEvent {
   title: string;
   type: "hunting" | "fishing" | "salmon" | "moon" | "season" | "holiday";
   description?: string;
+  slug?: string; // Link slug for community events
 }
 
 // Alaska-specific events for 2025-2026
 const alaskaEvents: CalendarEvent[] = [
   // === MAJOR ALASKA FESTIVALS & EVENTS ===
   // Fur Rendezvous 2026 - Feb 26 - Mar 8
-  { date: 26, month: 1, title: "Fur Rendezvous Opens", type: "holiday", description: "North America's premier winter festival - Anchorage" },
-  { date: 27, month: 1, title: "Rondy Running of the Reindeer", type: "holiday", description: "Downtown Anchorage 4th Avenue" },
-  { date: 28, month: 1, title: "Rondy Outhouse Races", type: "holiday", description: "Anchorage - Fur Rondy tradition" },
-  { date: 1, month: 2, title: "Rondy Miners & Trappers Ball", type: "holiday", description: "Annual costume ball - Anchorage" },
-  { date: 7, month: 2, title: "Iditarod Ceremonial Start", type: "holiday", description: "Downtown Anchorage - 4th Avenue" },
-  { date: 8, month: 2, title: "Iditarod Official Restart", type: "holiday", description: "Willow, Alaska - Race begins" },
-  { date: 8, month: 2, title: "Fur Rendezvous Closes", type: "holiday", description: "Final day of Rondy festivities" },
+  { date: 26, month: 1, title: "Fur Rendezvous Opens", type: "holiday", description: "North America's premier winter festival - Anchorage", slug: "fur-rendezvous" },
+  { date: 27, month: 1, title: "Rondy Running of the Reindeer", type: "holiday", description: "Downtown Anchorage 4th Avenue", slug: "running-of-the-reindeer" },
+  { date: 28, month: 1, title: "Rondy Outhouse Races", type: "holiday", description: "Anchorage - Fur Rondy tradition", slug: "outhouse-races" },
+  { date: 1, month: 2, title: "Rondy Miners & Trappers Ball", type: "holiday", description: "Annual costume ball - Anchorage", slug: "miners-trappers-ball" },
+  { date: 7, month: 2, title: "Iditarod Ceremonial Start", type: "holiday", description: "Downtown Anchorage - 4th Avenue", slug: "iditarod-ceremonial-start" },
+  { date: 8, month: 2, title: "Iditarod Official Restart", type: "holiday", description: "Willow, Alaska - Race begins", slug: "iditarod-restart" },
+  { date: 8, month: 2, title: "Fur Rendezvous Closes", type: "holiday", description: "Final day of Rondy festivities", slug: "fur-rendezvous" },
   
   // World Ice Art Championships - Feb 16 - Mar 31, 2026
-  { date: 16, month: 1, title: "World Ice Art Championships Opens", type: "holiday", description: "Fairbanks - Ice Alaska competition begins" },
-  { date: 17, month: 1, title: "WIAC Single Block Competition", type: "holiday", description: "Fairbanks - Artists begin carving" },
-  { date: 22, month: 1, title: "WIAC Multi-Block Sculpting", type: "holiday", description: "Massive ice sculptures - Fairbanks" },
-  { date: 4, month: 2, title: "WIAC Competition Ends", type: "holiday", description: "Judging complete - Fairbanks" },
+  { date: 16, month: 1, title: "World Ice Art Championships Opens", type: "holiday", description: "Fairbanks - Ice Alaska competition begins", slug: "world-ice-art-championships" },
+  { date: 17, month: 1, title: "WIAC Single Block Competition", type: "holiday", description: "Fairbanks - Artists begin carving", slug: "world-ice-art-championships" },
+  { date: 22, month: 1, title: "WIAC Multi-Block Sculpting", type: "holiday", description: "Massive ice sculptures - Fairbanks", slug: "world-ice-art-championships" },
+  { date: 4, month: 2, title: "WIAC Competition Ends", type: "holiday", description: "Judging complete - Fairbanks", slug: "world-ice-art-championships" },
   
   // Other Major Events
-  { date: 15, month: 0, title: "Polar Bear Jump", type: "holiday", description: "Seward - New Year plunge tradition" },
+  { date: 15, month: 0, title: "Polar Bear Jump", type: "holiday", description: "Seward - New Year plunge tradition", slug: "polar-bear-jump" },
   { date: 18, month: 0, title: "MLK Jr. Day Events", type: "holiday", description: "Statewide celebrations" },
   { date: 14, month: 1, title: "Valentines in the Arctic", type: "holiday", description: "Northern lights viewing events" },
   { date: 17, month: 2, title: "St. Patrick's Day Celebrations", type: "holiday", description: "Anchorage & Fairbanks" },
   
   // Seasons
   { date: 20, month: 2, title: "Spring Equinox", type: "season", description: "First day of spring" },
-  { date: 21, month: 5, title: "Summer Solstice", type: "season", description: "Longest day - Midnight Sun celebration" },
+  { date: 21, month: 5, title: "Summer Solstice", type: "season", description: "Longest day - Midnight Sun celebration", slug: "summer-solstice-celebration" },
   { date: 22, month: 8, title: "Fall Equinox", type: "season", description: "First day of fall" },
-  { date: 21, month: 11, title: "Winter Solstice", type: "season", description: "Shortest day - Northern darkness" },
+  { date: 21, month: 11, title: "Winter Solstice", type: "season", description: "Shortest day - Northern darkness", slug: "winter-solstice-celebration" },
   
   // Salmon Runs (approximate peak times)
   { date: 15, month: 4, title: "King Salmon Run Begins", type: "salmon", description: "Kenai Peninsula - World famous fishery" },
@@ -94,16 +96,16 @@ const alaskaEvents: CalendarEvent[] = [
   
   // Alaska Holidays & Events
   { date: 1, month: 0, title: "New Years Day", type: "holiday" },
-  { date: 27, month: 2, title: "Sewards Day", type: "holiday", description: "Alaska purchase anniversary 1867" },
-  { date: 18, month: 9, title: "Alaska Day", type: "holiday", description: "Transfer of Alaska to US 1867" },
+  { date: 27, month: 2, title: "Sewards Day", type: "holiday", description: "Alaska purchase anniversary 1867", slug: "sewards-day" },
+  { date: 18, month: 9, title: "Alaska Day", type: "holiday", description: "Transfer of Alaska to US 1867", slug: "alaska-day" },
   { date: 4, month: 6, title: "Independence Day", type: "holiday", description: "Fireworks at midnight sun" },
   { date: 26, month: 10, title: "Thanksgiving", type: "holiday" },
   { date: 25, month: 11, title: "Christmas Day", type: "holiday" },
   
   // December 2025 Events
   { date: 6, month: 11, title: "Design Alaska Holiday Concert", type: "holiday", description: "Fairbanks - Holiday music" },
-  { date: 13, month: 11, title: "Anchorage Holiday Market", type: "holiday", description: "Downtown Anchorage" },
-  { date: 21, month: 11, title: "Winter Solstice Celebration", type: "season", description: "Shortest day festivities" },
+  { date: 13, month: 11, title: "Anchorage Holiday Market", type: "holiday", description: "Downtown Anchorage", slug: "anchorage-holiday-market" },
+  { date: 21, month: 11, title: "Winter Solstice Celebration", type: "season", description: "Shortest day festivities", slug: "winter-solstice-celebration" },
   { date: 31, month: 11, title: "New Years Eve Celebrations", type: "holiday", description: "Statewide fireworks & events" },
 ];
 
@@ -323,12 +325,17 @@ const AlaskaEventsCalendar = ({ compact = false, region }: AlaskaEventsCalendarP
                 (selectedDate ? selectedEvents : monthEvents).map((event, idx) => {
                   const config = eventTypeConfig[event.type];
                   const Icon = config.icon;
+                  const EventWrapper = event.slug ? Link : 'div';
+                  const wrapperProps = event.slug ? { to: `/event/${event.slug}` } : {};
+                  
                   return (
-                    <div
+                    <EventWrapper
                       key={idx}
+                      {...wrapperProps}
                       className={cn(
-                        "p-3 rounded-lg border transition-all hover:scale-[1.02]",
-                        config.color
+                        "p-3 rounded-lg border transition-all hover:scale-[1.02] block",
+                        config.color,
+                        event.slug && "cursor-pointer"
                       )}
                     >
                       <div className="flex items-start gap-2">
@@ -338,6 +345,7 @@ const AlaskaEventsCalendar = ({ compact = false, region }: AlaskaEventsCalendarP
                             <span className="text-xs text-muted-foreground">
                               {monthNames[currentMonth].slice(0, 3)} {event.date}
                             </span>
+                            {event.slug && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
                           </div>
                           <p className="font-medium text-sm">{event.title}</p>
                           {event.description && (
@@ -345,7 +353,7 @@ const AlaskaEventsCalendar = ({ compact = false, region }: AlaskaEventsCalendarP
                           )}
                         </div>
                       </div>
-                    </div>
+                    </EventWrapper>
                   );
                 })
               ) : (

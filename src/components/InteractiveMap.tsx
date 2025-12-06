@@ -37,6 +37,97 @@ export interface InteractiveMapRef {
   zoomToRegion: (region: Region) => void;
 }
 
+// All Alaska cities and communities over 1000 population
+const alaskaCommunities: { name: string; lat: number; lng: number; population: number; type: 'city' | 'community' }[] = [
+  // Major Cities
+  { name: "Anchorage", lat: 61.2181, lng: -149.9003, population: 291247, type: 'city' },
+  { name: "Fairbanks", lat: 64.8378, lng: -147.7164, population: 32515, type: 'city' },
+  { name: "Juneau", lat: 58.3019, lng: -134.4197, population: 32255, type: 'city' },
+  { name: "Ketchikan", lat: 55.3422, lng: -131.6461, population: 8263, type: 'city' },
+  { name: "Sitka", lat: 57.0531, lng: -135.3300, population: 8458, type: 'city' },
+  { name: "Wasilla", lat: 61.5814, lng: -149.4394, population: 10529, type: 'city' },
+  { name: "Palmer", lat: 61.5994, lng: -149.1128, population: 7306, type: 'city' },
+  { name: "Kodiak", lat: 57.7900, lng: -152.4072, population: 5968, type: 'city' },
+  { name: "Bethel", lat: 60.7922, lng: -161.7558, population: 6325, type: 'city' },
+  { name: "Kenai", lat: 60.5544, lng: -151.2583, population: 7424, type: 'city' },
+  { name: "Soldotna", lat: 60.4878, lng: -151.0583, population: 4705, type: 'city' },
+  { name: "Homer", lat: 59.6425, lng: -151.5483, population: 5515, type: 'city' },
+  { name: "Nome", lat: 64.5011, lng: -165.4064, population: 3699, type: 'city' },
+  { name: "Barrow (Utqiaġvik)", lat: 71.2906, lng: -156.7886, population: 4927, type: 'city' },
+  { name: "Kotzebue", lat: 66.8983, lng: -162.5967, population: 3201, type: 'city' },
+  { name: "Valdez", lat: 61.1308, lng: -146.3483, population: 3985, type: 'city' },
+  { name: "Cordova", lat: 60.5428, lng: -145.7575, population: 2609, type: 'city' },
+  { name: "Seward", lat: 60.1042, lng: -149.4422, population: 2717, type: 'city' },
+  { name: "Petersburg", lat: 56.8128, lng: -132.9556, population: 3255, type: 'city' },
+  { name: "Wrangell", lat: 56.4708, lng: -132.3767, population: 2127, type: 'city' },
+  { name: "Dillingham", lat: 59.0397, lng: -158.4575, population: 2329, type: 'city' },
+  { name: "Unalaska/Dutch Harbor", lat: 53.8739, lng: -166.5322, population: 4758, type: 'city' },
+  
+  // Major Communities/CDPs over 1000
+  { name: "North Pole", lat: 64.7511, lng: -147.3494, population: 2243, type: 'community' },
+  { name: "Delta Junction", lat: 64.0400, lng: -145.7306, population: 1055, type: 'community' },
+  { name: "Tok", lat: 63.3367, lng: -142.9856, population: 1258, type: 'community' },
+  { name: "Glennallen", lat: 62.1089, lng: -145.5467, population: 483, type: 'community' },
+  { name: "Healy", lat: 63.8694, lng: -148.9639, population: 1021, type: 'community' },
+  { name: "Nenana", lat: 64.5636, lng: -149.0931, population: 378, type: 'community' },
+  { name: "Big Lake", lat: 61.5211, lng: -149.9536, population: 3833, type: 'community' },
+  { name: "Eagle River", lat: 61.3214, lng: -149.5683, population: 25275, type: 'community' },
+  { name: "Chugiak", lat: 61.3872, lng: -149.4856, population: 10534, type: 'community' },
+  { name: "Girdwood", lat: 60.9419, lng: -149.1664, population: 2072, type: 'community' },
+  { name: "Talkeetna", lat: 62.3236, lng: -150.1064, population: 876, type: 'community' },
+  { name: "Willow", lat: 61.7472, lng: -150.0378, population: 2102, type: 'community' },
+  { name: "Houston", lat: 61.6303, lng: -149.8181, population: 2485, type: 'community' },
+  { name: "Knik-Fairview", lat: 61.5147, lng: -149.6494, population: 17682, type: 'community' },
+  { name: "Meadow Lakes", lat: 61.6261, lng: -149.5997, population: 9197, type: 'community' },
+  { name: "Butte", lat: 61.5422, lng: -149.0328, population: 3589, type: 'community' },
+  { name: "Sutton-Alpine", lat: 61.7142, lng: -148.8672, population: 1447, type: 'community' },
+  { name: "Nikiski", lat: 60.6906, lng: -151.2889, population: 4456, type: 'community' },
+  { name: "Kalifornsky", lat: 60.4175, lng: -151.2817, population: 8446, type: 'community' },
+  { name: "Sterling", lat: 60.5381, lng: -150.7653, population: 5617, type: 'community' },
+  { name: "Ridgeway", lat: 60.5375, lng: -150.9778, population: 2022, type: 'community' },
+  { name: "Anchor Point", lat: 59.7767, lng: -151.8311, population: 2141, type: 'community' },
+  { name: "Ninilchik", lat: 60.0539, lng: -151.6675, population: 883, type: 'community' },
+  { name: "Kasilof", lat: 60.3242, lng: -151.2722, population: 562, type: 'community' },
+  { name: "Haines", lat: 59.2358, lng: -135.4456, population: 2080, type: 'community' },
+  { name: "Skagway", lat: 59.4583, lng: -135.3139, population: 1183, type: 'community' },
+  { name: "Craig", lat: 55.4761, lng: -133.1478, population: 1201, type: 'community' },
+  { name: "Klawock", lat: 55.5536, lng: -133.0961, population: 720, type: 'community' },
+  { name: "Metlakatla", lat: 55.1272, lng: -131.5728, population: 1489, type: 'community' },
+  { name: "Hoonah", lat: 58.1100, lng: -135.4433, population: 760, type: 'community' },
+  { name: "Yakutat", lat: 59.5469, lng: -139.7272, population: 662, type: 'community' },
+  { name: "Angoon", lat: 57.5003, lng: -134.5850, population: 459, type: 'community' },
+  { name: "Kake", lat: 56.9747, lng: -133.9456, population: 557, type: 'community' },
+  { name: "King Cove", lat: 55.0614, lng: -162.3094, population: 938, type: 'community' },
+  { name: "Sand Point", lat: 55.3369, lng: -160.4986, population: 928, type: 'community' },
+  { name: "Hooper Bay", lat: 61.5311, lng: -166.0967, population: 1375, type: 'community' },
+  { name: "Emmonak", lat: 62.7767, lng: -164.5231, population: 762, type: 'community' },
+  { name: "Mountain Village", lat: 62.0856, lng: -163.7286, population: 813, type: 'community' },
+  { name: "St. Mary's", lat: 62.0536, lng: -163.1656, population: 564, type: 'community' },
+  { name: "Chevak", lat: 61.5278, lng: -165.5864, population: 938, type: 'community' },
+  { name: "Quinhagak", lat: 59.7500, lng: -161.9156, population: 669, type: 'community' },
+  { name: "Togiak", lat: 59.0628, lng: -160.3767, population: 817, type: 'community' },
+  { name: "Naknek", lat: 58.7286, lng: -157.0139, population: 544, type: 'community' },
+  { name: "King Salmon", lat: 58.6886, lng: -156.6614, population: 374, type: 'community' },
+  { name: "Selawik", lat: 66.6042, lng: -160.0069, population: 829, type: 'community' },
+  { name: "Noorvik", lat: 66.8369, lng: -161.0447, population: 668, type: 'community' },
+  { name: "Point Hope", lat: 68.3475, lng: -166.7992, population: 674, type: 'community' },
+  { name: "Wainwright", lat: 70.6369, lng: -160.0386, population: 556, type: 'community' },
+  { name: "Point Lay", lat: 69.7328, lng: -163.0053, population: 247, type: 'community' },
+  { name: "Kaktovik", lat: 70.1319, lng: -143.6256, population: 239, type: 'community' },
+  { name: "Nuiqsut", lat: 70.2103, lng: -150.9792, population: 524, type: 'community' },
+  { name: "Galena", lat: 64.7367, lng: -156.9267, population: 470, type: 'community' },
+  { name: "McGrath", lat: 62.9567, lng: -155.5958, population: 346, type: 'community' },
+  { name: "Unalakleet", lat: 63.8736, lng: -160.7889, population: 688, type: 'community' },
+  { name: "Shaktoolik", lat: 64.3347, lng: -161.1539, population: 258, type: 'community' },
+  { name: "Gambell", lat: 63.7797, lng: -171.7375, population: 681, type: 'community' },
+  { name: "Savoonga", lat: 63.6936, lng: -170.4803, population: 671, type: 'community' },
+  { name: "Diomede", lat: 65.7586, lng: -168.9528, population: 82, type: 'community' },
+  { name: "Fort Yukon", lat: 66.5647, lng: -145.2739, population: 536, type: 'community' },
+  { name: "Tanana", lat: 65.1719, lng: -152.0786, population: 231, type: 'community' },
+  { name: "Ruby", lat: 64.7392, lng: -155.4867, population: 166, type: 'community' },
+  { name: "Huslia", lat: 65.6997, lng: -156.3994, population: 275, type: 'community' },
+];
+
 const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions, businesses = [], publicResources = [] }, ref) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
@@ -52,7 +143,6 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       const coords = region.coordinates;
       
       if (coords && coords.type === "Polygon" && coords.coordinates) {
-        // Zoom to polygon bounds
         const polygon = polygonsRef.current[region.slug];
         if (polygon) {
           mapInstanceRef.current.fitBounds(polygon.getBounds(), {
@@ -62,7 +152,6 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           });
         }
       } else if (coords && coords.type === "Point" && coords.coordinates) {
-        // Zoom to point
         mapInstanceRef.current.flyTo([coords.coordinates[1], coords.coordinates[0]], 5, {
           animate: true,
           duration: 1.5
@@ -74,9 +163,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    // Dynamically import Leaflet
     import("leaflet").then((L) => {
-      // Fix marker icons
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
@@ -84,17 +171,15 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
       });
 
-      // Initialize map with enhanced zoom capabilities
       const map = L.map(mapRef.current!, {
         center: [64.0, -152.0],
         zoom: 4,
         minZoom: 4,
-        maxZoom: 15, // Increased from default 10 to 15 for better marker separation
+        maxZoom: 15,
         zoomControl: true
       });
       mapInstanceRef.current = map;
 
-      // Theme-aware tile layer - using darker muted tones for both modes
       const isDark = document.documentElement.classList.contains('dark');
       const tileUrl = isDark 
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
@@ -107,32 +192,25 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         className: isDark ? '' : 'map-tiles-muted'
       }).addTo(map);
 
-      // Define region colors
+      // Region colors
       const regionColors: { [key: string]: string } = {
-        northern: "#4A90E2",      // Blue
-        interior: "#50C878",      // Green
-        western: "#E67E22",       // Orange (if exists)
-        southwest: "#9B59B6",     // Purple
-        southcentral: "#F39C12",  // Gold
-        southeast: "#E74C3C"      // Red
+        northern: "#4A90E2",
+        interior: "#50C878",
+        western: "#E67E22",
+        southwest: "#9B59B6",
+        southcentral: "#F39C12",
+        southeast: "#E74C3C"
       };
 
-      // Add region labels and center markers (no polygons)
+      // Add region labels
       regions.forEach((region) => {
         const coords = region.coordinates;
-        
-        // Skip statewide 
-        if (region.slug === "statewide") {
-          return;
-        }
+        if (region.slug === "statewide") return;
 
         const color = regionColors[region.slug] || "#666666";
-        
         let centerLat: number, centerLng: number;
 
-        // Get center coordinates
         if (coords && coords.type === "Polygon" && coords.coordinates) {
-          // Calculate centroid of polygon
           const leafletCoords = coords.coordinates[0].map((coord: number[]) => [coord[1], coord[0]] as [number, number]);
           const lats = leafletCoords.map(c => c[0]);
           const lngs = leafletCoords.map(c => c[1]);
@@ -145,8 +223,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           return;
         }
 
-        // Add region label with dynamic sizing - compact version
-        const labelWidth = region.name.length * 7 + 16; // Smaller width calculation
+        const labelWidth = region.name.length * 7 + 16;
         const label = L.marker([centerLat, centerLng], {
           icon: L.divIcon({
             className: 'region-label',
@@ -162,55 +239,28 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               box-shadow: 0 2px 4px rgba(0,0,0,0.4);
               cursor: pointer;
               transition: all 0.3s ease;
-              display: flex;
-              align-items: center;
-              justify-content: center;
             " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">${region.name}</div>`,
             iconSize: [labelWidth, 24],
             iconAnchor: [labelWidth / 2, 12]
           })
         }).addTo(map);
 
-        // Store label reference for zoom functionality
         polygonsRef.current[region.slug] = { getBounds: () => L.latLngBounds([[centerLat - 1, centerLng - 1], [centerLat + 1, centerLng + 1]]) };
 
-        // Make label clickable
-        label.on('click', () => {
-          navigate(`/region/${region.slug}`);
-        });
+        label.on('click', () => navigate(`/region/${region.slug}`));
 
         label.bindPopup(`
           <div style="text-align: center; padding: 12px;">
             <h3 style="font-weight: bold; color: ${color}; margin-bottom: 8px; font-size: 18px;">${region.name}</h3>
             <p style="font-size: 14px; color: #666; margin-bottom: 12px;">${region.description || 'Explore news and services'}</p>
-            <button 
-              onclick="window.location.href='/region/${region.slug}'" 
-              style="
-                color: white;
-                background: ${color};
-                padding: 8px 16px;
-                border-radius: 4px;
-                font-weight: 500;
-                cursor: pointer;
-                border: none;
-                transition: all 0.3s ease;
-              "
-              onmouseover="this.style.opacity='0.8'"
-              onmouseout="this.style.opacity='1'"
-            >
+            <button onclick="window.location.href='/region/${region.slug}'" style="color: white; background: ${color}; padding: 8px 16px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none;">
               View News & Services →
             </button>
           </div>
         `);
       });
 
-      // Fit bounds to Alaska
-      map.fitBounds([
-        [71.5, -179.0],
-        [54.0, -130.0],
-      ]);
-
-      // Add Statewide marker separately with compact sizing
+      // Add Statewide marker
       const statewideRegion = regions.find(r => r.slug === "statewide");
       if (statewideRegion && statewideRegion.coordinates && statewideRegion.coordinates.type === "Point") {
         const coords = statewideRegion.coordinates.coordinates;
@@ -229,161 +279,68 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               border: 2px solid #888;
               box-shadow: 0 2px 4px rgba(0,0,0,0.4);
               cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
             ">${statewideRegion.name}</div>`,
             iconSize: [statewideWidth, 24],
             iconAnchor: [statewideWidth / 2, 12]
           })
         }).addTo(map);
 
-        marker.on('click', () => {
-          navigate(`/region/${statewideRegion.slug}`);
-        });
-
-        marker.bindPopup(`
-          <div style="text-align: center; padding: 12px;">
-            <h3 style="font-weight: bold; color: #888; margin-bottom: 8px;">${statewideRegion.name}</h3>
-            <p style="font-size: 14px; color: #666; margin-bottom: 12px;">${statewideRegion.description || 'All Alaska news and services'}</p>
-            <button 
-              onclick="window.location.href='/region/${statewideRegion.slug}'" 
-              style="color: white; background: #888; padding: 8px 16px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none;"
-            >
-              View Statewide →
-            </button>
-          </div>
-        `);
+        marker.on('click', () => navigate(`/region/${statewideRegion.slug}`));
       }
 
-      // Add markers for businesses and public resources
-      const allLocations: Array<{ lat: number; lng: number; name: string; type: 'business' | 'resource'; slug: string; city: string }> = [];
-
-      // Parse addresses to get approximate coordinates (simplified geocoding)
-      const cityCoordinates: { [key: string]: { lat: number; lng: number } } = {
-        'Fairbanks': { lat: 64.8378, lng: -147.7164 },
-        'Delta Junction': { lat: 64.0400, lng: -145.7306 },
-        'North Pole': { lat: 64.7511, lng: -147.3494 },
-        'Tok': { lat: 63.3367, lng: -142.9856 },
-        'Utqiaġvik': { lat: 71.2906, lng: -156.7886 },
-        'Anchorage': { lat: 61.2181, lng: -149.9003 },
-        'Palmer': { lat: 61.5994, lng: -149.1128 },
-        'Wasilla': { lat: 61.5814, lng: -149.4394 },
-        'Juneau': { lat: 58.3019, lng: -134.4197 },
-        'Ketchikan': { lat: 55.3422, lng: -131.6461 },
-        'Sitka': { lat: 57.0531, lng: -135.3300 },
-        'Dillingham': { lat: 59.0397, lng: -158.4575 },
-        'Kodiak': { lat: 57.7900, lng: -152.4072 },
-        'Bethel': { lat: 60.7922, lng: -161.7558 }
-      };
-
-      // Add businesses
-      businesses.forEach((business) => {
-        const city = business.city || 'Unknown';
-        const coords = cityCoordinates[city];
-        if (coords) {
-          const region = regions.find(r => r.id === business.region_id);
-          if (region && region.slug !== 'statewide') {
-            // Add small random offset so markers don't overlap
-            const offset = 0.02;
-            allLocations.push({
-              lat: coords.lat + (Math.random() - 0.5) * offset,
-              lng: coords.lng + (Math.random() - 0.5) * offset,
-              name: business.name,
-              type: 'business',
-              slug: region.slug,
-              city: city
-            });
-          }
-        }
-      });
-
-      // Add public resources
-      publicResources.forEach((resource) => {
-        const city = resource.city || 'Unknown';
-        const coords = cityCoordinates[city];
-        if (coords) {
-          const region = regions.find(r => r.id === resource.region_id);
-          if (region && region.slug !== 'statewide') {
-            // Add small random offset so markers don't overlap
-            const offset = 0.02;
-            allLocations.push({
-              lat: coords.lat + (Math.random() - 0.5) * offset,
-              lng: coords.lng + (Math.random() - 0.5) * offset,
-              name: resource.name,
-              type: 'resource',
-              slug: region.slug,
-              city: city
-            });
-          }
-        }
-      });
-
-      // Create markers for all locations with improved clickability
-      allLocations.forEach((location) => {
+      // Add all Alaska communities as markers
+      alaskaCommunities.forEach((community) => {
+        const isCity = community.type === 'city';
+        const markerSize = community.population > 10000 ? 10 : community.population > 5000 ? 8 : 6;
+        
         const markerIcon = L.divIcon({
-          className: 'location-marker',
+          className: 'community-marker',
           html: `<div style="
-            width: 12px;
-            height: 12px;
-            background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
-            border: 2px solid white;
+            width: ${markerSize}px;
+            height: ${markerSize}px;
+            background: ${isCity ? '#f59e0b' : '#22d3ee'};
+            border: 1.5px solid white;
             border-radius: 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
             cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 100;
-          " onmouseover="this.style.transform='scale(1.8)'; this.style.zIndex='1000';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='100';"></div>`,
-          iconSize: [12, 12],
-          iconAnchor: [6, 6]
+          " onmouseover="this.style.transform='scale(1.5)'; this.style.zIndex='1000';" onmouseout="this.style.transform='scale(1)'; this.style.zIndex='100';"></div>`,
+          iconSize: [markerSize, markerSize],
+          iconAnchor: [markerSize / 2, markerSize / 2]
         });
 
-        const marker = L.marker([location.lat, location.lng], { 
+        const marker = L.marker([community.lat, community.lng], { 
           icon: markerIcon,
-          riseOnHover: true // Make marker rise above others on hover
+          riseOnHover: true
         }).addTo(map);
 
         marker.bindPopup(`
-          <div style="text-align: center; padding: 8px;">
+          <div style="text-align: center; padding: 8px; min-width: 150px;">
             <div style="
               display: inline-block;
-              padding: 4px 8px;
+              padding: 2px 8px;
               border-radius: 4px;
-              background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
+              background: ${isCity ? '#f59e0b' : '#22d3ee'};
               color: white;
-              font-size: 10px;
+              font-size: 9px;
               font-weight: 600;
-              margin-bottom: 8px;
+              margin-bottom: 6px;
             ">
-              ${location.type === 'business' ? '🏢 Business' : '🏛️ Public Resource'}
+              ${isCity ? '🏛️ City' : '🏘️ Community'}
             </div>
-            <h4 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${location.name}</h4>
-            <p style="font-size: 12px; color: #666; margin-bottom: 8px;">${location.city}</p>
-            <button 
-              onclick="window.location.href='/region/${location.slug}'" 
-              style="
-                color: white;
-                background: ${location.type === 'business' ? '#22c55e' : '#3b82f6'};
-                padding: 6px 12px;
-                border-radius: 4px;
-                font-size: 12px;
-                font-weight: 500;
-                cursor: pointer;
-                border: none;
-              "
-            >
-              View Region →
-            </button>
+            <h4 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${community.name}</h4>
+            <p style="font-size: 11px; color: #666;">Pop: ~${community.population.toLocaleString()}</p>
           </div>
         `);
-
-        marker.on('click', () => {
-          marker.openPopup();
-        });
       });
+
+      // Fit bounds to Alaska
+      map.fitBounds([
+        [71.5, -179.0],
+        [54.0, -130.0],
+      ]);
     });
 
-    // Cleanup
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -402,7 +359,6 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
       
-      // Remove old layer and add new one
       mapInstanceRef.current.removeLayer(tileLayerRef.current);
       tileLayerRef.current = L.tileLayer(tileUrl, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
