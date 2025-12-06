@@ -12,6 +12,7 @@ import SetupPage from "./pages/SetupPage";
 import DownloadAppPage from "./pages/DownloadAppPage";
 import WeeklyReportPage from "./pages/WeeklyReportPage";
 import EventPage from "./pages/EventPage";
+import CommunityPage from "./pages/CommunityPage";
 import NotFound from "./pages/NotFound";
 import AdminPanel from "./components/AdminPanel";
 
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/download" element={<DownloadAppPage />} />
               <Route path="/anpweeklyreport" element={<WeeklyReportPage />} />
               <Route path="/event/:slug" element={<EventPage />} />
+              <Route path="/community/:slug" element={<CommunityPage />} />
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/admin/weekly-reports" element={<AdminPanel />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

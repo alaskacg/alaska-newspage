@@ -38,24 +38,24 @@ export interface InteractiveMapRef {
 }
 
 // All Alaska cities and communities over 1000 population
-const alaskaCommunities: { name: string; lat: number; lng: number; population: number; type: 'city' | 'community' }[] = [
+const alaskaCommunities: { name: string; lat: number; lng: number; population: number; type: 'city' | 'community'; slug?: string }[] = [
   // Major Cities
-  { name: "Anchorage", lat: 61.2181, lng: -149.9003, population: 291247, type: 'city' },
-  { name: "Fairbanks", lat: 64.8378, lng: -147.7164, population: 32515, type: 'city' },
-  { name: "Juneau", lat: 58.3019, lng: -134.4197, population: 32255, type: 'city' },
+  { name: "Anchorage", lat: 61.2181, lng: -149.9003, population: 291247, type: 'city', slug: 'anchorage' },
+  { name: "Fairbanks", lat: 64.8378, lng: -147.7164, population: 32515, type: 'city', slug: 'fairbanks' },
+  { name: "Juneau", lat: 58.3019, lng: -134.4197, population: 32255, type: 'city', slug: 'juneau' },
   { name: "Ketchikan", lat: 55.3422, lng: -131.6461, population: 8263, type: 'city' },
-  { name: "Sitka", lat: 57.0531, lng: -135.3300, population: 8458, type: 'city' },
+  { name: "Sitka", lat: 57.0531, lng: -135.3300, population: 8458, type: 'city', slug: 'sitka' },
   { name: "Wasilla", lat: 61.5814, lng: -149.4394, population: 10529, type: 'city' },
   { name: "Palmer", lat: 61.5994, lng: -149.1128, population: 7306, type: 'city' },
-  { name: "Kodiak", lat: 57.7900, lng: -152.4072, population: 5968, type: 'city' },
+  { name: "Kodiak", lat: 57.7900, lng: -152.4072, population: 5968, type: 'city', slug: 'kodiak' },
   { name: "Bethel", lat: 60.7922, lng: -161.7558, population: 6325, type: 'city' },
   { name: "Kenai", lat: 60.5544, lng: -151.2583, population: 7424, type: 'city' },
   { name: "Soldotna", lat: 60.4878, lng: -151.0583, population: 4705, type: 'city' },
   { name: "Homer", lat: 59.6425, lng: -151.5483, population: 5515, type: 'city' },
-  { name: "Nome", lat: 64.5011, lng: -165.4064, population: 3699, type: 'city' },
-  { name: "Barrow (Utqiaġvik)", lat: 71.2906, lng: -156.7886, population: 4927, type: 'city' },
+  { name: "Nome", lat: 64.5011, lng: -165.4064, population: 3699, type: 'city', slug: 'nome' },
+  { name: "Barrow (Utqiaġvik)", lat: 71.2906, lng: -156.7886, population: 4927, type: 'city', slug: 'barrow' },
   { name: "Kotzebue", lat: 66.8983, lng: -162.5967, population: 3201, type: 'city' },
-  { name: "Valdez", lat: 61.1308, lng: -146.3483, population: 3985, type: 'city' },
+  { name: "Valdez", lat: 61.1308, lng: -146.3483, population: 3985, type: 'city', slug: 'valdez' },
   { name: "Cordova", lat: 60.5428, lng: -145.7575, population: 2609, type: 'city' },
   { name: "Seward", lat: 60.1042, lng: -149.4422, population: 2717, type: 'city' },
   { name: "Petersburg", lat: 56.8128, lng: -132.9556, population: 3255, type: 'city' },
@@ -63,7 +63,7 @@ const alaskaCommunities: { name: string; lat: number; lng: number; population: n
   { name: "Dillingham", lat: 59.0397, lng: -158.4575, population: 2329, type: 'city' },
   { name: "Unalaska/Dutch Harbor", lat: 53.8739, lng: -166.5322, population: 4758, type: 'city' },
   
-  // Major Communities/CDPs over 1000
+  // Major Communities/CDPs
   { name: "North Pole", lat: 64.7511, lng: -147.3494, population: 2243, type: 'community' },
   { name: "Delta Junction", lat: 64.0400, lng: -145.7306, population: 1055, type: 'community' },
   { name: "Tok", lat: 63.3367, lng: -142.9856, population: 1258, type: 'community' },
@@ -126,6 +126,23 @@ const alaskaCommunities: { name: string; lat: number; lng: number; population: n
   { name: "Tanana", lat: 65.1719, lng: -152.0786, population: 231, type: 'community' },
   { name: "Ruby", lat: 64.7392, lng: -155.4867, population: 166, type: 'community' },
   { name: "Huslia", lat: 65.6997, lng: -156.3994, population: 275, type: 'community' },
+  
+  // Boundary and other notable small communities
+  { name: "Boundary", lat: 64.0783, lng: -141.0028, population: 15, type: 'community', slug: 'boundary' },
+  { name: "Chicken", lat: 64.0733, lng: -141.9364, population: 17, type: 'community', slug: 'chicken' },
+  { name: "Eagle", lat: 64.7878, lng: -141.2006, population: 86, type: 'community' },
+  { name: "Circle", lat: 65.8256, lng: -144.0603, population: 104, type: 'community' },
+  { name: "Central", lat: 65.5722, lng: -144.8028, population: 89, type: 'community' },
+  { name: "Manley Hot Springs", lat: 64.9964, lng: -150.6392, population: 89, type: 'community' },
+  { name: "Northway", lat: 62.9614, lng: -141.9375, population: 71, type: 'community' },
+  { name: "Tetlin", lat: 63.1350, lng: -142.5192, population: 117, type: 'community' },
+  { name: "Mentasta Lake", lat: 62.9331, lng: -143.8025, population: 78, type: 'community' },
+  { name: "Slana", lat: 62.7086, lng: -143.9608, population: 147, type: 'community' },
+  { name: "Chistochina", lat: 62.5650, lng: -144.6694, population: 93, type: 'community' },
+  { name: "Gakona", lat: 62.3017, lng: -145.3036, population: 218, type: 'community' },
+  { name: "Copper Center", lat: 61.9556, lng: -145.3039, population: 328, type: 'community' },
+  { name: "McCarthy", lat: 61.4328, lng: -142.9231, population: 28, type: 'community' },
+  { name: "Chitina", lat: 61.5158, lng: -144.4356, population: 126, type: 'community' },
 ];
 
 const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ regions, businesses = [], publicResources = [] }, ref) => {
@@ -291,7 +308,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
       // Add all Alaska communities as markers
       alaskaCommunities.forEach((community) => {
         const isCity = community.type === 'city';
-        const markerSize = community.population > 10000 ? 10 : community.population > 5000 ? 8 : 6;
+        const markerSize = community.population > 10000 ? 10 : community.population > 5000 ? 8 : community.population > 1000 ? 6 : 5;
         
         const markerIcon = L.divIcon({
           className: 'community-marker',
@@ -314,7 +331,8 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           riseOnHover: true
         }).addTo(map);
 
-        marker.bindPopup(`
+        const hasPage = community.slug ? true : false;
+        const popupContent = `
           <div style="text-align: center; padding: 8px; min-width: 150px;">
             <div style="
               display: inline-block;
@@ -329,9 +347,20 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
               ${isCity ? '🏛️ City' : '🏘️ Community'}
             </div>
             <h4 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${community.name}</h4>
-            <p style="font-size: 11px; color: #666;">Pop: ~${community.population.toLocaleString()}</p>
+            <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Pop: ~${community.population.toLocaleString()}</p>
+            ${hasPage ? `<button onclick="window.location.href='/community/${community.slug}'" style="color: white; background: ${isCity ? '#f59e0b' : '#0891b2'}; padding: 6px 12px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none; font-size: 12px;">
+              View Details →
+            </button>` : ''}
           </div>
-        `);
+        `;
+
+        marker.bindPopup(popupContent);
+        
+        if (hasPage) {
+          marker.on('click', () => {
+            marker.openPopup();
+          });
+        }
       });
 
       // Fit bounds to Alaska
