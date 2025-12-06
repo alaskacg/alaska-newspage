@@ -1,6 +1,8 @@
-import { Building2, Phone, Mail, Globe, Facebook, Instagram, Star } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Building2, Phone, Mail, Globe, Facebook, Instagram, Star, MapPin, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface Business {
   id: string;
@@ -16,13 +18,30 @@ interface Business {
   instagram_url: string | null;
   logo_url: string | null;
   is_featured: boolean;
+  city?: string | null;
 }
 
 interface BusinessCardProps {
   business: Business;
 }
 
+// List of cities that have dedicated pages
+const citiesWithPages = [
+  'anchorage', 'fairbanks', 'juneau', 'sitka', 'kodiak', 'nome', 'barrow', 'valdez', 
+  'ketchikan', 'wasilla', 'palmer', 'bethel', 'kenai', 'soldotna', 'homer', 'kotzebue', 
+  'cordova', 'seward', 'petersburg', 'wrangell', 'dillingham', 'unalaska', 'chicken', 
+  'boundary', 'north pole', 'delta junction', 'tok', 'glennallen', 'healy', 'nenana', 
+  'big lake', 'eagle river', 'girdwood', 'talkeetna', 'willow', 'haines', 'skagway', 
+  'craig', 'yakutat', 'hoonah'
+];
+
 const BusinessCard = ({ business }: BusinessCardProps) => {
+  // Generate city slug for linking
+  const citySlug = business.city?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const hasCityPage = business.city && citiesWithPages.some(
+    city => city.toLowerCase().replace(/\s+/g, '') === business.city?.toLowerCase().replace(/\s+/g, '')
+  );
+
   return (
     <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-accent/50">
       <CardHeader>
@@ -48,8 +67,14 @@ const BusinessCard = ({ business }: BusinessCardProps) => {
                 </Badge>
               )}
             </div>
-            <CardDescription className="mt-1">
+            <CardDescription className="mt-1 space-y-1">
               <Badge variant="outline">{business.category}</Badge>
+              {business.city && (
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <MapPin className="h-3 w-3" />
+                  {business.city}
+                </div>
+              )}
             </CardDescription>
           </div>
         </div>
@@ -127,6 +152,19 @@ const BusinessCard = ({ business }: BusinessCardProps) => {
             )}
           </div>
         </div>
+
+        {/* City Page Link */}
+        {hasCityPage && citySlug && (
+          <div className="pt-3 border-t border-border/50">
+            <Link to={`/community/${citySlug}`}>
+              <Button variant="outline" size="sm" className="w-full gap-2 group">
+                <MapPin className="h-4 w-4" />
+                View {business.city} Page
+                <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

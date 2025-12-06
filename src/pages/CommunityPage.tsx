@@ -326,6 +326,499 @@ Today, Valdez is the southern terminus of the Trans-Alaska Pipeline System and h
     industries: ["Oil Transportation", "Fishing", "Tourism"],
     attractions: ["Valdez Glacier", "Prince William Sound", "Thompson Pass", "Worthington Glacier"],
     imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  wasilla: {
+    name: "Wasilla",
+    type: 'city',
+    population: 10529,
+    region: "Southcentral",
+    coordinates: { lat: 61.5814, lng: -149.4394 },
+    history: `Wasilla began as a stop along the Alaska Railroad in 1917. The town was named after Chief Wasilla, a Dena'ina Athabascan leader. The area grew slowly until the construction of the Parks Highway in the 1970s connected it to Anchorage.
+
+The Iditarod Trail Sled Dog Race headquarters is located in Wasilla, and the city hosts the race's ceremonial restart each March. The area has experienced rapid growth since the 1990s as a bedroom community for Anchorage.
+
+Wasilla gained national attention when former Mayor Sarah Palin became the Republican Vice Presidential nominee in 2008.`,
+    description: "Fast-growing Mat-Su Valley city, home to the Iditarod Trail Sled Dog Race headquarters.",
+    established: "1917",
+    elevation: "350 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 373-9020",
+      website: "https://www.cityofwasilla.com",
+      address: "290 E Herning Avenue, Wasilla, AK 99654"
+    },
+    industries: ["Retail", "Healthcare", "Tourism", "Agriculture"],
+    attractions: ["Iditarod Trail Headquarters", "Museum of Alaska Transportation", "Wasilla Lake", "Hatcher Pass"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  palmer: {
+    name: "Palmer",
+    type: 'city',
+    population: 7306,
+    region: "Southcentral",
+    coordinates: { lat: 61.5994, lng: -149.1128 },
+    history: `Palmer was established in 1935 as part of the Matanuska Colony Project, a New Deal program that relocated families from the Midwest to farm Alaska's fertile Matanuska Valley.
+
+The colonists faced tremendous hardships but succeeded in establishing a thriving agricultural community. The annual Alaska State Fair, held in Palmer since 1936, celebrates this farming heritage.
+
+The valley is famous for producing giant vegetables, including world-record cabbages weighing over 100 pounds, thanks to the long summer daylight hours.`,
+    description: "Heart of the Matanuska Valley, famous for farming and record-breaking giant vegetables.",
+    established: "1935",
+    elevation: "229 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 745-3271",
+      website: "https://www.cityofpalmer.org",
+      address: "231 W Evergreen Avenue, Palmer, AK 99645"
+    },
+    industries: ["Agriculture", "Tourism", "Government", "Retail"],
+    attractions: ["Alaska State Fair", "Musk Ox Farm", "Matanuska Glacier", "Hatcher Pass"],
+    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200"
+  },
+  ketchikan: {
+    name: "Ketchikan",
+    type: 'city',
+    population: 8263,
+    region: "Southeast",
+    coordinates: { lat: 55.3422, lng: -131.6461 },
+    airport: {
+      code: "KTN",
+      name: "Ketchikan International Airport",
+      type: "Commercial",
+      runways: "1 runway, 7,500 ft"
+    },
+    history: `Ketchikan is known as Alaska's "First City" because it's the first major Alaskan community that northbound travelers encounter. Tlingit people have lived in the area for thousands of years before European contact.
+
+The city developed in the late 1800s around salmon canneries and the timber industry. At its peak, Ketchikan had 14 salmon canneries operating simultaneously.
+
+Today, Ketchikan is famous for its totem poles, with the world's largest collection of standing totem poles at the Totem Heritage Center and Saxman Totem Park.`,
+    description: "Alaska's 'First City' with the world's largest collection of standing totem poles.",
+    established: "1900",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 225-3111",
+      website: "https://www.ktn-ak.us",
+      address: "334 Front Street, Ketchikan, AK 99901"
+    },
+    industries: ["Tourism", "Fishing", "Healthcare", "Government"],
+    attractions: ["Saxman Totem Park", "Creek Street", "Misty Fjords", "Great Alaskan Lumberjack Show"],
+    imageUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200"
+  },
+  bethel: {
+    name: "Bethel",
+    type: 'city',
+    population: 6325,
+    region: "Southwest",
+    coordinates: { lat: 60.7922, lng: -161.7558 },
+    airport: {
+      code: "BET",
+      name: "Bethel Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 6,398 ft"
+    },
+    history: `Bethel is the largest community in the Yukon-Kuskokwim Delta and serves as the regional hub for 56 Yup'ik villages. The Yup'ik people have inhabited this region for thousands of years.
+
+Moravian missionaries established Bethel in 1885, naming it after the biblical location. The city grew as a trading center and later as a hub for government services.
+
+Today, Bethel is only accessible by air or river—there are no roads connecting it to the rest of Alaska. The community maintains strong Yup'ik cultural traditions.`,
+    description: "Regional hub of the Yukon-Kuskokwim Delta, center of Yup'ik culture.",
+    established: "1885",
+    elevation: "125 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 543-2047",
+      website: "https://www.cityofbethel.net",
+      address: "350 Chief Eddie Hoffman Highway, Bethel, AK 99559"
+    },
+    industries: ["Government Services", "Healthcare", "Transportation", "Subsistence"],
+    attractions: ["Yupiit Piciryarait Cultural Center", "Kuskokwim River", "Traditional Dance Festivals"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kenai: {
+    name: "Kenai",
+    type: 'city',
+    population: 7424,
+    region: "Southcentral",
+    coordinates: { lat: 60.5544, lng: -151.2583 },
+    airport: {
+      code: "ENA",
+      name: "Kenai Municipal Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 7,855 ft"
+    },
+    history: `Kenai is one of Alaska's oldest permanent settlements, established by Russian fur traders in 1791. Fort St. Nicholas, the first Russian Orthodox Church in mainland Alaska, was built here.
+
+The discovery of oil on the Kenai Peninsula in 1957 transformed the region's economy. The city became a hub for oil and gas operations while maintaining its commercial fishing heritage.
+
+The Kenai River is world-famous for its king salmon fishing, attracting anglers from around the globe.`,
+    description: "Historic oil and fishing hub on the Kenai Peninsula with world-class salmon fishing.",
+    established: "1791",
+    elevation: "93 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 283-7535",
+      website: "https://www.kenai.city",
+      address: "210 Fidalgo Avenue, Kenai, AK 99611"
+    },
+    industries: ["Oil & Gas", "Commercial Fishing", "Tourism", "Retail"],
+    attractions: ["Kenai River", "Old Town Kenai", "Kenai Visitors Center", "Holy Assumption Orthodox Church"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  homer: {
+    name: "Homer",
+    type: 'city',
+    population: 5515,
+    region: "Southcentral",
+    coordinates: { lat: 59.6425, lng: -151.5483 },
+    airport: {
+      code: "HOM",
+      name: "Homer Airport",
+      type: "Commercial",
+      runways: "1 runway, 6,701 ft"
+    },
+    history: `Homer was named after Homer Pennock, a New York con man who arrived in 1896 to mine gold. Though the gold venture failed, the town grew as a fishing and supply center.
+
+The Homer Spit, a 4.5-mile sand bar extending into Kachemak Bay, defines the city's character. The Spit hosts the small boat harbor and numerous tourist attractions.
+
+Homer is known as the "Halibut Fishing Capital of the World" and has become a destination for artists and outdoor enthusiasts.`,
+    description: "The 'Halibut Fishing Capital of the World' at the end of the Sterling Highway.",
+    established: "1896",
+    elevation: "72 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 235-8121",
+      website: "https://www.cityofhomer-ak.gov",
+      address: "491 E Pioneer Avenue, Homer, AK 99603"
+    },
+    industries: ["Tourism", "Commercial Fishing", "Arts", "Retail"],
+    attractions: ["Homer Spit", "Kachemak Bay State Park", "Alaska Islands & Ocean Visitor Center", "Pratt Museum"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  seward: {
+    name: "Seward",
+    type: 'city',
+    population: 2717,
+    region: "Southcentral",
+    coordinates: { lat: 60.1042, lng: -149.4422 },
+    airport: {
+      code: "SWD",
+      name: "Seward Airport",
+      type: "General Aviation",
+      runways: "1 runway, 3,700 ft"
+    },
+    history: `Seward was founded in 1903 as the ocean terminus of the Alaska Railroad. Named after William H. Seward, the Secretary of State who negotiated the Alaska Purchase, the city became a vital transportation hub.
+
+The 1964 Good Friday Earthquake and subsequent tsunami devastated Seward, destroying the waterfront and killing 13 residents. The city rebuilt and continues to serve as a major cruise port.
+
+Seward is the gateway to Kenai Fjords National Park and home to the Alaska SeaLife Center.`,
+    description: "Gateway to Kenai Fjords National Park and historic Alaska Railroad terminus.",
+    established: "1903",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 224-4050",
+      website: "https://www.cityofseward.us",
+      address: "410 Adams Street, Seward, AK 99664"
+    },
+    industries: ["Tourism", "Fishing", "Cruise Ships", "Railroad"],
+    attractions: ["Kenai Fjords National Park", "Alaska SeaLife Center", "Exit Glacier", "Mount Marathon Race"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  cordova: {
+    name: "Cordova",
+    type: 'city',
+    population: 2609,
+    region: "Southcentral",
+    coordinates: { lat: 60.5428, lng: -145.7575 },
+    airport: {
+      code: "CDV",
+      name: "Merle K. 'Mudhole' Smith Airport",
+      type: "Commercial",
+      runways: "1 runway, 7,500 ft"
+    },
+    history: `Cordova was built in 1906 as the terminus of the Copper River and Northwestern Railway, which transported copper ore from the Kennecott mines. The railroad operated until 1938 when the mines closed.
+
+The city transitioned to commercial fishing and remains one of Alaska's most important fishing ports. The annual Copper River salmon run draws attention from chefs and seafood lovers worldwide.
+
+Cordova is only accessible by air or sea, giving it a remote, tight-knit community character.`,
+    description: "Remote fishing community famous for Copper River salmon.",
+    established: "1906",
+    elevation: "42 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 424-6200",
+      website: "https://www.cityofcordova.net",
+      address: "601 First Street, Cordova, AK 99574"
+    },
+    industries: ["Commercial Fishing", "Tourism", "Transportation"],
+    attractions: ["Copper River", "Child's Glacier", "Cordova Museum", "Million Dollar Bridge"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kotzebue: {
+    name: "Kotzebue",
+    type: 'city',
+    population: 3201,
+    region: "Northern",
+    coordinates: { lat: 66.8983, lng: -162.5967 },
+    airport: {
+      code: "OTZ",
+      name: "Ralph Wien Memorial Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 6,412 ft"
+    },
+    history: `Kotzebue is named after Otto von Kotzebue, a Russian explorer who visited the area in 1818. The Iñupiat people have lived here for thousands of years, and the community maintains strong cultural traditions.
+
+Located 26 miles above the Arctic Circle, Kotzebue serves as the regional hub for the Northwest Arctic Borough. The city is built on a gravel spit extending into Kotzebue Sound.
+
+The community is famous for its traditional Iñupiat culture, including blanket toss, native games, and traditional arts.`,
+    description: "Iñupiat community above the Arctic Circle, gateway to Northwest Alaska.",
+    established: "Traditional village",
+    elevation: "11 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 442-3401",
+      website: "https://www.cityofkotzebue.com",
+      address: "258 Third Avenue, Kotzebue, AK 99752"
+    },
+    industries: ["Government Services", "Subsistence", "Transportation", "Tourism"],
+    attractions: ["NANA Museum of the Arctic", "Kobuk Valley National Park", "Traditional Cultural Programs"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  haines: {
+    name: "Haines",
+    type: 'community',
+    population: 2080,
+    region: "Southeast",
+    coordinates: { lat: 59.2358, lng: -135.4456 },
+    airport: {
+      code: "HNS",
+      name: "Haines Airport",
+      type: "Commercial",
+      runways: "1 runway, 4,000 ft"
+    },
+    history: `Haines was named after Francina Electa Haines, who raised money for the first Presbyterian mission here in 1879. Before European contact, the Chilkat Tlingit people inhabited the area for centuries.
+
+Fort William H. Seward, established in 1904, was Alaska's first permanent Army post. After the military left in 1946, the fort became an arts community that continues today.
+
+Haines is unique in Southeast Alaska as one of only three communities connected to the Alaska Highway by road.`,
+    description: "Southeast Alaska's gateway to the Interior, famous for eagles and arts.",
+    established: "1879",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 766-6400",
+      website: "https://www.hainesalaska.gov",
+      address: "103 Third Avenue, Haines, AK 99827"
+    },
+    industries: ["Tourism", "Fishing", "Arts", "Government"],
+    attractions: ["Alaska Bald Eagle Festival", "Fort Seward", "Chilkat State Park", "Hammer Museum"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  skagway: {
+    name: "Skagway",
+    type: 'community',
+    population: 1183,
+    region: "Southeast",
+    coordinates: { lat: 59.4583, lng: -135.3139 },
+    airport: {
+      code: "SGY",
+      name: "Skagway Airport",
+      type: "General Aviation",
+      runways: "1 runway, 3,550 ft"
+    },
+    history: `Skagway exploded from a single homestead to a city of 10,000 during the Klondike Gold Rush of 1897-98. Prospectors climbed the Chilkoot and White Pass trails en route to the Yukon gold fields.
+
+The notorious gangster "Soapy" Smith ran the town's criminal enterprises until he was killed in a shootout in 1898. The White Pass & Yukon Route railroad, completed in 1900, made the dangerous trail climbs obsolete.
+
+Today, Skagway is a National Historic Landmark, preserving its gold rush heritage for the hundreds of thousands of cruise visitors it receives annually.`,
+    description: "Preserved Gold Rush town and National Historic Landmark at the head of Lynn Canal.",
+    established: "1897",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 983-2297",
+      website: "https://www.skagway.org",
+      address: "700 Spring Street, Skagway, AK 99840"
+    },
+    industries: ["Tourism", "Cruise Ships", "Railroad"],
+    attractions: ["White Pass & Yukon Route Railroad", "Klondike Gold Rush NHP", "Chilkoot Trail", "Red Onion Saloon"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "delta-junction": {
+    name: "Delta Junction",
+    type: 'community',
+    population: 1055,
+    region: "Interior",
+    coordinates: { lat: 64.0400, lng: -145.7306 },
+    history: `Delta Junction marks the official end of the Alaska Highway at mile 1422. The highway, built during World War II, connected Alaska to the contiguous states for the first time.
+
+The area has been home to agricultural development, including the Delta Barley Project in the 1980s, one of the largest grain farms in Alaska's history.
+
+The community serves as a gateway to the Interior and hosts Fort Greely, a U.S. Army installation.`,
+    description: "Official end of the Alaska Highway and agricultural center of the Interior.",
+    established: "1919",
+    elevation: "1,180 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 895-4656",
+      website: "https://www.deltajunction.com"
+    },
+    industries: ["Agriculture", "Military", "Tourism", "Transportation"],
+    attractions: ["End of Alaska Highway Monument", "Big Delta State Historical Park", "Delta Junction Bison Range"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  tok: {
+    name: "Tok",
+    type: 'community',
+    population: 1258,
+    region: "Interior",
+    coordinates: { lat: 63.3367, lng: -142.9856 },
+    airport: {
+      code: "TKJ",
+      name: "Tok Junction Airport",
+      type: "General Aviation",
+      runways: "1 runway, 2,510 ft"
+    },
+    history: `Tok (pronounced "Toke") developed as a construction camp during the building of the Alaska Highway in 1942. The name may derive from a Tokyo Camp established during highway construction.
+
+Located at the junction of the Alaska Highway and Tok Cutoff to Valdez, the community became a natural stopping point for travelers. The town serves as a gateway between the Interior and Canada.
+
+Tok experiences some of Alaska's most extreme temperature swings, from -80°F in winter to 90°F in summer.`,
+    description: "Crossroads community at the junction of Alaska Highway and Tok Cutoff.",
+    established: "1942",
+    elevation: "1,635 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 883-5775",
+      website: "https://www.tokalaskainfo.com"
+    },
+    industries: ["Tourism", "Transportation", "Government Services"],
+    attractions: ["Mukluk Land", "Tok Alaska Mainstreet Visitors Center", "Tetlin National Wildlife Refuge"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "north-pole": {
+    name: "North Pole",
+    type: 'community',
+    population: 2243,
+    region: "Interior",
+    coordinates: { lat: 64.7511, lng: -147.3494 },
+    history: `North Pole was established in 1952 by Bon Davis, who hoped the name would attract a toy manufacturer. While that never happened, the town embraced its Christmas theme fully.
+
+Street names include Snowman Lane and Santa Claus Lane. The Santa Claus House, opened in 1952, receives thousands of letters addressed to Santa each year and has become a major tourist attraction.
+
+Despite temperatures that can drop to -50°F, the Christmas lights and decorations stay up year-round.`,
+    description: "Christmas-themed community where holiday spirit lasts all year.",
+    established: "1952",
+    elevation: "480 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 488-2281",
+      website: "https://www.northpolealaska.com",
+      address: "125 Snowman Lane, North Pole, AK 99705"
+    },
+    industries: ["Retail", "Oil Refining", "Tourism", "Military Support"],
+    attractions: ["Santa Claus House", "Antler Academy", "Christmas-themed streets"],
+    imageUrl: "https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=1200"
+  },
+  girdwood: {
+    name: "Girdwood",
+    type: 'community',
+    population: 2072,
+    region: "Southcentral",
+    coordinates: { lat: 60.9419, lng: -149.1664 },
+    history: `Girdwood was founded in 1896 by prospector James Girdwood. Gold mining sustained the community until the 1930s when the mines closed.
+
+The original townsite was destroyed in the 1964 Good Friday Earthquake when the ground dropped 8-10 feet and flooded with seawater. The community rebuilt at its current location.
+
+Alyeska Resort transformed Girdwood into Alaska's premier ski destination, attracting winter sports enthusiasts from around the world.`,
+    description: "Alaska's premier ski resort community in the Chugach Mountains.",
+    established: "1896",
+    elevation: "250 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 783-2651",
+      website: "https://www.alyeskaresort.com"
+    },
+    industries: ["Tourism", "Skiing", "Hospitality"],
+    attractions: ["Alyeska Resort", "Crow Creek Mine", "Alaska Wildlife Conservation Center", "Portage Glacier"],
+    imageUrl: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=1200"
+  },
+  talkeetna: {
+    name: "Talkeetna",
+    type: 'community',
+    population: 876,
+    region: "Southcentral",
+    coordinates: { lat: 62.3236, lng: -150.1064 },
+    history: `Talkeetna, meaning "river of plenty" in Dena'ina, developed as a mining and trading center in the early 1900s. The Alaska Railroad established a station here in 1916.
+
+The town became the base camp for climbers attempting Denali (Mount McKinley) and remains the primary staging area for expeditions today. The National Park Service maintains a ranger station in town.
+
+Talkeetna famously elected a cat named Stubbs as honorary mayor in 1997, who served until his death in 2017.`,
+    description: "Historic town at the base of Denali, gateway for mountaineering expeditions.",
+    established: "1916",
+    elevation: "358 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 733-2330",
+      website: "https://www.talkeetnachamber.org"
+    },
+    industries: ["Tourism", "Aviation", "Mountaineering Support"],
+    attractions: ["Denali Flightseeing", "Talkeetna Historical Society Museum", "Mahay's Riverboat Tours", "Downtown Historic District"],
+    imageUrl: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200"
+  },
+  unalaska: {
+    name: "Unalaska/Dutch Harbor",
+    type: 'city',
+    population: 4758,
+    region: "Southwest",
+    coordinates: { lat: 53.8739, lng: -166.5322 },
+    airport: {
+      code: "DUT",
+      name: "Unalaska Airport",
+      type: "Commercial",
+      runways: "1 runway, 4,500 ft"
+    },
+    history: `Unalaska has been home to the Unangan (Aleut) people for over 9,000 years. Russian fur traders established a post here in 1759, making it one of Alaska's oldest European settlements.
+
+Dutch Harbor, on Amaknak Island, served as a major U.S. Navy base during World War II and was bombed by the Japanese in 1942. The attack killed 43 people and was the second enemy attack on American soil.
+
+Today, Dutch Harbor is consistently America's top commercial fishing port by volume, primarily for pollock and crab.`,
+    description: "America's top commercial fishing port in the heart of the Aleutian Islands.",
+    established: "Traditional Unangan village",
+    elevation: "20 ft",
+    timezone: "Alaska-Hawaii Time (HAST)",
+    contact: {
+      phone: "(907) 581-1251",
+      website: "https://www.ci.unalaska.ak.us",
+      address: "43 Raven Way, Unalaska, AK 99685"
+    },
+    industries: ["Commercial Fishing", "Seafood Processing", "Transportation"],
+    attractions: ["WWII National Historical Area", "Holy Ascension Cathedral", "Museum of the Aleutians", "Eagle Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "eagle-river": {
+    name: "Eagle River",
+    type: 'community',
+    population: 25275,
+    region: "Southcentral",
+    coordinates: { lat: 61.3214, lng: -149.5683 },
+    history: `Eagle River began as a stop along the Iditarod Trail and later the Alaska Railroad. The community grew rapidly after World War II as Anchorage expanded northward.
+
+The area is named after the Eagle River, where bald eagles congregate to feed on salmon runs. Joint Base Elmendorf-Richardson (JBER) borders the community, influencing its development.
+
+Today, Eagle River is a major suburb of Anchorage, offering a more rural lifestyle while maintaining easy access to urban amenities.`,
+    description: "Scenic Anchorage suburb nestled in the Chugach Mountains.",
+    established: "1940s",
+    elevation: "225 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 343-7100",
+      website: "https://www.muni.org"
+    },
+    industries: ["Military", "Retail", "Healthcare", "Recreation"],
+    attractions: ["Eagle River Nature Center", "Chugach State Park", "Eagle River Campground", "Alaska State Fair Access"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
   }
 };
 
