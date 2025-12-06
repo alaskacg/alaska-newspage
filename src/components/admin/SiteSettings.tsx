@@ -1,9 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Settings, Shield, Bell, Palette, Database } from "lucide-react";
+import APIIntegrations from "./APIIntegrations";
+import AIContentAssistant from "./AIContentAssistant";
 
 const SiteSettings = () => {
   return (
     <div className="space-y-6">
+      {/* AI Integrations */}
+      <APIIntegrations />
+      
+      {/* AI Content Assistant */}
+      <AIContentAssistant />
+
       <Card className="bg-slate-800/50 border-white/10">
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-2">
