@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 
 const AnimatedLogo = () => {
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
   const [isHovered, setIsHovered] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -115,53 +112,45 @@ const AnimatedLogo = () => {
         />
       </div>
 
-      {/* Text Logo */}
+      {/* Text Logo - High contrast for aurora background */}
       <div className="flex flex-col">
-        {/* Main title */}
+        {/* Main title - White text with strong shadow */}
         <div className="flex items-baseline gap-1">
           <span 
-            className="text-xl sm:text-2xl font-black tracking-tight transition-all duration-300"
+            className="text-xl sm:text-2xl font-black tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
             style={{ 
               fontFamily: "'Inter', system-ui, sans-serif",
-              background: isDark 
-                ? 'linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%)'
-                : 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              textShadow: '2px 2px 8px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.6)'
             }}
           >
             ALASKA
           </span>
           <span 
-            className="text-lg sm:text-xl font-semibold tracking-wide transition-all duration-300"
+            className="text-lg sm:text-xl font-semibold tracking-wide text-white/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
             style={{ 
               fontFamily: "'Inter', system-ui, sans-serif",
-              color: isDark ? '#94a3b8' : '#475569',
+              textShadow: '1px 1px 6px rgba(0,0,0,0.8)'
             }}
           >
             News Page
           </span>
         </div>
         
-        {/* Tagline with better contrast */}
+        {/* Tagline with cyan/gold accent */}
         <div className="flex items-center gap-2">
           <div 
             className="h-0.5 w-4 rounded-full"
             style={{ 
-              background: 'linear-gradient(90deg, #0ea5e9, #22d3ee)'
+              background: 'linear-gradient(90deg, #fcd34d, #f59e0b)',
+              boxShadow: '0 0 8px rgba(252, 211, 77, 0.5)'
             }}
           />
           <span 
-            className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300"
+            className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase"
             style={{ 
               fontFamily: "'Inter', system-ui, sans-serif",
-              background: isDark 
-                ? 'linear-gradient(90deg, #22d3ee 0%, #10b981 100%)'
-                : 'linear-gradient(90deg, #0369a1 0%, #0d9488 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: '#fcd34d',
+              textShadow: '1px 1px 4px rgba(0,0,0,0.9), 0 0 10px rgba(252, 211, 77, 0.3)'
             }}
           >
             Alaska's Regional News Source
@@ -169,19 +158,21 @@ const AnimatedLogo = () => {
           <div 
             className="h-0.5 w-4 rounded-full"
             style={{ 
-              background: 'linear-gradient(90deg, #22d3ee, #10b981)'
+              background: 'linear-gradient(90deg, #f59e0b, #fcd34d)',
+              boxShadow: '0 0 8px rgba(252, 211, 77, 0.5)'
             }}
           />
         </div>
         
-        {/* Animated underline on hover */}
+        {/* Animated underline on hover - gold color */}
         <div 
           className={`
             h-[2px] mt-1.5 rounded-full transition-all duration-500 origin-left
             ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
           `}
           style={{
-            background: 'linear-gradient(90deg, #0ea5e9, #22d3ee, #10b981)'
+            background: 'linear-gradient(90deg, #fcd34d, #f59e0b, #fcd34d)',
+            boxShadow: '0 0 10px rgba(252, 211, 77, 0.5)'
           }}
         />
       </div>
