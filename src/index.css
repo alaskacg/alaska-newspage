@@ -699,3 +699,22 @@ All colors MUST be HSL.
 .animate-bounce-soft {
   animation: bounce-soft 2s ease-in-out infinite;
 }
+
+/* Custom Leaflet tooltip styles */
+.custom-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.custom-tooltip::before {
+  display: none !important;
+}
+
+.leaflet-tooltip-left.custom-tooltip::before,
+.leaflet-tooltip-right.custom-tooltip::before,
+.leaflet-tooltip-top.custom-tooltip::before,
+.leaflet-tooltip-bottom.custom-tooltip::before {
+  display: none !important;
+}

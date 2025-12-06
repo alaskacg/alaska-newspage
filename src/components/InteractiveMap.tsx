@@ -305,7 +305,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
         marker.on('click', () => navigate(`/region/${statewideRegion.slug}`));
       }
 
-      // Add all Alaska communities as markers
+      // Add all Alaska communities as markers with hover tooltips
       alaskaCommunities.forEach((community) => {
         const isCity = community.type === 'city';
         const markerSize = community.population > 10000 ? 10 : community.population > 5000 ? 8 : community.population > 1000 ? 6 : 5;
@@ -353,6 +353,30 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
             </button>` : ''}
           </div>
         `;
+
+        // Add hover tooltip for quick preview
+        const tooltipContent = `<div style="
+          padding: 6px 10px;
+          background: rgba(0,0,0,0.9);
+          color: white;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 500;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          border: 1px solid ${isCity ? '#f59e0b' : '#22d3ee'};
+        ">
+          <div style="font-weight: bold; margin-bottom: 2px;">${community.name}</div>
+          <div style="font-size: 10px; opacity: 0.8;">${isCity ? 'City' : 'Community'} • Pop: ${community.population.toLocaleString()}</div>
+          ${hasPage ? '<div style="font-size: 9px; color: #22d3ee; margin-top: 3px;">Click for details</div>' : ''}
+        </div>`;
+
+        marker.bindTooltip(tooltipContent, {
+          permanent: false,
+          direction: 'top',
+          offset: [0, -5],
+          opacity: 1,
+          className: 'custom-tooltip'
+        });
 
         marker.bindPopup(popupContent);
         

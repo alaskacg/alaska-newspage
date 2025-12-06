@@ -110,12 +110,12 @@ const alaskaEvents: CalendarEvent[] = [
 ];
 
 const eventTypeConfig = {
-  hunting: { icon: Target, color: "bg-orange-500/20 text-orange-400 border-orange-500/30", label: "Hunting" },
-  fishing: { icon: Fish, color: "bg-blue-500/20 text-blue-400 border-blue-500/30", label: "Fishing" },
-  salmon: { icon: Fish, color: "bg-pink-500/20 text-pink-400 border-pink-500/30", label: "Salmon Run" },
-  moon: { icon: Moon, color: "bg-purple-500/20 text-purple-400 border-purple-500/30", label: "Moon Phase" },
-  season: { icon: Sun, color: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30", label: "Season" },
-  holiday: { icon: Snowflake, color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30", label: "Holiday" },
+  hunting: { icon: Target, color: "bg-orange-600/30 text-orange-300 border-orange-500/50 dark:bg-orange-500/25 dark:text-orange-300", label: "Hunting" },
+  fishing: { icon: Fish, color: "bg-sky-600/30 text-sky-200 border-sky-500/50 dark:bg-sky-500/25 dark:text-sky-300", label: "Fishing" },
+  salmon: { icon: Fish, color: "bg-rose-600/30 text-rose-200 border-rose-500/50 dark:bg-rose-500/25 dark:text-rose-300", label: "Salmon Run" },
+  moon: { icon: Moon, color: "bg-violet-600/30 text-violet-200 border-violet-500/50 dark:bg-violet-500/25 dark:text-violet-300", label: "Moon Phase" },
+  season: { icon: Sun, color: "bg-amber-600/30 text-amber-100 border-amber-500/50 dark:bg-amber-500/25 dark:text-amber-300", label: "Season" },
+  holiday: { icon: Snowflake, color: "bg-teal-600/30 text-teal-100 border-teal-500/50 dark:bg-teal-500/25 dark:text-teal-300", label: "Holiday" },
 };
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
