@@ -58,7 +58,7 @@ const WeeklyReport = () => {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-amber-400/30 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -70,26 +70,26 @@ const WeeklyReport = () => {
       </div>
       
       {/* Glowing orbs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDuration: '8s' }} />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '6s', animationDelay: '2s' }} />
       
       <div className="container relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Dynamic Title Section */}
           <div className="text-center mb-12 animate-fade-in">
             {/* Published badge */}
-            <div className="inline-block px-6 py-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-2 border-amber-500/40 rounded-full mb-8 backdrop-blur-sm shadow-lg animate-bounce-soft">
-              <span className="text-sm font-display font-semibold text-amber-400 tracking-wider">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
+            <div className="inline-block px-6 py-2 bg-white/10 border-2 border-white/30 rounded-full mb-8 backdrop-blur-sm shadow-lg animate-bounce-soft">
+              <span className="text-sm font-display font-semibold text-white tracking-wider">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
             </div>
             
             {/* Main Title with dynamic animation */}
             <div className="relative mb-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
-                <span className="block text-white/90 animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
+                <span className="block text-white animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
                   The
                 </span>
                 <span 
-                  className="block bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 bg-clip-text text-transparent animate-slide-in-right bg-[length:200%_auto] animate-shimmer"
+                  className="block text-white animate-slide-in-right"
                   style={{ animationDelay: '0.3s' }}
                 >
                   ANP Weekly Report
@@ -97,31 +97,31 @@ const WeeklyReport = () => {
               </h1>
               
               {/* Decorative line */}
-              <div className="mt-4 mx-auto w-32 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-scale-in" style={{ animationDelay: '0.5s' }} />
+              <div className="mt-4 mx-auto w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent animate-scale-in" style={{ animationDelay: '0.5s' }} />
             </div>
             
             {/* Host name with elegant styling */}
             <div className="animate-fade-in" style={{ animationDelay: '0.7s' }}>
-              <p className="text-xl md:text-2xl font-display text-white/80 tracking-wide">
+              <p className="text-xl md:text-2xl font-display text-white tracking-wide">
                 with{" "}
                 <span className="relative inline-block">
-                  <span className="text-amber-300 font-semibold">J.R. Kitchens</span>
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0" />
+                  <span className="text-white font-semibold">J.R. Kitchens</span>
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-white/0 via-white to-white/0" />
                 </span>
               </p>
             </div>
             
             {/* Subtitle */}
-            <p className="mt-4 text-white/60 text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.9s' }}>
+            <p className="mt-4 text-white/80 text-lg max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.9s' }}>
               Your weekly deep-dive into Alaska's most important stories
             </p>
           </div>
           
           {/* Video Section */}
-          <div className="glass rounded-2xl border-2 border-amber-500/30 p-6 md:p-10 shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 animate-scale-in" style={{ animationDelay: '1s' }}>
+          <div className="glass rounded-2xl border-2 border-white/30 p-6 md:p-10 shadow-2xl hover:shadow-white/10 transition-all duration-500 animate-scale-in" style={{ animationDelay: '1s' }}>
             {loading ? (
-              <div className="text-center py-12 text-white/60">
-                <div className="inline-block w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mb-4" />
+              <div className="text-center py-12 text-white/80">
+                <div className="inline-block w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin mb-4" />
                 <p>Loading latest report...</p>
               </div>
             ) : latestReport ? (
@@ -131,7 +131,7 @@ const WeeklyReport = () => {
                     {latestReport.title}
                   </h3>
                   {latestReport.description && (
-                    <p className="text-white/70">
+                    <p className="text-white/80">
                       {latestReport.description}
                     </p>
                   )}
@@ -146,12 +146,12 @@ const WeeklyReport = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-amber-500/20 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <p className="text-white/70 text-lg leading-relaxed max-w-md mx-auto">
+                <p className="text-white/80 text-lg leading-relaxed max-w-md mx-auto">
                   The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
                 </p>
               </div>
