@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import EnhancedVideoPlayer from "@/components/EnhancedVideoPlayer";
+import { ArrowRight, Archive } from "lucide-react";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 
 interface WeeklyReportData {
@@ -92,12 +94,6 @@ const WeeklyReport = () => {
         <div className="max-w-5xl mx-auto">
           {/* Dynamic Title Section with enhanced animations */}
           <div className="text-center mb-12">
-            {/* Published badge with shimmer effect */}
-            <div className="inline-block px-6 py-2 bg-white/10 border-2 border-white/30 rounded-full mb-8 backdrop-blur-sm shadow-lg relative overflow-hidden group animate-fade-in">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="text-sm font-cinzel font-semibold text-white tracking-wider relative z-10">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
-            </div>
-            
             {/* Main Title - "The Alaska News Page Weekly Report" with letter-by-letter animation */}
             <div className="relative mb-6 overflow-hidden">
               <h1 className="font-cinzel leading-tight perspective-1000">
@@ -223,6 +219,28 @@ const WeeklyReport = () => {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Bottom section with Published badge and Archive link */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+            {/* Published badge */}
+            <div className="inline-block px-5 py-2 bg-white/10 border border-white/30 rounded-full backdrop-blur-sm shadow-lg relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="text-xs font-cinzel font-semibold text-white/90 tracking-wider relative z-10">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
+            </div>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-6 bg-white/30" />
+
+            {/* Archive link */}
+            <Link 
+              to="/anpweeklyreport"
+              className="group inline-flex items-center gap-2 px-5 py-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 hover:border-amber-400/60 rounded-full backdrop-blur-sm shadow-lg transition-all duration-300"
+            >
+              <Archive className="w-4 h-4 text-amber-300" />
+              <span className="text-sm font-cinzel font-semibold text-amber-200 tracking-wide">View All Reports</span>
+              <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </div>
         </div>
       </div>
