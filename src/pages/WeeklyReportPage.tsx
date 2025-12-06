@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import WeeklyReport from "@/components/WeeklyReport";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { Calendar, Video } from "lucide-react";
+import { Calendar, Video, ExternalLink, User } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const WeeklyReportPage = () => {
   const { data: reports, isLoading } = useQuery({
@@ -24,6 +27,7 @@ const WeeklyReportPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <ScrollToTop />
       
       <main className="container py-12">
         <div className="max-w-5xl mx-auto">
@@ -34,13 +38,18 @@ const WeeklyReportPage = () => {
               <span className="text-sm font-medium text-muted-foreground">Weekly Video Report</span>
             </div>
             
-            <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              Alaska News Page Weekly Report
+            <h1 className="font-cinzel text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              The Alaska News Page Weekly Report
             </h1>
             
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your comprehensive weekly roundup of Alaska's most important news, delivered every week with in-depth analysis and expert commentary.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+              Your comprehensive weekly roundup of Alaska's most important news, delivered every Wednesday with in-depth analysis and expert commentary.
             </p>
+
+            <div className="flex items-center justify-center gap-2 text-muted-foreground">
+              <User className="h-4 w-4" />
+              <span>Hosted by <strong className="text-foreground">J.R. Kitchens</strong></span>
+            </div>
           </div>
 
           {/* Latest Report */}
@@ -112,18 +121,51 @@ const WeeklyReportPage = () => {
             <h2 className="font-display text-2xl font-semibold mb-4">About the Weekly Report</h2>
             <div className="space-y-3 text-muted-foreground">
               <p>
-                The Alaska News Page Weekly Report brings you the most significant stories from across the Last Frontier, carefully curated and presented by our expert team.
+                The Alaska News Page Weekly Report brings you the most significant stories from across the Last Frontier, carefully curated and presented by J.R. Kitchens.
               </p>
               <p>
                 Each week, we dive deep into the issues that matter most to Alaskans, from politics and economy to culture and community events. Our comprehensive coverage ensures you stay informed about the developments shaping our state.
               </p>
               <p className="text-sm pt-4 border-t border-border/50">
-                <strong>New episodes</strong> are published every week. Subscribe to push notifications to never miss an update!
+                <strong>New episodes</strong> are published every Wednesday. Subscribe to push notifications to never miss an update!
               </p>
+            </div>
+          </div>
+
+          {/* External Resources */}
+          <div className="mt-8 p-6 bg-muted/30 rounded-xl border border-border/50">
+            <h3 className="font-semibold text-sm text-muted-foreground mb-3">Related Resources</h3>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="https://www.facebook.com/AlaskaNewsPage" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                <ExternalLink className="h-3 w-3" />
+                Follow on Facebook
+              </a>
+              <a 
+                href="https://alaska.gov" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                <ExternalLink className="h-3 w-3" />
+                State of Alaska
+              </a>
+              <Link 
+                to="/region/statewide"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                View Statewide News
+              </Link>
             </div>
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };
