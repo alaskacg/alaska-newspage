@@ -54,8 +54,10 @@ const Header = () => {
             animation: 'aurora-drift 45s ease-in-out infinite alternate'
           }}
         />
-        {/* Very subtle overlay for minimal text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 dark:from-black/20 dark:via-transparent dark:to-black/30" />
+        {/* Improved overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 dark:from-black/50 dark:via-black/40 dark:to-black/60" />
+        {/* Left side darker for logo visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
         {/* Shimmer effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
       </div>
@@ -71,7 +73,7 @@ const Header = () => {
               <Link
                 key={region.slug}
                 to={`/region/${region.slug}`}
-                className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
+                className="text-sm font-semibold transition-all duration-300 relative text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-amber-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 {region.name}
@@ -79,7 +81,7 @@ const Header = () => {
             ))}
             <Link
               to="/anpweeklyreport"
-              className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
+              className="text-sm font-semibold transition-all duration-300 relative text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-amber-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
             >
               Weekly Report w/ J.R Kitchens
             </Link>
@@ -87,7 +89,7 @@ const Header = () => {
               href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link-header text-sm font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
+              className="text-sm font-semibold transition-all duration-300 relative text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-amber-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1"
             >
               <Waves className="h-3 w-3" />
               Tides

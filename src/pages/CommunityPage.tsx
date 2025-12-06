@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, MapPin, Users, Plane, Phone, Mail, Globe, Building, History, Newspaper } from "lucide-react";
+import { ArrowLeft, MapPin, Users, Plane, Phone, Mail, Globe, Building, History, Newspaper, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import CommunityWeather from "@/components/CommunityWeather";
+import TypewriterTitle from "@/components/TypewriterTitle";
 
 // Community data with history, contact info, and details
 const communityData: Record<string, {
@@ -819,6 +821,284 @@ Today, Eagle River is a major suburb of Anchorage, offering a more rural lifesty
     industries: ["Military", "Retail", "Healthcare", "Recreation"],
     attractions: ["Eagle River Nature Center", "Chugach State Park", "Eagle River Campground", "Alaska State Fair Access"],
     imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  wrangell: {
+    name: "Wrangell",
+    type: 'city',
+    population: 2127,
+    region: "Southeast",
+    coordinates: { lat: 56.4711, lng: -132.3797 },
+    airport: {
+      code: "WRG",
+      name: "Wrangell Airport",
+      type: "Commercial",
+      runways: "1 runway, 6,000 ft"
+    },
+    history: `Wrangell is one of Alaska's oldest non-Native settlements, having been governed by four nations: Tlingit, Russia, Britain, and the United States. The town has experienced three major gold rushes.
+
+Petroglyphs found near the town date back over 8,000 years, making the area one of the oldest continuously inhabited sites in Alaska. The Petroglyph Beach State Historic Park preserves these ancient carvings.
+
+The Anan Wildlife Observatory, accessible from Wrangell, offers some of Alaska's best black bear viewing opportunities.`,
+    description: "Historic town ruled by four nations, gateway to ancient petroglyphs and bear viewing.",
+    established: "1834 (Russian fort)",
+    elevation: "44 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 874-2381",
+      website: "https://www.wrangell.com",
+      address: "205 Brueger Street, Wrangell, AK 99929"
+    },
+    industries: ["Fishing", "Tourism", "Timber", "Government"],
+    attractions: ["Petroglyph Beach", "Anan Wildlife Observatory", "Chief Shakes Tribal House", "Stikine River"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  petersburg: {
+    name: "Petersburg",
+    type: 'city',
+    population: 3043,
+    region: "Southeast",
+    coordinates: { lat: 56.8128, lng: -132.9556 },
+    airport: {
+      code: "PSG",
+      name: "Petersburg James A. Johnson Airport",
+      type: "Commercial",
+      runways: "1 runway, 6,000 ft"
+    },
+    history: `Petersburg was founded in 1897 by Norwegian immigrant Peter Buschmann, who built a cannery and sawmill. The town retains strong Norwegian heritage and is known as "Little Norway."
+
+The community celebrates its Norwegian roots with the annual Little Norway Festival during May, featuring traditional dancing, costumes, and food. Many buildings feature Norwegian rosemaling (decorative painting).
+
+Petersburg's fishing fleet is one of the most productive in Alaska, with shrimp and halibut being major catches.`,
+    description: "Little Norway of Alaska, a fishing village with strong Norwegian heritage.",
+    established: "1897",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 772-4636",
+      website: "https://www.ci.petersburg.ak.us",
+      address: "12 S Nordic Drive, Petersburg, AK 99833"
+    },
+    industries: ["Commercial Fishing", "Seafood Processing", "Tourism"],
+    attractions: ["LeConte Glacier", "Sons of Norway Hall", "Clausen Memorial Museum", "Little Norway Festival"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  craig: {
+    name: "Craig",
+    type: 'city',
+    population: 1036,
+    region: "Southeast",
+    coordinates: { lat: 55.4764, lng: -133.1483 },
+    airport: {
+      code: "CGA",
+      name: "Craig Seaplane Base",
+      type: "Seaplane",
+      runways: "Water landing"
+    },
+    history: `Craig is located on Prince of Wales Island, the fourth-largest island in the United States. The Tlingit and Haida people have inhabited the area for thousands of years.
+
+The town was established in 1907 around a fish saltery and cannery. Timber and fishing have been the economic mainstays, though tourism has grown as visitors come to experience the island's wilderness.
+
+Prince of Wales Island has more than 1,500 miles of logging roads, making it unique among Southeast Alaska communities for road access to remote areas.`,
+    description: "Largest town on Prince of Wales Island with excellent fishing and outdoor recreation.",
+    established: "1907",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 826-3275",
+      website: "https://www.craigak.com",
+      address: "500 Third Street, Craig, AK 99921"
+    },
+    industries: ["Fishing", "Timber", "Tourism"],
+    attractions: ["El Capitan Cave", "Sport Fishing", "Trocadero Bay", "Native Cultural Sites"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  dillingham: {
+    name: "Dillingham",
+    type: 'city',
+    population: 2316,
+    region: "Southwest",
+    coordinates: { lat: 59.0397, lng: -158.4575 },
+    airport: {
+      code: "DLG",
+      name: "Dillingham Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 6,404 ft"
+    },
+    history: `Dillingham serves as the economic and transportation hub for the Bristol Bay region, home to the world's largest wild sockeye salmon run. The Yup'ik people have inhabited this area for thousands of years.
+
+The town was established in the late 1800s as a trading post and cannery center. The Bristol Bay salmon fishery became one of the most valuable in the world, with millions of fish harvested each summer.
+
+Dillingham remains the center of operations for the Bristol Bay fishery, with seasonal populations swelling dramatically during the salmon runs.`,
+    description: "Hub of Bristol Bay, gateway to the world's greatest sockeye salmon fishery.",
+    established: "1884",
+    elevation: "86 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 842-5211",
+      website: "https://www.dillinghamak.us",
+      address: "173 Main Street, Dillingham, AK 99576"
+    },
+    industries: ["Commercial Fishing", "Government Services", "Transportation", "Tourism"],
+    attractions: ["Bristol Bay", "Wood-Tikchik State Park", "Togiak National Wildlife Refuge", "Salmon Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  mcgrath: {
+    name: "McGrath",
+    type: 'community',
+    population: 346,
+    region: "Interior",
+    coordinates: { lat: 62.9533, lng: -155.5961 },
+    airport: {
+      code: "MCG",
+      name: "McGrath Airport",
+      type: "Commercial",
+      runways: "1 runway, 5,435 ft"
+    },
+    history: `McGrath was established as a supply point for the Iditarod gold mining district in the early 1900s. Located at the confluence of the Kuskokwim and Takotna rivers, it became an important transportation hub.
+
+The town is a checkpoint on the Iditarod Trail Sled Dog Race and often hosts the race's first mandatory rest stop. Many mushers consider it a crucial point in the race.
+
+McGrath serves as a regional center for surrounding villages, providing healthcare, education, and government services.`,
+    description: "Interior hub and key Iditarod checkpoint on the Kuskokwim River.",
+    established: "1907",
+    elevation: "341 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 524-3024"
+    },
+    industries: ["Government Services", "Transportation", "Subsistence", "Tourism"],
+    attractions: ["Iditarod Checkpoint", "Kuskokwim River", "Dog Mushing", "Northern Lights Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  galena: {
+    name: "Galena",
+    type: 'community',
+    population: 479,
+    region: "Interior",
+    coordinates: { lat: 64.7361, lng: -156.9278 },
+    airport: {
+      code: "GAL",
+      name: "Edward G. Pitka Sr. Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 7,254 ft"
+    },
+    history: `Galena was established in 1918 as a supply center for the surrounding mining camps. The town is named after the galena (lead sulfide) ore found in the area.
+
+During the Cold War, Galena Air Force Station was a major military installation for defending Alaska against Soviet attack. The base closed in 1993, and the community has since transitioned to civilian life.
+
+In 2013, the Yukon River flooded Galena, destroying much of the town. The resilient community rebuilt, though at a reduced population.`,
+    description: "Historic Interior community on the Yukon River, former Air Force base site.",
+    established: "1918",
+    elevation: "152 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 656-1301"
+    },
+    industries: ["Government Services", "Education", "Subsistence", "Transportation"],
+    attractions: ["Yukon River", "Northern Lights", "Subsistence Culture", "Historic Military Sites"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  nenana: {
+    name: "Nenana",
+    type: 'community',
+    population: 376,
+    region: "Interior",
+    coordinates: { lat: 64.5639, lng: -149.0931 },
+    airport: {
+      code: "ENN",
+      name: "Nenana Municipal Airport",
+      type: "General Aviation",
+      runways: "1 runway, 4,610 ft"
+    },
+    history: `Nenana is located at the confluence of the Nenana and Tanana rivers. The Tanana Athabascan people have lived here for centuries. The Alaska Railroad reached Nenana in 1923.
+
+President Warren G. Harding drove the "golden spike" completing the Alaska Railroad in Nenana on July 15, 1923. The town hosts the famous Nenana Ice Classic, an annual lottery predicting when the ice on the Tanana River will break up.
+
+The Ice Classic has been running since 1917 and is a beloved Alaska tradition, with millions of dollars in prize money.`,
+    description: "Railroad town famous for the Nenana Ice Classic lottery tradition.",
+    established: "1902",
+    elevation: "356 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 832-5441",
+      website: "https://www.nenana.org"
+    },
+    industries: ["Transportation", "Tourism", "Government Services"],
+    attractions: ["Nenana Ice Classic", "Alaska Railroad Museum", "Taku Chief Stern-wheeler", "St. Mark's Mission Church"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  healy: {
+    name: "Healy",
+    type: 'community',
+    population: 1021,
+    region: "Interior",
+    coordinates: { lat: 63.8694, lng: -148.9686 },
+    history: `Healy is located at the entrance to Denali National Park and serves as the commercial and residential center for the Denali area. The town developed around coal mining operations that began in the early 1900s.
+
+The Usibelli Coal Mine, Alaska's only operating coal mine, has been in operation since 1943. The mine supplies coal for power generation and export.
+
+Healy is famous as the location featured in "Into the Wild," the story of Christopher McCandless who died nearby in 1992.`,
+    description: "Gateway community to Denali National Park, center of Alaska's coal mining.",
+    established: "1905",
+    elevation: "1,294 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 683-1279"
+    },
+    industries: ["Coal Mining", "Tourism", "Hospitality"],
+    attractions: ["Denali National Park", "49th State Brewing", "Stampede Trail", "Usibelli Coal Mine Tours"],
+    imageUrl: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200"
+  },
+  glennallen: {
+    name: "Glennallen",
+    type: 'community',
+    population: 483,
+    region: "Southcentral",
+    coordinates: { lat: 62.1089, lng: -145.5467 },
+    history: `Glennallen is named after two Army explorers, Captain Edwin Glenn and Lieutenant Henry Allen, who explored the Copper River region in the late 1800s.
+
+The community developed at the junction of the Glenn and Richardson Highways, making it a natural crossroads. It serves as a supply and service center for the Copper River Basin.
+
+The area offers spectacular views of the Wrangell Mountains and serves as a gateway to Wrangell-St. Elias National Park, America's largest national park.`,
+    description: "Crossroads of the Copper River Basin, gateway to Wrangell-St. Elias.",
+    established: "1942",
+    elevation: "1,460 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3555"
+    },
+    industries: ["Tourism", "Services", "Government"],
+    attractions: ["Wrangell-St. Elias National Park", "Copper River", "Trans-Alaska Pipeline Viewpoint", "Worthington Glacier"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  yakutat: {
+    name: "Yakutat",
+    type: 'city',
+    population: 657,
+    region: "Southeast",
+    coordinates: { lat: 59.5469, lng: -139.7272 },
+    airport: {
+      code: "YAK",
+      name: "Yakutat Airport",
+      type: "Commercial",
+      runways: "2 runways, largest 7,813 ft"
+    },
+    history: `Yakutat is located on Yakutat Bay, surrounded by the St. Elias Mountains and the Malaspina Glacier, the world's largest piedmont glacier. Tlingit people have inhabited the area for thousands of years.
+
+The town became a military installation during World War II. The airport, one of the longest in Alaska, was built for military operations.
+
+Yakutat is famous for its world-class surfing—one of the few places in Alaska where surfing is popular, thanks to consistent swells from the Gulf of Alaska.`,
+    description: "Remote coastal town famous for world-class surfing and massive glaciers.",
+    established: "Traditional Tlingit village",
+    elevation: "33 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 784-3323",
+      website: "https://www.yakutat.net"
+    },
+    industries: ["Fishing", "Tourism", "Government Services"],
+    attractions: ["Surfing", "Malaspina Glacier", "Hubbard Glacier", "Russell Fjord Wilderness"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
   }
 };
 
@@ -851,33 +1131,56 @@ const CommunityPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <div className="relative h-[400px] overflow-hidden">
+      {/* Hero Section with improved title visibility */}
+      <div className="relative h-[450px] overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center transform scale-105"
           style={{ 
             backgroundImage: community.imageUrl 
               ? `url(${community.imageUrl})` 
               : 'linear-gradient(135deg, #1e3a5f 0%, #0c1929 100%)'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        {/* Dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
+        {/* Additional overlay for title area */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+        
         <div className="absolute inset-0 flex items-end">
-          <div className="container mx-auto px-4 pb-8">
-            <Link to="/" className="inline-flex items-center text-white/80 hover:text-white mb-4 transition-colors">
+          <div className="container mx-auto px-4 pb-10">
+            <Link 
+              to="/" 
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 mb-6 transition-all border border-white/20"
+            >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Map
             </Link>
-            <div className="flex items-center gap-3 mb-2">
-              <Badge variant={community.type === 'city' ? 'default' : 'secondary'} className="text-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <Badge 
+                variant={community.type === 'city' ? 'default' : 'secondary'} 
+                className="text-sm px-4 py-1 bg-primary/80 backdrop-blur"
+              >
                 {community.type === 'city' ? '🏛️ City' : '🏘️ Community'}
               </Badge>
-              <Badge variant="outline" className="text-sm bg-background/50 backdrop-blur">
+              <Badge 
+                variant="outline" 
+                className="text-sm px-4 py-1 bg-white/10 backdrop-blur border-white/30 text-white"
+              >
                 {community.region} Alaska
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">{community.name}</h1>
-            <p className="text-xl text-white/80 max-w-2xl">{community.description}</p>
+            {/* Typewriter animated title */}
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              <TypewriterTitle 
+                text={community.name}
+                className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_20px_rgb(0_0_0_/_80%),_0_0_40px_rgb(0_0_0_/_60%)]"
+                speed={100}
+                delay={500}
+              />
+            </h1>
+            <p className="text-xl text-white/90 max-w-2xl drop-shadow-lg [text-shadow:_1px_1px_10px_rgb(0_0_0_/_70%)]">
+              {community.description}
+            </p>
           </div>
         </div>
       </div>
@@ -928,11 +1231,24 @@ const CommunityPage = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
+        {/* Weather Section */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Cloud className="h-5 w-5 text-primary" />
+            <h2 className="text-xl font-semibold text-foreground">Weather in {community.name}</h2>
+          </div>
+          <CommunityWeather 
+            communityName={community.name} 
+            coordinates={community.coordinates} 
+          />
+        </div>
+
         <Tabs defaultValue="history" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8">
             <TabsTrigger value="history">History</TabsTrigger>
             <TabsTrigger value="info">Information</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
+            <TabsTrigger value="services">Local Services</TabsTrigger>
             <TabsTrigger value="news">Local News</TabsTrigger>
           </TabsList>
 
@@ -1088,6 +1404,140 @@ const CommunityPage = () => {
                 )}
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="services" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Building className="h-5 w-5 text-primary" />
+                    Essential Services
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Emergency Services</p>
+                    <p className="text-sm text-muted-foreground">911 for emergencies</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Alaska State Troopers</p>
+                    <p className="text-sm text-muted-foreground">(907) 451-5100 (Dispatch)</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Alaska DMV</p>
+                    <p className="text-sm text-muted-foreground">dmv.alaska.gov</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Post Office</p>
+                    <p className="text-sm text-muted-foreground">USPS locations available in most communities</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5 text-primary" />
+                    Community Resources
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Local Library</p>
+                    <p className="text-sm text-muted-foreground">Public access computers, books, and programs</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Food Bank</p>
+                    <p className="text-sm text-muted-foreground">Food assistance programs available</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Healthcare Access</p>
+                    <p className="text-sm text-muted-foreground">Local clinics and telehealth services</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Alaska 211</p>
+                    <p className="text-sm text-muted-foreground">Dial 211 for community services info</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Plane className="h-5 w-5 text-primary" />
+                    Transportation
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {community.airport && (
+                    <div className="p-3 rounded-lg bg-muted/50">
+                      <p className="font-medium text-foreground">{community.airport.name}</p>
+                      <p className="text-sm text-muted-foreground">Code: {community.airport.code} | {community.airport.type}</p>
+                    </div>
+                  )}
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Alaska Airlines</p>
+                    <p className="text-sm text-muted-foreground">Major carrier serving Alaska</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Ravn Alaska</p>
+                    <p className="text-sm text-muted-foreground">Regional bush plane service</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50">
+                    <p className="font-medium text-foreground">Alaska Marine Highway</p>
+                    <p className="text-sm text-muted-foreground">Ferry system (where applicable)</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Globe className="h-5 w-5 text-primary" />
+                    Useful Links
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <a 
+                    href="https://alaska.gov" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    <p className="font-medium text-foreground">State of Alaska</p>
+                    <p className="text-sm text-muted-foreground">Official state government portal</p>
+                  </a>
+                  <a 
+                    href="https://www.adfg.alaska.gov" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    <p className="font-medium text-foreground">ADF&G</p>
+                    <p className="text-sm text-muted-foreground">Fishing & hunting regulations</p>
+                  </a>
+                  <a 
+                    href="https://dot.alaska.gov" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    <p className="font-medium text-foreground">Road Conditions</p>
+                    <p className="text-sm text-muted-foreground">511 Alaska road information</p>
+                  </a>
+                  <a 
+                    href="https://www.weather.gov/afg/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                  >
+                    <p className="font-medium text-foreground">NWS Alaska</p>
+                    <p className="text-sm text-muted-foreground">Official weather forecasts</p>
+                  </a>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="news" className="space-y-6">
