@@ -57,6 +57,30 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
           className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-700"
           style={{ backgroundImage: `url(${greatNorthernBanner})` }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
+        
+        <div className="relative h-full flex flex-col justify-end p-6">
+          <h3 className="text-2xl font-display font-bold text-foreground mb-2 drop-shadow-lg">
+            Great Northern Construction
+          </h3>
+          <p className="text-muted-foreground text-sm mb-4 max-w-md drop-shadow">
+            Alaska's Premier Construction Team - Building Excellence Since 1985. Commercial, Residential & Industrial Projects.
+          </p>
+          <Button
+            asChild
+            className="w-fit bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
+          >
+            <a
+              href="https://greatnorthernconstruction.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <span>Learn More</span>
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
       </div>
     </Card>
   );
