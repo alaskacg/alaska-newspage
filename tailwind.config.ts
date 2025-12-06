@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        cinzel: ['Cinzel', 'Georgia', 'serif'],
+        playfair: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -162,6 +164,18 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" }
         },
+        "letter-reveal": {
+          "0%": { opacity: "0", transform: "translateY(30px) rotateX(-90deg)" },
+          "100%": { opacity: "1", transform: "translateY(0) rotateX(0)" }
+        },
+        "word-glow": {
+          "0%, 100%": { textShadow: "0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)" },
+          "50%": { textShadow: "0 0 30px rgba(255,255,255,0.5), 0 0 60px rgba(255,255,255,0.2)" }
+        },
+        "text-shimmer": {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -184,6 +198,9 @@ export default {
         "wiggle": "wiggle 0.5s ease-in-out",
         "blur-in": "blur-in 0.6s ease-out forwards",
         "gradient-x": "gradient-x 3s ease infinite",
+        "letter-reveal": "letter-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "word-glow": "word-glow 3s ease-in-out infinite",
+        "text-shimmer": "text-shimmer 3s linear infinite",
       },
     },
   },
