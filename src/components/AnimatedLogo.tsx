@@ -6,22 +6,12 @@ const AnimatedLogo = () => {
   const isDark = resolvedTheme === "dark";
   const [isHovered, setIsHovered] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [time, setTime] = useState(0);
 
   useEffect(() => {
     setMounted(true);
-    const interval = setInterval(() => {
-      setTime(t => t + 1);
-    }, 50);
-    return () => clearInterval(interval);
   }, []);
 
   if (!mounted) return null;
-
-  // Animated values
-  const auroraShift = Math.sin(time * 0.05) * 5;
-  const starTwinkle = Math.sin(time * 0.08);
-  const compassPulse = 0.95 + Math.sin(time * 0.03) * 0.05;
 
   return (
     <div 
@@ -29,175 +19,101 @@ const AnimatedLogo = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Shield-shaped Logo */}
-      <div className={`relative transition-all duration-700 ${isHovered ? 'scale-105' : ''}`}>
+      {/* Clean Circular Logo */}
+      <div className={`relative transition-all duration-500 ${isHovered ? 'scale-105' : ''}`}>
         <svg
-          width="52"
-          height="60"
-          viewBox="0 0 52 60"
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
           className="drop-shadow-lg"
         >
           <defs>
-            {/* Shield gradient */}
-            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor={isDark ? "#0f4c81" : "#1e3a5f"} />
-              <stop offset="50%" stopColor={isDark ? "#1a5490" : "#2d4a6b"} />
-              <stop offset="100%" stopColor={isDark ? "#0d3d6e" : "#1a3a5f"} />
+            {/* Main gradient */}
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor={isDark ? "#0ea5e9" : "#0369a1"} />
+              <stop offset="100%" stopColor={isDark ? "#06b6d4" : "#0284c7"} />
             </linearGradient>
             
-            {/* Aurora gradient */}
-            <linearGradient id="auroraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#10b981" />
-              <stop offset="50%" stopColor="#22d3ee" />
-              <stop offset="100%" stopColor="#34d399" />
-            </linearGradient>
-            
-            {/* Gold accent */}
-            <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#d4af37" />
-              <stop offset="50%" stopColor="#f4d03f" />
-              <stop offset="100%" stopColor="#c9a227" />
-            </linearGradient>
-
-            {/* Snow gradient */}
-            <linearGradient id="snowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#e2e8f0" />
+            {/* Gold gradient for star */}
+            <linearGradient id="starGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fbbf24" />
+              <stop offset="100%" stopColor="#f59e0b" />
             </linearGradient>
           </defs>
 
-          {/* Shield shape */}
-          <path
-            d="M 26 2 
-               L 48 10 
-               L 48 30 
-               Q 48 48 26 58 
-               Q 4 48 4 30 
-               L 4 10 
-               Z"
-            fill="url(#shieldGradient)"
-            stroke={isDark ? "#22d3ee" : "#1e3a5f"}
-            strokeWidth="1.5"
-            className="transition-all duration-500"
+          {/* Outer circle */}
+          <circle
+            cx="28"
+            cy="28"
+            r="26"
+            fill={isDark ? "#0c1829" : "#f0f9ff"}
+            stroke="url(#logoGradient)"
+            strokeWidth="2"
           />
 
-          {/* Inner border */}
+          {/* Alaska state shape (simplified) */}
           <path
-            d="M 26 6 
-               L 44 12 
-               L 44 30 
-               Q 44 45 26 54 
-               Q 8 45 8 30 
-               L 8 12 
+            d="M 14 32 
+               L 18 26 
+               L 22 30 
+               L 26 22 
+               L 30 28 
+               L 34 24 
+               L 38 30 
+               L 42 28 
+               L 40 36 
+               L 34 38 
+               L 28 40 
+               L 20 38 
+               L 16 36 
                Z"
-            fill="none"
-            stroke="url(#goldAccent)"
-            strokeWidth="0.8"
-            opacity="0.6"
+            fill={isDark ? "#1e3a5f" : "#0369a1"}
+            opacity="0.8"
+          />
+          
+          {/* Snow peaks */}
+          <path
+            d="M 24 24 L 26 22 L 28 24 Z"
+            fill="white"
+            opacity="0.9"
+          />
+          <path
+            d="M 32 26 L 34 24 L 36 26 Z"
+            fill="white"
+            opacity="0.9"
           />
 
-          {/* Aurora ribbons at top */}
-          <g opacity="0.9">
-            <path
-              d={`M 10 ${14 + auroraShift * 0.3} 
-                  Q 18 ${11 + auroraShift * 0.5} 26 ${13 + auroraShift * 0.3} 
-                  T 42 ${12 + auroraShift * 0.4}`}
-              fill="none"
-              stroke="url(#auroraGradient)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              opacity={0.7 + starTwinkle * 0.2}
-            />
-            <path
-              d={`M 12 ${17 + auroraShift * 0.4} 
-                  Q 20 ${14 + auroraShift * 0.3} 28 ${16 + auroraShift * 0.4} 
-                  T 40 ${15 + auroraShift * 0.3}`}
-              fill="none"
-              stroke="url(#auroraGradient)"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              opacity={0.5 + starTwinkle * 0.15}
-            />
-          </g>
-
-          {/* Mountain range */}
-          <g>
-            {/* Back mountain */}
-            <path
-              d="M 10 44 L 18 28 L 26 44 Z"
-              fill={isDark ? "#1e293b" : "#334155"}
-            />
-            {/* Main peak - Denali style */}
-            <path
-              d="M 16 44 L 26 20 L 36 44 Z"
-              fill={isDark ? "#334155" : "#475569"}
-            />
-            {/* Front mountain */}
-            <path
-              d="M 26 44 L 34 30 L 42 44 Z"
-              fill={isDark ? "#1e293b" : "#334155"}
-            />
-            
-            {/* Snow caps */}
-            <path
-              d="M 23 25 L 26 20 L 29 25 L 26 22 Z"
-              fill="url(#snowGradient)"
-              opacity={0.95}
-            />
-            <path
-              d="M 15 31 L 18 28 L 21 31 L 18 29 Z"
-              fill="url(#snowGradient)"
-              opacity={0.85}
-            />
-            <path
-              d="M 31 33 L 34 30 L 37 33 L 34 31 Z"
-              fill="url(#snowGradient)"
-              opacity={0.85}
-            />
-          </g>
-
-          {/* Stars */}
-          {isDark && (
-            <g>
-              {[
-                { x: 14, y: 22, r: 1 },
-                { x: 38, y: 18, r: 0.8 },
-                { x: 22, y: 10, r: 0.7 },
-                { x: 32, y: 12, r: 0.9 },
-              ].map((star, i) => (
-                <circle
-                  key={i}
-                  cx={star.x}
-                  cy={star.y}
-                  r={star.r}
-                  fill="#ffffff"
-                  opacity={0.5 + Math.sin(time * 0.1 + i * 1.5) * 0.4}
-                />
-              ))}
-            </g>
-          )}
-
-          {/* North Star / Compass Rose at top */}
-          <g transform={`translate(26, 8) scale(${compassPulse})`}>
+          {/* North Star - Alaska symbol */}
+          <g transform="translate(28, 14)">
             <polygon
-              points="0,-3.5 0.8,0 0,3.5 -0.8,0"
-              fill="url(#goldAccent)"
-              opacity="0.9"
+              points="0,-6 1.5,-2 6,-2 2.5,1 4,5 0,2.5 -4,5 -2.5,1 -6,-2 -1.5,-2"
+              fill="url(#starGold)"
+              className={`transition-transform duration-500 origin-center ${isHovered ? 'scale-110' : ''}`}
             />
-            <polygon
-              points="-3.5,0 0,-0.8 3.5,0 0,0.8"
-              fill="url(#goldAccent)"
-              opacity="0.7"
-            />
-            <circle cx="0" cy="0" r="1" fill="#f4d03f" />
           </g>
+
+          {/* ANP text */}
+          <text
+            x="28"
+            y="47"
+            textAnchor="middle"
+            className="font-bold"
+            style={{ 
+              fontSize: '8px', 
+              fill: isDark ? '#94a3b8' : '#334155',
+              fontFamily: 'Inter, sans-serif',
+              letterSpacing: '0.1em'
+            }}
+          >
+            ANP
+          </text>
         </svg>
 
         {/* Hover glow */}
         <div 
-          className={`absolute inset-0 rounded-lg transition-opacity duration-500 ${
+          className={`absolute inset-0 rounded-full transition-opacity duration-500 ${
             isHovered 
-              ? isDark ? 'opacity-100 bg-cyan-400/20 blur-xl' : 'opacity-100 bg-blue-500/15 blur-xl'
+              ? isDark ? 'opacity-100 bg-cyan-400/20 blur-xl' : 'opacity-100 bg-sky-500/20 blur-xl'
               : 'opacity-0'
           }`} 
         />
@@ -205,68 +121,48 @@ const AnimatedLogo = () => {
 
       {/* Text Logo */}
       <div className="flex flex-col">
-        {/* ANP abbreviation with custom styling */}
-        <div className="flex items-baseline">
-          <span 
-            className={`
-              text-2xl sm:text-3xl font-black tracking-wide
-              transition-all duration-500
-              ${isDark 
-                ? 'text-cyan-300' 
-                : 'text-slate-800'
-              }
-              ${isHovered ? 'tracking-wider' : ''}
-            `}
-            style={{ 
-              fontFamily: "'Cinzel', serif",
-              textShadow: isDark 
-                ? '0 0 20px rgba(34, 211, 238, 0.4), 0 2px 4px rgba(0,0,0,0.3)' 
-                : '0 1px 2px rgba(0,0,0,0.1)'
-            }}
-          >
-            ANP
-          </span>
-        </div>
+        {/* Main title */}
+        <span 
+          className={`
+            text-lg sm:text-xl font-bold tracking-wide
+            transition-all duration-300
+            ${isDark 
+              ? 'text-white' 
+              : 'text-slate-800'
+            }
+          `}
+          style={{ 
+            fontFamily: "'Inter', sans-serif",
+            textShadow: isDark ? '0 2px 4px rgba(0,0,0,0.3)' : 'none'
+          }}
+        >
+          Alaska News Page
+        </span>
         
-        {/* Full name */}
-        <div className="flex flex-col -mt-0.5">
-          <span 
-            className={`
-              text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase
-              transition-all duration-300
-              ${isDark ? 'text-slate-200' : 'text-slate-700'}
-            `}
-            style={{ 
-              fontFamily: "'Inter', sans-serif",
-              textShadow: isDark ? '0 1px 2px rgba(0,0,0,0.3)' : 'none'
-            }}
-          >
-            Alaska News Page
-          </span>
-          
-          {/* Tagline */}
-          <div className="relative mt-0.5">
-            <span 
-              className={`
-                text-[8px] sm:text-[9px] font-medium tracking-[0.1em] uppercase
-                transition-all duration-300
-                ${isDark ? 'text-slate-400' : 'text-slate-500'}
-              `}
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Alaska's Regional News Source
-            </span>
-            {/* Animated underline on hover */}
-            <div 
-              className={`
-                absolute -bottom-0.5 left-0 h-px
-                transition-all duration-500 origin-left
-                ${isDark ? 'bg-gradient-to-r from-cyan-400 to-emerald-400' : 'bg-gradient-to-r from-blue-500 to-teal-500'}
-                ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
-              `}
-            />
-          </div>
-        </div>
+        {/* Tagline with high contrast */}
+        <span 
+          className={`
+            text-[10px] sm:text-xs font-semibold tracking-wider uppercase
+            transition-all duration-300
+            ${isDark 
+              ? 'text-cyan-400' 
+              : 'text-sky-600'
+            }
+          `}
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Alaska's Regional News Source
+        </span>
+        
+        {/* Animated underline on hover */}
+        <div 
+          className={`
+            h-0.5 mt-1 rounded-full
+            transition-all duration-500 origin-left
+            ${isDark ? 'bg-gradient-to-r from-cyan-400 to-emerald-400' : 'bg-gradient-to-r from-sky-500 to-teal-500'}
+            ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
+          `}
+        />
       </div>
     </div>
   );
