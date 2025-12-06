@@ -13,6 +13,11 @@ import DownloadAppPage from "./pages/DownloadAppPage";
 import WeeklyReportPage from "./pages/WeeklyReportPage";
 import EventPage from "./pages/EventPage";
 import CommunityPage from "./pages/CommunityPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import DisclaimerPage from "./pages/DisclaimerPage";
+import CookiesPage from "./pages/CookiesPage";
+import AccessibilityPage from "./pages/AccessibilityPage";
 import NotFound from "./pages/NotFound";
 import AdminPanel from "./components/AdminPanel";
 
@@ -37,6 +42,12 @@ const App = () => (
               <Route path="/community/:slug" element={<CommunityPage />} />
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/admin/weekly-reports" element={<AdminPanel />} />
+              {/* Legal Pages */}
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
+              <Route path="/cookies" element={<CookiesPage />} />
+              <Route path="/accessibility" element={<AccessibilityPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
