@@ -76,47 +76,71 @@ const newsCategories = [
   },
 ];
 
-// Sample news data organized by category (will be replaced with Supabase data)
+// Expanded sample news data with 6 items per category
 const sampleNewsByCategory: Record<string, NewsItem[]> = {
   government: [
-    { id: "1", title: "Alaska Legislature Begins 2026 Session", source: "Alaska News", url: "#", published_at: "2025-12-05" },
-    { id: "2", title: "Governor Signs New Infrastructure Bill", source: "Anchorage Daily", url: "#", published_at: "2025-12-04" },
-    { id: "3", title: "State Budget Proposal Released", source: "Fairbanks News", url: "#", published_at: "2025-12-03" },
+    { id: "g1", title: "Alaska Legislature Begins 2026 Session with Focus on Fiscal Reform", source: "Alaska News", url: "#", published_at: "2025-12-06" },
+    { id: "g2", title: "Governor Signs Historic Infrastructure Bill for Rural Alaska", source: "Anchorage Daily", url: "#", published_at: "2025-12-05" },
+    { id: "g3", title: "State Budget Proposal Includes Record Education Funding", source: "Fairbanks News", url: "#", published_at: "2025-12-04" },
+    { id: "g4", title: "New Legislation Aims to Protect Alaska's Coastal Communities", source: "Juneau Empire", url: "#", published_at: "2025-12-03" },
+    { id: "g5", title: "Alaska Permanent Fund Dividend Amount Announced for 2026", source: "KTUU", url: "#", published_at: "2025-12-02" },
+    { id: "g6", title: "State of the State Address Highlights Economic Priorities", source: "APRN", url: "#", published_at: "2025-12-01" },
   ],
   mining: [
-    { id: "4", title: "New Gold Discovery Near Nome", source: "Mining Weekly", url: "#", published_at: "2025-12-05" },
-    { id: "5", title: "Interior Mining Operations Expand", source: "Alaska Mining", url: "#", published_at: "2025-12-04" },
-    { id: "6", title: "Environmental Review for Pebble Mine Update", source: "Bristol Bay Times", url: "#", published_at: "2025-12-03" },
+    { id: "m1", title: "Major Gold Discovery Announced Near Nome Region", source: "Mining Weekly", url: "#", published_at: "2025-12-06" },
+    { id: "m2", title: "Interior Mining Operations See 30% Expansion in Production", source: "Alaska Mining", url: "#", published_at: "2025-12-05" },
+    { id: "m3", title: "Environmental Review Update on Pebble Mine Project", source: "Bristol Bay Times", url: "#", published_at: "2025-12-04" },
+    { id: "m4", title: "Fort Knox Mine Reports Record Annual Gold Output", source: "Fairbanks Miner", url: "#", published_at: "2025-12-03" },
+    { id: "m5", title: "New Rare Earth Minerals Deposit Found in Southeast Alaska", source: "AK Mining News", url: "#", published_at: "2025-12-02" },
+    { id: "m6", title: "Mining Industry Creates 500 New Jobs in Interior Region", source: "Jobs Alaska", url: "#", published_at: "2025-12-01" },
   ],
   energy: [
-    { id: "7", title: "North Slope Oil Production Increases", source: "Energy Alaska", url: "#", published_at: "2025-12-05" },
-    { id: "8", title: "Renewable Energy Projects Announced", source: "Green Alaska", url: "#", published_at: "2025-12-04" },
-    { id: "9", title: "Pipeline Maintenance Scheduled", source: "TAPS News", url: "#", published_at: "2025-12-03" },
+    { id: "e1", title: "North Slope Oil Production Reaches 5-Year High", source: "Energy Alaska", url: "#", published_at: "2025-12-06" },
+    { id: "e2", title: "Major Renewable Energy Project Announced for Southcentral", source: "Green Alaska", url: "#", published_at: "2025-12-05" },
+    { id: "e3", title: "Trans-Alaska Pipeline Maintenance Completed Ahead of Schedule", source: "TAPS News", url: "#", published_at: "2025-12-04" },
+    { id: "e4", title: "Willow Project Begins First Phase of Construction", source: "North Slope News", url: "#", published_at: "2025-12-03" },
+    { id: "e5", title: "Solar Farm Project Breaks Ground in Fairbanks", source: "Interior Energy", url: "#", published_at: "2025-12-02" },
+    { id: "e6", title: "LNG Export Terminal Plans Move Forward in Valdez", source: "Prince William Sound", url: "#", published_at: "2025-12-01" },
   ],
   public_safety: [
-    { id: "10", title: "State Troopers Respond to Winter Storms", source: "Alaska Safety", url: "#", published_at: "2025-12-05" },
-    { id: "11", title: "Search and Rescue Training Exercise", source: "AKSAR", url: "#", published_at: "2025-12-04" },
-    { id: "12", title: "New Emergency Alert System Launched", source: "Emergency AK", url: "#", published_at: "2025-12-03" },
+    { id: "ps1", title: "State Troopers Deploy Additional Units for Winter Patrol", source: "Alaska Safety", url: "#", published_at: "2025-12-06" },
+    { id: "ps2", title: "Coast Guard Completes Major Search and Rescue Exercise", source: "USCG Alaska", url: "#", published_at: "2025-12-05" },
+    { id: "ps3", title: "New Emergency Alert System Launches Statewide", source: "Emergency AK", url: "#", published_at: "2025-12-04" },
+    { id: "ps4", title: "Village Public Safety Officers Training Program Expands", source: "VPSO News", url: "#", published_at: "2025-12-03" },
+    { id: "ps5", title: "Avalanche Warning System Upgraded for Backcountry Safety", source: "AK Avalanche", url: "#", published_at: "2025-12-02" },
+    { id: "ps6", title: "Rural Fire Department Receives New Equipment Grant", source: "AK Fire Service", url: "#", published_at: "2025-12-01" },
   ],
   fishing: [
-    { id: "13", title: "Bristol Bay Salmon Forecast Released", source: "ADF&G", url: "#", published_at: "2025-12-05" },
-    { id: "14", title: "Halibut Season Regulations Updated", source: "Alaska Fishing", url: "#", published_at: "2025-12-04" },
-    { id: "15", title: "Wildlife Conservation Efforts Expand", source: "USFWS", url: "#", published_at: "2025-12-03" },
+    { id: "f1", title: "Bristol Bay Salmon Forecast Predicts Record Returns", source: "ADF&G", url: "#", published_at: "2025-12-06" },
+    { id: "f2", title: "Halibut Season Regulations Updated for 2026", source: "Alaska Fishing", url: "#", published_at: "2025-12-05" },
+    { id: "f3", title: "Wildlife Conservation Efforts Expand to Protect Caribou Herds", source: "USFWS", url: "#", published_at: "2025-12-04" },
+    { id: "f4", title: "Commercial Crab Fishing Season Opens with High Quotas", source: "Dutch Harbor News", url: "#", published_at: "2025-12-03" },
+    { id: "f5", title: "Sport Fishing License Sales Break Annual Record", source: "ADF&G", url: "#", published_at: "2025-12-02" },
+    { id: "f6", title: "Salmon Habitat Restoration Project Completed on Kenai River", source: "Kenai Peninsula", url: "#", published_at: "2025-12-01" },
   ],
   community: [
-    { id: "16", title: "Fur Rendezvous Preparations Underway", source: "Anchorage Events", url: "#", published_at: "2025-12-05" },
-    { id: "17", title: "Native Culture Celebration in Fairbanks", source: "Interior News", url: "#", published_at: "2025-12-04" },
-    { id: "18", title: "Community Center Opens in Juneau", source: "SE Alaska", url: "#", published_at: "2025-12-03" },
+    { id: "c1", title: "Fur Rendezvous 2026 Preparations in Full Swing", source: "Anchorage Events", url: "#", published_at: "2025-12-06" },
+    { id: "c2", title: "Alaska Native Heritage Celebration Draws Record Crowds", source: "Interior News", url: "#", published_at: "2025-12-05" },
+    { id: "c3", title: "New Community Center Opens in Downtown Juneau", source: "SE Alaska", url: "#", published_at: "2025-12-04" },
+    { id: "c4", title: "World Ice Art Championships Announce 2026 Theme", source: "Fairbanks Arts", url: "#", published_at: "2025-12-03" },
+    { id: "c5", title: "Iditarod Trail Committee Announces Route Changes", source: "Iditarod HQ", url: "#", published_at: "2025-12-02" },
+    { id: "c6", title: "Alaska State Fair Sets New Attendance Record", source: "Palmer Events", url: "#", published_at: "2025-12-01" },
   ],
   business: [
-    { id: "19", title: "Tourism Numbers Reach New High", source: "Visit Alaska", url: "#", published_at: "2025-12-05" },
-    { id: "20", title: "New Tech Startup Launches in Anchorage", source: "AK Business", url: "#", published_at: "2025-12-04" },
-    { id: "21", title: "Fishing Industry Economic Report", source: "Commerce AK", url: "#", published_at: "2025-12-03" },
+    { id: "b1", title: "Tourism Industry Reports Record Cruise Ship Arrivals", source: "Visit Alaska", url: "#", published_at: "2025-12-06" },
+    { id: "b2", title: "Tech Startup Hub Opens in Downtown Anchorage", source: "AK Business", url: "#", published_at: "2025-12-05" },
+    { id: "b3", title: "Fishing Industry Economic Report Shows Strong Growth", source: "Commerce AK", url: "#", published_at: "2025-12-04" },
+    { id: "b4", title: "Alaska Airlines Announces New International Routes", source: "Aviation AK", url: "#", published_at: "2025-12-03" },
+    { id: "b5", title: "Small Business Grants Available for Rural Entrepreneurs", source: "SBA Alaska", url: "#", published_at: "2025-12-02" },
+    { id: "b6", title: "Real Estate Market Shows Continued Growth in Anchorage", source: "AK Real Estate", url: "#", published_at: "2025-12-01" },
   ],
   general: [
-    { id: "22", title: "Weather Advisory for Southcentral Alaska", source: "NWS Alaska", url: "#", published_at: "2025-12-05" },
-    { id: "23", title: "Transportation Updates for Winter", source: "AKDOT", url: "#", published_at: "2025-12-04" },
-    { id: "24", title: "University of Alaska Research Highlights", source: "UAF News", url: "#", published_at: "2025-12-03" },
+    { id: "gen1", title: "Winter Storm Advisory Issued for Southcentral Alaska", source: "NWS Alaska", url: "#", published_at: "2025-12-06" },
+    { id: "gen2", title: "DOT Announces Major Highway Improvement Projects", source: "AKDOT", url: "#", published_at: "2025-12-05" },
+    { id: "gen3", title: "University of Alaska Researchers Make Climate Breakthrough", source: "UAF News", url: "#", published_at: "2025-12-04" },
+    { id: "gen4", title: "Aurora Borealis Display Expected This Weekend", source: "Geophysical Institute", url: "#", published_at: "2025-12-03" },
+    { id: "gen5", title: "Alaska Public Library System Expands Digital Resources", source: "AK Libraries", url: "#", published_at: "2025-12-02" },
+    { id: "gen6", title: "New Documentary Highlights Alaska's Wilderness Areas", source: "Alaska Film", url: "#", published_at: "2025-12-01" },
   ],
 };
 
@@ -134,7 +158,7 @@ const CategorizedNews = () => {
         .from("news_items")
         .select("*")
         .order("created_at", { ascending: false })
-        .limit(50);
+        .limit(100);
 
       if (error) throw error;
       
@@ -155,7 +179,7 @@ const CategorizedNews = () => {
             if (cat.id === "general") continue;
             for (const keyword of cat.keywords) {
               if (titleLower.includes(keyword) || descLower.includes(keyword) || categoryLower.includes(keyword)) {
-                if (categorized[cat.id].length < 4) {
+                if (categorized[cat.id].length < 6) {
                   categorized[cat.id].push(item);
                 }
                 assigned = true;
@@ -165,7 +189,7 @@ const CategorizedNews = () => {
             if (assigned) break;
           }
 
-          if (!assigned && categorized.general.length < 4) {
+          if (!assigned && categorized.general.length < 6) {
             categorized.general.push(item);
           }
         });
@@ -240,7 +264,7 @@ const CategorizedNews = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {news.slice(0, 4).map((item) => (
+                  {news.slice(0, 6).map((item) => (
                     <a
                       key={item.id}
                       href={item.url}
