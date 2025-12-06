@@ -19,101 +19,97 @@ const AnimatedLogo = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Clean Circular Logo */}
+      {/* Logo Mark */}
       <div className={`relative transition-all duration-500 ${isHovered ? 'scale-105' : ''}`}>
         <svg
-          width="56"
-          height="56"
-          viewBox="0 0 56 56"
+          width="52"
+          height="52"
+          viewBox="0 0 52 52"
           className="drop-shadow-lg"
         >
           <defs>
-            {/* Main gradient */}
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor={isDark ? "#0ea5e9" : "#0369a1"} />
-              <stop offset="100%" stopColor={isDark ? "#06b6d4" : "#0284c7"} />
+            {/* Background gradient */}
+            <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor={isDark ? "#1e3a5f" : "#0369a1"} />
+              <stop offset="100%" stopColor={isDark ? "#0c4a6e" : "#0284c7"} />
             </linearGradient>
             
             {/* Gold gradient for star */}
-            <linearGradient id="starGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fbbf24" />
-              <stop offset="100%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+            
+            {/* Snow white */}
+            <linearGradient id="snowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#e2e8f0" />
             </linearGradient>
           </defs>
 
-          {/* Outer circle */}
+          {/* Background circle */}
           <circle
-            cx="28"
-            cy="28"
-            r="26"
-            fill={isDark ? "#0c1829" : "#f0f9ff"}
-            stroke="url(#logoGradient)"
-            strokeWidth="2"
+            cx="26"
+            cy="26"
+            r="25"
+            fill="url(#bgGradient)"
+            stroke={isDark ? "#38bdf8" : "#0ea5e9"}
+            strokeWidth="1.5"
           />
 
-          {/* Alaska state shape (simplified) */}
+          {/* Mountain range */}
           <path
-            d="M 14 32 
-               L 18 26 
-               L 22 30 
-               L 26 22 
-               L 30 28 
-               L 34 24 
-               L 38 30 
-               L 42 28 
-               L 40 36 
-               L 34 38 
-               L 28 40 
-               L 20 38 
-               L 16 36 
-               Z"
-            fill={isDark ? "#1e3a5f" : "#0369a1"}
-            opacity="0.8"
+            d="M 6 38 L 14 24 L 20 32 L 26 18 L 32 28 L 38 22 L 46 38 Z"
+            fill={isDark ? "#0f172a" : "#1e40af"}
+            opacity="0.9"
           />
           
-          {/* Snow peaks */}
+          {/* Snow caps */}
           <path
-            d="M 24 24 L 26 22 L 28 24 Z"
-            fill="white"
-            opacity="0.9"
+            d="M 14 24 L 16 28 L 12 28 Z"
+            fill="url(#snowGradient)"
           />
           <path
-            d="M 32 26 L 34 24 L 36 26 Z"
-            fill="white"
-            opacity="0.9"
+            d="M 26 18 L 29 24 L 23 24 Z"
+            fill="url(#snowGradient)"
+          />
+          <path
+            d="M 38 22 L 41 27 L 35 27 Z"
+            fill="url(#snowGradient)"
           />
 
-          {/* North Star - Alaska symbol */}
-          <g transform="translate(28, 14)">
+          {/* North Star */}
+          <g transform="translate(26, 10)">
             <polygon
-              points="0,-6 1.5,-2 6,-2 2.5,1 4,5 0,2.5 -4,5 -2.5,1 -6,-2 -1.5,-2"
-              fill="url(#starGold)"
-              className={`transition-transform duration-500 origin-center ${isHovered ? 'scale-110' : ''}`}
+              points="0,-5 1.2,-1.5 5,-1.5 2,0.8 3.2,4.5 0,2 -3.2,4.5 -2,0.8 -5,-1.5 -1.2,-1.5"
+              fill="url(#goldGradient)"
+              className={`transition-all duration-500 origin-center ${isHovered ? 'opacity-100' : 'opacity-90'}`}
             />
           </g>
 
           {/* ANP text */}
           <text
-            x="28"
-            y="47"
+            x="26"
+            y="46"
             textAnchor="middle"
             className="font-bold"
             style={{ 
-              fontSize: '8px', 
-              fill: isDark ? '#94a3b8' : '#334155',
-              fontFamily: 'Inter, sans-serif',
-              letterSpacing: '0.1em'
+              fontSize: '7px', 
+              fill: isDark ? '#f1f5f9' : '#ffffff',
+              fontFamily: 'Inter, system-ui, sans-serif',
+              letterSpacing: '0.15em',
+              fontWeight: 700
             }}
           >
             ANP
           </text>
         </svg>
 
-        {/* Hover glow */}
+        {/* Glow effect on hover */}
         <div 
-          className={`absolute inset-0 rounded-full transition-opacity duration-500 ${
+          className={`absolute inset-0 rounded-full transition-opacity duration-500 pointer-events-none ${
             isHovered 
-              ? isDark ? 'opacity-100 bg-cyan-400/20 blur-xl' : 'opacity-100 bg-sky-500/20 blur-xl'
+              ? isDark ? 'opacity-60 bg-cyan-400/30 blur-xl' : 'opacity-50 bg-sky-400/30 blur-xl'
               : 'opacity-0'
           }`} 
         />
@@ -123,33 +119,28 @@ const AnimatedLogo = () => {
       <div className="flex flex-col">
         {/* Main title */}
         <span 
-          className={`
-            text-lg sm:text-xl font-bold tracking-wide
-            transition-all duration-300
-            ${isDark 
-              ? 'text-white' 
-              : 'text-slate-800'
-            }
-          `}
+          className="text-lg sm:text-xl font-bold tracking-wide transition-all duration-300"
           style={{ 
-            fontFamily: "'Inter', sans-serif",
-            textShadow: isDark ? '0 2px 4px rgba(0,0,0,0.3)' : 'none'
+            fontFamily: "'Inter', system-ui, sans-serif",
+            color: isDark ? '#f8fafc' : '#1e3a5f',
+            textShadow: isDark 
+              ? '0 2px 8px rgba(0,0,0,0.4)' 
+              : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
           }}
         >
           Alaska News Page
         </span>
         
-        {/* Tagline with high contrast */}
+        {/* Tagline */}
         <span 
-          className={`
-            text-[10px] sm:text-xs font-semibold tracking-wider uppercase
-            transition-all duration-300
-            ${isDark 
-              ? 'text-cyan-400' 
-              : 'text-sky-600'
-            }
-          `}
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="text-[10px] sm:text-xs font-semibold tracking-wider uppercase transition-all duration-300"
+          style={{ 
+            fontFamily: "'Inter', system-ui, sans-serif",
+            color: isDark ? '#fbbf24' : '#b45309',
+            textShadow: isDark 
+              ? '0 1px 4px rgba(0,0,0,0.5)' 
+              : '0 1px 2px rgba(255,255,255,0.9)'
+          }}
         >
           Alaska's Regional News Source
         </span>
@@ -157,9 +148,8 @@ const AnimatedLogo = () => {
         {/* Animated underline on hover */}
         <div 
           className={`
-            h-0.5 mt-1 rounded-full
-            transition-all duration-500 origin-left
-            ${isDark ? 'bg-gradient-to-r from-cyan-400 to-emerald-400' : 'bg-gradient-to-r from-sky-500 to-teal-500'}
+            h-0.5 mt-1 rounded-full transition-all duration-500 origin-left
+            ${isDark ? 'bg-gradient-to-r from-amber-400 to-cyan-400' : 'bg-gradient-to-r from-amber-600 to-sky-600'}
             ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
           `}
         />

@@ -325,35 +325,50 @@ const AlaskaEventsCalendar = ({ compact = false, region }: AlaskaEventsCalendarP
                 (selectedDate ? selectedEvents : monthEvents).map((event, idx) => {
                   const config = eventTypeConfig[event.type];
                   const Icon = config.icon;
-                  const EventWrapper = event.slug ? Link : 'div';
-                  const wrapperProps = event.slug ? { to: `/event/${event.slug}` } : {};
+                  
+                  const eventContent = (
+                    <div className="flex items-start gap-2">
+                      <Icon className="h-4 w-4 mt-0.5 shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            {monthNames[currentMonth].slice(0, 3)} {event.date}
+                          </span>
+                          {event.slug && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
+                        </div>
+                        <p className="font-medium text-sm">{event.title}</p>
+                        {event.description && (
+                          <p className="text-xs text-muted-foreground mt-1">{event.description}</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                  
+                  if (event.slug) {
+                    return (
+                      <Link
+                        key={idx}
+                        to={`/event/${event.slug}`}
+                        className={cn(
+                          "p-3 rounded-lg border transition-all hover:scale-[1.02] block cursor-pointer",
+                          config.color
+                        )}
+                      >
+                        {eventContent}
+                      </Link>
+                    );
+                  }
                   
                   return (
-                    <EventWrapper
+                    <div
                       key={idx}
-                      {...wrapperProps}
                       className={cn(
-                        "p-3 rounded-lg border transition-all hover:scale-[1.02] block",
-                        config.color,
-                        event.slug && "cursor-pointer"
+                        "p-3 rounded-lg border transition-all block",
+                        config.color
                       )}
                     >
-                      <div className="flex items-start gap-2">
-                        <Icon className="h-4 w-4 mt-0.5 shrink-0" />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-muted-foreground">
-                              {monthNames[currentMonth].slice(0, 3)} {event.date}
-                            </span>
-                            {event.slug && <ExternalLink className="h-3 w-3 text-muted-foreground" />}
-                          </div>
-                          <p className="font-medium text-sm">{event.title}</p>
-                          {event.description && (
-                            <p className="text-xs text-muted-foreground mt-1">{event.description}</p>
-                          )}
-                        </div>
-                      </div>
-                    </EventWrapper>
+                      {eventContent}
+                    </div>
                   );
                 })
               ) : (
