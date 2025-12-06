@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import AlaskaMap from "@/components/AlaskaMap";
 import RegionNavigator from "@/components/RegionNavigator";
-import NewsCard from "@/components/NewsCard";
+import CategorizedNews from "@/components/CategorizedNews";
 import PartnerSites from "@/components/PartnerSites";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Newspaper, MapPin, Users, Sparkles, Mountain, TreePine } from "lucide-react";
+import { Newspaper, MapPin, Users } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import InstallPrompt from "@/components/InstallPrompt";
 import MartinMinesAd from "@/components/MartinMinesAd";
@@ -22,10 +22,8 @@ import AlaskaEventsCalendar from "@/components/AlaskaEventsCalendar";
 import AnimatedSection from "@/components/AnimatedSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import Footer from "@/components/Footer";
-import SkeletonCard from "@/components/SkeletonCard";
 import type { InteractiveMapRef } from "@/components/InteractiveMap";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
-import welcomeSectionBg from "@/assets/welcome-section-bg.jpg";
 import regionNavigatorBg from "@/assets/region-navigator-bg.jpg";
 import latestNewsBg from "@/assets/latest-news-bg.jpg";
 import alaskaMapBg from "@/assets/alaska-map-bg.jpg";
@@ -38,17 +36,6 @@ interface Region {
   slug: string;
   description: string;
   coordinates: any; // JSONB from database
-}
-
-interface NewsItem {
-  id: string;
-  title: string;
-  description?: string;
-  url: string;
-  source?: string;
-  category?: string;
-  published_at?: string;
-  image_url?: string;
 }
 
 interface Business {
@@ -69,7 +56,6 @@ interface PublicResource {
 
 const Index = () => {
   const [regions, setRegions] = useState<Region[]>([]);
-  const [latestNews, setLatestNews] = useState<NewsItem[]>([]);
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [publicResources, setPublicResources] = useState<PublicResource[]>([]);
   const [loading, setLoading] = useState(true);
@@ -97,16 +83,6 @@ const Index = () => {
 
       if (regionsError) throw regionsError;
       setRegions(regionsData || []);
-
-      // Fetch latest news
-      const { data: newsData, error: newsError } = await supabase
-        .from("news_items")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(6);
-
-      if (newsError) throw newsError;
-      setLatestNews(newsData || []);
 
       // Fetch businesses
       const { data: businessesData, error: businessesError } = await supabase
@@ -166,11 +142,11 @@ const Index = () => {
       {/* Weekly Report Section - Now at the top */}
       <WeeklyReport />
 
-      {/* First Ad - Martin Mines */}
+      {/* First Ad - Martin Mines - Full Width */}
       <AnimatedSection animation="fade-up" delay={100}>
-        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
-          <div className="container">
-            <MartinMinesAd compact />
+        <section className="py-10 bg-gradient-to-br from-background via-muted/10 to-background">
+          <div className="container max-w-7xl">
+            <MartinMinesAd />
           </div>
         </section>
       </AnimatedSection>
@@ -191,11 +167,11 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* Second Ad - Great Northern */}
+      {/* Second Ad - Great Northern - Full Width */}
       <AnimatedSection animation="fade-left" delay={100}>
-        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
-          <div className="container">
-            <GreatNorthernAd compact />
+        <section className="py-10 bg-gradient-to-br from-background via-muted/10 to-background">
+          <div className="container max-w-7xl">
+            <GreatNorthernAd />
           </div>
         </section>
       </AnimatedSection>
@@ -233,11 +209,11 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* Third Ad - Bid Calendar */}
+      {/* Third Ad - Bid Calendar - Full Width */}
       <AnimatedSection animation="fade-right" delay={100}>
-        <section className="py-12 bg-gradient-to-br from-background via-muted/10 to-background">
-          <div className="container">
-            <BidCalendarAd compact />
+        <section className="py-10 bg-gradient-to-br from-background via-muted/10 to-background">
+          <div className="container max-w-7xl">
+            <BidCalendarAd />
           </div>
         </section>
       </AnimatedSection>
@@ -267,21 +243,21 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* Latest News Section */}
+      {/* Latest News Section - Categorized */}
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-75 dark:opacity-50"
+            className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-40"
             style={{ backgroundImage: `url(${latestNewsBg})` }}
           />
-          <div className="absolute inset-0 bg-background/30 dark:bg-background/45" />
-          <div className="container relative z-10">
+          <div className="absolute inset-0 bg-background/50 dark:bg-background/60" />
+          <div className="container max-w-7xl relative z-10">
             <div className="flex items-center justify-between mb-10">
               <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-3 border border-primary/30 animate-pulse">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary dark:text-primary text-xs font-medium mb-3 border border-primary/30">
                   Breaking Stories
                 </span>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground text-3d">Latest News</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Latest Alaska News</h2>
               </div>
               <Button 
                 variant="outline" 
@@ -291,35 +267,7 @@ const Index = () => {
                 View All News
               </Button>
             </div>
-            {latestNews.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {latestNews.map((news, index) => (
-                  <AnimatedSection
-                    key={news.id}
-                    animation="fade-up"
-                    delay={index * 100}
-                  >
-                    <div className="card-hover h-full">
-                      <NewsCard
-                        title={news.title}
-                        description={news.description}
-                        url={news.url}
-                        source={news.source}
-                        category={news.category}
-                        publishedAt={news.published_at}
-                        imageUrl={news.image_url}
-                      />
-                    </div>
-                  </AnimatedSection>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[...Array(6)].map((_, i) => (
-                  <SkeletonCard key={i} />
-                ))}
-              </div>
-            )}
+            <CategorizedNews />
           </div>
         </section>
       </AnimatedSection>
