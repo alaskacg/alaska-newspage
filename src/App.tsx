@@ -21,7 +21,17 @@ import AccessibilityPage from "./pages/AccessibilityPage";
 import NotFound from "./pages/NotFound";
 import AdminPanel from "./components/AdminPanel";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0, // Data is immediately stale, will refetch on mount
+      gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes (garbage collection)
+      refetchOnWindowFocus: true, // Refetch when user returns to tab
+      refetchOnMount: true, // Always refetch on component mount
+      refetchOnReconnect: true, // Refetch when reconnecting
+    },
+  },
+});
 
 const App = () => (
   <ErrorBoundary>
