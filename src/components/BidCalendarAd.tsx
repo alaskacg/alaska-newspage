@@ -60,6 +60,49 @@ const BidCalendarAd = ({ compact = false }: { compact?: boolean }) => {
           className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-700"
           style={{ backgroundImage: `url(${bidCalendarBanner})` }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+        
+        {/* Content Overlay */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="p-2 rounded-lg bg-accent/20 backdrop-blur-sm border border-accent/30">
+              <Calendar className="h-6 w-6 text-accent" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-display font-bold text-foreground drop-shadow-lg">
+                BidCalendar.com
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Your Source for Alaska Construction Bids
+              </p>
+            </div>
+          </div>
+          
+          <p className="text-foreground/90 text-sm mb-4 max-w-md leading-relaxed">
+            Find public and private construction bid opportunities across Alaska. State, municipal, and federal projects updated daily.
+          </p>
+          
+          <div className="flex items-center gap-3">
+            <Button
+              asChild
+              className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg"
+            >
+              <a
+                href="https://bidcalendar.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <TrendingUp className="h-4 w-4" />
+                Browse Active Bids
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+            <span className="text-xs text-muted-foreground">
+              Free to search • Updated daily
+            </span>
+          </div>
+        </div>
       </div>
     </Card>
   );
