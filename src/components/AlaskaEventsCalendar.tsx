@@ -104,9 +104,17 @@ const alaskaEvents: CalendarEvent[] = [
   
   // December 2025 Events
   { date: 6, month: 11, title: "Design Alaska Holiday Concert", type: "holiday", description: "Fairbanks - Holiday music" },
+  { date: 6, month: 11, title: "7.0 Earthquake - Alaska-Canada Border", type: "season", description: "Remote area - no damage reported" },
+  { date: 10, month: 11, title: "Cold Weather Advisories Statewide", type: "season", description: "Extreme cold across Interior & Southcentral" },
+  { date: 11, month: 11, title: "Anchorage Tiny Village Ribbon Cutting", type: "holiday", description: "Housing for homeless - Downtown Anchorage" },
   { date: 13, month: 11, title: "Anchorage Holiday Market", type: "holiday", description: "Downtown Anchorage", slug: "anchorage-holiday-market" },
+  { date: 14, month: 11, title: "Fairbanks Winter Lights Festival", type: "holiday", description: "Golden Heart Plaza - Light displays" },
+  { date: 15, month: 11, title: "Full Moon", type: "moon", description: "Cold Moon - December" },
+  { date: 20, month: 11, title: "Juneau Holiday Bazaar", type: "holiday", description: "Centennial Hall - Local crafts" },
   { date: 21, month: 11, title: "Winter Solstice Celebration", type: "season", description: "Shortest day festivities", slug: "winter-solstice-celebration" },
+  { date: 24, month: 11, title: "Christmas Eve Services", type: "holiday", description: "Churches statewide" },
   { date: 31, month: 11, title: "New Years Eve Celebrations", type: "holiday", description: "Statewide fireworks & events" },
+  { date: 31, month: 11, title: "Anchorage Town Square Countdown", type: "holiday", description: "Downtown celebration & fireworks" },
 ];
 
 const eventTypeConfig = {

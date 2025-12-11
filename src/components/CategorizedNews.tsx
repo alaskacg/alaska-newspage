@@ -122,9 +122,9 @@ const sampleNewsByCategory: Record<string, NewsItem[]> = {
     { id: "c1", title: "Official Ribbon Cutting for Anchorage Tiny Village to House Homeless", source: "AK News Source", url: "https://www.alaskasnewssource.com/2025/12/11/official-ribbon-cutting-anchorage-tiny-village-house-people-experiencing-homelessness/", published_at: "2025-12-11" },
     { id: "c2", title: "Fur Rendezvous 2026 Preparations in Full Swing Across Anchorage", source: "Anchorage Events", url: "#", published_at: "2025-12-09" },
     { id: "c3", title: "World Ice Art Championships Announce 2026 Theme for Fairbanks Event", source: "Fairbanks Arts", url: "#", published_at: "2025-12-08" },
-    { id: "c4", title: "Alaska Native Heritage Celebration Draws Record Crowds", source: "Interior News", url: "#", published_at: "2025-12-07" },
-    { id: "c5", title: "Iditarod Trail Committee Finalizes 2026 Race Route Details", source: "Iditarod HQ", url: "#", published_at: "2025-12-06" },
-    { id: "c6", title: "New Community Center Opens in Downtown Juneau", source: "SE Alaska", url: "#", published_at: "2025-12-05" },
+    { id: "c4", title: "Iditarod Trail Committee Finalizes 2026 Race Route Details", source: "Iditarod HQ", url: "#", published_at: "2025-12-07" },
+    { id: "c5", title: "Anchorage Holiday Market Opens Downtown Through December 24", source: "Anchorage Events", url: "#", published_at: "2025-12-06" },
+    { id: "c6", title: "Fairbanks Winter Lights Festival Illuminates Golden Heart Plaza", source: "Fairbanks News", url: "#", published_at: "2025-12-05" },
   ],
   business: [
     { id: "b1", title: "Anchorage Businesses Report Declining Confidence in New AEDC Survey", source: "Alaska Public", url: "https://alaskapublic.org/news/economy/2025-08-07/anchorage-businesses-report-declining-confidence-in-new-survey", published_at: "2025-12-08" },
@@ -139,8 +139,8 @@ const sampleNewsByCategory: Record<string, NewsItem[]> = {
     { id: "gen2", title: "Cold Weather Advisories in Place Across Alaska with Snow Expected", source: "AK News Source", url: "https://www.alaskasnewssource.com/2025/12/10/cold-weather-advisories-place-across-alaska-with-snow-brief-warmer-trending-move-into-interior/", published_at: "2025-12-10" },
     { id: "gen3", title: "Southcentral Alaska Cold Snap Could Linger for Weeks", source: "Alaska Public", url: "https://alaskapublic.org/news/anchorage/2025-12-09/southcentral-alaskas-cold-snap-could-linger-for-weeks-despite-a-warmer-than-normal-november", published_at: "2025-12-09" },
     { id: "gen4", title: "Warnings Continue for Wind, Snow, and Extreme Cold Across Alaska", source: "AK News Source", url: "https://www.alaskasnewssource.com/2025/12/09/warnings-continue-wind-snow-extreme-cold-across-alaska/", published_at: "2025-12-09" },
-    { id: "gen5", title: "University of Alaska Researchers Continue Climate Research Initiatives", source: "UAF News", url: "#", published_at: "2025-12-08" },
-    { id: "gen6", title: "Aurora Borealis Display Expected This Weekend Across Interior", source: "Geophysical Institute", url: "#", published_at: "2025-12-07" },
+    { id: "gen5", title: "Northern Lights Active This Week with Clear Skies Expected", source: "Geophysical Institute", url: "#", published_at: "2025-12-08" },
+    { id: "gen6", title: "Alaska DOT Advises Caution on Winter Roads Statewide", source: "AKDOT", url: "#", published_at: "2025-12-07" },
   ],
 };
 
