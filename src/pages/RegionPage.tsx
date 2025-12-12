@@ -498,7 +498,7 @@ const RegionPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* Weekly Report from Kitchens */}
+      {/* Weekly Report */}
       <AnimatedSection animation="scale" delay={100}>
         <WeeklyReport />
       </AnimatedSection>

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import WeeklyReport from "@/components/WeeklyReport";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { Calendar, Video, ExternalLink, User } from "lucide-react";
+import { Calendar, Video, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
 
@@ -52,14 +52,9 @@ const WeeklyReportPage = () => {
                 The Alaska News Page Weekly Report
               </h1>
               
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-                Your comprehensive weekly roundup of Alaska's most important news, delivered every Wednesday with in-depth analysis and expert commentary.
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Your comprehensive weekly roundup of Alaska's most important news, delivered every Monday with in-depth analysis and expert commentary.
               </p>
-
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <User className="h-4 w-4" />
-                <span>Hosted by <strong className="text-foreground">J.R. Kitchens</strong></span>
-              </div>
             </div>
 
             {/* Latest Report */}
@@ -131,13 +126,13 @@ const WeeklyReportPage = () => {
               <h2 className="font-display text-2xl font-semibold mb-4">About the Weekly Report</h2>
               <div className="space-y-3 text-muted-foreground">
                 <p>
-                  The Alaska News Page Weekly Report brings you the most significant stories from across the Last Frontier, carefully curated and presented by J.R. Kitchens.
+                  The Alaska News Page Weekly Report brings you the most significant stories from across the Last Frontier, carefully curated and presented each week.
                 </p>
                 <p>
                   Each week, we dive deep into the issues that matter most to Alaskans, from politics and economy to culture and community events. Our comprehensive coverage ensures you stay informed about the developments shaping our state.
                 </p>
                 <p className="text-sm pt-4 border-t border-border/50">
-                  <strong>New episodes</strong> are published every Wednesday. Subscribe to push notifications to never miss an update!
+                  <strong>New episodes</strong> are published every Monday. Subscribe to push notifications to never miss an update!
                 </p>
               </div>
             </div>

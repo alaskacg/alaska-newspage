@@ -270,11 +270,23 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
           <div style="text-align: center; padding: 12px;">
             <h3 style="font-weight: bold; color: ${color}; margin-bottom: 8px; font-size: 18px;">${region.name}</h3>
             <p style="font-size: 14px; color: #666; margin-bottom: 12px;">${region.description || 'Explore news and services'}</p>
-            <button onclick="window.location.href='/region/${region.slug}'" style="color: white; background: ${color}; padding: 8px 16px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none;">
+            <button data-region-slug="${region.slug}" class="region-nav-btn" style="color: white; background: ${color}; padding: 8px 16px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none;">
               View News & Services →
             </button>
           </div>
         `);
+
+        label.on('popupopen', () => {
+          setTimeout(() => {
+            const btn = document.querySelector('.region-nav-btn') as HTMLButtonElement;
+            if (btn) {
+              btn.onclick = (e) => {
+                e.preventDefault();
+                navigate(`/region/${region.slug}`);
+              };
+            }
+          }, 50);
+        });
       });
 
       // Add Statewide marker
@@ -348,7 +360,7 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
             </div>
             <h4 style="font-weight: bold; margin-bottom: 4px; font-size: 14px;">${community.name}</h4>
             <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Pop: ~${community.population.toLocaleString()}</p>
-            ${hasPage ? `<button onclick="window.location.href='/community/${community.slug}'" style="color: white; background: ${isCity ? '#f59e0b' : '#0891b2'}; padding: 6px 12px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none; font-size: 12px;">
+            ${hasPage ? `<button data-community-slug="${community.slug}" class="community-nav-btn" style="color: white; background: ${isCity ? '#f59e0b' : '#0891b2'}; padding: 6px 12px; border-radius: 4px; font-weight: 500; cursor: pointer; border: none; font-size: 12px;">
               View Details →
             </button>` : ''}
           </div>
@@ -380,11 +392,18 @@ const InteractiveMap = forwardRef<InteractiveMapRef, InteractiveMapProps>(({ reg
 
         marker.bindPopup(popupContent);
         
-        if (hasPage) {
-          marker.on('click', () => {
-            marker.openPopup();
-          });
-        }
+        marker.on('popupopen', () => {
+          // Add click handler for community navigation buttons
+          setTimeout(() => {
+            const btn = document.querySelector('.community-nav-btn') as HTMLButtonElement;
+            if (btn && community.slug) {
+              btn.onclick = (e) => {
+                e.preventDefault();
+                navigate(`/community/${community.slug}`);
+              };
+            }
+          }, 50);
+        });
       });
 
       // Fit bounds to Alaska

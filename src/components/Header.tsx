@@ -83,7 +83,7 @@ const Header = () => {
               to="/anpweeklyreport"
               className="text-sm font-semibold transition-all duration-300 relative text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-amber-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
             >
-              Weekly Report w/ J.R Kitchens
+              Weekly Report
             </Link>
             <a
               href="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1400"
