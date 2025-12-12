@@ -1099,6 +1099,1360 @@ Yakutat is famous for its world-class surfing—one of the few places in Alaska 
     industries: ["Fishing", "Tourism", "Government Services"],
     attractions: ["Surfing", "Malaspina Glacier", "Hubbard Glacier", "Russell Fjord Wilderness"],
     imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  soldotna: {
+    name: "Soldotna",
+    type: 'city',
+    population: 4705,
+    region: "Southcentral",
+    coordinates: { lat: 60.4878, lng: -151.0583 },
+    airport: {
+      code: "SXQ",
+      name: "Soldotna Airport",
+      type: "General Aviation",
+      runways: "1 runway, 5,000 ft"
+    },
+    history: `Soldotna was established in 1947 when World War II veterans received homestead land grants under the Homestead Act. The town grew rapidly after the Sterling Highway connected it to Anchorage.
+
+The discovery of oil on the Kenai Peninsula in 1957 transformed the region's economy, and Soldotna became the borough seat of the Kenai Peninsula Borough in 1964.
+
+The Kenai River, which runs through Soldotna, is world-famous for its king salmon fishing, attracting thousands of anglers each summer.`,
+    description: "Borough seat of the Kenai Peninsula, world-renowned for Kenai River salmon fishing.",
+    established: "1947",
+    elevation: "115 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 262-9107",
+      website: "https://www.soldotna.org",
+      address: "177 N Birch Street, Soldotna, AK 99669"
+    },
+    industries: ["Tourism", "Oil & Gas", "Fishing", "Government"],
+    attractions: ["Kenai River", "Soldotna Creek Park", "Kenai National Wildlife Refuge", "Sport Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "big-lake": {
+    name: "Big Lake",
+    type: 'community',
+    population: 3833,
+    region: "Southcentral",
+    coordinates: { lat: 61.5211, lng: -149.9536 },
+    history: `Big Lake is named after the 3,200-acre lake that is the community's centerpiece. The area developed as a recreational destination in the 1950s and 60s.
+
+The community was devastated by the Miller's Reach Fire in 1996, which burned over 37,000 acres and destroyed 344 structures, making it one of the worst wildfires in Alaska history.
+
+Today, Big Lake is a popular weekend destination for Anchorage residents, offering water sports, fishing, and winter activities.`,
+    description: "Recreational community centered around Big Lake, popular for water sports and fishing.",
+    established: "1950s",
+    elevation: "150 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 892-6800"
+    },
+    industries: ["Tourism", "Recreation", "Retail"],
+    attractions: ["Big Lake", "Fishing", "Boating", "Snowmachining"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  chugiak: {
+    name: "Chugiak",
+    type: 'community',
+    population: 10534,
+    region: "Southcentral",
+    coordinates: { lat: 61.3872, lng: -149.4856 },
+    history: `Chugiak takes its name from the Dena'ina word meaning "place of fire." The area developed along the Alaska Railroad in the early 20th century.
+
+The community grew as a bedroom community for Anchorage while maintaining a more rural character than its southern neighbor, Eagle River.
+
+Chugiak is known for its easy access to Chugach State Park and outdoor recreation opportunities.`,
+    description: "Suburban community north of Anchorage with excellent access to outdoor recreation.",
+    established: "Early 1900s",
+    elevation: "200 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 343-7100",
+      website: "https://www.muni.org"
+    },
+    industries: ["Military", "Retail", "Healthcare"],
+    attractions: ["Chugach State Park", "Eklutna Lake", "Thunderbird Falls", "Peters Creek"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  willow: {
+    name: "Willow",
+    type: 'community',
+    population: 2102,
+    region: "Southcentral",
+    coordinates: { lat: 61.7472, lng: -150.0378 },
+    history: `Willow developed as a stop along the Alaska Railroad and grew with the construction of the Parks Highway. In 1976, voters chose Willow as the site for a new state capital, but the capital move was never funded.
+
+The community is the official restart location for the Iditarod Trail Sled Dog Race, moving from Anchorage after weather conditions and development made the original trail impractical.
+
+Willow offers a rural lifestyle within commuting distance of Anchorage.`,
+    description: "Official restart location for the Iditarod Sled Dog Race in the Mat-Su Valley.",
+    established: "1897",
+    elevation: "229 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 495-6633"
+    },
+    industries: ["Tourism", "Dog Mushing", "Recreation"],
+    attractions: ["Iditarod Restart", "Nancy Lake State Recreation Area", "Dog Mushing", "Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  houston: {
+    name: "Houston",
+    type: 'community',
+    population: 2485,
+    region: "Southcentral",
+    coordinates: { lat: 61.6303, lng: -149.8181 },
+    history: `Houston was incorporated as a city in 1966 and named after the then-governor of Alaska. The community developed along the Parks Highway as a residential and recreational area.
+
+The town is known for its rural character and outdoor recreation opportunities, including fishing, hunting, and snowmachining.
+
+Houston serves as a gateway to the Susitna Valley and offers affordable housing for commuters to Anchorage.`,
+    description: "Mat-Su Valley community known for its rural character and outdoor recreation.",
+    established: "1966",
+    elevation: "180 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 892-6869",
+      website: "https://www.prior.cityofhouston.net"
+    },
+    industries: ["Retail", "Recreation", "Agriculture"],
+    attractions: ["Little Susitna River", "Fishing", "Snowmachining", "Dog Mushing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "knik-fairview": {
+    name: "Knik-Fairview",
+    type: 'community',
+    population: 17682,
+    region: "Southcentral",
+    coordinates: { lat: 61.5147, lng: -149.6494 },
+    history: `Knik-Fairview is a census-designated place in the Mat-Su Borough that has seen explosive growth since the 1990s. The area takes its name from the historic town of Knik, once a major gold rush settlement.
+
+The Iditarod Trail Sled Dog Race was named after the historic trail that ran through Knik to the gold fields of Interior Alaska.
+
+Today, Knik-Fairview is one of the fastest-growing areas in Alaska, offering suburban living with mountain views.`,
+    description: "Fast-growing Mat-Su Valley community with historic ties to the Iditarod Trail.",
+    established: "Modern development 1980s",
+    elevation: "200 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 745-9801"
+    },
+    industries: ["Retail", "Construction", "Services"],
+    attractions: ["Knik Museum", "Knik Glacier", "Dog Mushing History", "Mat-Su Valley Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "meadow-lakes": {
+    name: "Meadow Lakes",
+    type: 'community',
+    population: 9197,
+    region: "Southcentral",
+    coordinates: { lat: 61.6261, lng: -149.5997 },
+    history: `Meadow Lakes is a census-designated place that developed as a residential area in the Mat-Su Valley. The community takes its name from the numerous small lakes in the area.
+
+The area has grown rapidly since the 1990s as affordable housing attracted families seeking a rural lifestyle within commuting distance of Anchorage.
+
+Meadow Lakes offers easy access to Hatcher Pass and the Talkeetna Mountains.`,
+    description: "Growing residential community in the heart of the Mat-Su Valley.",
+    established: "1980s",
+    elevation: "300 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 745-9801"
+    },
+    industries: ["Retail", "Construction", "Services"],
+    attractions: ["Hatcher Pass", "Independence Mine", "Fishing Lakes", "Mountain Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  butte: {
+    name: "Butte",
+    type: 'community',
+    population: 3589,
+    region: "Southcentral",
+    coordinates: { lat: 61.5422, lng: -149.0328 },
+    history: `Butte is a census-designated place near Palmer in the Mat-Su Valley. The community takes its name from the prominent butte that overlooks the area.
+
+The area developed as an agricultural extension of the Matanuska Colony and later grew as a residential community.
+
+Butte is known for its views of the Chugach and Talkeetna Mountains and its proximity to the Matanuska Glacier.`,
+    description: "Mat-Su Valley community with stunning mountain views near the Matanuska Glacier.",
+    established: "1930s",
+    elevation: "600 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 745-9801"
+    },
+    industries: ["Agriculture", "Tourism", "Residential"],
+    attractions: ["Matanuska Glacier", "Butte Viewpoint", "Farming Heritage", "Mountain Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "sutton-alpine": {
+    name: "Sutton-Alpine",
+    type: 'community',
+    population: 1447,
+    region: "Southcentral",
+    coordinates: { lat: 61.7142, lng: -148.8672 },
+    history: `Sutton developed as a coal mining town in the early 1900s. The Evan Jones Coal Mine operated here until 1968, supplying coal to Anchorage and military installations.
+
+The Alpine area developed as a residential community taking advantage of the stunning mountain scenery.
+
+Today, Sutton-Alpine is known for its access to Hatcher Pass and the historic mining district.`,
+    description: "Historic coal mining community at the gateway to Hatcher Pass.",
+    established: "1918",
+    elevation: "1,000 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 745-9801"
+    },
+    industries: ["Tourism", "Mining Heritage", "Recreation"],
+    attractions: ["Hatcher Pass", "Independence Mine State Park", "Coal Mining History", "Skiing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  nikiski: {
+    name: "Nikiski",
+    type: 'community',
+    population: 4456,
+    region: "Southcentral",
+    coordinates: { lat: 60.6906, lng: -151.2889 },
+    history: `Nikiski developed after the discovery of oil on the Kenai Peninsula in 1957. The community became home to oil refineries and petrochemical facilities.
+
+The area was originally inhabited by Dena'ina Athabascan people, and the name comes from their language.
+
+Today, Nikiski remains an industrial center while offering access to excellent fishing and outdoor recreation.`,
+    description: "Industrial community on the Kenai Peninsula, center of Alaska's petrochemical industry.",
+    established: "1950s",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 776-8800"
+    },
+    industries: ["Oil & Gas", "Petrochemicals", "Fishing"],
+    attractions: ["Captain Cook State Recreation Area", "Swanson River Canoe Route", "Fishing", "Industrial Tours"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kalifornsky: {
+    name: "Kalifornsky",
+    type: 'community',
+    population: 8446,
+    region: "Southcentral",
+    coordinates: { lat: 60.4175, lng: -151.2817 },
+    history: `Kalifornsky, known locally as "K-Beach," is named after Kalifornsky Beach Road. The community developed along the shores of Cook Inlet as a residential area.
+
+The area is known for personal use dipnet fishing for salmon, which draws thousands of Alaskans each summer.
+
+Kalifornsky offers a mix of residential living and easy access to both the Kenai River and Cook Inlet.`,
+    description: "Kenai Peninsula community famous for dipnet fishing on Cook Inlet beaches.",
+    established: "1960s",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 262-4441"
+    },
+    industries: ["Fishing", "Residential", "Services"],
+    attractions: ["Dipnet Fishing", "Cook Inlet Beaches", "Clam Digging", "Wildlife Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  sterling: {
+    name: "Sterling",
+    type: 'community',
+    population: 5617,
+    region: "Southcentral",
+    coordinates: { lat: 60.5381, lng: -150.7653 },
+    history: `Sterling developed along the Sterling Highway as it connected Soldotna to Seward. The community is named after the highway, which was named after Hawley Sterling.
+
+The area is known for excellent fishing access to the Kenai River and its tributaries, particularly the Moose River.
+
+Sterling offers a rural lifestyle with easy access to world-class fishing opportunities.`,
+    description: "Sterling Highway community with premier access to Kenai Peninsula fishing.",
+    established: "1950s",
+    elevation: "200 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 262-4820"
+    },
+    industries: ["Tourism", "Fishing", "Retail"],
+    attractions: ["Kenai River", "Moose River", "Fishing Access", "Kenai National Wildlife Refuge"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  ridgeway: {
+    name: "Ridgeway",
+    type: 'community',
+    population: 2022,
+    region: "Southcentral",
+    coordinates: { lat: 60.5375, lng: -150.9778 },
+    history: `Ridgeway is a census-designated place on the Kenai Peninsula that developed as a residential area along the Sterling Highway.
+
+The community offers easy access to the Kenai River and numerous fishing opportunities on the peninsula.
+
+Ridgeway provides a quiet, rural lifestyle for residents who enjoy the outdoor recreation opportunities of the Kenai Peninsula.`,
+    description: "Quiet Kenai Peninsula community with excellent access to outdoor recreation.",
+    established: "1970s",
+    elevation: "250 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 262-4441"
+    },
+    industries: ["Residential", "Services"],
+    attractions: ["Kenai River Access", "Fishing", "Wildlife Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "anchor-point": {
+    name: "Anchor Point",
+    type: 'community',
+    population: 2141,
+    region: "Southcentral",
+    coordinates: { lat: 59.7767, lng: -151.8311 },
+    history: `Anchor Point is the westernmost point on the North American highway system, accessible via the Sterling Highway. Captain James Cook named the area in 1778 after losing an anchor here.
+
+The community developed as a homesteading area in the 1950s and has grown as a fishing and tourism destination.
+
+Anchor Point is famous for its halibut fishing and spectacular views across Cook Inlet to the volcanic mountains.`,
+    description: "Westernmost highway point in North America, renowned for halibut fishing.",
+    established: "1950s",
+    elevation: "100 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 235-8600"
+    },
+    industries: ["Fishing", "Tourism", "Agriculture"],
+    attractions: ["Halibut Fishing", "Cook Inlet Views", "Anchor River", "Volcanic Mountain Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  ninilchik: {
+    name: "Ninilchik",
+    type: 'community',
+    population: 883,
+    region: "Southcentral",
+    coordinates: { lat: 60.0539, lng: -151.6675 },
+    history: `Ninilchik was founded in 1820 by Russian-American Company employees who retired here. The village maintains its Russian heritage, visible in the historic Transfiguration of Our Lord Church overlooking the bay.
+
+The community is one of Alaska's oldest Russian settlements and retains cultural traditions including a unique dialect blending Russian and English.
+
+Ninilchik is famous for its clam digging beaches and excellent fishing opportunities.`,
+    description: "Historic Russian settlement with a picturesque church and famous clam beaches.",
+    established: "1820",
+    elevation: "100 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 567-3313"
+    },
+    industries: ["Fishing", "Tourism", "Agriculture"],
+    attractions: ["Transfiguration Church", "Clam Digging", "Deep Creek Fishing", "Russian Heritage"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kasilof: {
+    name: "Kasilof",
+    type: 'community',
+    population: 562,
+    region: "Southcentral",
+    coordinates: { lat: 60.3242, lng: -151.2722 },
+    history: `Kasilof was established as a Russian trading post in 1786, making it one of Alaska's oldest permanent settlements. The name comes from the Dena'ina Athabascan language.
+
+St. Sergius Chapel, built in 1891, remains as a reminder of the area's Russian heritage.
+
+Today, Kasilof is known for its excellent fishing, including the famous Kasilof River king salmon run.`,
+    description: "Historic Russian trading post community on the banks of the Kasilof River.",
+    established: "1786",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 262-4441"
+    },
+    industries: ["Fishing", "Agriculture", "Tourism"],
+    attractions: ["Kasilof River", "St. Sergius Chapel", "King Salmon Fishing", "Cook Inlet Beach"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  klawock: {
+    name: "Klawock",
+    type: 'community',
+    population: 720,
+    region: "Southeast",
+    coordinates: { lat: 55.5536, lng: -133.0961 },
+    history: `Klawock is a Tlingit village that has been continuously inhabited for thousands of years. It was the site of the first fish cannery in Alaska, established in 1878.
+
+The community is known for its impressive collection of totem poles, many of which were restored from abandoned villages in the 1930s and 40s.
+
+Klawock is located on Prince of Wales Island and connected by road to Craig and other island communities.`,
+    description: "Ancient Tlingit village home to impressive totem poles and Alaska's first fish cannery.",
+    established: "Traditional Tlingit village",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 755-2261"
+    },
+    industries: ["Fishing", "Timber", "Government Services"],
+    attractions: ["Totem Park", "Historic Cannery Site", "Sport Fishing", "Tlingit Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  metlakatla: {
+    name: "Metlakatla",
+    type: 'community',
+    population: 1489,
+    region: "Southeast",
+    coordinates: { lat: 55.1272, lng: -131.5728 },
+    history: `Metlakatla is unique in Alaska as the only federal Indian reservation in the state. It was founded in 1887 when Tsimshian people from British Columbia followed missionary William Duncan to establish a new community.
+
+The community operates under its own government, separate from Alaska's state and local government systems.
+
+Metlakatla is known for its strong cultural traditions and the restored Duncan Cottage Museum.`,
+    description: "Alaska's only federal Indian reservation, founded by Tsimshian people from Canada.",
+    established: "1887",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 886-4441",
+      website: "https://www.metlakatla.com"
+    },
+    industries: ["Fishing", "Government Services", "Tourism"],
+    attractions: ["Duncan Cottage Museum", "Father Duncan's Grave", "Tsimshian Culture", "Yellow Hill"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  hoonah: {
+    name: "Hoonah",
+    type: 'community',
+    population: 760,
+    region: "Southeast",
+    coordinates: { lat: 58.1100, lng: -135.4433 },
+    history: `Hoonah is the largest Tlingit village in Alaska. The name means "village by the cliff" in the Tlingit language. The community has existed for centuries.
+
+A devastating fire in 1944 destroyed much of the village, but it was rebuilt. The community maintains strong connections to traditional Tlingit culture and subsistence practices.
+
+Icy Strait Point, a cruise ship destination operated by the Huna Totem Corporation, has brought economic development to the community.`,
+    description: "Largest Tlingit village in Alaska, home to Icy Strait Point cruise destination.",
+    established: "Traditional Tlingit village",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 945-3663",
+      website: "https://www.hoonah.org"
+    },
+    industries: ["Tourism", "Fishing", "Cruise Ships"],
+    attractions: ["Icy Strait Point", "ZipRider", "Whale Watching", "Glacier Bay Access"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  angoon: {
+    name: "Angoon",
+    type: 'community',
+    population: 459,
+    region: "Southeast",
+    coordinates: { lat: 57.5003, lng: -134.5850 },
+    history: `Angoon is a Tlingit village on Admiralty Island, known in Tlingit as Kootznoowoo, meaning "Fortress of the Bears." The island has one of the highest concentrations of brown bears in the world.
+
+In 1882, the U.S. Navy shelled and destroyed the village after a dispute, an event the community still commemorates. The village was rebuilt and has maintained its cultural traditions.
+
+Angoon is the only permanent community on Admiralty Island.`,
+    description: "Tlingit village on Admiralty Island, the 'Fortress of the Bears.'",
+    established: "Traditional Tlingit village",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 788-3653"
+    },
+    industries: ["Subsistence", "Fishing", "Government Services"],
+    attractions: ["Admiralty Island Bears", "Mitchell Bay", "Tlingit Culture", "Kayaking"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kake: {
+    name: "Kake",
+    type: 'community',
+    population: 557,
+    region: "Southeast",
+    coordinates: { lat: 56.9747, lng: -133.9456 },
+    history: `Kake is a Tlingit village on Kupreanof Island. The community has existed for centuries, with the Kake people known as skilled traders and warriors.
+
+Kake is home to one of the tallest totem poles in Alaska, a 132-foot pole carved in 1967 for the Alaska Centennial celebration.
+
+The community maintains strong connections to traditional Tlingit culture and subsistence lifestyle.`,
+    description: "Tlingit village home to one of Alaska's tallest totem poles.",
+    established: "Traditional Tlingit village",
+    elevation: "0 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 785-3804"
+    },
+    industries: ["Fishing", "Timber", "Government Services"],
+    attractions: ["132-foot Totem Pole", "Tlingit Culture", "Sport Fishing", "Wilderness Access"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "king-cove": {
+    name: "King Cove",
+    type: 'community',
+    population: 938,
+    region: "Southwest",
+    coordinates: { lat: 55.0614, lng: -162.3094 },
+    history: `King Cove was established in 1911 as a cannery town by the Pacific American Fisheries company. The community has grown into one of the most productive fishing ports in Alaska.
+
+The town has advocated for decades for a road connection to Cold Bay, where the nearest all-weather airport is located. Emergency medical evacuations are a major concern for the isolated community.
+
+King Cove is surrounded by the Alaska Peninsula National Wildlife Refuge.`,
+    description: "Productive fishing community on the Alaska Peninsula seeking better transportation access.",
+    established: "1911",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 497-2340"
+    },
+    industries: ["Commercial Fishing", "Seafood Processing"],
+    attractions: ["Wildlife Viewing", "Fishing", "Alaska Peninsula NWR", "Volcanic Scenery"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "sand-point": {
+    name: "Sand Point",
+    type: 'community',
+    population: 928,
+    region: "Southwest",
+    coordinates: { lat: 55.3369, lng: -160.4986 },
+    history: `Sand Point was established in 1898 as a cod fishing station and has grown into one of Alaska's major fishing ports. The community is located on Popof Island in the Shumagin Islands.
+
+The town is ethnically diverse, with significant Aleut, Scandinavian, and other populations contributing to its unique culture.
+
+Sand Point provides services for the surrounding fishing communities and is accessible by air and sea.`,
+    description: "Major fishing port in the Shumagin Islands with a diverse cultural heritage.",
+    established: "1898",
+    elevation: "20 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 383-2696"
+    },
+    industries: ["Commercial Fishing", "Seafood Processing", "Government Services"],
+    attractions: ["Fishing", "Shumagin Islands", "Wildlife Viewing", "Sea Kayaking"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "hooper-bay": {
+    name: "Hooper Bay",
+    type: 'community',
+    population: 1375,
+    region: "Western",
+    coordinates: { lat: 61.5311, lng: -166.0967 },
+    history: `Hooper Bay is a Yup'ik Eskimo village on the shore of Hooper Bay, a shallow embayment on the Bering Sea coast. The community has existed for centuries.
+
+The village maintains strong ties to Yup'ik culture, language, and subsistence practices. Traditional dancing, drumming, and crafts remain important parts of community life.
+
+Hooper Bay is accessible only by air and water, with no road connections to other communities.`,
+    description: "Yup'ik village on the Bering Sea coast maintaining strong cultural traditions.",
+    established: "Traditional Yup'ik village",
+    elevation: "20 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 758-4915"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Yup'ik Culture", "Traditional Dancing", "Subsistence Activities", "Bering Sea"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  emmonak: {
+    name: "Emmonak",
+    type: 'community',
+    population: 762,
+    region: "Western",
+    coordinates: { lat: 62.7767, lng: -164.5231 },
+    history: `Emmonak is a Yup'ik village at the mouth of the Yukon River on the Bering Sea. The name means "blackfish" in Yup'ik, referring to the Alaska blackfish found in the area.
+
+The community was established in its current location after the 1964 earthquake and flooding. It has become an important center for commercial fishing in the Yukon Delta.
+
+Emmonak is known for its king salmon fishery and strong Yup'ik cultural traditions.`,
+    description: "Yup'ik village at the mouth of the Yukon River, center for commercial salmon fishing.",
+    established: "1964 (current location)",
+    elevation: "10 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 949-1720"
+    },
+    industries: ["Commercial Fishing", "Subsistence", "Government Services"],
+    attractions: ["Yukon River", "Salmon Fishing", "Yup'ik Culture", "Wildlife"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "mountain-village": {
+    name: "Mountain Village",
+    type: 'community',
+    population: 813,
+    region: "Western",
+    coordinates: { lat: 62.0856, lng: -163.7286 },
+    history: `Mountain Village is a Yup'ik village on the Yukon River in the Yukon-Kuskokwim Delta. The community takes its name from a nearby mountain called Azachorak.
+
+The village serves as an important transportation hub for surrounding communities, with a state-owned airport and boat landing.
+
+Mountain Village maintains strong connections to Yup'ik language and culture, with many residents speaking Yup'ik as their first language.`,
+    description: "Yup'ik village on the Yukon River serving as a regional transportation hub.",
+    established: "Traditional Yup'ik village",
+    elevation: "40 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 591-2814"
+    },
+    industries: ["Government Services", "Transportation", "Subsistence"],
+    attractions: ["Yukon River", "Yup'ik Culture", "Traditional Crafts", "Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "st-marys": {
+    name: "St. Mary's",
+    type: 'community',
+    population: 564,
+    region: "Western",
+    coordinates: { lat: 62.0536, lng: -163.1656 },
+    history: `St. Mary's was established as a Jesuit mission in 1903 and named for the Virgin Mary. The community developed around the mission and its boarding school.
+
+The village is home to a mixed population of Yup'ik and other Alaskan Natives. The former mission school is now operated as a public school.
+
+St. Mary's serves as a sub-regional center for several surrounding villages in the Yukon Delta.`,
+    description: "Former Jesuit mission community serving as a sub-regional center in the Yukon Delta.",
+    established: "1903",
+    elevation: "311 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 438-2512"
+    },
+    industries: ["Government Services", "Education", "Subsistence"],
+    attractions: ["Historic Mission", "Yukon River", "Yup'ik Culture", "Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  chevak: {
+    name: "Chevak",
+    type: 'community',
+    population: 938,
+    region: "Western",
+    coordinates: { lat: 61.5278, lng: -165.5864 },
+    history: `Chevak is one of the largest Cup'ik (a dialect of Yup'ik) speaking communities in Alaska. The village was established in its current location in 1950 when residents of Old Chevak relocated.
+
+The community maintains one of the strongest connections to traditional Cup'ik language and culture in Alaska. Traditional dancing, arts, and subsistence activities remain central to community life.
+
+Chevak is accessible only by air and water transportation.`,
+    description: "Cup'ik village known for its strong cultural traditions and language preservation.",
+    established: "1950 (current location)",
+    elevation: "25 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 858-7428"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Cup'ik Culture", "Traditional Dance", "Arts and Crafts", "Bering Sea"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  quinhagak: {
+    name: "Quinhagak",
+    type: 'community',
+    population: 669,
+    region: "Western",
+    coordinates: { lat: 59.7500, lng: -161.9156 },
+    history: `Quinhagak is a Yup'ik village on the Kanektok River near the Bering Sea coast. The community has existed for centuries and maintains strong cultural traditions.
+
+Archaeological excavations near the village have uncovered significant artifacts from early Yup'ik culture, providing important insights into the region's history.
+
+The village is known for excellent salmon and rainbow trout fishing in the Kanektok River system.`,
+    description: "Yup'ik village known for archaeological discoveries and excellent sport fishing.",
+    established: "Traditional Yup'ik village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 556-8165"
+    },
+    industries: ["Subsistence", "Fishing", "Government Services"],
+    attractions: ["Kanektok River", "Sport Fishing", "Archaeological Sites", "Yup'ik Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  togiak: {
+    name: "Togiak",
+    type: 'community',
+    population: 817,
+    region: "Western",
+    coordinates: { lat: 59.0628, lng: -160.3767 },
+    history: `Togiak is a Yup'ik village on Togiak Bay in Bristol Bay. The community has existed for centuries and was historically a gathering place for seasonal fishing activities.
+
+The village is located at the edge of the Togiak National Wildlife Refuge, one of the most remote and pristine wilderness areas in Alaska.
+
+Togiak is known for excellent herring and salmon fishing, as well as the annual herring spawn that draws thousands of sea birds and marine mammals.`,
+    description: "Yup'ik fishing village at the gateway to Togiak National Wildlife Refuge.",
+    established: "Traditional Yup'ik village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 493-5003"
+    },
+    industries: ["Commercial Fishing", "Subsistence", "Government Services"],
+    attractions: ["Togiak NWR", "Herring Spawn", "Salmon Fishing", "Wildlife Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  naknek: {
+    name: "Naknek",
+    type: 'community',
+    population: 544,
+    region: "Southwest",
+    coordinates: { lat: 58.7286, lng: -157.0139 },
+    history: `Naknek is located on the Alaska Peninsula at the mouth of the Naknek River. The village is the seat of Bristol Bay Borough and serves as a center for the Bristol Bay sockeye salmon fishery.
+
+The Naknek River is famous for its outstanding rainbow trout fishing, attracting anglers from around the world.
+
+Naknek serves as a gateway to Katmai National Park and the famous Brooks Camp bear viewing area.`,
+    description: "Bristol Bay Borough seat and gateway to Katmai National Park and world-class fishing.",
+    established: "Traditional village",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 246-4224"
+    },
+    industries: ["Commercial Fishing", "Tourism", "Government Services"],
+    attractions: ["Katmai National Park", "Rainbow Trout Fishing", "Bristol Bay Fishing", "Bear Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "king-salmon": {
+    name: "King Salmon",
+    type: 'community',
+    population: 374,
+    region: "Southwest",
+    coordinates: { lat: 58.6886, lng: -156.6614 },
+    history: `King Salmon was established as a military base during World War II and the Cold War. The community developed around the air base, which was decommissioned in the 1990s.
+
+Today, King Salmon serves primarily as a transportation hub and headquarters for Katmai National Park. The village is named for the king (Chinook) salmon that spawn in local waters.
+
+King Salmon provides access to some of the best bear viewing and sport fishing opportunities in Alaska.`,
+    description: "Former military base now serving as the gateway to Katmai National Park.",
+    established: "1942",
+    elevation: "57 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 246-3341"
+    },
+    industries: ["Tourism", "Government Services", "Aviation"],
+    attractions: ["Katmai National Park", "Brooks Camp", "Bear Viewing", "Sport Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  selawik: {
+    name: "Selawik",
+    type: 'community',
+    population: 829,
+    region: "Northern",
+    coordinates: { lat: 66.6042, lng: -160.0069 },
+    history: `Selawik is an Iñupiaq village on the Selawik River near Selawik Lake. The name means "place of many channels" in Iñupiaq, referring to the delta where the village is located.
+
+The community has existed for centuries, with the area providing rich fishing, hunting, and gathering resources. The Selawik National Wildlife Refuge surrounds the village.
+
+Selawik maintains strong connections to Iñupiaq culture and subsistence traditions.`,
+    description: "Iñupiaq village in the heart of Selawik National Wildlife Refuge.",
+    established: "Traditional Iñupiaq village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 484-2132"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Selawik NWR", "Fishing", "Iñupiaq Culture", "Wildlife"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  noorvik: {
+    name: "Noorvik",
+    type: 'community',
+    population: 668,
+    region: "Northern",
+    coordinates: { lat: 66.8369, lng: -161.0447 },
+    history: `Noorvik is an Iñupiaq village on the Nazuruk Channel of the Kobuk River, about 60 miles from the Arctic Ocean. The village was settled in 1914-1915 by Iñupiaq people from nearby communities.
+
+The community is known for its strong basketball tradition, producing several outstanding players who have gone on to success in college and professional sports.
+
+Noorvik provides access to Kobuk Valley National Park and the famous Great Kobuk Sand Dunes.`,
+    description: "Iñupiaq village on the Kobuk River, gateway to Kobuk Valley National Park.",
+    established: "1914",
+    elevation: "100 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 636-2144"
+    },
+    industries: ["Subsistence", "Government Services", "Education"],
+    attractions: ["Kobuk Valley NP", "Great Kobuk Sand Dunes", "Fishing", "Iñupiaq Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "point-hope": {
+    name: "Point Hope",
+    type: 'community',
+    population: 674,
+    region: "Northern",
+    coordinates: { lat: 68.3475, lng: -166.7992 },
+    history: `Point Hope, known as Tikigaq in Iñupiaq, is one of the oldest continuously occupied sites in North America. Archaeological evidence suggests human habitation for at least 2,500 years.
+
+The village is located on a gravel spit extending into the Chukchi Sea, an ideal location for whale hunting. The community continues its tradition of subsistence whaling.
+
+Point Hope is known for maintaining strong connections to traditional Iñupiaq culture and the annual Nalukataq (blanket toss) whale celebration.`,
+    description: "One of North America's oldest continuously occupied sites, center of Iñupiaq whaling tradition.",
+    established: "2,500+ years ago",
+    elevation: "10 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 368-2330"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Whaling Culture", "Nalukataq Festival", "Archaeological Sites", "Arctic Ocean"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  wainwright: {
+    name: "Wainwright",
+    type: 'community',
+    population: 556,
+    region: "Northern",
+    coordinates: { lat: 70.6369, lng: -160.0386 },
+    history: `Wainwright is an Iñupiaq village on the Chukchi Sea coast, named after Lieutenant John Wainwright, an officer with the Rodgers expedition that explored the Arctic coast in 1881.
+
+The village has existed for centuries as a seasonal and permanent settlement. Subsistence whaling, hunting, and fishing remain central to community life.
+
+Wainwright is accessible only by air and water, with no road connections to other communities.`,
+    description: "Arctic Coast Iñupiaq village with strong whaling and subsistence traditions.",
+    established: "Traditional Iñupiaq village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 763-2595"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Whaling Culture", "Arctic Ocean", "Wildlife Viewing", "Iñupiaq Traditions"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "point-lay": {
+    name: "Point Lay",
+    type: 'community',
+    population: 247,
+    region: "Northern",
+    coordinates: { lat: 69.7328, lng: -163.0053 },
+    history: `Point Lay is an Iñupiaq village on the Chukchi Sea coast. The community was relocated from a spit to its current mainland location in 1974 after coastal erosion threatened the original site.
+
+The village participates in subsistence whaling and maintains strong connections to Iñupiaq culture and traditions.
+
+Point Lay is notable as a site where Pacific walrus often haul out in large numbers due to declining sea ice.`,
+    description: "Small Arctic village known for walrus haul-outs and Iñupiaq subsistence culture.",
+    established: "Traditional Iñupiaq village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 833-2811"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Walrus Viewing", "Arctic Ocean", "Iñupiaq Culture", "Wildlife"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  kaktovik: {
+    name: "Kaktovik",
+    type: 'community',
+    population: 239,
+    region: "Northern",
+    coordinates: { lat: 70.1319, lng: -143.6256 },
+    history: `Kaktovik is an Iñupiaq village on Barter Island in the Arctic Ocean, located within the Arctic National Wildlife Refuge. The village has existed for centuries, with residents maintaining subsistence hunting traditions.
+
+Kaktovik has become internationally known for polar bear viewing, as the bears gather on the coast after the summer whale hunt to feed on whale carcasses.
+
+The community is at the center of debates over oil development in the Arctic National Wildlife Refuge.`,
+    description: "Arctic village famous for polar bear viewing within the Arctic National Wildlife Refuge.",
+    established: "Traditional Iñupiaq village",
+    elevation: "10 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 640-6313"
+    },
+    industries: ["Subsistence", "Tourism", "Government Services"],
+    attractions: ["Polar Bear Viewing", "Arctic NWR", "Whale Hunt", "Arctic Ocean"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  nuiqsut: {
+    name: "Nuiqsut",
+    type: 'community',
+    population: 524,
+    region: "Northern",
+    coordinates: { lat: 70.2103, lng: -150.9792 },
+    history: `Nuiqsut is an Iñupiaq village on the Colville River, established in its current location in 1973 when families from Barrow relocated to be closer to traditional subsistence areas.
+
+The village is located near the Colville River Delta, one of the largest deltas in Arctic Alaska and an important area for fish, caribou, and other wildlife.
+
+Nuiqsut is surrounded by the National Petroleum Reserve-Alaska, and oil development has become a significant issue for the community.`,
+    description: "Iñupiaq village on the Colville River with rich subsistence traditions.",
+    established: "1973 (current location)",
+    elevation: "40 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 480-6726"
+    },
+    industries: ["Oil Support", "Subsistence", "Government Services"],
+    attractions: ["Colville River", "Caribou Hunting", "Fishing", "Iñupiaq Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  unalakleet: {
+    name: "Unalakleet",
+    type: 'community',
+    population: 688,
+    region: "Western",
+    coordinates: { lat: 63.8736, lng: -160.7889 },
+    history: `Unalakleet is a Yup'ik village on Norton Sound that has been inhabited for over 2,000 years. The name means "from the south side" in Yup'ik, referring to the location of the original village.
+
+The community is a checkpoint on the Iditarod Trail Sled Dog Race and marks the point where the race reaches the coast. Mushers can choose to take either the northern or southern route from here.
+
+Unalakleet is known for its excellent subsistence resources and strong cultural traditions.`,
+    description: "Coastal village and Iditarod checkpoint where mushers first see the Bering Sea.",
+    established: "2,000+ years ago",
+    elevation: "15 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 624-3531"
+    },
+    industries: ["Fishing", "Subsistence", "Government Services"],
+    attractions: ["Iditarod Checkpoint", "Norton Sound", "Fishing", "Yup'ik Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  shaktoolik: {
+    name: "Shaktoolik",
+    type: 'community',
+    population: 258,
+    region: "Western",
+    coordinates: { lat: 64.3347, lng: -161.1539 },
+    history: `Shaktoolik is a Malimiut Iñupiaq village on the Norton Sound coast. The village was relocated from its original site to higher ground due to flooding and erosion.
+
+The community is an important checkpoint on the Iditarod Trail Sled Dog Race, located on an exposed section of trail that can be extremely challenging in bad weather.
+
+Shaktoolik is threatened by coastal erosion and is working on plans to relocate to safer ground.`,
+    description: "Coastal Iñupiaq village and challenging Iditarod checkpoint facing climate change impacts.",
+    established: "Traditional Iñupiaq village",
+    elevation: "15 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 955-3701"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Iditarod Checkpoint", "Norton Sound", "Coastal Culture", "Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  gambell: {
+    name: "Gambell",
+    type: 'community',
+    population: 681,
+    region: "Western",
+    coordinates: { lat: 63.7797, lng: -171.7375 },
+    history: `Gambell is a Siberian Yupik village on St. Lawrence Island in the Bering Sea, only 36 miles from Russia. The community has maintained connections to relatives in Siberia for thousands of years.
+
+The village is world-famous among birdwatchers for the Asian bird species that regularly appear here due to the island's proximity to Russia.
+
+Gambell is also known for its ancient ivory and archaeological treasures, with artifacts thousands of years old washing out of eroding beaches.`,
+    description: "Siberian Yupik village just 36 miles from Russia, a birding hotspot for Asian species.",
+    established: "Traditional Siberian Yupik village",
+    elevation: "30 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 985-5826"
+    },
+    industries: ["Subsistence", "Tourism", "Government Services"],
+    attractions: ["Birding", "Whale Hunting", "Ancient Artifacts", "Russian Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  savoonga: {
+    name: "Savoonga",
+    type: 'community',
+    population: 671,
+    region: "Western",
+    coordinates: { lat: 63.6936, lng: -170.4803 },
+    history: `Savoonga is a Siberian Yupik village on St. Lawrence Island, established in the 1910s-1920s. The community was created when reindeer herding was introduced to the island.
+
+Like Gambell, Savoonga maintains connections to the Siberian Yupik culture and language. The village participates in subsistence whale hunting and walrus hunting.
+
+Savoonga is known for its skilled ivory carvers who create traditional and contemporary pieces from walrus ivory.`,
+    description: "Siberian Yupik ivory carving village on St. Lawrence Island in the Bering Sea.",
+    established: "1916",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 984-6614"
+    },
+    industries: ["Subsistence", "Ivory Carving", "Government Services"],
+    attractions: ["Ivory Carving", "Whale Hunting", "Siberian Yupik Culture", "Wildlife"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  diomede: {
+    name: "Little Diomede",
+    type: 'community',
+    population: 82,
+    region: "Western",
+    coordinates: { lat: 65.7586, lng: -168.9528 },
+    history: `Little Diomede, known as Inalik to its Iñupiaq residents, is located on a tiny island in the Bering Strait, just 2.4 miles from Big Diomede Island in Russia. During the Cold War, this was the closest point between the United States and Soviet Union.
+
+The International Date Line passes between the two Diomede islands, meaning residents can see "tomorrow" when looking at Russia.
+
+The village clings to the steep rocky shore, with homes literally built into the mountainside. The community is accessible only by helicopter or boat in summer and ice runway in winter.`,
+    description: "Remote Iñupiaq village just 2.4 miles from Russia in the Bering Strait.",
+    established: "Traditional Iñupiaq village",
+    elevation: "50 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 686-2175"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["View of Russia", "Ivory Carving", "Extreme Isolation", "Iñupiaq Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "fort-yukon": {
+    name: "Fort Yukon",
+    type: 'community',
+    population: 536,
+    region: "Interior",
+    coordinates: { lat: 66.5647, lng: -145.2739 },
+    history: `Fort Yukon was established by the Hudson's Bay Company in 1847 as the most remote trading post in British North America—despite being in Russian territory. When the United States purchased Alaska in 1867, the post was found to be 100 miles inside the new American territory.
+
+The community is located at the confluence of the Yukon and Porcupine rivers and has been an important trading center for centuries.
+
+Fort Yukon holds the record for Alaska's highest temperature: 100°F, recorded on June 27, 1915.`,
+    description: "Historic trading post at the Yukon-Porcupine confluence, holder of Alaska's heat record.",
+    established: "1847",
+    elevation: "433 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 662-2581"
+    },
+    industries: ["Government Services", "Subsistence", "Transportation"],
+    attractions: ["Yukon River", "Historic Trading Post", "Yukon Flats NWR", "Northern Lights"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  tanana: {
+    name: "Tanana",
+    type: 'community',
+    population: 231,
+    region: "Interior",
+    coordinates: { lat: 65.1719, lng: -152.0786 },
+    history: `Tanana is located at the confluence of the Tanana and Yukon rivers, a location that has been important for trade and travel for centuries. The U.S. Army established Fort Gibbon here in 1899.
+
+The village is an Iditarod Trail Sled Dog Race checkpoint and was historically an important stop on the Iditarod Trail.
+
+Tanana has experienced significant flooding and erosion along the Yukon River, threatening historic structures and the community's future.`,
+    description: "Historic village at the confluence of two major rivers, an Iditarod Trail checkpoint.",
+    established: "Traditional Athabascan village",
+    elevation: "227 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 366-7160"
+    },
+    industries: ["Government Services", "Subsistence"],
+    attractions: ["Yukon River", "Iditarod Checkpoint", "Fort Gibbon Site", "Northern Lights"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  ruby: {
+    name: "Ruby",
+    type: 'community',
+    population: 166,
+    region: "Interior",
+    coordinates: { lat: 64.7392, lng: -155.4867 },
+    history: `Ruby was founded in 1907 during the Ruby Creek gold rush and grew into a significant gold mining center. The town is named for the ruby-colored garnets found in the area.
+
+Ruby is an important checkpoint on the Iditarod Trail Sled Dog Race, often serving as the site for the first musher to reach the Yukon River to receive a special prize.
+
+The community has a rich gold rush history and maintains connections to both Alaska Native and mining heritage.`,
+    description: "Historic gold rush town on the Yukon River, important Iditarod checkpoint.",
+    established: "1907",
+    elevation: "200 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 468-4401"
+    },
+    industries: ["Government Services", "Subsistence"],
+    attractions: ["Iditarod Checkpoint", "Gold Rush History", "Yukon River", "Northern Lights"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  huslia: {
+    name: "Huslia",
+    type: 'community',
+    population: 275,
+    region: "Interior",
+    coordinates: { lat: 65.6997, lng: -156.3994 },
+    history: `Huslia is an Athabascan village on the Koyukuk River that was established in the 1940s when families from several smaller villages consolidated here.
+
+The community is known for producing outstanding dog mushers, including multiple Iditarod champions. Huslia is an important checkpoint on the Iditarod Trail.
+
+The village maintains strong connections to Athabascan culture and subsistence traditions, with dog mushing being an important part of community identity.`,
+    description: "Athabascan village known for producing champion dog mushers.",
+    established: "1940s",
+    elevation: "180 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 829-2205"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Dog Mushing Heritage", "Iditarod Checkpoint", "Koyukuk River", "Athabascan Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  eagle: {
+    name: "Eagle",
+    type: 'community',
+    population: 86,
+    region: "Interior",
+    coordinates: { lat: 64.7878, lng: -141.2006 },
+    history: `Eagle was founded in 1897 during the Klondike Gold Rush as a trading center and the first incorporated city of the Interior. The town served as the federal seat of government for Alaska's Interior.
+
+Judge James Wickersham established the U.S. court system here, and Norwegian explorer Roald Amundsen arrived in Eagle in 1905 to telegraph news of his successful navigation of the Northwest Passage.
+
+Today, Eagle is a quiet community at the end of the Taylor Highway, preserving its gold rush history.`,
+    description: "Historic gold rush town at the end of the Taylor Highway with preserved frontier heritage.",
+    established: "1897",
+    elevation: "820 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 547-2268"
+    },
+    industries: ["Tourism", "Government Services"],
+    attractions: ["Historic Downtown", "Fort Egbert", "Yukon River", "Taylor Highway"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  circle: {
+    name: "Circle",
+    type: 'community',
+    population: 104,
+    region: "Interior",
+    coordinates: { lat: 65.8256, lng: -144.0603 },
+    history: `Circle was founded in 1893 during the Birch Creek gold rush and became known as the "largest log cabin city in the world" at its peak population of around 700.
+
+The town was mistakenly named by miners who believed they were on the Arctic Circle, though they were actually 50 miles south of it.
+
+Circle is the end of the Steese Highway and serves as a gateway to the Yukon River and Yukon-Charley Rivers National Preserve.`,
+    description: "Historic mining town at the end of the Steese Highway, gateway to the Yukon.",
+    established: "1893",
+    elevation: "596 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 773-8611"
+    },
+    industries: ["Tourism", "Subsistence"],
+    attractions: ["Yukon River", "Circle Hot Springs", "Steese Highway", "Gold Rush History"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  central: {
+    name: "Central",
+    type: 'community',
+    population: 89,
+    region: "Interior",
+    coordinates: { lat: 65.5722, lng: -144.8028 },
+    history: `Central is a small mining community on the Steese Highway that developed during the gold rush era. The community serves as a service center for the surrounding mining district.
+
+Circle Hot Springs, one of Alaska's few developed hot springs, is located nearby and has operated as a resort since 1905.
+
+Central provides services for travelers on the Steese Highway and access to recreational mining opportunities.`,
+    description: "Small mining community on the Steese Highway near Circle Hot Springs.",
+    established: "Early 1900s",
+    elevation: "930 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 520-5228"
+    },
+    industries: ["Mining", "Tourism"],
+    attractions: ["Circle Hot Springs", "Gold Mining", "Steese Highway", "Northern Lights"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "manley-hot-springs": {
+    name: "Manley Hot Springs",
+    type: 'community',
+    population: 89,
+    region: "Interior",
+    coordinates: { lat: 64.9964, lng: -150.6392 },
+    history: `Manley Hot Springs was founded in 1902 during the Tanana gold rush and named after Frank Manley, who developed a resort around the natural hot springs.
+
+The hot springs remain the community's main attraction, offering a unique bathing experience in a remote Alaska setting.
+
+Manley Hot Springs is the end of the Elliott Highway and serves as a gateway to the Tanana River.`,
+    description: "End-of-the-road community famous for its natural hot springs resort.",
+    established: "1902",
+    elevation: "275 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 672-3171"
+    },
+    industries: ["Tourism", "Government Services"],
+    attractions: ["Hot Springs", "Tanana River", "Elliott Highway", "Northern Lights"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  northway: {
+    name: "Northway",
+    type: 'community',
+    population: 71,
+    region: "Interior",
+    coordinates: { lat: 62.9614, lng: -141.9375 },
+    history: `Northway is an Athabascan village near the Alaska-Canada border. The community consists of three separate areas: Northway Village, Northway Junction, and Northway Airport.
+
+Northway Airport was built during World War II as part of the Northwest Staging Route and remains an important facility for international flights.
+
+The village maintains connections to Upper Tanana Athabascan culture and language.`,
+    description: "Athabascan village near the Canadian border with WWII-era airport.",
+    established: "Traditional Athabascan village",
+    elevation: "1,715 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 778-2311"
+    },
+    industries: ["Government Services", "Aviation", "Subsistence"],
+    attractions: ["Tetlin NWR", "Alaska Highway", "Athabascan Culture", "Border Region"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  tetlin: {
+    name: "Tetlin",
+    type: 'community',
+    population: 117,
+    region: "Interior",
+    coordinates: { lat: 63.1350, lng: -142.5192 },
+    history: `Tetlin is an Upper Tanana Athabascan village near the Tetlin National Wildlife Refuge. The community has existed for centuries and maintains strong connections to traditional culture.
+
+Tetlin Lake and the surrounding wetlands provide important habitat for waterfowl and other wildlife, making the area significant for subsistence activities.
+
+The village is accessible from the Alaska Highway via a side road.`,
+    description: "Upper Tanana Athabascan village near Tetlin National Wildlife Refuge.",
+    established: "Traditional Athabascan village",
+    elevation: "1,735 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 324-2110"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Tetlin NWR", "Tetlin Lake", "Athabascan Culture", "Waterfowl Viewing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "mentasta-lake": {
+    name: "Mentasta Lake",
+    type: 'community',
+    population: 78,
+    region: "Southcentral",
+    coordinates: { lat: 62.9331, lng: -143.8025 },
+    history: `Mentasta Lake is an Athabascan village that developed around a traditional fish camp location. The community is located along the Tok Cutoff highway.
+
+The village overlooks Mentasta Lake, which provides important fishing resources. The area offers stunning views of the Wrangell Mountains.
+
+Mentasta Lake maintains connections to Athabascan culture and subsistence traditions.`,
+    description: "Athabascan village overlooking Mentasta Lake with Wrangell Mountain views.",
+    established: "Traditional Athabascan village",
+    elevation: "2,300 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3203"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Mentasta Lake", "Wrangell Mountains", "Fishing", "Athabascan Culture"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  slana: {
+    name: "Slana",
+    type: 'community',
+    population: 147,
+    region: "Southcentral",
+    coordinates: { lat: 62.7086, lng: -143.9608 },
+    history: `Slana is a small community at the junction of the Tok Cutoff and Nabesna Road. The area has been inhabited by Athabascan people for centuries.
+
+Nabesna Road provides access to the northern part of Wrangell-St. Elias National Park, including historic mining sites and wilderness areas.
+
+Slana serves as a gateway to backcountry recreation in America's largest national park.`,
+    description: "Gateway community to northern Wrangell-St. Elias National Park via Nabesna Road.",
+    established: "Traditional Athabascan area",
+    elevation: "2,400 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3555"
+    },
+    industries: ["Tourism", "Subsistence"],
+    attractions: ["Nabesna Road", "Wrangell-St. Elias NP", "Nabesna Mine", "Backcountry Access"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  chistochina: {
+    name: "Chistochina",
+    type: 'community',
+    population: 93,
+    region: "Southcentral",
+    coordinates: { lat: 62.5650, lng: -144.6694 },
+    history: `Chistochina is an Athabascan village on the Tok Cutoff highway in the Copper River Basin. The name means "where the wood floats into" in Athabascan.
+
+The community developed around traditional fishing sites on the Copper River system. Subsistence fishing for salmon remains important to village life.
+
+Chistochina provides access to the Copper River watershed and surrounding wilderness.`,
+    description: "Athabascan village in the Copper River Basin along the Tok Cutoff.",
+    established: "Traditional Athabascan village",
+    elevation: "1,850 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3203"
+    },
+    industries: ["Subsistence", "Government Services"],
+    attractions: ["Copper River", "Salmon Fishing", "Athabascan Culture", "Mountain Views"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  gakona: {
+    name: "Gakona",
+    type: 'community',
+    population: 218,
+    region: "Southcentral",
+    coordinates: { lat: 62.3017, lng: -145.3036 },
+    history: `Gakona is located at the confluence of the Copper and Gakona rivers. The historic Gakona Lodge, built in 1905, served as a roadhouse on the old Valdez-Eagle Trail.
+
+The community is home to an important HAARP (High-frequency Active Auroral Research Program) research facility, which has sparked both scientific interest and conspiracy theories.
+
+Gakona provides access to excellent fishing on the Copper River system.`,
+    description: "Historic roadhouse community at the confluence of the Copper and Gakona rivers.",
+    established: "1905",
+    elevation: "1,455 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3664"
+    },
+    industries: ["Tourism", "Research"],
+    attractions: ["Gakona Lodge", "Copper River", "HAARP Facility", "Fishing"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  "copper-center": {
+    name: "Copper Center",
+    type: 'community',
+    population: 328,
+    region: "Southcentral",
+    coordinates: { lat: 61.9556, lng: -145.3039 },
+    history: `Copper Center was established in 1896 and served as the first white settlement in the Copper River Valley. The historic Copper Center Lodge operated as a roadhouse for travelers.
+
+The George Ashby Memorial Museum preserves the history of the Copper River region, including artifacts from the stampede era when prospectors passed through on their way to gold fields.
+
+Today, Copper Center serves as a service center for the surrounding area and gateway to Wrangell-St. Elias.`,
+    description: "Historic community and gateway to the Wrangell-St. Elias National Park.",
+    established: "1896",
+    elevation: "1,000 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 822-3353"
+    },
+    industries: ["Tourism", "Services", "Government"],
+    attractions: ["George Ashby Museum", "Copper Center Lodge", "Wrangell-St. Elias NP", "Copper River"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  mccarthy: {
+    name: "McCarthy",
+    type: 'community',
+    population: 28,
+    region: "Southcentral",
+    coordinates: { lat: 61.4328, lng: -142.9231 },
+    history: `McCarthy was founded in 1906 to serve the Kennecott copper mines, once among the richest in the world. The Kennecott Mines operated from 1911 to 1938, extracting over $200 million worth of copper.
+
+After the mines closed, McCarthy became nearly a ghost town. Today it has been revived as a destination for visitors to Wrangell-St. Elias National Park.
+
+The historic Kennecott Mill Town is now a preserved National Historic Landmark accessible from McCarthy.`,
+    description: "Former mining town gateway to the Kennecott Mines National Historic Landmark.",
+    established: "1906",
+    elevation: "1,531 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 554-4401"
+    },
+    industries: ["Tourism"],
+    attractions: ["Kennecott Mines", "Root Glacier", "McCarthy Road", "Wrangell-St. Elias NP"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
+  },
+  chitina: {
+    name: "Chitina",
+    type: 'community',
+    population: 126,
+    region: "Southcentral",
+    coordinates: { lat: 61.5158, lng: -144.4356 },
+    history: `Chitina was established in 1908 as a service town for the Copper River and Northwestern Railway, which transported copper ore from Kennecott to Cordova.
+
+The town became famous for its dipnet fishing, where Alaskans crowd the Copper River each summer to catch red salmon for personal use.
+
+After the railroad closed in 1938, Chitina declined but remains an important fishing destination and gateway to Wrangell-St. Elias.`,
+    description: "Gateway to Wrangell-St. Elias famous for Copper River dipnet fishing.",
+    established: "1908",
+    elevation: "556 ft",
+    timezone: "Alaska Time (AKST/AKDT)",
+    contact: {
+      phone: "(907) 823-2215"
+    },
+    industries: ["Tourism", "Services"],
+    attractions: ["Dipnet Fishing", "McCarthy Road", "Copper River", "Wrangell-St. Elias NP"],
+    imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200"
   }
 };
 
