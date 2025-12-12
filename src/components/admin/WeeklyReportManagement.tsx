@@ -150,7 +150,7 @@ const WeeklyReportManagement = () => {
       <Card>
         <CardHeader>
           <CardTitle>Upload New Weekly Report</CardTitle>
-          <CardDescription>Upload J.R. Kitchens' weekly video report</CardDescription>
+          <CardDescription>Upload the weekly video report</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>

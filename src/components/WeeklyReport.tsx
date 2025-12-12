@@ -151,15 +151,15 @@ const WeeklyReport = () => {
               </div>
             </div>
             
-            {/* Host name with elegant reveal */}
+            {/* Subtitle with elegant reveal */}
             <div 
               className="opacity-0 animate-fade-in-up"
               style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}
             >
               <p className="text-lg md:text-xl font-cinzel text-white/90 tracking-wide">
-                with{" "}
+                Your Source for{" "}
                 <span className="relative inline-block group">
-                  <span className="text-amber-300 font-semibold animate-word-glow">J.R. Kitchens</span>
+                  <span className="text-amber-300 font-semibold animate-word-glow">Alaska News</span>
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-amber-400/0 via-amber-400 to-amber-400/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </span>
               </p>
@@ -215,7 +215,7 @@ const WeeklyReport = () => {
                   </svg>
                 </div>
                 <p className="text-white/80 text-lg leading-relaxed max-w-md mx-auto">
-                  The latest weekly report will be posted here every Wednesday. Check back for J.R. Kitchens' insights on Alaska news and events.
+                  The latest weekly report will be posted here every Monday. Check back for the latest insights on Alaska news and events.
                 </p>
               </div>
             )}
@@ -226,7 +226,7 @@ const WeeklyReport = () => {
             {/* Published badge */}
             <div className="inline-block px-5 py-2 bg-white/10 border border-white/30 rounded-full backdrop-blur-sm shadow-lg relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="text-xs font-cinzel font-semibold text-white/90 tracking-wider relative z-10">✦ PUBLISHED EVERY WEDNESDAY ✦</span>
+              <span className="text-xs font-cinzel font-semibold text-white/90 tracking-wider relative z-10">✦ PUBLISHED EVERY MONDAY ✦</span>
             </div>
 
             {/* Divider */}
