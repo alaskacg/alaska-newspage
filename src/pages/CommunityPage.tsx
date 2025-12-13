@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, MapPin, Users, Plane, Phone, Mail, Globe, Building, History, Newspaper, Cloud } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, MapPin, Users, Plane, Phone, Mail, Globe, Building, History, Newspaper, Cloud, Store, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,10 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import CommunityWeather from "@/components/CommunityWeather";
 import TypewriterTitle from "@/components/TypewriterTitle";
+import MartinMinesAd from "@/components/MartinMinesAd";
+import BidCalendarAd from "@/components/BidCalendarAd";
+import { supabase } from "@/integrations/supabase/client";
+import { format } from "date-fns";
 
 // Community data with history, contact info, and details
 const communityData: Record<string, {
@@ -2456,9 +2461,95 @@ After the railroad closed in 1938, Chitina declined but remains an important fis
   }
 };
 
+// Region slug mapping for database queries
+const regionSlugMap: Record<string, string> = {
+  "Interior": "interior",
+  "Southcentral": "southcentral",
+  "Southeast": "southeast",
+  "Southwest": "southwest",
+  "Northern": "northern",
+  "Western": "western"
+};
+
+interface NewsItem {
+  id: string;
+  title: string;
+  description: string | null;
+  url: string;
+  source: string | null;
+  category: string | null;
+  image_url: string | null;
+  published_at: string | null;
+}
+
+interface LocalBusiness {
+  id: string;
+  name: string;
+  category: string;
+  description: string | null;
+  address: string | null;
+  city: string | null;
+  contact_phone: string | null;
+  website_url: string | null;
+}
+
 const CommunityPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const community = slug ? communityData[slug.toLowerCase()] : null;
+  const [localNews, setLocalNews] = useState<NewsItem[]>([]);
+  const [localBusinesses, setLocalBusinesses] = useState<LocalBusiness[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLocalData = async () => {
+      if (!community) return;
+      
+      setIsLoading(true);
+      
+      try {
+        // Get the region for this community
+        const regionSlug = regionSlugMap[community.region] || community.region.toLowerCase();
+        
+        // Fetch region ID first
+        const { data: regionData } = await supabase
+          .from('regions')
+          .select('id')
+          .eq('slug', regionSlug)
+          .maybeSingle();
+
+        if (regionData) {
+          // Fetch local news for this region
+          const { data: newsData } = await supabase
+            .from('news_items')
+            .select('*')
+            .eq('region_id', regionData.id)
+            .order('published_at', { ascending: false })
+            .limit(6);
+
+          if (newsData) {
+            setLocalNews(newsData);
+          }
+
+          // Fetch local businesses for this region
+          const { data: businessData } = await supabase
+            .from('local_businesses')
+            .select('*')
+            .eq('region_id', regionData.id)
+            .limit(8);
+
+          if (businessData) {
+            setLocalBusinesses(businessData);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching local data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchLocalData();
+  }, [community]);
 
   if (!community) {
     return (
@@ -2583,8 +2674,16 @@ const CommunityPage = () => {
         </div>
       </div>
 
+      {/* Advertising Section */}
+      <div className="container mx-auto px-4 py-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <MartinMinesAd compact />
+          <BidCalendarAd compact />
+        </div>
+      </div>
+
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-6">
         {/* Weather Section */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-4">
@@ -2598,11 +2697,12 @@ const CommunityPage = () => {
         </div>
 
         <Tabs defaultValue="history" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-6 mb-8">
             <TabsTrigger value="history">History</TabsTrigger>
             <TabsTrigger value="info">Information</TabsTrigger>
             <TabsTrigger value="contact">Contact</TabsTrigger>
             <TabsTrigger value="services">Local Services</TabsTrigger>
+            <TabsTrigger value="businesses">Businesses</TabsTrigger>
             <TabsTrigger value="news">Local News</TabsTrigger>
           </TabsList>
 
@@ -2894,23 +2994,147 @@ const CommunityPage = () => {
             </div>
           </TabsContent>
 
+          <TabsContent value="businesses" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Store className="h-5 w-5 text-primary" />
+                  Local Businesses in {community.region} Region
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {isLoading ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="text-muted-foreground mt-2">Loading local businesses...</p>
+                  </div>
+                ) : localBusinesses.length > 0 ? (
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {localBusinesses.map((business) => (
+                      <div key={business.id} className="p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-foreground">{business.name}</h4>
+                            <Badge variant="outline" className="mt-1 text-xs">{business.category}</Badge>
+                            {business.description && (
+                              <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{business.description}</p>
+                            )}
+                            {business.city && (
+                              <p className="text-xs text-muted-foreground mt-1">📍 {business.city}</p>
+                            )}
+                            {business.contact_phone && (
+                              <a href={`tel:${business.contact_phone}`} className="text-xs text-primary hover:underline block mt-1">
+                                📞 {business.contact_phone}
+                              </a>
+                            )}
+                          </div>
+                          {business.website_url && (
+                            <a 
+                              href={business.website_url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-primary hover:text-primary/80"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <Store className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">No local businesses listed yet for the {community.region} region.</p>
+                    <p className="text-sm text-muted-foreground mt-2">Check back soon as we add more local business information.</p>
+                  </div>
+                )}
+                
+                <div className="mt-6 pt-4 border-t border-border">
+                  <Link to={`/region/${regionSlugMap[community.region] || community.region.toLowerCase()}`}>
+                    <Button variant="outline">
+                      View All {community.region} Region Businesses
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           <TabsContent value="news" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Newspaper className="h-5 w-5 text-primary" />
-                  Local News from {community.name}
+                  Local News from {community.region} Region
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  Local news for {community.name} will be displayed here. Check back for updates on community events, 
-                  local government news, and stories from the {community.region} region.
-                </p>
-                <div className="mt-6">
-                  <Link to={`/region/${community.region.toLowerCase()}`}>
+                {isLoading ? (
+                  <div className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+                    <p className="text-muted-foreground mt-2">Loading local news...</p>
+                  </div>
+                ) : localNews.length > 0 ? (
+                  <div className="space-y-4">
+                    {localNews.map((news) => (
+                      <a 
+                        key={news.id} 
+                        href={news.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
+                      >
+                        <div className="flex gap-4">
+                          {news.image_url && (
+                            <img 
+                              src={news.image_url} 
+                              alt={news.title}
+                              className="w-24 h-20 object-cover rounded-lg flex-shrink-0"
+                            />
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              {news.category && (
+                                <Badge variant="secondary" className="text-xs">{news.category}</Badge>
+                              )}
+                              {news.source && (
+                                <span className="text-xs text-muted-foreground">{news.source}</span>
+                              )}
+                            </div>
+                            <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                              {news.title}
+                            </h4>
+                            {news.description && (
+                              <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{news.description}</p>
+                            )}
+                            {news.published_at && (
+                              <p className="text-xs text-muted-foreground mt-2">
+                                {format(new Date(news.published_at), 'MMM d, yyyy')}
+                              </p>
+                            )}
+                          </div>
+                          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary flex-shrink-0 mt-1" />
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <Newspaper className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">
+                      No local news articles available yet for the {community.region} region.
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Check back for updates on community events, local government news, and stories from the area.
+                    </p>
+                  </div>
+                )}
+                
+                <div className="mt-6 pt-4 border-t border-border">
+                  <Link to={`/region/${regionSlugMap[community.region] || community.region.toLowerCase()}`}>
                     <Button variant="outline">
-                      View {community.region} Region News
+                      View All {community.region} Region News
                     </Button>
                   </Link>
                 </div>
@@ -2918,6 +3142,12 @@ const CommunityPage = () => {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* Featured Ads Section */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold text-foreground mb-6">Featured Partners</h2>
+          <MartinMinesAd />
+        </div>
       </main>
 
       <Footer />
