@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NewsTickerProps {
   category: string;
   color: string;
 }
 
-const mockNewsData: Record<string, string[]> = {
+interface NewsItem {
+  id: string;
+  title: string;
+  category?: string;
+}
+
+// Fallback news if database is empty
+const fallbackNewsData: Record<string, string[]> = {
   gold: [
     "Gold prices surge past $2,650 amid global economic uncertainty",
     "Juneau gold nugget discovery sparks renewed interest in Southeast Alaska prospecting",
@@ -38,6 +46,15 @@ const mockNewsData: Record<string, string[]> = {
   ],
 };
 
+// Category keyword mapping for fetching from database
+const categoryKeywords: Record<string, string[]> = {
+  gold: ["gold", "nugget", "prospecting", "placer"],
+  state: ["state", "government", "governor", "legislature", "assembly", "budget", "policy", "law"],
+  mining: ["mining", "mineral", "ambler", "donlin", "graphite", "rare earth"],
+  energy: ["energy", "oil", "gas", "pipeline", "willow", "cook inlet", "renewable", "power"],
+  crime: ["crime", "police", "trooper", "homicide", "shooting", "safety", "arrest"],
+};
+
 // Using Tailwind semantic classes for theme support - darker backgrounds for light mode
 const colorClasses: Record<string, { wrapper: string; label: string; text: string }> = {
   yellow: {
@@ -68,8 +85,50 @@ const colorClasses: Record<string, { wrapper: string; label: string; text: strin
 };
 
 const NewsTicker = ({ category, color }: NewsTickerProps) => {
-  const [news] = useState(mockNewsData[category] || []);
+  const [news, setNews] = useState<string[]>(fallbackNewsData[category] || []);
   const classes = colorClasses[color] || colorClasses.blue;
+
+  useEffect(() => {
+    fetchCategoryNews();
+  }, [category]);
+
+  const fetchCategoryNews = async () => {
+    try {
+      const keywords = categoryKeywords[category] || [];
+      
+      // Fetch news items from database
+      const { data, error } = await supabase
+        .from("news_items")
+        .select("id, title, category, description")
+        .order("published_at", { ascending: false })
+        .limit(50);
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        // Filter news by category keywords
+        const filteredNews = data.filter(item => {
+          const titleLower = item.title.toLowerCase();
+          const descLower = (item.description || "").toLowerCase();
+          const categoryLower = (item.category || "").toLowerCase();
+          
+          return keywords.some(keyword => 
+            titleLower.includes(keyword) || 
+            descLower.includes(keyword) || 
+            categoryLower.includes(keyword)
+          );
+        });
+
+        if (filteredNews.length > 0) {
+          setNews(filteredNews.slice(0, 8).map(item => item.title));
+        }
+        // If no filtered results, keep fallback data
+      }
+    } catch (error) {
+      console.error("Error fetching ticker news:", error);
+      // Keep fallback data on error
+    }
+  };
   
   const newsString = news.join(" • ") + " • " + news.join(" • ");
 
