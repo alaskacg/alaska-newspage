@@ -41,25 +41,22 @@ const Header = () => {
   ];
 
   return (
-    <header className={`sticky top-0 z-50 w-full border-b border-border/40 transition-all duration-500 ${scrolled ? 'shadow-2xl' : 'shadow-lg'}`}>
-      {/* Aurora Background with Animation */}
+    <header className={`sticky top-0 z-50 w-full border-b border-slate-700/50 transition-all duration-500 ${scrolled ? 'shadow-xl' : 'shadow-md'}`}>
+      {/* Muted Background - Less Aurora, More Subtle */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Main aurora image - full visibility */}
+        {/* Muted base background */}
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center saturate-[0.4] brightness-[0.6]"
           style={{ 
             backgroundImage: `url(${headerBg})`,
             backgroundSize: '130%',
-            backgroundPosition: 'center 40%',
-            animation: 'aurora-drift 45s ease-in-out infinite alternate'
+            backgroundPosition: 'center 40%'
           }}
         />
-        {/* Improved overlay for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50 dark:from-black/50 dark:via-black/40 dark:to-black/60" />
+        {/* Heavy muted overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/85" />
         {/* Left side darker for logo visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
-        {/* Shimmer effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer-slow" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-slate-800/40 to-slate-900/50" />
       </div>
       
       <div className="container relative z-10 flex h-24 items-center justify-between">

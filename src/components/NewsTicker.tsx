@@ -12,37 +12,37 @@ interface NewsItem {
   category?: string;
 }
 
-// Fallback news if database is empty
+// Fallback news if database is empty - Updated December 2025
 const fallbackNewsData: Record<string, string[]> = {
   gold: [
-    "Gold prices surge past $2,650 amid global economic uncertainty",
-    "Juneau gold nugget discovery sparks renewed interest in Southeast Alaska prospecting",
-    "Fort Knox Mine reports strong Q4 production numbers near Fairbanks",
-    "Interior Alaska gold mining operations expand with new environmental permits",
+    "Gold prices hold steady above $2,600 as 2025 ends with strong market sentiment",
+    "Fairbanks area prospectors report promising winter sampling results",
+    "Fort Knox Mine announces 2026 production outlook with modernization plans",
+    "Interior Alaska placer mining permits see increase for upcoming season",
   ],
   state: [
-    "Governor Dunleavy releases final year budget draft with focus on fiscal reform",
-    "Alaska Legislature prepares for 2026 session amid projected budget deficits",
-    "Anchorage Assembly approves $657 million budget for 2026",
-    "Mayor LaFrance proposes 3% sales tax to cut property taxes and fund housing",
+    "Governor Dunleavy presents final year legislative agenda for 2026 session",
+    "Alaska Legislature convenes January 21 with budget reform priority",
+    "Anchorage faces fiscal decisions as 2026 budget takes effect",
+    "State revenue forecast shows modest improvement from prior projections",
   ],
   mining: [
-    "Trump administration approves Ambler Road project appeal, reversing Biden rejection",
-    "Donlin Gold project advances toward production phase in Western Alaska",
-    "Graphite Creek project receives federal permits for critical minerals development",
-    "New rare earth minerals exploration expands across Interior Alaska",
+    "Ambler Road project moves forward with new federal approval",
+    "Donlin Gold completes key permitting milestone in Western Alaska",
+    "Critical minerals development gains momentum across the state",
+    "Mining industry employment shows steady growth in Interior region",
   ],
   energy: [
-    "North Slope oil production stabilizes as Willow Project advances",
-    "Alaska House moves to reduce protections for Arctic lands from oil and gas activity",
-    "Cook Inlet energy development shows promising growth for 2026",
-    "Renewable energy projects expand across Southcentral Alaska communities",
+    "Willow Project on track for 2026 production milestones on North Slope",
+    "Cook Inlet natural gas exploration yields promising results",
+    "Renewable energy installations expand in rural Alaska communities",
+    "Trans-Alaska Pipeline reports stable winter operations and throughput",
   ],
   crime: [
-    "Anchorage records 28th homicide of 2025 as police increase patrols",
-    "State Troopers deploy additional units for winter highway safety",
-    "APD investigates shooting at 4th Ave and Karluk St in Anchorage",
-    "New public safety initiatives launched in rural Alaska communities",
+    "Anchorage Police Department increases downtown patrols for holiday season",
+    "State Troopers remind drivers of winter road safety precautions",
+    "Coast Guard conducts winter readiness exercises in Alaskan waters",
+    "Community safety programs expand across rural villages statewide",
   ],
 };
 
