@@ -47,34 +47,29 @@ const WeeklyReport = () => {
 
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Background with parallax effect */}
+      {/* Background with muted effect */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed transform scale-110"
+        className="absolute inset-0 bg-cover bg-center bg-fixed transform scale-110 saturate-[0.5] brightness-[0.7]"
         style={{ backgroundImage: `url(${weeklyReportBg})` }}
       />
       
-      {/* Animated gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/20 via-transparent to-cyan-900/20 animate-pulse" style={{ animationDuration: '8s' }} />
+      {/* Muted gradient overlays - less vibrant */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/85" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-800/30 via-transparent to-slate-800/30" />
       
-      {/* Animated aurora effect */}
+      {/* Subtle ambient glow - muted colors */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute -top-1/2 left-0 right-0 h-full bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-3xl animate-aurora"
-          style={{ animationDuration: '15s' }}
-        />
-        <div 
-          className="absolute -top-1/2 left-1/4 right-1/4 h-full bg-gradient-to-b from-purple-500/10 via-blue-500/5 to-transparent blur-3xl animate-aurora"
-          style={{ animationDuration: '20s', animationDelay: '5s' }}
+          className="absolute -top-1/2 left-0 right-0 h-full bg-gradient-to-b from-slate-600/5 via-slate-700/3 to-transparent blur-3xl"
         />
       </div>
       
-      {/* Floating particles */}
+      {/* Subtle floating particles - reduced */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/40 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -85,10 +80,9 @@ const WeeklyReport = () => {
         ))}
       </div>
       
-      {/* Glowing orbs with pulsing animation */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-emerald-500/15 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-40" style={{ animationDuration: '6s' }} />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-cyan-500/15 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-30" style={{ animationDuration: '8s', animationDelay: '2s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse opacity-20" style={{ animationDuration: '10s', animationDelay: '4s' }} />
+      {/* Muted ambient orbs */}
+      <div className="absolute top-10 right-10 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30" />
+      <div className="absolute bottom-10 left-10 w-72 h-72 bg-slate-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-20" />
       
       <div className="container relative z-10">
         <div className="max-w-5xl mx-auto">
@@ -170,7 +164,7 @@ const WeeklyReport = () => {
               className="mt-4 text-white/70 text-base md:text-lg max-w-2xl mx-auto opacity-0 animate-fade-in-up font-light tracking-wide"
               style={{ animationDelay: '1.8s', animationFillMode: 'forwards' }}
             >
-              Your weekly deep-dive into Alaska's most important stories
+              Your weekly look into Alaska's most important stories
             </p>
           </div>
           

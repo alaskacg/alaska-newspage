@@ -95,26 +95,26 @@ const alaskaEvents: CalendarEvent[] = [
   { date: 4, month: 11, title: "Full Moon", type: "moon", description: "Cold Moon" },
   
   // Alaska Holidays & Events
-  { date: 1, month: 0, title: "New Years Day", type: "holiday" },
+  { date: 1, month: 0, title: "New Years Day 2026", type: "holiday", description: "Statewide holiday" },
+  { date: 2, month: 0, title: "New Years Holiday Observed", type: "holiday", description: "State offices closed" },
+  { date: 21, month: 0, title: "Legislature Convenes", type: "holiday", description: "2026 session begins in Juneau", slug: "alaska-legislature" },
   { date: 27, month: 2, title: "Sewards Day", type: "holiday", description: "Alaska purchase anniversary 1867", slug: "sewards-day" },
   { date: 18, month: 9, title: "Alaska Day", type: "holiday", description: "Transfer of Alaska to US 1867", slug: "alaska-day" },
   { date: 4, month: 6, title: "Independence Day", type: "holiday", description: "Fireworks at midnight sun" },
   { date: 26, month: 10, title: "Thanksgiving", type: "holiday" },
   { date: 25, month: 11, title: "Christmas Day", type: "holiday" },
   
-  // December 2025 Events
-  { date: 6, month: 11, title: "Design Alaska Holiday Concert", type: "holiday", description: "Fairbanks - Holiday music" },
-  { date: 6, month: 11, title: "7.0 Earthquake - Alaska-Canada Border", type: "season", description: "Remote area - no damage reported" },
-  { date: 10, month: 11, title: "Cold Weather Advisories Statewide", type: "season", description: "Extreme cold across Interior & Southcentral" },
-  { date: 11, month: 11, title: "Anchorage Tiny Village Ribbon Cutting", type: "holiday", description: "Housing for homeless - Downtown Anchorage" },
-  { date: 13, month: 11, title: "Anchorage Holiday Market", type: "holiday", description: "Downtown Anchorage", slug: "anchorage-holiday-market" },
-  { date: 14, month: 11, title: "Fairbanks Winter Lights Festival", type: "holiday", description: "Golden Heart Plaza - Light displays" },
-  { date: 15, month: 11, title: "Full Moon", type: "moon", description: "Cold Moon - December" },
-  { date: 20, month: 11, title: "Juneau Holiday Bazaar", type: "holiday", description: "Centennial Hall - Local crafts" },
-  { date: 21, month: 11, title: "Winter Solstice Celebration", type: "season", description: "Shortest day festivities", slug: "winter-solstice-celebration" },
-  { date: 24, month: 11, title: "Christmas Eve Services", type: "holiday", description: "Churches statewide" },
+  // Late December 2025 / January 2026 Events
   { date: 31, month: 11, title: "New Years Eve Celebrations", type: "holiday", description: "Statewide fireworks & events" },
   { date: 31, month: 11, title: "Anchorage Town Square Countdown", type: "holiday", description: "Downtown celebration & fireworks" },
+  { date: 30, month: 11, title: "New Moon", type: "moon", description: "December 2025" },
+  
+  // January 2026 Events
+  { date: 6, month: 0, title: "Epiphany Celebrations", type: "holiday", description: "Orthodox Christmas - Statewide" },
+  { date: 11, month: 0, title: "Polar Bear Plunge - Seward", type: "holiday", description: "Annual New Year tradition", slug: "polar-bear-jump" },
+  { date: 13, month: 0, title: "Full Moon", type: "moon", description: "Wolf Moon - January" },
+  { date: 20, month: 0, title: "Martin Luther King Jr. Day", type: "holiday", description: "Federal holiday - events statewide" },
+  { date: 25, month: 0, title: "Ice Fishing Derby - Interior", type: "fishing", description: "Various Interior Alaska lakes" },
 ];
 
 const eventTypeConfig = {
