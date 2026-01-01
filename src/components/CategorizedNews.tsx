@@ -57,14 +57,14 @@ const newsCategories = [
     id: "community", 
     label: "Community & Culture", 
     icon: Heart, 
-    color: "bg-pink-500/20 text-pink-600 dark:text-pink-400 border-pink-500/30",
+    color: "bg-teal-500/20 text-teal-600 dark:text-teal-400 border-teal-500/30",
     keywords: ["community", "culture", "native", "tribal", "festival", "event"]
   },
   { 
     id: "business", 
     label: "Business & Economy", 
     icon: Briefcase, 
-    color: "bg-purple-500/20 text-purple-600 dark:text-purple-400 border-purple-500/30",
+    color: "bg-slate-500/20 text-slate-600 dark:text-slate-400 border-slate-500/30",
     keywords: ["business", "economy", "job", "tourism", "development"]
   },
   { 

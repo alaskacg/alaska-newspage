@@ -41,12 +41,12 @@ const categoryColors: { [key: string]: string } = {
   emergency: "text-red-500 bg-red-500/10 border-red-500/30",
   government: "text-blue-500 bg-blue-500/10 border-blue-500/30",
   utilities: "text-yellow-500 bg-yellow-500/10 border-yellow-500/30",
-  healthcare: "text-pink-500 bg-pink-500/10 border-pink-500/30",
-  education: "text-purple-500 bg-purple-500/10 border-purple-500/30",
+  healthcare: "text-teal-500 bg-teal-500/10 border-teal-500/30",
+  education: "text-slate-500 bg-slate-500/10 border-slate-500/30",
   transportation: "text-green-500 bg-green-500/10 border-green-500/30",
-  church: "text-indigo-500 bg-indigo-500/10 border-indigo-500/30",
+  church: "text-amber-600 bg-amber-600/10 border-amber-600/30",
   "aid organization": "text-teal-500 bg-teal-500/10 border-teal-500/30",
-  religious: "text-indigo-500 bg-indigo-500/10 border-indigo-500/30",
+  religious: "text-amber-600 bg-amber-600/10 border-amber-600/30",
   charity: "text-teal-500 bg-teal-500/10 border-teal-500/30",
 };
 
