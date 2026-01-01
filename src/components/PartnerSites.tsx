@@ -25,13 +25,13 @@ const partnerSites: PartnerSite[] = [
     tagline: "Authentic Alaska Gold",
   },
   {
-    name: "State of Alaska",
+    name: "State of Alaska Portal",
     url: "https://stateofalaska.com",
-    description: "Official state resources, services, and public information portal",
+    description: "A community-curated portal featuring Alaska regional information, travel guides, and historical content",
     image: partnerStateOfAlaska,
     icon: <Landmark className="w-6 h-6" />,
-    accentColor: "from-blue-700 via-blue-600 to-blue-500",
-    tagline: "Official State Portal",
+    accentColor: "from-primary via-accent to-primary",
+    tagline: "Alaska Information Hub",
   },
   {
     name: "Great Northern Construction",
