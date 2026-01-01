@@ -11,7 +11,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import CommunityWeather from "@/components/CommunityWeather";
 import TypewriterTitle from "@/components/TypewriterTitle";
 import MartinMinesAd from "@/components/MartinMinesAd";
-import BidCalendarAd from "@/components/BidCalendarAd";
+import GreatNorthernAd from "@/components/GreatNorthernAd";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 
@@ -2678,7 +2678,7 @@ const CommunityPage = () => {
       <div className="container mx-auto px-4 py-6">
         <div className="grid md:grid-cols-2 gap-4">
           <MartinMinesAd compact />
-          <BidCalendarAd compact />
+          <GreatNorthernAd compact />
         </div>
       </div>
 

@@ -1,60 +1,66 @@
-import { Gift, Sparkles, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Gift, Sparkles, ExternalLink, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import necklaceImg from "@/assets/martin-mines-necklace.png";
-import braceletImg from "@/assets/martin-mines-bracelet.png";
-import earringsImg from "@/assets/martin-mines-earrings.png";
-import goldNuggetsImg from "@/assets/martin-mines-gold-nuggets.jpg";
-import martinMinesBanner from "@/assets/martin-mines-mining-bg.jpg";
-import adTextureBg from "@/assets/ad-texture-bg.jpg";
+import partnerMartinMines from "@/assets/partner-martin-mines.jpg";
 
 const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
-  const products = [
-    { img: martinMinesBanner, alt: "Alaska Gold Mining Operation" },
-    { img: goldNuggetsImg, alt: "Natural Gold Nuggets" },
-    { img: necklaceImg, alt: "Gold Necklace" },
-    { img: braceletImg, alt: "Gold Bracelet" },
-  ];
+  const [isHovered, setIsHovered] = useState(false);
 
   if (compact) {
     return (
-      <Card className="overflow-hidden border border-nature-gold/20 hover:border-nature-gold/40 transition-all duration-300 group">
-        <div className="relative h-32 bg-gradient-to-br from-nature-gold/20 via-background to-primary/10 overflow-hidden">
+      <Card className="overflow-hidden border border-gold/30 hover:border-gold/60 transition-all duration-500 group hover:shadow-lg hover:shadow-gold/20">
+        <a
+          href="https://martinminesgold.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block relative h-36 overflow-hidden"
+        >
+          {/* Background Image with Parallax Effect */}
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-100 dark:opacity-80 group-hover:scale-105 transition-transform duration-700"
-            style={{ backgroundImage: `url(${martinMinesBanner})` }}
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style={{ backgroundImage: `url(${partnerMartinMines})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent dark:from-background/95 dark:via-background/40" />
           
+          {/* Animated Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-900/80 via-amber-800/60 to-amber-900/80 group-hover:from-amber-900/70 group-hover:via-amber-700/50 group-hover:to-amber-900/70 transition-all duration-500" />
+          
+          {/* Shimmer Effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+          
+          {/* Floating Sparkles */}
+          <div className="absolute top-2 right-3 animate-pulse" style={{ animationDuration: '2s' }}>
+            <Sparkles className="h-4 w-4 text-gold drop-shadow-lg" />
+          </div>
+          <div className="absolute bottom-8 left-3 animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+            <Star className="h-3 w-3 text-amber-300 fill-amber-300" />
+          </div>
+          
+          {/* Content */}
           <div className="relative h-full flex items-center justify-between p-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <Gift className="h-5 w-5 text-nature-gold" />
-                <h3 className="text-lg font-display font-bold text-primary-foreground drop-shadow-lg">
-                  Martin Mines - 20% OFF
+                <Gift className="h-5 w-5 text-gold animate-bounce-soft" />
+                <h3 className="text-lg font-display font-bold text-white drop-shadow-lg">
+                  Martin Mines
                 </h3>
               </div>
-              <p className="text-primary-foreground/80 text-xs leading-snug drop-shadow">
+              <p className="text-amber-100/90 text-xs leading-snug drop-shadow">
                 Genuine Alaska Gold Jewelry & Nuggets
               </p>
+              <div className="mt-2 inline-flex items-center gap-1 px-2 py-0.5 bg-gold/20 rounded-full border border-gold/40">
+                <span className="text-[10px] font-bold text-gold">20% OFF SALE</span>
+              </div>
             </div>
             <Button
-              asChild
               size="sm"
-              className="bg-nature-gold hover:bg-nature-gold/90 text-background shadow-lg ml-3"
+              className="bg-gold hover:bg-amber-500 text-amber-950 shadow-lg ml-3 transition-all duration-300 group-hover:scale-105"
             >
-              <a
-                href="https://martinminesgold.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1"
-              >
-                <span className="text-xs">Shop Sale</span>
-                <ExternalLink className="h-3 w-3" />
-              </a>
+              <span className="text-xs font-semibold">Shop Now</span>
+              <ExternalLink className="h-3 w-3 ml-1" />
             </Button>
           </div>
-        </div>
+        </a>
       </Card>
     );
   }
@@ -64,86 +70,115 @@ const MartinMinesAd = ({ compact = false }: { compact?: boolean }) => {
       href="https://martinminesgold.com" 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block relative overflow-hidden rounded-lg border border-nature-gold/40 shadow-lg hover:shadow-nature-gold/40 transition-all duration-500 hover:scale-[1.02] group"
+      className="block relative overflow-hidden rounded-xl border-2 border-gold/30 shadow-xl hover:shadow-2xl hover:shadow-gold/30 transition-all duration-700 hover:scale-[1.02] group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Textured background */}
+      {/* Background with Parallax */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${adTextureBg})` }}
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
+        style={{ 
+          backgroundImage: `url(${partnerMartinMines})`,
+          transform: isHovered ? 'scale(1.1)' : 'scale(1)'
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-nature-gold/30 via-transparent to-nature-gold/20" />
       
-      {/* Sparkle effects */}
-      <div className="absolute top-2 right-2 animate-pulse" style={{ animationDuration: '2s' }}>
-        <Sparkles className="h-4 w-4 text-nature-gold" />
-      </div>
-      <div className="absolute bottom-2 left-2 animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
-        <Sparkles className="h-3 w-3 text-yellow-400" />
+      {/* Multi-layer Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-950/90 via-amber-900/70 to-amber-950/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+      
+      {/* Animated Gold Shimmer */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: 'linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.3) 50%, transparent 70%)',
+          backgroundSize: '200% 200%',
+          animation: isHovered ? 'shimmer 2s linear infinite' : 'none',
+        }}
+      />
+      
+      {/* Floating Sparkle Effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <Sparkles 
+            key={i}
+            className="absolute text-gold/60 animate-float"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              width: `${12 + (i % 3) * 4}px`,
+              height: `${12 + (i % 3) * 4}px`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + i * 0.5}s`,
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 p-3 md:p-4">
-        <div className="flex items-center gap-3 md:gap-4">
-          {/* Left images */}
-          <div className="flex-shrink-0 flex gap-2">
-            {products.slice(0, 2).map((product, index) => (
-              <div 
-                key={index}
-                className="w-20 md:w-28 aspect-square rounded overflow-hidden bg-background/80 backdrop-blur-sm border border-nature-gold/30"
-                style={{ 
-                  animationDelay: `${index * 0.1}s`
-                }}
-              >
-                <img 
-                  src={product.img} 
-                  alt={product.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+      <div className="relative z-10 p-6 md:p-8">
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          {/* Left - Logo/Icon Area */}
+          <div className="flex-shrink-0">
+            <div className="relative">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold via-amber-400 to-gold p-1 shadow-xl shadow-gold/30 animate-glow">
+                <div className="w-full h-full rounded-full bg-amber-950 flex items-center justify-center">
+                  <Gift className="w-10 h-10 text-gold" />
+                </div>
               </div>
-            ))}
+              {/* Rotating Ring */}
+              <div 
+                className="absolute -inset-2 rounded-full border-2 border-dashed border-gold/40"
+                style={{
+                  animation: 'spin-slow 15s linear infinite'
+                }}
+              />
+            </div>
           </div>
 
-          {/* Center - Sale announcement */}
-          <div className="flex-1 text-center px-2">
-            <div className="flex items-center justify-center gap-1 mb-1">
-              <Gift className="h-4 w-4 text-nature-gold animate-bounce" style={{ animationDuration: '2s' }} />
-              <h3 className="text-sm md:text-base font-display font-bold bg-gradient-to-r from-nature-gold via-yellow-400 to-nature-gold bg-clip-text text-transparent">
-                Christmas Sale!
-              </h3>
+          {/* Center - Sale Content */}
+          <div className="flex-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/20 rounded-full border border-gold/40 mb-3">
+              <Star className="w-3 h-3 text-gold fill-gold" />
+              <span className="text-xs font-bold text-gold tracking-wider">HOLIDAY SALE</span>
+              <Star className="w-3 h-3 text-gold fill-gold" />
             </div>
             
-            <div className="text-2xl md:text-3xl font-display font-black text-nature-gold drop-shadow-lg mb-1">
-              20% OFF
-            </div>
-            <div className="text-xs md:text-sm font-semibold text-foreground mb-3">
+            <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2 drop-shadow-lg">
               Martin Mines Gold & Gifts
+            </h3>
+            
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
+              <span className="text-4xl md:text-5xl font-black text-gold drop-shadow-lg animate-pulse-soft">
+                20% OFF
+              </span>
+              <div className="text-left">
+                <p className="text-amber-200/80 text-sm">Genuine Alaska</p>
+                <p className="text-amber-200/80 text-sm">Gold Jewelry</p>
+              </div>
             </div>
-
-            <div className="inline-block px-3 py-1.5 bg-nature-gold text-primary-foreground rounded-full font-semibold text-xs md:text-sm group-hover:bg-yellow-500 transition-colors duration-300 shadow-lg">
-              Shop Now →
-            </div>
+            
+            <p className="text-amber-100/70 text-sm max-w-md">
+              Authentic gold nuggets, handcrafted jewelry, and unique gifts from Alaska's premier mining operation.
+            </p>
           </div>
 
-          {/* Right images */}
-          <div className="flex-shrink-0 flex gap-2">
-            {products.slice(2, 4).map((product, index) => (
-              <div 
-                key={index}
-                className="w-20 md:w-28 aspect-square rounded overflow-hidden bg-background/80 backdrop-blur-sm border border-nature-gold/30"
-                style={{ 
-                  animationDelay: `${(index + 2) * 0.1}s`
-                }}
-              >
-                <img 
-                  src={product.img} 
-                  alt={product.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-            ))}
+          {/* Right - CTA */}
+          <div className="flex-shrink-0">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-gold via-amber-400 to-gold text-amber-950 font-bold shadow-xl shadow-gold/40 hover:shadow-gold/60 transition-all duration-300 group-hover:scale-110 px-8"
+            >
+              <span>Shop Now</span>
+              <ExternalLink className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <p className="text-center text-amber-300/60 text-xs mt-2">Free shipping over $100</p>
           </div>
         </div>
       </div>
+      
+      {/* Bottom Accent Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
     </a>
   );
 };
