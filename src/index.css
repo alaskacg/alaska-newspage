@@ -4,121 +4,124 @@
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
+Traditional Newspaper Theme - Grays, Hunter Greens, Off-Whites
 */
 
 @layer base {
   :root {
-    /* Light mode - muted stone/sepia tones, much darker */
-    --background: 35 15% 72%;
-    --foreground: 25 20% 12%;
+    /* Light mode - Traditional newspaper off-white/cream */
+    --background: 45 20% 88%;
+    --foreground: 210 15% 15%;
 
-    --card: 35 12% 76%;
-    --card-foreground: 25 20% 12%;
+    --card: 45 18% 92%;
+    --card-foreground: 210 15% 15%;
 
-    --popover: 35 12% 76%;
-    --popover-foreground: 25 20% 12%;
+    --popover: 45 18% 92%;
+    --popover-foreground: 210 15% 15%;
 
-    /* Deep blue for primary */
-    --primary: 210 55% 25%;
-    --primary-foreground: 0 0% 100%;
+    /* Hunter green primary */
+    --primary: 150 40% 25%;
+    --primary-foreground: 45 20% 95%;
 
-    /* Warm stone secondary */
-    --secondary: 35 10% 68%;
-    --secondary-foreground: 25 20% 12%;
+    /* Warm gray secondary */
+    --secondary: 45 8% 82%;
+    --secondary-foreground: 210 15% 15%;
 
-    /* Muted stone tones */
-    --muted: 35 8% 64%;
-    --muted-foreground: 25 15% 30%;
+    /* Muted grays */
+    --muted: 45 6% 75%;
+    --muted-foreground: 210 10% 35%;
 
-    /* Forest green accent */
-    --accent: 150 35% 28%;
-    --accent-foreground: 0 0% 100%;
+    /* Hunter green accent */
+    --accent: 150 35% 30%;
+    --accent-foreground: 45 20% 95%;
 
-    /* Red for destructive */
-    --destructive: 0 60% 38%;
-    --destructive-foreground: 0 0% 100%;
+    /* Deep red for destructive */
+    --destructive: 0 55% 35%;
+    --destructive-foreground: 45 20% 95%;
 
-    --border: 35 10% 58%;
-    --input: 35 10% 58%;
-    --ring: 150 35% 28%;
+    --border: 45 10% 70%;
+    --input: 45 10% 70%;
+    --ring: 150 35% 30%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
     
-    /* Custom tokens */
-    --warm-gray-dark: 25 15% 18%;
-    --forest-green: 150 35% 28%;
-    --deep-blue: 210 55% 25%;
-    --gold: 40 75% 38%;
-    --warm-red: 0 60% 38%;
-    --nature-gold: 40 85% 42%;
+    /* Custom newspaper tokens */
+    --charcoal: 210 10% 20%;
+    --hunter-green: 150 40% 25%;
+    --slate-gray: 210 8% 45%;
+    --gold-accent: 40 65% 45%;
+    --deep-red: 0 55% 35%;
+    --ink-black: 210 15% 12%;
+    --paper-cream: 45 25% 90%;
 
-    --sidebar-background: 35 12% 70%;
-    --sidebar-foreground: 25 20% 12%;
-    --sidebar-primary: 210 55% 25%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 35 8% 64%;
-    --sidebar-accent-foreground: 25 20% 12%;
-    --sidebar-border: 35 10% 58%;
-    --sidebar-ring: 150 35% 28%;
+    --sidebar-background: 45 15% 85%;
+    --sidebar-foreground: 210 15% 15%;
+    --sidebar-primary: 150 40% 25%;
+    --sidebar-primary-foreground: 45 20% 95%;
+    --sidebar-accent: 45 6% 75%;
+    --sidebar-accent-foreground: 210 15% 15%;
+    --sidebar-border: 45 10% 70%;
+    --sidebar-ring: 150 35% 30%;
 
     /* Header background for light mode */
-    --header-bg: 35 12% 68%;
+    --header-bg: 210 12% 18%;
   }
 
   .dark {
-    /* Dark warm theme */
-    --background: 20 15% 8%;
-    --foreground: 0 0% 95%;
+    /* Dark mode - Charcoal with hunter green accents */
+    --background: 210 12% 10%;
+    --foreground: 45 15% 90%;
 
-    --card: 20 12% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 210 10% 14%;
+    --card-foreground: 45 15% 90%;
 
-    --popover: 20 12% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 210 10% 14%;
+    --popover-foreground: 45 15% 90%;
 
-    /* Deep blue */
-    --primary: 210 55% 45%;
-    --primary-foreground: 0 0% 100%;
+    /* Hunter green */
+    --primary: 150 45% 40%;
+    --primary-foreground: 210 12% 10%;
 
-    /* Warm gray */
-    --secondary: 25 10% 22%;
-    --secondary-foreground: 0 0% 95%;
+    /* Dark gray */
+    --secondary: 210 8% 20%;
+    --secondary-foreground: 45 15% 90%;
 
-    /* Muted warm grays */
-    --muted: 25 8% 24%;
-    --muted-foreground: 30 5% 65%;
+    /* Muted grays */
+    --muted: 210 6% 25%;
+    --muted-foreground: 45 10% 60%;
 
-    /* Forest green accent */
-    --accent: 150 35% 50%;
-    --accent-foreground: 20 15% 8%;
+    /* Hunter green accent */
+    --accent: 150 40% 45%;
+    --accent-foreground: 210 12% 10%;
 
     /* Red for destructive */
-    --destructive: 0 60% 50%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive: 0 55% 50%;
+    --destructive-foreground: 45 15% 90%;
 
-    --border: 25 8% 24%;
-    --input: 25 8% 24%;
-    --ring: 150 35% 50%;
+    --border: 210 6% 25%;
+    --input: 210 6% 25%;
+    --ring: 150 40% 45%;
     
-    /* Custom tokens */
-    --warm-gray-dark: 20 12% 12%;
-    --forest-green: 150 35% 50%;
-    --deep-blue: 210 55% 45%;
-    --gold: 45 85% 60%;
-    --warm-red: 0 60% 50%;
-    --nature-gold: 45 90% 55%;
+    /* Custom tokens - dark mode */
+    --charcoal: 210 10% 20%;
+    --hunter-green: 150 45% 40%;
+    --slate-gray: 210 8% 55%;
+    --gold-accent: 40 70% 55%;
+    --deep-red: 0 55% 50%;
+    --ink-black: 210 15% 8%;
+    --paper-cream: 45 15% 85%;
 
-    --sidebar-background: 20 15% 8%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 210 55% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 25 8% 24%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 25 8% 24%;
-    --sidebar-ring: 150 35% 50%;
+    --sidebar-background: 210 12% 10%;
+    --sidebar-foreground: 45 15% 90%;
+    --sidebar-primary: 150 45% 40%;
+    --sidebar-primary-foreground: 210 12% 10%;
+    --sidebar-accent: 210 6% 25%;
+    --sidebar-accent-foreground: 45 15% 90%;
+    --sidebar-border: 210 6% 25%;
+    --sidebar-ring: 150 40% 45%;
 
     /* Header background for dark mode */
-    --header-bg: 0 0% 8%;
+    --header-bg: 210 15% 8%;
   }
 }
 
@@ -131,24 +134,24 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans;
   }
 
-  /* Light mode newspaper texture */
+  /* Light mode newspaper texture - subtle newsprint */
   :root body {
     background-image: 
       repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.02) 0px,
+        rgba(0, 0, 0, 0.015) 0px,
         transparent 1px,
-        transparent 2px,
-        rgba(0, 0, 0, 0.02) 3px
+        transparent 3px,
+        rgba(0, 0, 0, 0.015) 4px
       ),
       repeating-linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.02) 0px,
+        rgba(0, 0, 0, 0.01) 0px,
         transparent 1px,
-        transparent 2px,
-        rgba(0, 0, 0, 0.02) 3px
+        transparent 4px,
+        rgba(0, 0, 0, 0.01) 5px
       );
-    background-size: 3px 3px;
+    background-size: 5px 5px;
   }
 
   /* Dark mode subtle texture */
@@ -156,35 +159,35 @@ All colors MUST be HSL.
     background-image: 
       repeating-linear-gradient(
         0deg,
-        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.02) 0px,
         transparent 1px,
-        transparent 2px,
-        rgba(255, 255, 255, 0.03) 3px
+        transparent 3px,
+        rgba(255, 255, 255, 0.02) 4px
       ),
       repeating-linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.015) 0px,
         transparent 1px,
-        transparent 2px,
-        rgba(255, 255, 255, 0.03) 3px
+        transparent 4px,
+        rgba(255, 255, 255, 0.015) 5px
       );
-    background-size: 3px 3px;
+    background-size: 5px 5px;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
 
-  /* Light mode - full image fidelity, no transparency or fading */
+  /* Light mode - crisp images */
   :root img {
-    filter: contrast(1.05) saturate(1.1);
+    filter: contrast(1.02) saturate(0.95);
     opacity: 1 !important;
   }
 
   :root [style*="background-image"],
   :root .bg-cover,
   :root .bg-center {
-    filter: contrast(1.08) saturate(1.05);
+    filter: contrast(1.05) saturate(0.9);
   }
 
   /* Dark mode keeps default */
@@ -205,7 +208,7 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar - newspaper style */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -215,11 +218,11 @@ All colors MUST be HSL.
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-accent/50 rounded-full;
+    @apply bg-primary/40 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-accent/70;
+    @apply bg-primary/60;
   }
 }
 
@@ -283,7 +286,7 @@ All colors MUST be HSL.
   @apply transition-all duration-300;
 }
 .hover-glow:hover {
-  box-shadow: 0 0 30px hsl(var(--accent) / 0.3);
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.25);
 }
 
 .hover-scale {
@@ -293,39 +296,31 @@ All colors MUST be HSL.
   @apply scale-105;
 }
 
-/* Header navigation links - optimized for aurora background */
+/* Header navigation links - newspaper style */
 .nav-link-header {
-  color: #1e293b; /* Dark slate for light mode - visible against aurora */
-  text-shadow: 
-    0 0 8px rgba(255, 255, 255, 0.8),
-    0 1px 2px rgba(255, 255, 255, 0.6);
+  color: hsl(45 20% 90%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link-header:hover {
-  color: #fbbf24; /* Amber on hover */
-  text-shadow: 
-    0 0 12px rgba(251, 191, 36, 0.6),
-    0 1px 2px rgba(255, 255, 255, 0.4);
+  color: hsl(40 70% 55%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .dark .nav-link-header {
-  color: #f1f5f9; /* Light slate for dark mode */
-  text-shadow: 
-    0 0 10px rgba(34, 211, 238, 0.4),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+  color: hsl(45 15% 85%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .dark .nav-link-header:hover {
-  color: #fbbf24; /* Amber on hover */
-  text-shadow: 
-    0 0 15px rgba(251, 191, 36, 0.6),
-    0 2px 4px rgba(0, 0, 0, 0.4);
+  color: hsl(40 70% 55%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Gradient text utility - high contrast for both modes */
+/* Gradient text utility - newspaper style */
 .gradient-text {
   @apply bg-clip-text text-transparent font-bold;
-  background-image: linear-gradient(135deg, hsl(210 55% 25%), hsl(150 40% 30%));
+  background-image: linear-gradient(135deg, hsl(150 40% 25%), hsl(210 15% 25%));
 }
 
 .dark .gradient-text {
@@ -359,7 +354,7 @@ All colors MUST be HSL.
 }
 .underline-animate::after {
   content: '';
-  @apply absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 origin-right transition-transform duration-300;
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-right transition-transform duration-300;
 }
 .underline-animate:hover::after {
   @apply scale-x-100 origin-left;
@@ -373,95 +368,155 @@ All colors MUST be HSL.
   @apply shadow-2xl -translate-y-2;
   box-shadow: 
     0 25px 50px -12px hsl(var(--foreground) / 0.1),
-    0 0 0 1px hsl(var(--accent) / 0.1);
+    0 0 0 1px hsl(var(--primary) / 0.1);
 }
 
-/* Section divider */
+/* Section divider - newspaper rule */
 .section-divider {
   @apply relative;
 }
 .section-divider::before {
   content: '';
-  @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-accent to-transparent rounded-full;
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full;
 }
 
 /* Focus visible ring */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
 }
 
 /* Muted map tiles for light mode */
 .map-tiles-muted {
-  filter: saturate(0.7) brightness(0.85) contrast(1.05) sepia(0.15);
+  filter: saturate(0.6) brightness(0.9) contrast(1.05) sepia(0.1);
 }
 
-/* Aurora Header Animations */
-@keyframes aurora-shift {
+/* Mountain Silhouette Animations */
+@keyframes mountain-breathe {
   0%, 100% {
-    background-position: center 40%;
-    transform: scale(1);
+    transform: scaleY(1);
   }
   50% {
-    background-position: center 42%;
-    transform: scale(1.02);
+    transform: scaleY(1.02);
   }
 }
 
-@keyframes aurora-glow {
-  0%, 100% {
-    opacity: 0.3;
-    background: linear-gradient(90deg, 
-      hsla(160, 60%, 20%, 0.4) 0%,
-      hsla(180, 50%, 25%, 0.3) 25%,
-      hsla(200, 55%, 30%, 0.4) 50%,
-      hsla(180, 50%, 25%, 0.3) 75%,
-      hsla(160, 60%, 20%, 0.4) 100%);
+@keyframes ocean-wave-1 {
+  0% {
+    transform: translateX(0) scaleY(1);
   }
   50% {
-    opacity: 0.5;
-    background: linear-gradient(90deg, 
-      hsla(180, 55%, 25%, 0.5) 0%,
-      hsla(160, 60%, 20%, 0.4) 25%,
-      hsla(180, 50%, 25%, 0.3) 50%,
-      hsla(200, 55%, 30%, 0.4) 75%,
-      hsla(180, 55%, 25%, 0.5) 100%);
+    transform: translateX(-25px) scaleY(1.15);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
   }
 }
 
-@keyframes shimmer-slow {
+@keyframes ocean-wave-2 {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(30px) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+@keyframes ocean-wave-3 {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-15px) scaleY(1.1);
+  }
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+}
+
+@keyframes fog-drift {
   0% {
     transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
   }
   100% {
     transform: translateX(100%);
+    opacity: 0;
   }
 }
 
-.animate-aurora-shift {
-  animation: aurora-shift 20s ease-in-out infinite;
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
-.animate-aurora-glow {
-  animation: aurora-glow 8s ease-in-out infinite;
+@keyframes northern-glow {
+  0%, 100% {
+    opacity: 0.08;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.15;
+    transform: translateY(-5px);
+  }
 }
 
-.animate-shimmer-slow {
-  animation: shimmer-slow 15s linear infinite;
+.animate-mountain-breathe {
+  animation: mountain-breathe 8s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.animate-ocean-wave-1 {
+  animation: ocean-wave-1 6s ease-in-out infinite;
+}
+
+.animate-ocean-wave-2 {
+  animation: ocean-wave-2 8s ease-in-out infinite;
+}
+
+.animate-ocean-wave-3 {
+  animation: ocean-wave-3 5s ease-in-out infinite;
+}
+
+.animate-fog-drift {
+  animation: fog-drift 25s linear infinite;
+}
+
+.animate-star-twinkle {
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+.animate-northern-glow {
+  animation: northern-glow 6s ease-in-out infinite;
 }
 
 /* Advanced Title Animations */
 @keyframes text-glow-pulse {
   0%, 100% {
     text-shadow: 
-      0 0 10px hsla(var(--accent), 0.3),
-      0 0 20px hsla(var(--accent), 0.2),
-      0 0 30px hsla(var(--accent), 0.1);
+      0 0 10px hsla(var(--primary), 0.3),
+      0 0 20px hsla(var(--primary), 0.2),
+      0 0 30px hsla(var(--primary), 0.1);
   }
   50% {
     text-shadow: 
-      0 0 15px hsla(var(--accent), 0.5),
-      0 0 30px hsla(var(--accent), 0.3),
-      0 0 45px hsla(var(--accent), 0.2);
+      0 0 15px hsla(var(--primary), 0.5),
+      0 0 30px hsla(var(--primary), 0.3),
+      0 0 45px hsla(var(--primary), 0.2);
   }
 }
 
@@ -494,9 +549,9 @@ All colors MUST be HSL.
   background: linear-gradient(
     90deg,
     hsl(var(--foreground)) 0%,
-    hsl(var(--accent)) 25%,
-    hsl(var(--primary)) 50%,
-    hsl(var(--accent)) 75%,
+    hsl(var(--primary)) 25%,
+    hsl(var(--accent)) 50%,
+    hsl(var(--primary)) 75%,
     hsl(var(--foreground)) 100%
   );
   background-size: 200% auto;
@@ -531,12 +586,12 @@ All colors MUST be HSL.
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  50% { border-color: hsl(var(--accent)); }
+  50% { border-color: hsl(var(--primary)); }
 }
 
 .typewriter {
   overflow: hidden;
-  border-right: 2px solid hsl(var(--accent));
+  border-right: 2px solid hsl(var(--primary));
   white-space: nowrap;
   animation: 
     typing 3s steps(40, end),
@@ -553,73 +608,45 @@ All colors MUST be HSL.
     5px 5px 10px hsl(var(--foreground) / 0.2);
 }
 
-/* Enhanced Aurora Animations */
-@keyframes aurora-drift {
-  0% {
-    background-position: center 25%;
-    transform: scale(1);
-  }
-  25% {
-    background-position: center 30%;
-  }
-  50% {
-    background-position: center 35%;
-    transform: scale(1.05);
-  }
-  75% {
-    background-position: center 30%;
-  }
-  100% {
-    background-position: center 25%;
-    transform: scale(1);
-  }
-}
-
-@keyframes aurora-pulse {
+/* Mountain/Ocean Header Animations */
+@keyframes wave-gentle {
   0%, 100% {
-    opacity: 0.15;
+    d: path("M0,50 Q25,45 50,50 T100,50 L100,100 L0,100 Z");
   }
   50% {
-    opacity: 0.35;
+    d: path("M0,50 Q25,55 50,50 T100,50 L100,100 L0,100 Z");
   }
 }
 
-@keyframes aurora-wave {
+@keyframes mist-float {
   0% {
-    opacity: 0.1;
-    transform: translateX(-10%);
-  }
-  50% {
-    opacity: 0.25;
-    transform: translateX(10%);
-  }
-  100% {
-    opacity: 0.1;
-    transform: translateX(-10%);
-  }
-}
-
-.animate-aurora-pulse {
-  animation: aurora-pulse 6s ease-in-out infinite;
-}
-
-.animate-aurora-wave {
-  animation: aurora-wave 12s ease-in-out infinite;
-}
-
-/* Weekly Report Advanced Animations */
-@keyframes aurora {
-  0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-20%) translateY(0);
     opacity: 0.3;
   }
   50% {
-    transform: translateY(-50px) rotate(5deg);
-    opacity: 0.6;
+    transform: translateX(10%) translateY(-5px);
+    opacity: 0.5;
   }
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-20%) translateY(0);
     opacity: 0.3;
+  }
+}
+
+.animate-mist-float {
+  animation: mist-float 12s ease-in-out infinite;
+}
+
+/* Weekly Report Section Animations */
+@keyframes subtle-drift {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -676,8 +703,8 @@ All colors MUST be HSL.
   }
 }
 
-.animate-aurora {
-  animation: aurora 15s ease-in-out infinite;
+.animate-subtle-drift {
+  animation: subtle-drift 15s ease-in-out infinite;
 }
 
 .animate-float {
@@ -717,4 +744,30 @@ All colors MUST be HSL.
 .leaflet-tooltip-top.custom-tooltip::before,
 .leaflet-tooltip-bottom.custom-tooltip::before {
   display: none !important;
+}
+
+/* Newspaper masthead styling */
+.masthead-title {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.masthead-subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Traditional newspaper rule lines */
+.newspaper-rule {
+  border-top: 2px solid hsl(var(--foreground) / 0.3);
+  border-bottom: 1px solid hsl(var(--foreground) / 0.15);
+  padding: 2px 0;
+  margin: 1rem 0;
+}
+
+.newspaper-rule-thin {
+  border-top: 1px solid hsl(var(--border));
 }
