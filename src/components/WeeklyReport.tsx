@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import EnhancedVideoPlayer from "@/components/EnhancedVideoPlayer";
 import { ArrowRight, Archive } from "lucide-react";
-import weeklyReportBg from "@/assets/weekly-report-bg.jpg";
+import weeklyReportBg from "@/assets/weekly-report-harbor-bg.jpg";
 
 interface WeeklyReportData {
   id: string;
@@ -47,42 +47,49 @@ const WeeklyReport = () => {
 
   return (
     <section className="py-20 relative overflow-hidden">
-      {/* Background with muted effect */}
+      {/* Southeast Alaska Harbor Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed transform scale-110 saturate-[0.5] brightness-[0.7]"
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${weeklyReportBg})` }}
       />
       
-      {/* Muted gradient overlays - less vibrant */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/85" />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-800/30 via-transparent to-slate-800/30" />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(210,15%,10%)]/85 via-[hsl(210,12%,12%)]/80 to-[hsl(210,15%,10%)]/90" />
       
-      {/* Subtle ambient glow - muted colors */}
+      {/* Subtle vignette effect */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(210,15%,8%)_100%)] opacity-50" />
+      
+      {/* Animated mist layers for harbor atmosphere */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute -top-1/2 left-0 right-0 h-full bg-gradient-to-b from-slate-600/5 via-slate-700/3 to-transparent blur-3xl"
+          className="absolute bottom-0 left-0 w-[200%] h-32 bg-gradient-to-t from-gray-400/10 to-transparent animate-mist-float"
+          style={{ animationDuration: '20s' }}
+        />
+        <div 
+          className="absolute bottom-10 left-0 w-[180%] h-24 bg-gradient-to-t from-gray-300/8 to-transparent animate-mist-float"
+          style={{ animationDuration: '25s', animationDelay: '-5s' }}
         />
       </div>
       
-      {/* Subtle floating particles - reduced */}
+      {/* Subtle floating particles - like harbor mist */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-white/15 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${4 + Math.random() * 6}s`,
+              animationDuration: `${5 + Math.random() * 8}s`,
             }}
           />
         ))}
       </div>
       
-      {/* Muted ambient orbs */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-slate-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30" />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-slate-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-20" />
+      {/* Subtle ambient glow - hunter green tones */}
+      <div className="absolute top-10 right-10 w-80 h-80 bg-primary/5 rounded-full mix-blend-screen filter blur-3xl opacity-40" />
+      <div className="absolute bottom-10 left-10 w-64 h-64 bg-primary/5 rounded-full mix-blend-screen filter blur-3xl opacity-30" />
       
       <div className="container relative z-10">
         <div className="max-w-5xl mx-auto">
