@@ -25,7 +25,6 @@ const Footer = () => {
   const partners = [
     { name: "Martin Mines", url: "https://martinminesgold.com" },
     { name: "Great Northern Construction", url: "https://greatnorthernconstruction.com" },
-    { name: "Bid Calendar", url: "https://bidcalendar.com" },
     { name: "State of Alaska", url: "https://alaska.gov" },
   ];
 

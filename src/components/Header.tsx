@@ -35,7 +35,6 @@ const Header = () => {
   const partnerSites = [
     { name: "Martin Mines", url: "https://martinmines.com" },
     { name: "State of Alaska", url: "https://stateofalaska.com" },
-    { name: "Bid Calendar", url: "https://bidcalendar.com" },
     { name: "Great Northern", url: "https://greatnorthernconstruction.com" },
   ];
 

@@ -16,7 +16,7 @@ const AnimatedLogo = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Logo Icon - Mountain & Ocean themed in Hunter Green/Gray */}
+      {/* Logo Icon - Mountain & Ocean themed with continuous animations */}
       <div className={`relative transition-all duration-500 ${isHovered ? 'scale-110' : ''}`}>
         <svg 
           width="56" 
@@ -56,7 +56,7 @@ const AnimatedLogo = () => {
             </filter>
           </defs>
           
-          {/* Background - charcoal circle with hunter green border */}
+          {/* Background - charcoal circle with animated pulse */}
           <circle 
             cx="28" 
             cy="28" 
@@ -64,13 +64,19 @@ const AnimatedLogo = () => {
             fill="url(#skyGrad)" 
             stroke="url(#hunterGreenGrad)" 
             strokeWidth="2.5"
+            className="animate-pulse"
+            style={{ animationDuration: '4s' }}
           />
           
-          {/* Far mountain range - lighter gray */}
+          {/* Far mountain range - with breathing animation */}
           <path 
             d="M8 38 L16 28 L22 32 L28 24 L34 30 L42 26 L48 38 Z" 
             fill="#6b7280"
             opacity="0.5"
+            className="origin-bottom"
+            style={{
+              animation: 'mountainBreathe 6s ease-in-out infinite',
+            }}
           />
           
           {/* Main mountain range */}
@@ -94,14 +100,17 @@ const AnimatedLogo = () => {
             fill="url(#snowCapGrad)"
           />
           
-          {/* Ocean waves at bottom */}
+          {/* Ocean waves - animated */}
           <ellipse 
             cx="28" 
             cy="47" 
             rx="22" 
             ry="4" 
             fill="url(#oceanGrad)"
-            className={`transition-all duration-500 ${isHovered ? 'opacity-80' : 'opacity-60'}`}
+            className="origin-center"
+            style={{
+              animation: 'waveRipple 3s ease-in-out infinite',
+            }}
           />
           <ellipse 
             cx="28" 
@@ -110,17 +119,20 @@ const AnimatedLogo = () => {
             ry="2.5" 
             fill="url(#oceanGrad)"
             opacity="0.4"
+            style={{
+              animation: 'waveRipple 3s ease-in-out infinite 0.5s',
+            }}
           />
           
-          {/* Stars - subtle gold accents */}
-          <circle cx="14" cy="14" r="1" fill="#d4a857" opacity="0.8"/>
-          <circle cx="28" cy="11" r="0.8" fill="#d4a857" opacity="0.6"/>
-          <circle cx="42" cy="15" r="1.2" fill="#d4a857" opacity="0.9"/>
-          <circle cx="20" cy="18" r="0.6" fill="#d4a857" opacity="0.5"/>
-          <circle cx="38" cy="12" r="0.7" fill="#d4a857" opacity="0.7"/>
+          {/* Stars - twinkling animation */}
+          <circle cx="14" cy="14" r="1" fill="#d4a857" style={{ animation: 'twinkle 2s ease-in-out infinite' }} />
+          <circle cx="28" cy="11" r="0.8" fill="#d4a857" style={{ animation: 'twinkle 2.5s ease-in-out infinite 0.3s' }} />
+          <circle cx="42" cy="15" r="1.2" fill="#d4a857" style={{ animation: 'twinkle 1.8s ease-in-out infinite 0.6s' }} />
+          <circle cx="20" cy="18" r="0.6" fill="#d4a857" style={{ animation: 'twinkle 2.2s ease-in-out infinite 0.9s' }} />
+          <circle cx="38" cy="12" r="0.7" fill="#d4a857" style={{ animation: 'twinkle 2s ease-in-out infinite 1.2s' }} />
           
-          {/* North Star - prominent */}
-          <g transform="translate(44, 13)" className={`transition-all duration-500 ${isHovered ? 'scale-110' : ''}`} style={{ transformOrigin: 'center' }}>
+          {/* North Star - prominent with glow pulse */}
+          <g transform="translate(44, 13)" style={{ animation: 'northStarPulse 3s ease-in-out infinite' }}>
             <polygon 
               points="0,-3 0.8,-0.8 3,0 0.8,0.8 0,3 -0.8,0.8 -3,0 -0.8,-0.8" 
               fill="#d4a857"
@@ -128,13 +140,14 @@ const AnimatedLogo = () => {
           </g>
         </svg>
         
-        {/* Subtle glow effect on hover */}
+        {/* Subtle glow effect - always present, enhanced on hover */}
         <div 
-          className={`absolute -inset-2 rounded-full transition-opacity duration-500 pointer-events-none ${
+          className={`absolute -inset-2 rounded-full transition-all duration-500 pointer-events-none blur-xl ${
             isHovered 
-              ? 'opacity-30 bg-primary/30 blur-xl'
-              : 'opacity-0'
-          }`} 
+              ? 'opacity-40 bg-primary/40'
+              : 'opacity-15 bg-primary/20'
+          }`}
+          style={{ animation: 'glowPulse 4s ease-in-out infinite' }}
         />
       </div>
 
@@ -143,17 +156,19 @@ const AnimatedLogo = () => {
         {/* Main masthead title */}
         <div className="flex items-baseline gap-1.5">
           <span 
-            className="text-xl sm:text-2xl font-bold tracking-tight text-foreground drop-shadow-sm masthead-title"
+            className="text-xl sm:text-2xl font-bold tracking-tight text-paper-cream dark:text-foreground drop-shadow-md masthead-title"
             style={{ 
               fontFamily: "'Playfair Display', 'Times New Roman', serif",
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}
           >
             ALASKA
           </span>
           <span 
-            className="text-lg sm:text-xl font-medium tracking-wide text-foreground/80 drop-shadow-sm"
+            className="text-lg sm:text-xl font-medium tracking-wide text-paper-cream/90 dark:text-foreground/80 drop-shadow-md"
             style={{ 
               fontFamily: "'Playfair Display', 'Times New Roman', serif",
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
             }}
           >
             News Page
@@ -163,26 +178,51 @@ const AnimatedLogo = () => {
         {/* Newspaper-style rule line */}
         <div className="flex items-center gap-2 mt-0.5">
           <div 
-            className="h-[2px] w-6 rounded-full bg-primary/60"
+            className="h-[2px] w-6 rounded-full bg-paper-cream/60 dark:bg-primary/60"
           />
           <span 
-            className="text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] uppercase text-primary masthead-subtitle"
+            className="text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] uppercase text-paper-cream/80 dark:text-primary masthead-subtitle"
+            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
           >
             Alaska's Regional News Source
           </span>
           <div 
-            className="h-[2px] w-6 rounded-full bg-primary/60"
+            className="h-[2px] w-6 rounded-full bg-paper-cream/60 dark:bg-primary/60"
           />
         </div>
         
         {/* Animated underline on hover */}
         <div 
           className={`
-            h-[2px] mt-1.5 rounded-full transition-all duration-500 origin-left bg-primary/50
+            h-[2px] mt-1.5 rounded-full transition-all duration-500 origin-left bg-paper-cream/50 dark:bg-primary/50
             ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
           `}
         />
       </div>
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes twinkle {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.3); }
+        }
+        @keyframes waveRipple {
+          0%, 100% { transform: scaleX(1) translateY(0); opacity: 0.6; }
+          50% { transform: scaleX(1.05) translateY(-1px); opacity: 0.8; }
+        }
+        @keyframes mountainBreathe {
+          0%, 100% { transform: scaleY(1); }
+          50% { transform: scaleY(1.02); }
+        }
+        @keyframes northStarPulse {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #d4a857); }
+          50% { transform: scale(1.2); filter: drop-shadow(0 0 6px #d4a857); }
+        }
+        @keyframes glowPulse {
+          0%, 100% { opacity: 0.15; }
+          50% { opacity: 0.25; }
+        }
+      `}</style>
     </div>
   );
 };
