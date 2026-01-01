@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
         cinzel: ['Cinzel', 'Georgia', 'serif'],
         playfair: ['Playfair Display', 'Georgia', 'serif'],
       },
@@ -53,20 +53,30 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom nature-inspired colors
-        nature: {
-          "warm-gray": "hsl(var(--warm-gray-dark))",
-          green: "hsl(var(--forest-green))",
-          blue: "hsl(var(--deep-blue))",
-          gold: "hsl(var(--gold))",
-          red: "hsl(var(--warm-red))",
+        // Custom newspaper-inspired colors
+        newspaper: {
+          charcoal: "hsl(var(--charcoal))",
+          "hunter-green": "hsl(var(--hunter-green))",
+          "slate-gray": "hsl(var(--slate-gray))",
+          gold: "hsl(var(--gold-accent))",
+          red: "hsl(var(--deep-red))",
+          ink: "hsl(var(--ink-black))",
+          cream: "hsl(var(--paper-cream))",
         },
-        "nature-gold": "hsl(var(--nature-gold))",
-        "warm-gray-dark": "hsl(var(--warm-gray-dark))",
-        "forest-green": "hsl(var(--forest-green))",
-        "deep-blue": "hsl(var(--deep-blue))",
-        "gold": "hsl(var(--gold))",
-        "warm-red": "hsl(var(--warm-red))",
+        // Legacy nature colors mapped to new scheme
+        nature: {
+          "warm-gray": "hsl(var(--charcoal))",
+          green: "hsl(var(--hunter-green))",
+          blue: "hsl(var(--slate-gray))",
+          gold: "hsl(var(--gold-accent))",
+          red: "hsl(var(--deep-red))",
+        },
+        "nature-gold": "hsl(var(--gold-accent))",
+        "warm-gray-dark": "hsl(var(--charcoal))",
+        "forest-green": "hsl(var(--hunter-green))",
+        "deep-blue": "hsl(var(--slate-gray))",
+        "gold": "hsl(var(--gold-accent))",
+        "warm-red": "hsl(var(--deep-red))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -129,8 +139,8 @@ export default {
           "100%": { transform: "translateY(0)", opacity: "1" }
         },
         "glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--accent) / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--accent) / 0.6)" }
+          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.2)" },
+          "50%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.4)" }
         },
         "shimmer": {
           "0%": { backgroundPosition: "-200% 0" },
