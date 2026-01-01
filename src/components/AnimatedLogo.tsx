@@ -16,8 +16,8 @@ const AnimatedLogo = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Logo Icon - Mountain & Ocean themed with continuous animations */}
-      <div className={`relative transition-all duration-500 ${isHovered ? 'scale-110' : ''}`}>
+      {/* Logo Icon - Slow blinking stars with fog and detailed mountains */}
+      <div className={`relative transition-all duration-700 ${isHovered ? 'scale-110' : ''}`}>
         <svg 
           width="56" 
           height="56" 
@@ -25,150 +25,175 @@ const AnimatedLogo = () => {
           className="drop-shadow-lg"
         >
           <defs>
-            {/* Hunter green gradient */}
-            <linearGradient id="hunterGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#1e4d3a" />
-              <stop offset="100%" stopColor="#2d6a4f" />
+            {/* Mountain gradient - more realistic slate/charcoal */}
+            <linearGradient id="mountainGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#1a1f24" />
+              <stop offset="40%" stopColor="#2d3540" />
+              <stop offset="70%" stopColor="#3d4654" />
+              <stop offset="100%" stopColor="#4a5568" />
             </linearGradient>
-            {/* Mountain gradient - slate gray */}
-            <linearGradient id="mountainGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#374151" />
-              <stop offset="50%" stopColor="#4b5563" />
+            <linearGradient id="mountainGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#252d36" />
+              <stop offset="50%" stopColor="#374151" />
+              <stop offset="100%" stopColor="#4b5563" />
+            </linearGradient>
+            <linearGradient id="mountainGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="#1f2937" />
+              <stop offset="60%" stopColor="#374151" />
               <stop offset="100%" stopColor="#6b7280" />
             </linearGradient>
-            {/* Snow cap gradient */}
+            {/* Snow cap gradient - subtle cream */}
             <linearGradient id="snowCapGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#f9fafb" />
-              <stop offset="100%" stopColor="#e5e7eb" />
+              <stop offset="0%" stopColor="#fafafa" />
+              <stop offset="100%" stopColor="#d1d5db" />
             </linearGradient>
-            {/* Ocean gradient */}
-            <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#1e4d3a" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#134e4a" stopOpacity="0.8" />
-            </linearGradient>
-            {/* Sky gradient */}
+            {/* Sky gradient - deep night */}
             <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#1f2937" />
-              <stop offset="100%" stopColor="#374151" />
+              <stop offset="0%" stopColor="#0f1419" />
+              <stop offset="50%" stopColor="#1a202c" />
+              <stop offset="100%" stopColor="#2d3748" />
             </linearGradient>
-            <filter id="logoShadow">
-              <feDropShadow dx="0" dy="1" stdDeviation="1" floodOpacity="0.3"/>
+            {/* Fog gradient */}
+            <linearGradient id="fogGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#9ca3af" stopOpacity="0" />
+              <stop offset="30%" stopColor="#9ca3af" stopOpacity="0.3" />
+              <stop offset="70%" stopColor="#9ca3af" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#9ca3af" stopOpacity="0" />
+            </linearGradient>
+            <filter id="logoGlow">
+              <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
             </filter>
           </defs>
           
-          {/* Background - charcoal circle with animated pulse */}
+          {/* Background - deep night sky */}
           <circle 
             cx="28" 
             cy="28" 
             r="26" 
             fill="url(#skyGrad)" 
-            stroke="url(#hunterGreenGrad)" 
-            strokeWidth="2.5"
-            className="animate-pulse"
-            style={{ animationDuration: '4s' }}
+            stroke="#4a5568"
+            strokeWidth="1.5"
           />
           
-          {/* Far mountain range - with breathing animation */}
-          <path 
-            d="M8 38 L16 28 L22 32 L28 24 L34 30 L42 26 L48 38 Z" 
-            fill="#6b7280"
-            opacity="0.5"
-            className="origin-bottom"
-            style={{
-              animation: 'mountainBreathe 6s ease-in-out infinite',
-            }}
-          />
+          {/* Slow blinking stars */}
+          <circle cx="12" cy="10" r="0.8" fill="#fef3c7" style={{ animation: 'slowBlink 6s ease-in-out infinite' }} />
+          <circle cx="20" cy="8" r="0.5" fill="#fde68a" style={{ animation: 'slowBlink 8s ease-in-out infinite 1s' }} />
+          <circle cx="28" cy="6" r="1" fill="#fef3c7" style={{ animation: 'slowBlink 7s ease-in-out infinite 2s' }} />
+          <circle cx="36" cy="9" r="0.6" fill="#fde68a" style={{ animation: 'slowBlink 9s ease-in-out infinite 3s' }} />
+          <circle cx="44" cy="7" r="0.7" fill="#fef3c7" style={{ animation: 'slowBlink 6.5s ease-in-out infinite 4s' }} />
+          <circle cx="16" cy="14" r="0.4" fill="#fcd34d" style={{ animation: 'slowBlink 8.5s ease-in-out infinite 1.5s' }} />
+          <circle cx="40" cy="12" r="0.5" fill="#fef3c7" style={{ animation: 'slowBlink 7.5s ease-in-out infinite 2.5s' }} />
+          <circle cx="24" cy="11" r="0.3" fill="#fde68a" style={{ animation: 'slowBlink 10s ease-in-out infinite 0.5s' }} />
           
-          {/* Main mountain range */}
-          <path 
-            d="M6 42 L15 30 L20 34 L28 22 L36 32 L42 28 L50 42 Z" 
-            fill="url(#mountainGrad)"
-            filter="url(#logoShadow)"
-          />
-          
-          {/* Snow caps on peaks */}
-          <path 
-            d="M28 22 L31 27 L25 27 Z" 
-            fill="url(#snowCapGrad)"
-          />
-          <path 
-            d="M15 30 L17.5 33 L12.5 33 Z" 
-            fill="url(#snowCapGrad)"
-          />
-          <path 
-            d="M42 28 L44 31 L40 31 Z" 
-            fill="url(#snowCapGrad)"
-          />
-          
-          {/* Ocean waves - animated */}
-          <ellipse 
-            cx="28" 
-            cy="47" 
-            rx="22" 
-            ry="4" 
-            fill="url(#oceanGrad)"
-            className="origin-center"
-            style={{
-              animation: 'waveRipple 3s ease-in-out infinite',
-            }}
-          />
-          <ellipse 
-            cx="28" 
-            cy="44" 
-            rx="18" 
-            ry="2.5" 
-            fill="url(#oceanGrad)"
-            opacity="0.4"
-            style={{
-              animation: 'waveRipple 3s ease-in-out infinite 0.5s',
-            }}
-          />
-          
-          {/* Stars - twinkling animation */}
-          <circle cx="14" cy="14" r="1" fill="#d4a857" style={{ animation: 'twinkle 2s ease-in-out infinite' }} />
-          <circle cx="28" cy="11" r="0.8" fill="#d4a857" style={{ animation: 'twinkle 2.5s ease-in-out infinite 0.3s' }} />
-          <circle cx="42" cy="15" r="1.2" fill="#d4a857" style={{ animation: 'twinkle 1.8s ease-in-out infinite 0.6s' }} />
-          <circle cx="20" cy="18" r="0.6" fill="#d4a857" style={{ animation: 'twinkle 2.2s ease-in-out infinite 0.9s' }} />
-          <circle cx="38" cy="12" r="0.7" fill="#d4a857" style={{ animation: 'twinkle 2s ease-in-out infinite 1.2s' }} />
-          
-          {/* North Star - prominent with glow pulse */}
-          <g transform="translate(44, 13)" style={{ animation: 'northStarPulse 3s ease-in-out infinite' }}>
+          {/* North Star - prominent, slow pulse */}
+          <g transform="translate(46, 11)" style={{ animation: 'slowStarPulse 8s ease-in-out infinite' }}>
             <polygon 
-              points="0,-3 0.8,-0.8 3,0 0.8,0.8 0,3 -0.8,0.8 -3,0 -0.8,-0.8" 
-              fill="#d4a857"
+              points="0,-2.5 0.6,-0.6 2.5,0 0.6,0.6 0,2.5 -0.6,0.6 -2.5,0 -0.6,-0.6" 
+              fill="#fcd34d"
+              filter="url(#logoGlow)"
             />
           </g>
+          
+          {/* Far distant mountain range */}
+          <path 
+            d="M6 40 L12 32 L18 35 L26 27 L34 33 L42 29 L50 38 L50 44 L6 44 Z" 
+            fill="#4b5563"
+            opacity="0.4"
+          />
+          
+          {/* Middle mountain range with more detail */}
+          <path 
+            d="M4 44 L10 34 L14 37 L18 30 L24 35 L28 24 L34 32 L40 28 L46 33 L52 36 L52 44 Z" 
+            fill="url(#mountainGrad2)"
+          />
+          
+          {/* Snow caps on middle peaks */}
+          <path d="M28 24 L31 29 L25 29 Z" fill="url(#snowCapGrad)" />
+          <path d="M18 30 L20 33 L16 33 Z" fill="url(#snowCapGrad)" opacity="0.9" />
+          <path d="M40 28 L42 31 L38 31 Z" fill="url(#snowCapGrad)" opacity="0.9" />
+          
+          {/* Main foreground mountain range - most detailed */}
+          <path 
+            d="M2 48 L8 38 L12 41 L18 34 L22 38 L28 30 L34 36 L38 33 L44 38 L48 35 L54 42 L54 48 Z" 
+            fill="url(#mountainGrad1)"
+          />
+          
+          {/* Snow caps on main peaks */}
+          <path d="M28 30 L30.5 34 L25.5 34 Z" fill="url(#snowCapGrad)" />
+          <path d="M18 34 L20 37 L16 37 Z" fill="url(#snowCapGrad)" opacity="0.85" />
+          <path d="M48 35 L50 38 L46 38 Z" fill="url(#snowCapGrad)" opacity="0.85" />
+          
+          {/* Mountain ridges/texture lines */}
+          <path d="M28 30 L26 36" stroke="#1f2937" strokeWidth="0.3" opacity="0.4" />
+          <path d="M28 30 L30 35" stroke="#1f2937" strokeWidth="0.3" opacity="0.4" />
+          <path d="M18 34 L16 39" stroke="#1f2937" strokeWidth="0.3" opacity="0.3" />
+          
+          {/* Fog layer 1 - drifting through mountains */}
+          <rect 
+            x="0" 
+            y="32" 
+            width="56" 
+            height="6" 
+            fill="url(#fogGrad)"
+            style={{ animation: 'fogDrift1 20s linear infinite' }}
+          />
+          
+          {/* Fog layer 2 - slower, different position */}
+          <rect 
+            x="0" 
+            y="38" 
+            width="56" 
+            height="4" 
+            fill="url(#fogGrad)"
+            opacity="0.5"
+            style={{ animation: 'fogDrift2 25s linear infinite' }}
+          />
+          
+          {/* Fog layer 3 - slowest, subtle */}
+          <rect 
+            x="0" 
+            y="28" 
+            width="56" 
+            height="5" 
+            fill="url(#fogGrad)"
+            opacity="0.3"
+            style={{ animation: 'fogDrift3 30s linear infinite' }}
+          />
         </svg>
         
-        {/* Subtle glow effect - always present, enhanced on hover */}
+        {/* Subtle ambient glow */}
         <div 
-          className={`absolute -inset-2 rounded-full transition-all duration-500 pointer-events-none blur-xl ${
+          className={`absolute -inset-2 rounded-full transition-all duration-700 pointer-events-none blur-xl ${
             isHovered 
-              ? 'opacity-40 bg-primary/40'
-              : 'opacity-15 bg-primary/20'
+              ? 'opacity-30 bg-amber-400/30'
+              : 'opacity-10 bg-amber-400/15'
           }`}
-          style={{ animation: 'glowPulse 4s ease-in-out infinite' }}
+          style={{ animation: 'ambientGlow 10s ease-in-out infinite' }}
         />
       </div>
 
-      {/* Text Logo - Traditional Newspaper Style */}
+      {/* Text Logo - High contrast for dark backgrounds */}
       <div className="flex flex-col">
         {/* Main masthead title */}
         <div className="flex items-baseline gap-1.5">
           <span 
-            className="text-xl sm:text-2xl font-bold tracking-tight text-paper-cream dark:text-foreground drop-shadow-md masthead-title"
+            className="text-xl sm:text-2xl font-bold tracking-tight text-white drop-shadow-lg masthead-title"
             style={{ 
               fontFamily: "'Playfair Display', 'Times New Roman', serif",
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9)',
             }}
           >
             ALASKA
           </span>
           <span 
-            className="text-lg sm:text-xl font-medium tracking-wide text-paper-cream/90 dark:text-foreground/80 drop-shadow-md"
+            className="text-lg sm:text-xl font-medium tracking-wide text-amber-100 drop-shadow-lg"
             style={{ 
               fontFamily: "'Playfair Display', 'Times New Roman', serif",
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.9)',
             }}
           >
             News Page
@@ -178,49 +203,53 @@ const AnimatedLogo = () => {
         {/* Newspaper-style rule line */}
         <div className="flex items-center gap-2 mt-0.5">
           <div 
-            className="h-[2px] w-6 rounded-full bg-paper-cream/60 dark:bg-primary/60"
+            className="h-[2px] w-6 rounded-full bg-amber-200/70"
           />
           <span 
-            className="text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] uppercase text-paper-cream/80 dark:text-primary masthead-subtitle"
-            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
+            className="text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] uppercase text-amber-100/90 masthead-subtitle"
+            style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}
           >
             Alaska's Regional News Source
           </span>
           <div 
-            className="h-[2px] w-6 rounded-full bg-paper-cream/60 dark:bg-primary/60"
+            className="h-[2px] w-6 rounded-full bg-amber-200/70"
           />
         </div>
         
         {/* Animated underline on hover */}
         <div 
           className={`
-            h-[2px] mt-1.5 rounded-full transition-all duration-500 origin-left bg-paper-cream/50 dark:bg-primary/50
+            h-[2px] mt-1.5 rounded-full transition-all duration-700 origin-left bg-amber-300/60
             ${isHovered ? 'w-full opacity-100' : 'w-0 opacity-0'}
           `}
         />
       </div>
 
-      {/* CSS Animations */}
+      {/* CSS Animations - All slowed down significantly */}
       <style>{`
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.3); }
+        @keyframes slowBlink {
+          0%, 40%, 100% { opacity: 0.2; }
+          50%, 60% { opacity: 1; }
         }
-        @keyframes waveRipple {
-          0%, 100% { transform: scaleX(1) translateY(0); opacity: 0.6; }
-          50% { transform: scaleX(1.05) translateY(-1px); opacity: 0.8; }
+        @keyframes slowStarPulse {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #fcd34d); opacity: 0.6; }
+          50% { transform: scale(1.15); filter: drop-shadow(0 0 5px #fcd34d); opacity: 1; }
         }
-        @keyframes mountainBreathe {
-          0%, 100% { transform: scaleY(1); }
-          50% { transform: scaleY(1.02); }
+        @keyframes fogDrift1 {
+          0% { transform: translateX(-30%); }
+          100% { transform: translateX(30%); }
         }
-        @keyframes northStarPulse {
-          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #d4a857); }
-          50% { transform: scale(1.2); filter: drop-shadow(0 0 6px #d4a857); }
+        @keyframes fogDrift2 {
+          0% { transform: translateX(20%); }
+          100% { transform: translateX(-20%); }
         }
-        @keyframes glowPulse {
-          0%, 100% { opacity: 0.15; }
-          50% { opacity: 0.25; }
+        @keyframes fogDrift3 {
+          0% { transform: translateX(-15%); }
+          100% { transform: translateX(15%); }
+        }
+        @keyframes ambientGlow {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.2; }
         }
       `}</style>
     </div>
