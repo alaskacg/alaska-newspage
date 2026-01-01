@@ -108,7 +108,7 @@ const AIContentAssistant = () => {
     <Card className="bg-slate-800/50 border-white/10">
       <CardHeader>
         <CardTitle className="text-white flex items-center gap-2">
-          <Wand2 className="h-5 w-5 text-purple-400" />
+          <Wand2 className="h-5 w-5 text-primary" />
           AI Content Assistant
         </CardTitle>
         <CardDescription className="text-white/60">
@@ -146,7 +146,7 @@ const AIContentAssistant = () => {
           <Button
             onClick={handleGenerate}
             disabled={isGenerating || !prompt.trim()}
-            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white"
+            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white"
           >
             {isGenerating ? (
               <Loader2 className="h-4 w-4 animate-spin mr-2" />

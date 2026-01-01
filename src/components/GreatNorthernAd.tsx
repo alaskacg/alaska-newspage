@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ExternalLink, Building2, HardHat, Wrench } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import partnerGreatNorthern from "@/assets/partner-great-northern.jpg";
+import greatNorthernBg from "@/assets/great-northern-construction-bg.jpg";
 
 const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -19,7 +19,7 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
           {/* Background Image with Parallax Effect */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-            style={{ backgroundImage: `url(${partnerGreatNorthern})` }}
+            style={{ backgroundImage: `url(${greatNorthernBg})` }}
           />
           
           {/* Animated Gradient Overlay */}
@@ -78,7 +78,7 @@ const GreatNorthernAd = ({ compact = false }: { compact?: boolean }) => {
       <div 
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000"
         style={{ 
-          backgroundImage: `url(${partnerGreatNorthern})`,
+          backgroundImage: `url(${greatNorthernBg})`,
           transform: isHovered ? 'scale(1.1)' : 'scale(1)'
         }}
       />

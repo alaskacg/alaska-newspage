@@ -292,7 +292,7 @@ const Index = () => {
                   icon: Users,
                   title: "Community Driven",
                   description: "Stay connected to what matters most in your local community",
-                  color: "from-purple-500 to-pink-500"
+                  color: "from-teal-500 to-emerald-500"
                 },
                 {
                   icon: Newspaper,

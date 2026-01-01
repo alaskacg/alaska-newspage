@@ -121,7 +121,7 @@ const eventTypeConfig = {
   hunting: { icon: Target, color: "bg-orange-600/30 text-orange-300 border-orange-500/50 dark:bg-orange-500/25 dark:text-orange-300", label: "Hunting" },
   fishing: { icon: Fish, color: "bg-sky-600/30 text-sky-200 border-sky-500/50 dark:bg-sky-500/25 dark:text-sky-300", label: "Fishing" },
   salmon: { icon: Fish, color: "bg-rose-600/30 text-rose-200 border-rose-500/50 dark:bg-rose-500/25 dark:text-rose-300", label: "Salmon Run" },
-  moon: { icon: Moon, color: "bg-violet-600/30 text-violet-200 border-violet-500/50 dark:bg-violet-500/25 dark:text-violet-300", label: "Moon Phase" },
+  moon: { icon: Moon, color: "bg-slate-600/30 text-slate-200 border-slate-500/50 dark:bg-slate-500/25 dark:text-slate-300", label: "Moon Phase" },
   season: { icon: Sun, color: "bg-amber-600/30 text-amber-100 border-amber-500/50 dark:bg-amber-500/25 dark:text-amber-300", label: "Season" },
   holiday: { icon: Snowflake, color: "bg-teal-600/30 text-teal-100 border-teal-500/50 dark:bg-teal-500/25 dark:text-teal-300", label: "Holiday" },
 };
@@ -305,8 +305,8 @@ const AlaskaEventsCalendar = ({ compact = false, region }: AlaskaEventsCalendarP
                               "w-1.5 h-1.5 rounded-full",
                               event.type === "hunting" && "bg-orange-500",
                               event.type === "fishing" && "bg-blue-500",
-                              event.type === "salmon" && "bg-pink-500",
-                              event.type === "moon" && "bg-purple-500",
+                              event.type === "salmon" && "bg-rose-500",
+                              event.type === "moon" && "bg-slate-400",
                               event.type === "season" && "bg-yellow-500",
                               event.type === "holiday" && "bg-emerald-500"
                             )}

@@ -123,14 +123,14 @@ const RegionManagement = () => {
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
           <CardTitle className="text-white flex items-center gap-2">
-            <MapPin className="h-5 w-5 text-purple-400" />
+            <MapPin className="h-5 w-5 text-primary" />
             Region Management
           </CardTitle>
           <CardDescription className="text-white/60">Manage Alaska regions</CardDescription>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsDialogOpen(open); if (!open) resetForm(); }}>
           <DialogTrigger asChild>
-            <Button className="bg-purple-500 hover:bg-purple-600">
+            <Button className="bg-primary hover:bg-primary/90">
               <Plus className="h-4 w-4 mr-2" /> Add Region
             </Button>
           </DialogTrigger>
@@ -168,7 +168,7 @@ const RegionManagement = () => {
                   rows={3}
                 />
               </div>
-              <Button type="submit" className="w-full bg-purple-500 hover:bg-purple-600" disabled={saving}>
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={saving}>
                 {saving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
                 {editingRegion ? "Update" : "Create"} Region
               </Button>
