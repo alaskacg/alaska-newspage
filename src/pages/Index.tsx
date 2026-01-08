@@ -15,7 +15,7 @@ import InstallPrompt from "@/components/InstallPrompt";
 import MartinMinesAd from "@/components/MartinMinesAd";
 import GreatNorthernAd from "@/components/GreatNorthernAd";
 import DateTimeWeather from "@/components/DateTimeWeather";
-import NewsTicker from "@/components/NewsTicker";
+import UnifiedNewsTicker from "@/components/UnifiedNewsTicker";
 import WeeklyReport from "@/components/WeeklyReport";
 import AlaskaEventsCalendar from "@/components/AlaskaEventsCalendar";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -130,15 +130,74 @@ const Index = () => {
       {/* Date, Time & Weather */}
       <DateTimeWeather />
       
-      {/* News Tickers */}
+      {/* Unified News Ticker */}
       <div className="animate-fade-in">
-        <NewsTicker category="state" color="blue" />
-        <NewsTicker category="mining" color="amber" />
-        <NewsTicker category="energy" color="green" />
-        <NewsTicker category="crime" color="red" />
+        <UnifiedNewsTicker />
       </div>
-      
-      {/* Weekly Report Section - Now at the top */}
+
+      {/* 1. Latest News Section - Categorized (TOP) */}
+      <AnimatedSection animation="fade-up" delay={100}>
+        <section className="py-16 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-40"
+            style={{ backgroundImage: `url(${latestNewsBg})` }}
+          />
+          <div className="absolute inset-0 bg-background/50 dark:bg-background/60" />
+          <div className="container max-w-7xl relative z-10">
+            <div className="flex items-center justify-between mb-10">
+              <div>
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary dark:text-primary text-xs font-medium mb-3 border border-primary/30">
+                  Breaking Stories
+                </span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Latest Alaska News</h2>
+              </div>
+              <Button 
+                variant="outline" 
+                onClick={() => navigate('/region/statewide')}
+                className="hover-lift hover:border-accent"
+              >
+                View All News
+              </Button>
+            </div>
+            <CategorizedNews />
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* 2. Interactive Map Section (Explore Alaska by Region) */}
+      <AnimatedSection animation="scale" delay={150}>
+        <section id="map-section" className="py-16 section-divider relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-75 dark:opacity-55"
+            style={{ backgroundImage: `url(${alaskaMapBg})` }}
+          />
+          <div className="absolute inset-0 bg-background/25 dark:bg-background/35" />
+          <div className="container relative z-10">
+            <div className="text-center mb-12">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30 animate-pulse">
+                Interactive Explorer
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground title-gradient-animated">
+                Explore Alaska by Region
+              </h2>
+              <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
+                Click on any region to discover local news, events, and information relevant to that area
+              </p>
+            </div>
+            {regions.length > 0 ? (
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/50 hover-glow transition-all duration-500">
+                <AlaskaMap ref={mapRef} regions={regions} businesses={businesses} publicResources={publicResources} />
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No regions available</p>
+              </div>
+            )}
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* 3. Weekly Report Section */}
       <WeeklyReport />
 
       {/* First Ad - Martin Mines - Full Width */}
@@ -175,40 +234,6 @@ const Index = () => {
         </section>
       </AnimatedSection>
 
-      {/* Interactive Map Section */}
-      <AnimatedSection animation="scale" delay={150}>
-        <section id="map-section" className="py-16 section-divider relative overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-75 dark:opacity-55"
-            style={{ backgroundImage: `url(${alaskaMapBg})` }}
-          />
-          <div className="absolute inset-0 bg-background/25 dark:bg-background/35" />
-          <div className="container relative z-10">
-            <div className="text-center mb-12">
-              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary-foreground dark:text-primary text-xs font-medium mb-4 border border-primary/30 animate-pulse">
-                Interactive Explorer
-              </span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-foreground title-gradient-animated">
-                Explore Alaska by Region
-              </h2>
-              <p className="text-foreground/70 dark:text-muted-foreground max-w-2xl mx-auto">
-                Click on any region to discover local news, events, and information relevant to that area
-              </p>
-            </div>
-            {regions.length > 0 ? (
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/50 hover-glow transition-all duration-500">
-                <AlaskaMap ref={mapRef} regions={regions} businesses={businesses} publicResources={publicResources} />
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No regions available</p>
-              </div>
-            )}
-          </div>
-        </section>
-      </AnimatedSection>
-
-
       {/* Alaska Events Calendar Section */}
       <AnimatedSection animation="fade-up" delay={100}>
         <section className="py-16 relative overflow-hidden section-divider">
@@ -230,35 +255,6 @@ const Index = () => {
               </p>
             </div>
             <AlaskaEventsCalendar />
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* Latest News Section - Categorized */}
-      <AnimatedSection animation="fade-up" delay={100}>
-        <section className="py-16 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-60 dark:opacity-40"
-            style={{ backgroundImage: `url(${latestNewsBg})` }}
-          />
-          <div className="absolute inset-0 bg-background/50 dark:bg-background/60" />
-          <div className="container max-w-7xl relative z-10">
-            <div className="flex items-center justify-between mb-10">
-              <div>
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 dark:bg-primary/10 text-primary dark:text-primary text-xs font-medium mb-3 border border-primary/30">
-                  Breaking Stories
-                </span>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Latest Alaska News</h2>
-              </div>
-              <Button 
-                variant="outline" 
-                onClick={() => navigate('/region/statewide')}
-                className="hover-lift hover:border-accent"
-              >
-                View All News
-              </Button>
-            </div>
-            <CategorizedNews />
           </div>
         </section>
       </AnimatedSection>
