@@ -128,3 +128,41 @@ Built with ❤️ using Lovable
 - [Lovable Documentation](https://docs.lovable.dev/)
 - [Lovable Discord](https://discord.lovable.dev/)
 - Project URL: https://lovable.dev/projects/097ee2f7-b418-454a-8c7a-fafb643dcfd7
+
+## Stripe Payment Setup
+
+This site uses Stripe for $10 flat-fee listing payments.
+
+### Configuration
+
+1. Create a Stripe account at https://stripe.com
+2. Get your API keys from the Stripe Dashboard
+3. Create a `.env` file based on `.env.example`:
+   ```
+   VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+   VITE_STRIPE_SECRET_KEY=sk_test_...
+   ```
+
+### Features
+
+- **$10 flat fee** for 60-day listings
+- One-time payment checkout
+- Instant listing activation
+- Simple seller onboarding
+
+### Usage
+
+Import and use the `StripeListingCheckout` component in your listing forms:
+
+```tsx
+import StripeListingCheckout from './components/StripeListingCheckout';
+
+// In your component:
+<StripeListingCheckout 
+  clientSecret={paymentIntent.client_secret}
+  onSuccess={() => {
+    // Handle successful payment
+    activateListing();
+  }}
+/>
+```
